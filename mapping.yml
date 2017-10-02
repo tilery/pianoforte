@@ -1,0 +1,161 @@
+generalized_tables:
+  landusages_gen: {source: landusages, sql_filter: ST_Area(geometry)>500000, tolerance: 50.0}
+  railway_gen: {source: railway, sql_filter: null, tolerance: 100.0}
+  roads_gen: {source: roads, sql_filter: 'type IN (''motorway'', ''motorway_link'',
+      ''trunk'', ''trunk_link'', ''primary'', ''primary_link'', ''secondary'', ''secondary_link'',
+      ''tertiary'', ''tertiary_link'')', tolerance: 50.0}
+  waterareas_gen: {source: waterareas, sql_filter: ST_Area(geometry)>50000.000000,
+    tolerance: 50.0}
+  waterways_gen: {source: waterways, sql_filter: null, tolerance: 50.0}
+tables:
+  admin:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    - {key: admin_level, name: admin_level, type: integer}
+    mapping:
+      boundary: [administrative]
+    type: polygon
+  buildings:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      building: [__any__]
+    type: polygon
+  entrance:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: access, name: access, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      entrance: [main, exit, 'yes']
+    type: point
+  landusages:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    - {key: null, name: area, type: pseudoarea}
+    - args:
+        ranks: [park, forest, wood, grass, garden, residential, retail, commercial,
+          industrial, railway, cemetery, land]
+      key: z_order
+      name: z_order
+      type: zorder
+    mapping:
+      landuse: [park, forest, residential, retail, commercial, industrial, railway,
+        cemetery, grass, farmyard, farm, farmland, orchard, vineyard, wood, meadow,
+        village_green, recreation_ground, allotments, quarry]
+      leisure: [park, garden, golf_course]
+      natural: [wood, land]
+    type: polygon
+  places:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    - args:
+        ranks: [country, state, region, county, city, town, village, hamlet, suburb,
+          locality]
+      key: z_order
+      name: z_order
+      type: zorder
+    - {key: population, name: population, type: integer}
+    mapping:
+      place: [country, state, region, county, city, town, village, hamlet, suburb,
+        locality]
+    type: point
+  railway:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: null, name: type, type: mapping_value}
+    - {key: name, name: name, type: string}
+    - {key: tunnel, name: tunnel, type: boolint}
+    - {key: bridge, name: bridge, type: boolint}
+    - {key: oneway, name: oneway, type: direction}
+    - {key: ref, name: ref, type: string}
+    - {key: layer, name: z_order, type: wayzorder}
+    - {key: access, name: access, type: string}
+    - {key: service, name: service, type: string}
+    - {key: null, name: class, type: mapping_key}
+    filters:
+      exclude_tags:
+      - [area, 'yes']
+    mappings:
+      railway:
+        mapping:
+          railway: [rail, tram, light_rail, subway, narrow_gauge, preserved, funicular,
+            monorail, disused]
+    type: linestring
+  roads:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: null, name: type, type: mapping_value}
+    - {key: name, name: name, type: string}
+    - {key: tunnel, name: tunnel, type: boolint}
+    - {key: bridge, name: bridge, type: boolint}
+    - {key: oneway, name: oneway, type: direction}
+    - {key: ref, name: ref, type: string}
+    - {key: layer, name: z_order, type: wayzorder}
+    - {key: access, name: access, type: string}
+    - {key: service, name: service, type: string}
+    - {key: null, name: class, type: mapping_key}
+    filters:
+      exclude_tags:
+      - [area, 'yes']
+    mappings:
+      roads:
+        mapping:
+          highway: [motorway, motorway_link, trunk, trunk_link, primary, primary_link,
+            secondary, secondary_link, tertiary, tertiary_link, road, path, track,
+            service, footway, bridleway, cycleway, steps, pedestrian, living_street,
+            unclassified, residential, raceway]
+          man_made: [pier, groyne]
+    type: linestring
+  transport_points:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: short_name, name: short_name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    - {key: 'ref:SNCF', name: ref, type: string}
+    - {key: uic_ref, name: uic, type: string}
+    mapping:
+      highway: [bus_stop]
+      railway: [station, halt, tram_stop, crossing, level_crossing, subway_entrance]
+    type: point
+  waterareas:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    - {key: null, name: area, type: pseudoarea}
+    mapping:
+      amenity: [swimming_pool]
+      landuse: [basin, reservoir]
+      leisure: [swimming_pool]
+      natural: [water]
+      waterway: [riverbank]
+    type: polygon
+  waterways:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      barrier: [ditch]
+      waterway: [stream, river, canal, drain, ditch]
+    type: linestring

@@ -1,0 +1,9 @@
+data/*
+notes.txt
+localconfig.js
+project.xml
+*~
+tmp/*
+*.mbtiles
+*.xml
+node_modules/

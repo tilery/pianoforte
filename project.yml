@@ -1,0 +1,246 @@
+scale: 1
+metatile: 4
+name: "Overcoat"
+bounds: &world
+  - -180
+  - -85.05112877980659
+  - 180
+  - 85.05112877980659
+center:
+  - 2.1042
+  - 48.9463
+  - 12
+format: "png"
+interactivity: false
+minzoom: 9
+maxzoom: 18
+srs: &merc "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+extents: &extents
+  extent: *world
+  srs-name: "900913"
+  srs: *merc
+extents84: &extents84
+  extent: *world
+  srs-name: "WGS84"
+  srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+db: &db
+  dbname: idf
+  geometry_field: geometry
+  type: postgis
+  extent: -20037508,-19929239,20037508,19929239
+
+Stylesheet:
+- base.mss
+- admin.mss
+- roads.mss
+- labels.mss
+
+Layer:
+
+- id: land
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    file: "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
+    type: "shape"
+  advanced: {}
+
+- id: landuse
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type
+        FROM
+          osm_landusages
+        WHERE
+          type IS NOT NULL
+        ORDER BY
+          area DESC
+      ) AS data
+
+- id: landuse_gen
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type
+        FROM
+          osm_landusages_gen
+        WHERE
+          type IN ('park', 'garden', 'forest', 'wood', 'cemetery', 'grass')
+      ) AS data
+
+- id: waterareas
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, area
+        FROM
+          osm_waterareas
+      ) AS data
+
+- id: waterways
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name
+        FROM
+          osm_waterways
+      ) AS data
+
+- id: buildings
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type
+        FROM
+          osm_buildings
+      ) AS data
+
+- id: roads_gen
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, ref,
+          CASE WHEN type='motorway' THEN 0 WHEN type='trunk' THEN 1 WHEN type='primary' THEN 2 ELSE 100 END AS rank
+        FROM
+          osm_roads_gen
+        WHERE
+          type IN ('motorway', 'trunk', 'primary', 'secondary', 'primary_link', 'motorway_link', 'trunk_link')
+        ORDER BY
+          rank
+      ) AS data
+
+- id: boundary
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, admin_level
+          FROM
+            osm_admin
+          WHERE
+            "type"='administrative'
+            AND admin_level IN (2,4,6,8,9)
+            AND "type" IS NOT NULL
+          ORDER BY
+            admin_level DESC
+        ) AS data
+
+- id: railway
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name, tunnel, bridge, ref, access, service, class
+        FROM
+          osm_railway
+        WHERE
+          service != 'spur' AND type NOT IN ('funicular', 'disused', 'tram', 'monorail')
+        ORDER BY
+          z_order
+      ) AS data
+
+- id: roads
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, ref, name, tunnel, bridge,
+          CASE WHEN type='motorway' THEN 0 WHEN type='trunk' THEN 1 WHEN type='primary' THEN 2 ELSE 100 END AS rank
+        FROM
+          osm_roads
+        WHERE
+          type NOT IN ('path', 'footway', 'stairs')
+        ORDER BY
+          rank DESC
+      ) AS data
+
+- id: place
+  class: ""
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry,
+            CASE WHEN type='city' THEN 1 WHEN type='town' THEN 2 ELSE 100 END as prio,
+            type, name, z_order, population
+          FROM
+            osm_places
+          WHERE
+            type IN ('city', 'town', 'village')
+            AND type IS NOT NULL
+          ORDER BY prio, population DESC NULLS LAST
+        ) AS data
+
+- id: boundary_label
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, admin_level, name
+          FROM
+            osm_admin
+          WHERE
+            "type"='administrative'
+            AND admin_level IN (2,4,6,8,9)
+            AND "type" IS NOT NULL
+          ORDER BY
+            admin_level DESC
+        ) AS data
+
+- id: road_label
+  class: ""
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, type, name, ref, CHAR_LENGTH(ref) AS reflen,
+            CASE type WHEN 'motorway' THEN 1 WHEN 'trunk' THEN 2 WHEN 'primary' THEN 3 ELSE 10 END AS prio
+          FROM
+            osm_roads
+          WHERE
+            type IS NOT NULL AND (name IS NOT NULL OR ref IS NOT NULL) AND geometry && !bbox!
+          ORDER BY
+            prio
+        ) AS data

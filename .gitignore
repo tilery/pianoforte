@@ -1,6 +1,6 @@
 data/*
 notes.txt
-localconfig.js
+localconfig*.js
 project.xml
 *~
 tmp/*

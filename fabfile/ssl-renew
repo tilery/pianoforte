@@ -1,0 +1,5 @@
+#!/bin/bash
+
+certbot -c /srv/tamer/certbot.ini renew
+
+systemctl reload nginx

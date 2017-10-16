@@ -7,9 +7,9 @@ bounds: &world
   - 180
   - 85.05112877980659
 center:
-  - 2.1042
-  - 48.9463
-  - 12
+  - 35.5322
+  - 33.8753
+  - 13
 format: "png"
 interactivity: false
 minzoom: 9
@@ -24,10 +24,13 @@ extents84: &extents84
   srs-name: "WGS84"
   srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 db: &db
-  dbname: idf
+  dbname: tilery
   geometry_field: geometry
   type: postgis
   extent: -20037508,-19929239,20037508,19929239
+  password: null
+  user: tilery
+  host: ''
 
 Stylesheet:
 - base.mss
@@ -37,12 +40,21 @@ Stylesheet:
 
 Layer:
 
-- id: land
+- id: land-low
   class: ""
   geometry: "polygon"
   <<: *extents
   Datasource:
     file: "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
+    type: "shape"
+  advanced: {}
+
+- id: land
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
     type: "shape"
   advanced: {}
 
@@ -135,25 +147,6 @@ Layer:
           rank
       ) AS data
 
-- id: boundary
-  class: ""
-  geometry: polygon
-  <<: *extents
-  Datasource:
-    <<: *db
-    table: |-
-        ( SELECT
-            geometry, admin_level
-          FROM
-            osm_admin
-          WHERE
-            "type"='administrative'
-            AND admin_level IN (2,4,6,8,9)
-            AND "type" IS NOT NULL
-          ORDER BY
-            admin_level DESC
-        ) AS data
-
 - id: railway
   class: ""
   geometry: linestring
@@ -188,6 +181,25 @@ Layer:
         ORDER BY
           rank DESC
       ) AS data
+
+- id: boundary
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, admin_level
+          FROM
+            osm_admin
+          WHERE
+            "type"='administrative'
+            AND admin_level IN (2,4,6,8,9)
+            AND "type" IS NOT NULL
+          ORDER BY
+            admin_level DESC
+        ) AS data
 
 - id: place
   class: ""

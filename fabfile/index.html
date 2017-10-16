@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<title>Carte</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+  integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+  integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js"
+  integrity="sha384-2V+X2eD8Nz+G+FVKmPS5XkcMt40qrSGaHSoV8Ny7VAvPnHMfnLgrZ6qvNZVJ2ycb"
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-basemaps@0.2.3/L.Control.Basemaps-min.js"
+  integrity="sha384-AkUjFgYsMDG3b9FXxfb0dvvoJAhCva9ckI6P1c6r1w2kUvAjneMlw4EX+iTHlprG"
+  crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-basemaps@0.2.3/L.Control.Basemaps.css"
+  integrity="sha384-qeGfDhIjpfNN+Hk4iuD8ZjsRlikWgfXhATlvCGi89d5W9TGjHGZKK/ME5I1PUJ1p"
+  crossorigin=""/>
+<style type="text/css">
+    html, body, #map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<div id="map"></div>
+<script type="text/javascript">
+    var map = L.map('map').setView([33.8753, 35.5322], 12)
+    L.hash(map)
+
+    const basemaps = [
+        L.tileLayer('/tile/full/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }),
+        L.tileLayer('/tile/light/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        })
+    ]
+
+
+    map.addControl(L.control.basemaps({
+        basemaps: basemaps,
+        tileX: 0,  // tile X coordinate
+        tileY: 0,  // tile Y coordinate
+        tileZ: 1   // tile zoom level
+    }));
+</script>

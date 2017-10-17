@@ -62,6 +62,7 @@ Map {
   #landuse_gen[zoom>=12] {
       polygon-opacity: 0.9;
   }
+  polygon-fill: @neutral;  // Default.
   [type='grave_yard'],
   [type='college'],
   [type='school'],

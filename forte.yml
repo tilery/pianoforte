@@ -87,8 +87,6 @@ Layer:
           geometry, type
         FROM
           osm_landusages_gen
-        WHERE
-          type IN ('park', 'garden', 'forest', 'wood', 'cemetery', 'grass')
       ) AS data
 
 - id: waterareas
@@ -220,6 +218,21 @@ Layer:
             AND type IS NOT NULL
           ORDER BY prio, population DESC NULLS LAST
         ) AS data
+
+- id: landuse_label
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name
+        FROM
+          osm_landusages_gen
+        WHERE
+          name IS NOT NULL
+      ) AS data
 
 - id: boundary_label
   class: ""

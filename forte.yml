@@ -1,6 +1,6 @@
 scale: 1
 metatile: 4
-name: "Overcoat"
+name: "Forte"
 bounds: &world
   - -180
   - -85.05112877980659
@@ -34,9 +34,10 @@ db: &db
 
 Stylesheet:
 - base.mss
+- forte/base.mss
 - admin.mss
-- roads.mss
-- labels.mss
+- forte/roads.mss
+- forte/labels.mss
 
 Layer:
 

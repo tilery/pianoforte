@@ -187,6 +187,12 @@ def download(ctx, force=False):
     if not exists.stdout or force:
         ctx.run('wget http://download.geofabrik.de/asia/lebanon-latest.osm.pbf'
                 f' -O {path}')
+    path = '/srv/tilery/tmp/ile-de-france-latest.osm.pbf'
+    exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
+    if not exists.stdout or force:
+        ctx.run('wget '
+                'http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf'
+                f' -O {path}')
     datapath = '/srv/tilery/data'
     domain = 'http://data.openstreetmapdata.com/'
     exists = ctx.run(f'if [ -f "{datapath}/simplified_land_polygons.shp" ]; '
@@ -207,10 +213,18 @@ def import_data(ctx):
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
               '-mapping /srv/tilery/mapping.yml '
+              '-read /srv/tilery/tmp/ile-de-france-latest.osm.pbf '
+              '-connection="postgis:///tilery" -overwritecache')
+    as_tilery(ctx,
+              'env PGHOST=/var/run/postgresql/ imposm3 import '
+              '-mapping /srv/tilery/mapping.yml '
               '-read /srv/tilery/tmp/lebanon-latest.osm.pbf '
-              '-connection="postgis:///tilery" -write -overwritecache '
+              '-connection="postgis:///tilery" -appendcache')
+    as_tilery(ctx,
+              'env PGHOST=/var/run/postgresql/ imposm3 import '
+              '-mapping /srv/tilery/mapping.yml '
+              '-connection="postgis:///tilery" -write'
               '-deployproduction')
-    # sudo_put(ctx, 'mapping.yml', '/srv/utilery/mapping.yml')
 
 
 @task

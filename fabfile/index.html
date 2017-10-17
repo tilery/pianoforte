@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Carte</title>
+<title>Piano - Forte</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
   crossorigin=""/>
@@ -29,10 +29,10 @@
     L.hash(map)
 
     const basemaps = [
-        L.tileLayer('/tile/full/{z}/{x}/{y}.png', {
+        L.tileLayer('/tile/forte/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }),
-        L.tileLayer('/tile/light/{z}/{x}/{y}.png', {
+        L.tileLayer('/tile/piano/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
     ]

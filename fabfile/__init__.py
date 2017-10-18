@@ -54,7 +54,6 @@ def system(ctx):
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
             'libprotobuf-dev')
     ctx.run('sudo mkdir -p /srv/tilery/src')
-    ctx.run('sudo mkdir -p /srv/tilery/cache/tmp')
     ctx.run('sudo mkdir -p /srv/tilery/tmp')
     ctx.run('sudo mkdir -p /srv/tilery/letsencrypt/.well-known/acme-challenge')
     ctx.run('sudo useradd -N tilery -d /srv/tilery/ || exit 0')
@@ -93,8 +92,8 @@ def install_mod_tile(ctx, force=False):
 
 
 def configure_mod_tile(ctx):
-    ctx.run('sudo mkdir -p /srv/tilery/mod_tile')
-    ctx.run('sudo chown tilery:users /srv/tilery/mod_tile')
+    ctx.run('sudo mkdir -p /srv/tilery/cache')
+    ctx.run('sudo chown tilery:users /srv/tilery/cache')
     ctx.run('sudo mkdir -p /srv/tilery/renderd')
     ctx.run('sudo chown tilery:users /srv/tilery/renderd')
     sudo_put(ctx, 'fabfile/tile.load', '/etc/apache2/mods-available/tile.load')
@@ -223,7 +222,7 @@ def import_data(ctx):
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
               '-mapping /srv/tilery/mapping.yml '
-              '-connection="postgis:///tilery" -write'
+              '-connection="postgis:///tilery" -write '
               '-deployproduction')
 
 
@@ -244,8 +243,8 @@ def psql(ctx, query, dbname='wolf'):
 
 
 @task
-def clear_nginx_cache(ctx):
-    ctx.run('find /srv/tilery/cache/ ! -name tmp -type f -exec rm {} +')
+def clear_cache(ctx):
+    ctx.run('rm -rf /srv/tilery/cache/*')
 
 
 @task

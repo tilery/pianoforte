@@ -4,7 +4,10 @@
 #place[type='city'],
 #place[type='town'],
 #place[type='village'][zoom>=9] {
-  text-name:'[name].replace("Saint-", "St-").replace("Sainte-", "Ste-")';
+  text-name: '[name]';
+  [lang='fr'] {
+    text-name: '[name].replace("Saint-", "St-").replace("Sainte-", "Ste-")';
+  }
   text-face-name: @light;
   text-placement:point;
   text-fill: @village_text;

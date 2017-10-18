@@ -187,7 +187,10 @@
 #road_label[type='primary'][zoom>=14],
 #road_label[type='trunk'][zoom>=14],
 #road_label[type='motorway'][zoom>=13] {
-  text-name: '[name].replace("^Chemin", "Ch.").replace("^Avenue", "Av.").replace("^Rue", "R.").replace("^Route", "Rte").replace("^Boulevard", "Bd")';
+  text-name: '[name]';
+  [lang='fr'] {
+    text-name: '[name].replace("^Chemin", "Ch.").replace("^Avenue", "Av.").replace("^Rue", "R.").replace("^Route", "Rte").replace("^Boulevard", "Bd")';
+  }
   text-face-name: @xlight;
   text-placement: line;
   text-fill: @road_text;

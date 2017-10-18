@@ -14,6 +14,9 @@ format: "png"
 interactivity: false
 minzoom: 9
 maxzoom: 18
+variables:
+  lang: namefr
+  # lang: fr  # Mapnik does not allow to concatenate a string and variable like name@lang, so let's use the column name as value for now.
 srs: &merc "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
 extents: &extents
   extent: *world
@@ -208,9 +211,10 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry,
+            geometry, '@lang' as lang,
             CASE WHEN type='city' THEN 1 WHEN type='town' THEN 2 ELSE 100 END as prio,
-            type, name, z_order, population
+            type, z_order, population,
+            COALESCE(@lang, name) as name
           FROM
             osm_places
           WHERE
@@ -227,7 +231,7 @@ Layer:
     <<: *db
     table: |-
       ( SELECT
-          geometry, type, name
+          geometry, type, name, '@lang' as lang
         FROM
           osm_landusages_gen
         WHERE
@@ -242,7 +246,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, admin_level, name
+            geometry, admin_level, name,'@lang' as lang
           FROM
             osm_admin
           WHERE
@@ -261,7 +265,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, type, name, ref, CHAR_LENGTH(ref) AS reflen,
+            geometry, type, name, ref, CHAR_LENGTH(ref) AS reflen, '@lang' as lang,
             CASE type WHEN 'motorway' THEN 1 WHEN 'trunk' THEN 2 WHEN 'primary' THEN 3 ELSE 10 END AS prio
           FROM
             osm_roads

@@ -18,39 +18,23 @@
   }
   [type='motorway'][zoom>=10],
   [type='trunk'][zoom>=10] {
-    // casing/line-width: 2.5;
-    // line-width: 2;
     line-color: @highway_fill;
   }
-  // [zoom<=10] {
-  //   line-color: lighten(@road_case, 20);
-  // }
-  // [zoom<=8] {
-  //   line-color: lighten(@road_case, 30);
-  // }
 }
 
-#roads::simple[type='residential'][zoom>=13][zoom<15],
-#roads::simple[type='unclassified'][zoom=14],
-#roads::simple[type='service'][zoom=14],
-#roads::simple[type='living_street'][zoom=14],
+#roads::simple[type='minor'][zoom>=13][zoom<15],
 #roads::simple[type='tertiary'][zoom>=12][zoom<15],
-#roads::simple[type='secondary'][zoom>=12][zoom<15] {
+#roads::simple[type='secondary'][zoom>=12][zoom<14] {
   line-color: @road_fill;
   line-width: 1.2;
-  [type='service'],
-  [type='residential'][zoom<14],
-  [type='unclassified'] {
+  [type='minor'] {
     line-width: 0.5;
   }
-  [zoom>=16] {line-width: 2;}
 }
 
 
-#roads::casing[type='residential'][zoom>=15],
-#roads::casing[type='unclassified'][zoom>=15],
-#roads::casing[type='service'][zoom>=15],
-#roads::casing[type='secondary'][zoom>=15],
+#roads::casing[type='minor'][zoom>=15],
+#roads::casing[type='secondary'][zoom>=14],
 #roads::casing[type='tertiary'][zoom>=15],
 #roads::casing[type='primary'][zoom>=12],
 #roads::casing[type='primary_link'][zoom>=12],
@@ -76,9 +60,7 @@
   }
   [zoom>=15] {
     line-width: 5;
-    [type='service'],
-    [type='residential'],
-    [type='unclassified'] {
+    [type='minor'] {
         line-width: 3;
     }
     [type='motorway'] {
@@ -87,9 +69,7 @@
   }
   [zoom>=17] {
     line-width: 9;
-    [type='service'],
-    [type='residential'],
-    [type='unclassified'] {
+    [type='minor'] {
         line-width: 6;
     }
     [type='motorway'] {
@@ -100,10 +80,9 @@
     line-width: 0.5;
   }
 }
-#roads[type='residential'][zoom>=15],
-#roads[type='unclassified'][zoom>=15],
-#roads[type='service'][zoom>=15],
-#roads[type='secondary'][zoom>=15],
+#roads[type='path'][zoom>=15],
+#roads[type='minor'][zoom>=15],
+#roads[type='secondary'][zoom>=14],
 #roads[type='tertiary'][zoom>=15],
 #roads[type='primary'][zoom>=12],
 #roads[type='primary_link'][zoom>=12],
@@ -124,21 +103,20 @@
       line-color: lighten(@highway_fill, 10);
     }
   }
-  // [type='primary'] {
-  //   line-color: @primary_fill;
-  // }
   [zoom>=13] {
     line-width: 3;
     [type='motorway'] {
-        line-width: 5;
+      line-width: 5;
     }
   }
   [zoom>=15] {
     line-width: 4;
-    [type='service'],
-    [type='residential'],
-    [type='unclassified'] {
-        line-width: 2;
+    [type='minor'] {
+      line-width: 2;
+    }
+    [type='path'] {
+      line-dasharray: 10,5;
+      line-width: 1;
     }
     [type='motorway'] {
       line-width: 7;
@@ -146,10 +124,11 @@
   }
   [zoom>=17] {
     line-width: 8;
-    [type='service'],
-    [type='residential'],
-    [type='unclassified'] {
-        line-width: 5;
+    [type='minor'] {
+      line-width: 5;
+    }
+    [type='path'] {
+      line-width: 3;
     }
     [type='motorway'] {
       line-width: 10;
@@ -178,10 +157,8 @@
   }
 }
 
-#road_label[type='living_street'][zoom>=14],
-#road_label[type='residential'][zoom>=14],
-#road_label[type='unclassified'][zoom>=14],
-#road_label[type='service'][zoom>=14],
+#road_label[type='path'][zoom>=16],
+#road_label[type='minor'][zoom>=15],
 #road_label[type='secondary'][zoom>=14],
 #road_label[type='tertiary'][zoom>=14],
 #road_label[type='primary'][zoom>=14],
@@ -195,15 +172,20 @@
   text-placement: line;
   text-fill: @road_text;
   text-halo-fill: @halo;
-  text-halo-radius: 2;
+  text-halo-radius: 1.5;
   text-min-distance: 60;
-  text-size: 12;
+  text-size: 11;
   text-avoid-edges: true;
   text-character-spacing: 0;
-  [zoom=16] {
-      text-size: 13;
+  [zoom>=15] {
+    text-dy: 4;
+    text-character-spacing: 0.5;
+    text-face-name: @light;
+  }
+  [zoom>=16] {
+    text-size: 13;
   }
   [zoom>=17] {
-      text-size: 14;
+    text-size: 14;
   }
 }

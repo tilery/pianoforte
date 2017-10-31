@@ -171,12 +171,15 @@ Layer:
     <<: *db
     table: |-
       ( SELECT
-          geometry, type, ref, name, tunnel, bridge,
-          CASE WHEN type='motorway' THEN 0 WHEN type='trunk' THEN 1 WHEN type='primary' THEN 2 ELSE 100 END AS rank
+          geometry, ref, name, tunnel, bridge,
+          CASE WHEN type='motorway' THEN 0 WHEN type='trunk' THEN 1 WHEN type='primary' THEN 2 ELSE 100 END AS rank,
+          CASE
+            WHEN type IN ('path', 'footway', 'bridleway', 'cycleway', 'steps', 'pedestrian') THEN 'path'
+            WHEN type IN ('track', 'service', 'living_street', 'unclassified', 'residential') THEN 'minor'
+            ELSE type
+          END AS type
         FROM
           osm_roads
-        WHERE
-          type NOT IN ('path', 'footway', 'stairs')
         ORDER BY
           rank DESC
       ) AS data
@@ -262,8 +265,13 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, type, name, ref, CHAR_LENGTH(ref) AS reflen, '{lang}' as lang,
-            CASE type WHEN 'motorway' THEN 1 WHEN 'trunk' THEN 2 WHEN 'primary' THEN 3 ELSE 10 END AS prio
+            geometry, name, ref, CHAR_LENGTH(ref) AS reflen, '{lang}' as lang,
+            CASE type WHEN 'motorway' THEN 1 WHEN 'trunk' THEN 2 WHEN 'primary' THEN 3 ELSE 10 END AS prio,
+            CASE
+              WHEN type IN ('path', 'footway', 'bridleway', 'cycleway', 'steps', 'pedestrian') THEN 'path'
+              WHEN type IN ('track', 'service', 'living_street', 'unclassified', 'residential') THEN 'minor'
+              ELSE type
+            END AS type
           FROM
             osm_roads
           WHERE

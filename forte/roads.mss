@@ -116,10 +116,15 @@
     }
     [type='path'] {
       line-dasharray: 10,5;
-      line-width: 1;
+      line-width: 0.5;
     }
     [type='motorway'] {
       line-width: 7;
+    }
+  }
+  [zoom>=16] {
+    [type='path'] {
+      line-width: 0.5;
     }
   }
   [zoom>=17] {

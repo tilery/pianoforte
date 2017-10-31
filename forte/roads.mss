@@ -194,7 +194,7 @@
   text-face-name: @xlight;
   text-placement: line;
   text-fill: @road_text;
-  text-halo-fill: @road_halo;
+  text-halo-fill: @halo;
   text-halo-radius: 2;
   text-min-distance: 60;
   text-size: 12;

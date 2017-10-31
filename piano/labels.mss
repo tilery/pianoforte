@@ -9,7 +9,7 @@
   text-placement:point;
   text-fill: @village_text;
   text-size: 11;
-  text-halo-fill: @village_halo;
+  text-halo-fill: @halo;
   text-halo-radius: 2;
   text-wrap-width: 30;
   text-label-position-tolerance: 20;
@@ -23,12 +23,12 @@
   }
   [type='town'] {
     text-fill: @town_text;
-    text-halo-fill: @town_halo;
+    text-halo-fill: @halo;
     text-face-name: @medium;
   }
   [type='city'] {
     text-fill: @city_text;
-    text-halo-fill: @city_halo;
+    text-halo-fill: @halo;
     text-face-name: @medium;
     text-transform: uppercase;
   }
@@ -85,7 +85,7 @@
   text-placement: line;
   text-size: 10;
   text-fill: @road_text;
-  text-halo-fill: @road_halo;
+  text-halo-fill: @halo;
   text-halo-radius: 2;
   text-min-distance: 60;
   text-size: 11;

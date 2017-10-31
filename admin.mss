@@ -35,7 +35,7 @@
   text-dy: -7;
   text-face-name: @lighti;
   text-halo-radius: 2;
-  text-halo-fill: @admin_halo;
+  text-halo-fill: @halo;
   text-min-padding: 50;
   text-min-distance: 50;
   text-spacing: 300;

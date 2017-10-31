@@ -12,12 +12,13 @@
 @sand:              #eee5b2;
 @agriculture:       #92ab78;
 
+@halo:              @land;
+
 @admin:             #bea6a6;
 @admin_2:           #537076;
 @admin_3:           #a59c9b;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
-@admin_halo:        @land;
 
 @building:          #ccc;
 
@@ -30,14 +31,11 @@
 @rail_case:         #999;
 
 @city_text:         #222;
-@city_halo:         @land;
-@town_text:         #444;
-@town_halo:         @land;
-@village_text:      #444;
-@village_halo:      @land;
+@town_text:         #222;
+@village_text:      #222;
+@landuse_text:      #333;
 
 @road_text:         #222;
-@road_halo:         @land;
 
 @buffer:            512;
 

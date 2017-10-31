@@ -13,6 +13,8 @@
 @beach:             #eee5b2;
 @agriculture:       #f4f1eb;
 
+@halo:              @land;
+
 @road_fill:         #ffffff;
 @road_case:         #9d9d9d;
 
@@ -20,14 +22,10 @@
 @rail_case:         #aaa;
 
 @city_text:         #222;
-@city_halo:         @land;
 @town_text:         #444;
-@town_halo:         @land;
 @village_text:      #444;
-@village_halo:      @land;
 
 @road_text:         #222;
-@road_halo:         @land;
 
 @regular:           'Fira Sans Regular';
 @bold:              'Fira Sans Bold';

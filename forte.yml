@@ -233,6 +233,21 @@ Layer:
       ( SELECT
           geometry, type, name, '{lang}' as lang
         FROM
+          osm_landusages
+        WHERE
+          name != ''
+      ) AS data
+
+- id: landuse_label_gen
+  class: ""
+  geometry: "polygon"
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name, '{lang}' as lang
+        FROM
           osm_landusages_gen
         WHERE
           name != ''

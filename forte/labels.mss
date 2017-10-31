@@ -47,13 +47,14 @@
   }
 }
 
-#landuse_label[type='forest'][zoom=12],
-#landuse_label[type='park'][zoom=12],
-#landuse_label[type='residential'][zoom=12],
-#landuse_label[type='commercial'][zoom=12],
-#landuse_label[type='industrial'][zoom=12],
-#landuse_label[type='wood'][zoom=12],
-#landuse_label[zoom>=13] {
+#landuse_label_gen[type='forest'][zoom=12],
+#landuse_label_gen[type='park'][zoom=12],
+#landuse_label_gen[type='residential'][zoom=12],
+#landuse_label_gen[type='commercial'][zoom=12],
+#landuse_label_gen[type='industrial'][zoom=12],
+#landuse_label_gen[type='wood'][zoom=12],
+#landuse_label_gen[zoom>=13][zoom<17],
+#landuse_label[zoom>=17] {
   text-name: '[name]';
   [lang='fr'] {
     text-name: '[name].replace("Saint-", "St-").replace("Sainte-", "Ste-")';
@@ -65,7 +66,7 @@
   text-margin: 20;
   text-halo-fill: @halo;
   text-halo-radius: 2;
-  text-wrap-width: 30;
+  text-wrap-width: 40;
   text-label-position-tolerance: 20;
   text-character-spacing: 0.1;
   text-line-spacing: -2;

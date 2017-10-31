@@ -124,7 +124,7 @@
   }
   [zoom>=16] {
     [type='path'] {
-      line-width: 0.5;
+      line-width: 0.7;
     }
   }
   [zoom>=17] {
@@ -133,7 +133,7 @@
       line-width: 5;
     }
     [type='path'] {
-      line-width: 3;
+      line-width: 1.2;
     }
     [type='motorway'] {
       line-width: 10;

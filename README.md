@@ -9,7 +9,7 @@ A world map in two flavours:
 ##  Forte
 
 ![screenshot from 2017-10-02 09-33-18](https://user-images.githubusercontent.com/146023/31072322-af868880-a767-11e7-8981-3d0bd8403cc8.png)
-
+![screen shot 2017-10-31 at 18 50 50-fullpage](https://user-images.githubusercontent.com/146023/32240046-837f0386-be6c-11e7-813d-82bde3b35384.png)
 
 ## Piano
 

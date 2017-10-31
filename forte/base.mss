@@ -21,6 +21,7 @@
 @admin_3_text:      @admin_3;
 
 @building:          #cfcfcf;
+@building_case:     #c2c2c2;
 
 @road_fill:         #ffffff;
 @highway_fill:      #ffcc88;
@@ -168,10 +169,10 @@ Map {
 #buildings[zoom>=14] {
   polygon-fill: @building;
   [zoom>=15] {
-      line-color: #ddd;
+      line-color: @building_case;
       [type!="yes"] {
-        polygon-fill: #ddd;
-        line-color: #ccc;
+        polygon-fill: darken(@building, 10);
+        line-color: darken(@building_case, 10);
       }
   }
 }

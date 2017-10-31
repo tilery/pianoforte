@@ -47,7 +47,13 @@
   }
 }
 
-#landuse_label[zoom>=12] {
+#landuse_label[type='forest'][zoom=12],
+#landuse_label[type='park'][zoom=12],
+#landuse_label[type='residential'][zoom=12],
+#landuse_label[type='commercial'][zoom=12],
+#landuse_label[type='industrial'][zoom=12],
+#landuse_label[type='wood'][zoom=12],
+#landuse_label[zoom>=13] {
   text-name: '[name]';
   [lang='fr'] {
     text-name: '[name].replace("Saint-", "St-").replace("Sainte-", "Ste-")';

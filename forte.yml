@@ -232,7 +232,7 @@ Layer:
         FROM
           osm_landusages_gen
         WHERE
-          name IS NOT NULL
+          name != ''
       ) AS data
 
 - id: boundary_label

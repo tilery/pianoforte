@@ -4,7 +4,7 @@
 @land:              #eee;
 @residential:       #dfdfdf;
 @water:             #a9bfcc;
-@industrial:        #f7f4f5;
+@industrial:        #e1d6db;
 @neutral:           #e2e2e6;
 @wetland:           #e3e9e2;
 @wooded:            #9cc29c;

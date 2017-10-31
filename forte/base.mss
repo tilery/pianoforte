@@ -20,7 +20,7 @@
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
 
-@building:          #ccc;
+@building:          #cfcfcf;
 
 @road_fill:         #ffffff;
 @highway_fill:      #ffcc88;

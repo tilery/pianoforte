@@ -53,6 +53,8 @@ def system(ctx):
             'software-properties-common wget nginx unzip autoconf libtool g++ '
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
             'libprotobuf-dev')
+    # Prevent conflict with nginx.
+    ctx.run('sudo apt install -y apache2 apache2-dev')
     ctx.run('sudo mkdir -p /srv/tilery/src')
     ctx.run('sudo mkdir -p /srv/tilery/tmp')
     ctx.run('sudo mkdir -p /srv/tilery/letsencrypt/.well-known/acme-challenge')
@@ -86,6 +88,7 @@ def install_mod_tile(ctx, force=False):
         ctx.run('cd /tmp/mod_tile-master && sudo make install')
         ctx.run('cd /tmp/mod_tile-master && sudo make install-mod_tile')
         ctx.run('cd /tmp/mod_tile-master && sudo ldconfig')
+        ctx.run('sudo mkdir -p /var/run/renderd')
         ctx.run('sudo chown tilery:users /var/run/renderd')
     else:
         print('mod_tile already installed')

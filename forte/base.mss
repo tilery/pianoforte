@@ -51,9 +51,9 @@ Map {
 #land[zoom>=10] {
   polygon-fill: @land;
 }
-#landuse_gen[zoom<14],
+#landuse_gen[zoom<13],
 #landuse[type="residential"][zoom>=11],
-#landuse[zoom>=14] {
+#landuse[zoom>=13] {
   #landuse_gen {
       polygon-opacity: 0.8;
   }

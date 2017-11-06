@@ -55,7 +55,7 @@
   shield-name: "[ref].replace('·', '\n')";
   shield-size: 9;
   shield-line-spacing: -4;
-  shield-file: url('shield/road-[reflen].svg');
+  shield-file: url('icon/shield/road-[reflen].svg');
   shield-face-name: @xlight;
   shield-fill: #333;
   shield-spacing: 200;

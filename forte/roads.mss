@@ -148,7 +148,7 @@
   shield-name: "[ref].replace('·', '\n')";
   shield-size: 9;
   shield-line-spacing: -4;
-  shield-file: url('shield/road-[reflen].svg');
+  shield-file: url('icon/shield/road-[reflen].svg');
   shield-face-name: @light;
   shield-fill: #333;
   shield-spacing: 100;
@@ -178,11 +178,12 @@
   text-fill: @road_text;
   text-halo-fill: @halo;
   text-halo-radius: 1.5;
-  text-min-distance: 60;
+  text-repeat-distance: 60;
   text-size: 11;
   text-avoid-edges: true;
   text-character-spacing: 0;
   [zoom>=15] {
+    text-margin: 10;
     text-dy: 4;
     text-character-spacing: 0.5;
     text-face-name: @light;

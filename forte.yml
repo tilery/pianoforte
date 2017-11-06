@@ -38,6 +38,7 @@ Stylesheet:
 - admin.mss
 - forte/roads.mss
 - forte/labels.mss
+- forte/poi.mss
 
 Layer:
 
@@ -221,6 +222,19 @@ Layer:
             type IN ('city', 'town', 'village')
             AND type IS NOT NULL
           ORDER BY prio, population DESC NULLS LAST
+        ) AS data
+
+- id: station
+  class: poi
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, '{lang}' as lang, type, station, COALESCE(NULLIF(short_name, ''), name) AS name
+          FROM
+            osm_transport_points
         ) AS data
 
 - id: landuse_label

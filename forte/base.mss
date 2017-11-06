@@ -5,7 +5,7 @@
 @residential:       #dfdfdf;
 @water:             #a9bfcc;
 @industrial:        #e2dbde;
-@neutral:           #d6d6d2;
+@emphasis:          #d6d6d2;
 @wetland:           #e3e9e2;
 @wooded:            #9cc29c;
 @grass:             #c1d8c1;
@@ -29,7 +29,7 @@
 @road_case:         #999;
 
 @rail_fill:         #ccc;
-@rail_case:         #999;
+@rail_case:         #888;
 
 @city_text:         #222;
 @town_text:         #222;
@@ -37,6 +37,7 @@
 @landuse_text:      #333;
 
 @road_text:         #222;
+@poi_text:          #222;
 
 @buffer:            512;
 
@@ -61,7 +62,7 @@ Map {
   #landuse_gen[zoom>=12] {
       polygon-opacity: 0.9;
   }
-  polygon-fill: @neutral;  // Default.
+  polygon-fill: @land;  // Default.
   [type='grave_yard'],
   [type='college'],
   [type='school'],
@@ -72,7 +73,7 @@ Map {
   [type='hospital'],
   [type='parking'],
   [type='cemetery'] {
-      polygon-fill: @neutral;
+      polygon-fill: @emphasis;
   }
   [type='industrial'],
   [type='landfill'],
@@ -153,7 +154,7 @@ Map {
   line-color: @rail_fill;
   line-width: 0.5;
   line-dasharray: 5,5;
-  [zoom>=15] {
+  [zoom>=14] {
     outline/line-width: 1;
     line-width: 1;
   }

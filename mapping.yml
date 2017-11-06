@@ -56,6 +56,7 @@ tables:
       leisure: [park, garden, golf_course, sports_centre, pitch, track]
       natural: [wood, land]
       amenity: [college, school, university, parking, hospital, embassy]
+      aeroway: [aerodrome]
     type: polygon
   places:
     columns:
@@ -135,6 +136,7 @@ tables:
     - {key: null, name: geometry, type: geometry}
     - {key: name, name: name, type: string}
     - {key: short_name, name: short_name, type: string}
+    - {key: station, name: station, type: string}
     - {key: null, name: type, type: mapping_value}
     mapping:
       highway: [bus_stop]

@@ -7,6 +7,7 @@
   [admin_level=2] {
     outline/line-color: lighten(@admin_2, 25%);
     outline/line-width: 2;
+    outline/line-clip: true;
     [zoom>=8] {
       outline/line-width: 3;
     }
@@ -14,7 +15,9 @@
   eraser/line-color: white;
   eraser/line-width: 1;
   eraser/comp-op: darken;
+  eraser/line-clip: true;
   line-color: @admin_2;
+  line-clip: true;
   line-width: 1;
   [admin_level>2] {
     line-dasharray: 10,5;

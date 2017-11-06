@@ -197,8 +197,7 @@ Layer:
           FROM
             osm_admin
           WHERE
-            "type"='administrative'
-            AND admin_level IN (2,4,6,8,9)
+            admin_level IN (2,4,6,8,9)
             AND "type" IS NOT NULL
           ORDER BY
             admin_level DESC

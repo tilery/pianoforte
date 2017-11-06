@@ -43,4 +43,5 @@
   text-min-distance: 50;
   text-spacing: 300;
   text-max-char-angle-delta: 10;
+  text-clip: true;
 }

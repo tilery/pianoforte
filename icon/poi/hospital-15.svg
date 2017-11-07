@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 20 20"
+   height="20"
+   width="20"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="hospital-15.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>hospital-15.svg</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3840"
+     inkscape:window-height="2031"
+     id="namedview12"
+     showgrid="true"
+     inkscape:zoom="66.75088"
+     inkscape:cx="1.0759456"
+     inkscape:cy="11.143741"
+     inkscape:window-x="0"
+     inkscape:window-y="55"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10">
+    <inkscape:grid
+       type="xygrid"
+       id="grid823" />
+  </sodipodi:namedview>
+  <title
+     id="title2">hospital-15.svg</title>
+  <g
+     id="g13"
+     style="fill:none;fill-opacity:1;stroke:#eeeeee;stroke-opacity:1;stroke-linejoin:round">
+    <path
+       d="m 14.392333,15.029857 c -0.804687,0 -1.609375,0 -2.414062,0 0,-1.643229 0,-3.286459 0,-4.929688 -1.507813,0 -3.0156251,0 -4.5234377,0 0,1.643229 0,3.286459 0,4.929688 -0.8072917,0 -1.6145833,0 -2.421875,0 0,-3.807292 0,-7.6145835 0,-11.4218753 0.8072917,0 1.6145833,0 2.421875,0 0,1.4921875 0,2.984375 0,4.4765625 1.5078126,0 3.0156247,0 4.5234377,0 0,-1.4921875 0,-2.984375 0,-4.4765625 0.804687,0 1.609375,0 2.414062,0 0,3.8072918 0,7.6145833 0,11.4218753 z"
+       id="path818"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-opacity:1;stroke:#eeeeee;stroke-opacity:1;stroke-linejoin:round" />
+  </g>
+  <g
+     id="g9"
+     style="fill:#666666;fill-opacity:1">
+    <path
+       d="M 14.392333,15.029857 H 11.978271 V 10.100169 H 7.4548333 v 4.929688 H 5.0329583 V 3.6079817 h 2.421875 V 8.0845442 H 11.978271 V 3.6079817 h 2.414062 z"
+       id="path7"
+       style="fill:#666666;fill-opacity:1" />
+  </g>
+  <rect
+     fill="none"
+     x="0"
+     y="0"
+     width="20"
+     height="20"
+     id="rect4" />
+</svg>

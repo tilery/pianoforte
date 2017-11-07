@@ -172,3 +172,27 @@ tables:
       barrier: [ditch]
       waterway: [stream, river, canal, drain, ditch]
     type: linestring
+  pois:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      amenity: [university, school, library, hospital, fire_station, police, townhall,
+                embassy, arts_centre, library, theatre, courthouse]
+      office: [government]
+      tourism: [information, museum]
+    type: point
+  aois:
+    fields:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      amenity: [university, school, library, hospital, fire_station, police, townhall,
+                embassy, arts_centre, library, theatre, courthouse]
+      office: [government]
+      tourism: [information, museum]
+    type: polygon

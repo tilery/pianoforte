@@ -231,9 +231,37 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, '{lang}' as lang, type, station, COALESCE(NULLIF(short_name, ''), name) AS name
+            ST_Centroid(ST_Union(geometry)) AS geometry, '{lang}' as lang, type, station, COALESCE(NULLIF(short_name, ''), name) AS name
           FROM
             osm_transport_points
+          GROUP BY
+            type, station, name, short_name
+        ) AS data
+
+- id: poi
+  class: poi
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, '{lang}' as lang, type, name
+          FROM
+            osm_pois
+        ) AS data
+
+- id: aoi
+  class: poi
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, '{lang}' as lang, type, name
+          FROM
+            osm_aois
         ) AS data
 
 - id: landuse_label

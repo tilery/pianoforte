@@ -22,6 +22,9 @@
   [admin_level>2] {
     line-dasharray: 10,5;
     line-color: @admin_3;
+    [zoom>=14] {
+      line-color: darken(@admin_3, 10);
+    }
     [admin_level>=6] {
       line-dasharray: 5,5;
       line-width: 0.8;
@@ -37,10 +40,10 @@
   text-placement: line;
   text-dy: -7;
   text-face-name: @lighti;
-  text-halo-radius: 2;
+  text-halo-radius: 1.5;
   text-halo-fill: @halo;
   text-min-padding: 50;
-  text-min-distance: 50;
+  text-repeat-distance: 50;
   text-spacing: 300;
   text-max-char-angle-delta: 10;
   text-clip: true;

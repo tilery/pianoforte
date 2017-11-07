@@ -74,3 +74,18 @@
     text-size: 12;
   }
 }
+
+#housenumber[zoom>=17][zoom<19][mod5=true],
+#housenumber[zoom>=19] {
+  text-name: '[housenumber]';
+  text-placement: interior;
+  text-face-name: @regular;
+  text-fill: @road_text;
+  text-halo-fill: @halo;
+  text-halo-radius: 1;
+  text-size: 8;
+  text-margin: 5;
+  [zoom>=18] {
+    text-size: 9;
+  }
+}

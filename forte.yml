@@ -335,3 +335,21 @@ Layer:
           ORDER BY
             prio
         ) AS data
+
+- id: housenumber
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, housenumber,
+          CASE WHEN housenumber ~ E'^\\d+$' AND (mod(housenumber::bigint, 5) = 0 OR housenumber::bigint = 1) THEN true ELSE false END AS mod5
+        FROM
+          osm_housenumbers
+      UNION
+        SELECT
+          geometry, housenumber AS housenumber,
+          CASE WHEN housenumber ~ E'^\\d+$' AND (mod(housenumber::bigint, 5) = 0 OR housenumber::bigint = 1) THEN true ELSE false END AS mod5
+        FROM
+          osm_housenumbers_area
+      ) AS data

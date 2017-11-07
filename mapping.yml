@@ -196,3 +196,19 @@ tables:
       office: [government]
       tourism: [information, museum]
     type: polygon
+  housenumbers:
+    columns:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: null, name: housenumber, type: mapping_value}
+    mapping:
+      addr:housenumber: [__any__]
+    type: point
+  housenumbers_area:
+    columns:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: null, name: housenumber, type: mapping_value}
+    mapping:
+      addr:housenumber: [__any__]
+    type: polygon

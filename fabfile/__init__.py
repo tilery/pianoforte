@@ -188,25 +188,26 @@ def download(ctx, force=False):
     exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
     if not exists.stdout or force:
         ctx.run('wget http://download.geofabrik.de/asia/lebanon-latest.osm.pbf'
-                f' -O {path}')
-    path = '/srv/tilery/tmp/ile-de-france-latest.osm.pbf'
+                f' -O {path} --quiet')
+    path = '/srv/tilery/tmp/france-latest.osm.pbf'
     exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
     if not exists.stdout or force:
         ctx.run('wget '
-                'http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf'
-                f' -O {path}')
+                'http://download.geofabrik.de/europe/france-latest.osm.pbf'
+                f' -O {path} --quiet')
     datapath = '/srv/tilery/data'
     domain = 'http://data.openstreetmapdata.com/'
     exists = ctx.run(f'if [ -f "{datapath}/simplified_land_polygons.shp" ]; '
                      'then echo 1; fi')
     if not exists.stdout or force:
         ctx.run(f'wget {domain}simplified-land-polygons-complete-3857.zip'
-                f' -O /tmp/land-low.zip')
+                f' -O /tmp/land-low.zip --quiet')
         ctx.run(f'unzip -n /tmp/land-low.zip -d {datapath}')
     exists = ctx.run(f'if [ -f "{datapath}/land_polygons.shp" ]; '
                      'then echo 1; fi')
     if not exists.stdout or force:
-        ctx.run(f'wget {domain}land-polygons-split-3857.zip -O /tmp/land.zip')
+        ctx.run(f'wget {domain}land-polygons-split-3857.zip -O /tmp/land.zip '
+                '--quiet')
         ctx.run(f'unzip -n /tmp/land.zip -d {datapath}')
 
 
@@ -215,7 +216,7 @@ def import_data(ctx):
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
               '-mapping /srv/tilery/mapping.yml '
-              '-read /srv/tilery/tmp/ile-de-france-latest.osm.pbf '
+              '-read /srv/tilery/tmp/france-latest.osm.pbf '
               '-connection="postgis:///tilery" -overwritecache')
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '

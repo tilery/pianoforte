@@ -12,7 +12,7 @@
       outline/line-width: 3;
     }
   }
-  eraser/line-color: white;
+  eraser/line-color: @land;
   eraser/line-width: 1;
   eraser/comp-op: darken;
   eraser/line-clip: true;
@@ -20,13 +20,13 @@
   line-clip: true;
   line-width: 1;
   [admin_level>2] {
-    line-dasharray: 10,5;
+    line-dasharray: 10,5,5,5;
     line-color: @admin_3;
     [zoom>=14] {
       line-color: darken(@admin_3, 10);
     }
     [admin_level>=6] {
-      line-dasharray: 5,5;
+      line-dasharray: 5,5,2,5;
       line-width: 0.8;
     }
   }

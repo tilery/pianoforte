@@ -3,7 +3,8 @@
 /* ************************* */
 #place[type='city'],
 #place[type='town'],
-#place[type='village'][zoom>=9] {
+#place[type='village'][zoom>=9],
+#place[type='minor'][zoom>=14] {
   text-name: '[name]';
   [lang='fr'] {
     text-name: '[name].replace("Saint-", "St-").replace("Sainte-", "Ste-")';
@@ -26,6 +27,9 @@
     text-fill: @city_text;
     text-face-name: @medium;
   }
+  [type='minor'] {
+    text-margin: 50;
+  }
   [zoom<12] {
     text-min-distance: 30;
     text-min-padding: 1;
@@ -44,6 +48,9 @@
   }
   [zoom>=14] {
     text-size: 15;
+    [type='minor'] {
+      text-size: 10;
+    }
   }
 }
 

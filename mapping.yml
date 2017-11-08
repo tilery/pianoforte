@@ -67,17 +67,14 @@ tables:
     - {key: 'name:ar', name: namear, type: string}
     - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
-    - args:
-        ranks: [country, state, region, county, city, town, village, hamlet, suburb,
-          locality]
-      key: z_order
-      name: z_order
-      type: zorder
     - {key: population, name: population, type: integer}
     mapping:
-      place: [country, state, region, county, city, town, village, hamlet, suburb,
-        locality]
+      place: [country, state, region, archipelago, island, islet, county, city, town, village, hamlet, suburb,
+        isolated_dwelling, allotments, neighbourhood, city_block, square, farm]
     type: point
+    filter:
+      require:
+        name: [__any__]
   railway:
     columns:
     - {key: null, name: osm_id, type: id}

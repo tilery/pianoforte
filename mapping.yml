@@ -183,6 +183,7 @@ tables:
                 embassy, arts_centre, library, theatre, courthouse]
       office: [government]
       tourism: [information, museum]
+      aeroway: [aerodrome]
     type: point
   aois:
     fields:
@@ -195,6 +196,7 @@ tables:
                 embassy, arts_centre, library, theatre, courthouse]
       office: [government]
       tourism: [information, museum]
+      aeroway: [aerodrome]
     type: polygon
   housenumbers:
     columns:

@@ -12,7 +12,7 @@
    width="16"
    version="1.1"
    id="svg10"
-   sodipodi:docname="townhall-11.svg"
+   sodipodi:docname="aerodrome-11.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <metadata
      id="metadata16">
@@ -41,14 +41,14 @@
      id="namedview12"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="-26.542373"
-     inkscape:cy="7.8644068"
+     inkscape:cx="-6.2372881"
+     inkscape:cy="8"
      inkscape:window-x="0"
      inkscape:window-y="55"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg10" />
   <title
-     id="title2">town-hall-11.svg</title>
+     id="title2">airport-11.svg</title>
   <rect
      fill="none"
      x="0"
@@ -59,15 +59,15 @@
   <path
      fill="#eee"
      transform="translate(2 2)"
-     d="M5.5,0L1,2v1h9V2L5.5,0z M2,4v4L1,9v1h9V9L9,8V4H2z M3,5h1v3H3V5z M5,5h1v3H5V5z M7,5h1v3H7V5z"
+     d="M6.5,6.4V6L11,6.5V5L6.5,3.2V1.5c0-1-0.5-1.5-1-1.5s-1,0.5-1,1.5v1.7L0,5v1.4L4.5,6v0.4v1.1v1.8L3,10v1l2.5-0.5L8,11v-1  L6.5,9.2V7.5V6.4z"
      style="stroke-linejoin:round;stroke-miterlimit:4;"
      stroke="#eee"
      stroke-width="1"
      id="path6" />
   <path
-     fill="#222"
+     fill="#666"
      transform="translate(2 2)"
-     d="M5.5,0L1,2v1h9V2L5.5,0z M2,4v4L1,9v1h9V9L9,8V4H2z M3,5h1v3H3V5z M5,5h1v3H5V5z M7,5h1v3H7V5z"
+     d="M6.5,6.4V6L11,6.5V5L6.5,3.2V1.5c0-1-0.5-1.5-1-1.5s-1,0.5-1,1.5v1.7L0,5v1.4L4.5,6v0.4v1.1v1.8L3,10v1l2.5-0.5L8,11v-1  L6.5,9.2V7.5V6.4z"
      id="path8"
      style="fill:#888888;fill-opacity:1" />
 </svg>

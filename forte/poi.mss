@@ -36,7 +36,9 @@
 #aoi[type='hospital'][zoom>=16],
 #poi[type='hospital'][zoom>=16],
 #aoi[type='townhall'][zoom>=14],
-#poi[type='townhall'][zoom>=14] {
+#poi[type='townhall'][zoom>=14],
+#aoi[type='aerodrome'][zoom>=12],
+#poi[type='aerodrome'][zoom>=12] {
     marker-file: url('icon/poi/[type]-15.svg');
     [zoom<=15] {
       marker-file: url('icon/poi/[type]-11.svg');
@@ -61,6 +63,8 @@
 #poi::label[type='university'][zoom>=16],
 #aoi::label[type='townhall'][zoom>=15],
 #poi::label[type='townhall'][zoom>=15],
+#aoi::label[type='aerodrome'][zoom>=12],
+#poi::label[type='aerodrome'][zoom>=12],
 #station::label[type='bus_stop'][zoom>=18],
 #station::label[type='station'][station!='subway'][zoom>=15],
 #station::label[type='station'][zoom>=16] {

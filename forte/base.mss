@@ -151,6 +151,9 @@ Map {
   outline/line-width: 0.5;
   outline/line-color: @rail_case;
   outline/line-cap: round;
+  [service='yard'] {
+    outline/line-color: lighten(@rail_fill, 5);
+  }
   line-color: @rail_fill;
   line-width: 0.5;
   line-dasharray: 5,5;

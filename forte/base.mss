@@ -133,7 +133,7 @@ Map {
   polygon-fill: @water;
 }
 
-#waterways {
+#waterways[zoom>=10] {
   line-color: @water;
   line-cap: round;
   line-join: round;

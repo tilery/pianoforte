@@ -29,7 +29,7 @@
 @road_case:         #999;
 
 @rail_fill:         #ccc;
-@rail_case:         #888;
+@rail_case:         #777;
 
 @city_text:         #222;
 @town_text:         #222;

@@ -180,7 +180,7 @@ Layer:
         ( SELECT
             geometry,
             CASE WHEN type='city' THEN 1 WHEN type='town' THEN 2 ELSE 100 END as prio,
-            type, name, z_order, population
+            type, name, population
           FROM
             osm_places
           WHERE
@@ -202,6 +202,4 @@ Layer:
             osm_roads
           WHERE
             type IS NOT NULL AND name IS NOT NULL AND geometry && !bbox!
-          ORDER BY
-            z_order
         ) AS data

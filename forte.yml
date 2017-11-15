@@ -157,7 +157,7 @@ Layer:
         WHERE
           type IN ('motorway', 'trunk', 'primary', 'secondary', 'primary_link', 'motorway_link', 'trunk_link')
         ORDER BY
-          rank
+          rank DESC
       ) AS data
 
 - id: railway

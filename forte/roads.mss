@@ -1,23 +1,28 @@
 /*  LOW ZOOMS  */
 
 #roads_gen::low[type='primary'][zoom>=10][zoom<12],
-#roads_gen::low[type='trunk'][zoom>=9][zoom<12],
+#roads_gen::low[type='trunk'][zoom>=8][zoom<12],
 #roads_gen::low[type='motorway'][zoom>=7][zoom<12],
 #roads_gen::low[type='secondary'][zoom>=11][zoom<12] {
-  casing/line-width: 3;
+  casing/line-width: 2;
   casing/line-color: @road_case;
   casing/line-join: round;
   casing/line-cap: butt;
   line-join: round;
   line-cap: butt;
-  line-width: 2;
+  line-width: 1;
   line-color: @road_fill;
-  [type='secondary'] {
-    casing/line-width: 1.5;
-    line-width: 1;
+  [zoom<=8] {
+    casing/line-width: 0.6;
+    line-width: 0.6;
+    line-color: @road_case;
   }
-  [type='motorway'][zoom>=10],
-  [type='trunk'][zoom>=10] {
+  [zoom>=11][type!='secondary'] {
+    casing/line-width: 3;
+    line-width: 2;
+  }
+  [type='motorway'][zoom>=9],
+  [type='trunk'][zoom>=9] {
     line-color: @highway_fill;
   }
 }

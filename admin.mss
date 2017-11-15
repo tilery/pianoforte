@@ -2,7 +2,7 @@
 #boundary[admin_level=3][zoom>=4][zoom<5],
 #boundary[admin_level=4][zoom>=4][zoom<5],
 #boundary[admin_level<=4][zoom>=5][zoom<11],
-#boundary[admin_level<=8][zoom>=11][zoom<13],
+#boundary[admin_level<=8][zoom>=12][zoom<13],
 #boundary[admin_level<=10][zoom>=13] {
   [admin_level=2] {
     outline/line-color: lighten(@admin_2, 25%);

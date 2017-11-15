@@ -129,7 +129,8 @@ Map {
   }
 }
 
-#waterareas {
+#waterareas_gen[zoom>=4],
+#waterareas[zoom>=13] {
   polygon-fill: @water;
 }
 

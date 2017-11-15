@@ -90,6 +90,19 @@ Layer:
           osm_landusages_gen
       ) AS data
 
+- id: waterareas_gen
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, area
+        FROM
+          osm_waterareas_gen
+      ) AS data
+
 - id: waterareas
   class: ""
   geometry: polygon

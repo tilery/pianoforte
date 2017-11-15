@@ -53,7 +53,7 @@ Map {
 #land[zoom>=10] {
   polygon-fill: @land;
 }
-#landuse_gen[zoom<13],
+#landuse_gen[zoom>=4][zoom<13],
 #landuse[type="residential"][zoom>=11],
 #landuse[zoom>=13] {
   #landuse_gen {

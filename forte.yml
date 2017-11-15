@@ -116,6 +116,19 @@ Layer:
           osm_waterways
       ) AS data
 
+- id: waterways_gen
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name
+        FROM
+          osm_waterways_gen
+      ) AS data
+
 - id: buildings
   class: ""
   geometry: polygon

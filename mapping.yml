@@ -6,7 +6,7 @@ generalized_tables:
       ''tertiary'', ''tertiary_link'')', tolerance: 50.0}
   waterareas_gen: {source: waterareas, sql_filter: ST_Area(geometry)>50000.000000,
     tolerance: 50.0}
-  waterways_gen: {source: waterways, sql_filter: null, tolerance: 50.0}
+  waterways_gen: {source: waterways, sql_filter: "type IN ('river', 'canal')", tolerance: 50.0}
 tables:
   admin:
     columns:

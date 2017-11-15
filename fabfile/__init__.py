@@ -255,3 +255,11 @@ def clear_cache(ctx):
 def restart(ctx, services=None):
     services = services or 'renderd apache2 nginx'
     ctx.run('sudo systemctl restart {}'.format(services))
+
+
+@task
+def render(ctx, map='default', min=1, max=10):
+    as_tilery(ctx, f'render_list --map {map} --all --force --num-threads 8 '
+                   f'--socket /var/run/renderd/renderd.sock '
+                   f'--tile-dir /srv/tilery/cache '
+                   f' --min-zoom {min} --max-zoom {max}')

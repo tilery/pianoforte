@@ -1,8 +1,21 @@
 /* ************************* */
 /*          PLACE            */
 /* ************************* */
-#place[type='city'],
-#place[type='town'],
+#country[zoom>=3][zoom<=6] {
+  text-name: '[name]';
+  text-face-name: @medium;
+  text-placement: point;
+  text-fill: @country_text;
+  text-size: 13;
+  text-halo-fill: @halo;
+  text-halo-radius: 2;
+  text-wrap-width: 40;
+  text-label-position-tolerance: 20;
+  text-character-spacing: 0.1;
+}
+
+#place[type='city'][zoom>=4],
+#place[type='town'][zoom>=8],
 #place[type='village'][zoom>=9],
 #place[type='minor'][zoom>=14] {
   text-name: '[name]';

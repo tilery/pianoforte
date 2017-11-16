@@ -1,0 +1,174 @@
+name,name:fr,name:en,name:ar,category,latitude,longitude,iso
+France,France,France,فرنسا,1-HC,46.603354,1.8883335,FR
+Deutschland,Allemagne,Germany,ألمانيا,1-PME/FE,51.0834196,10.4234469,DE
+España,Espagne,Spain,إسبانيا,1-PME/FE,40.0028028,-4.003104,ES
+United States of America,États-Unis d’Amérique,United States of America,الولايات المتّحدة الأمريكيّة,1-PME/FE,39.7837304,-100.4458825,US
+Italia,Italie,Italy,إيطاليا,1-PME/FE,42.6384261,12.674297,IT
+Madagascar,Madagascar,Madagascar,مدغشقر,1-PME/FE,-18.9249604,46.4416422,MG
+Maroc ⴰⵎⵔⵔⵓⴽ المغرب,Maroc,Morocco,المغرب,1-PME/FE,31.1728192,-7.3366043,MA
+United Kingdom,Royaume-Uni,United Kingdom,المملكة المتحدة,1-PME/FE,54.7023545,-3.2765753,GB
+Sénégal,Sénégal,Senegal,السنغال,1-PME/FE,14.4750607,-14.4529612,SN
+South Africa,Afrique du Sud,South Africa,جنوب أفريقيا,2-PME,-28.8166236,24.991639,ZA
+Algeria,Algérie,Algeria,الجزائر,2-PME,28.0000272,2.9999825,DZ
+السعودية,Arabie Saoudite,Saudi Arabia,السعودية,2-PME,25.6242618,42.3528328,SA
+Argentina,Argentine,Argentina,الأرجنتين,2-PME,-34.9964963,-64.9672817,AR
+Australia,Australie,Australia,أستراليا,2-PME,-24.7761086,134.755,AU
+Brasil,Brésil,Brazil,البرازيل,2-PME,-10.3333333,-53.2,BR
+Cameroun - Cameroon,Cameroun,Cameroon,الكاميرون,2-PME,4.6125522,13.1535811,CA
+Canada,Canada,Canada,كندا,2-PME,61.0666922,-107.9917071,CV
+中国,Chine,China,الصين,2-PME,35.000074,104.999927,CN
+대한민국,Corée du Sud,South Korea,كوريا الجنوبية,2-PME,36.5581914,127.9408564,KR
+Côte d'Ivoire,Côte d'Ivoire,Ivory Coast,كوت ديفوار,2-PME,7.9897371,-5.5679458,CI
+مصر,Égypte,Egypt,مصر,2-PME,26.2540493,29.2675469,EG
+الإمارات العربية المتحدة,Émirats Arabes Unis,United Arab Emirates,الإمارات العربية المتحدة,2-PME,24.0002488,53.9994829,AE
+ኢትዮጵያ / Ethiopia,Éthiopie,Ethiopia,إثيوبيا,2-PME,10.2116702,38.6521203,ET
+India,Inde,India,الهند,2-PME,22.3511148,78.6677428,IN
+Indonesia,Indonésie,Indonesia,إندونيسيا,2-PME,-4.7993356,114.5632032,ID
+ישראל,Israël,Israel,فلسطين,2-PME,30.8760272,35.0015196,IL
+日本,Japon,Japan,اليابان,2-PME,36.5748441,139.2394179,JP
+Kenya,Kenya,Kenya,كينيا,2-PME,1.4419683,38.4313975,KE
+لبنان,Liban,Lebanon,الجمهورية اللبنانية,2-PME,33.8750629,35.843409,LB
+México,Mexique,Mexico,المكسيك,2-PME,22.5000485,-100.0000375,MX
+Nigeria,Nigéria,Nigeria,نيجيريا,2-PME,9.6000359,7.9999721,NG
+‪‫پاکستان‬,Pakistan,Pakistan,باكستان,2-PME,30.3308401,71.247499,PK
+Polska,Pologne,Poland,بولندا,2-PME,52.0977181,19.0258159,PL
+Россия,Russie,Russia,روسيا الاتحادية,2-PME,64.6863136,97.7453061,RU
+ประเทศไทย,Thaïlande,Thailand,تايلاند,2-PME,14.8971921,100.83273,TH
+تونس,Tunisie,Tunisia,تونس,2-PME,33.8439408,9.400138,TN
+Türkiye,Turquie,Turkey,تركيا,2-PME,38.9597594,34.9249653,TR
+Україна,Ukraine,Ukraine,أوكرانيا,2-PME,49.4871968,31.2718321,UA
+افغانستان,Afghanistan,Afghanistan,أفغانستان,3-PMP,33.7680065,66.2385139,AF
+Shqipëria,Albanie,Albania,ألبانيا,3-PMP,41.000028,19.9999619,AL
+Angola,Angola,Angola,أنغولا,3-PMP,-11.8775768,17.5691241,AO
+Հայաստան,Arménie,Armenia,أرمينيا,3-PMP,40.7696272,44.6736646,AM
+Österreich,Autriche,Austria,النمسا,3-PMP,47.2000338,13.199959,AT
+Azərbaycan,Azerbaïdjan,Azerbaijan,أذربيجان,3-PMP,40.3936294,47.7872508,AZ
+البحرين,Bahreïn,Bahrain,البحرين,3-PMP,26.1551249,50.5344606,BH
+Bangladesh,Bangladesh,Bangladesh,بنغلاديش,3-PMP,24.4768783,90.2932426,BD
+België - Belgique - Belgien,Belgique,Belgium,بلجيكا,3-PMP,50.6407351,4.66696,BE
+Bénin,Bénin,Benin,بنن,3-PMP,9.5293472,2.2584408,BJ
+Беларусь,Biélorussie,Belarus,بيلاروس,3-PMP,53.4250605,27.6971358,BY
+မြန်မာ,Birmanie,Myanmar,ميانمار,3-PMP,17.1750495,95.9999652,MM
+Bolivia,Bolivie,Bolivia,بوليفيا,3-PMP,-17.0568696,-64.9912286,BO
+Bosna i Hercegovina,Bosnie-Herzégovine,Bosnia and Herzegovina,البوسنة والهرسك,3-PMP,44.3053476,17.5961467,BA
+България,Bulgarie,Bulgaria,بلغاريا,3-PMP,42.6073975,25.4856617,BG
+Burkina Faso,Burkina Faso,Burkina Faso,بوركينا فاصو,3-PMP,12.0753083,-1.6880314,BF
+Burundi,Burundi,Burundi,بوروندي,3-PMP,-3.3634357,29.8870575,BI
+កម្ពុជា,Cambodge,Cambodia,كمبوديا,3-PMP,13.5066394,104.869423,CM
+Chile,Chili,Chile,شيلي,3-PMP,-31.7613365,-71.3187697,CL
+Κύπρος,Chypre,Cyprus,قبرص,3-PMP,34.9823018,33.1451285,CY
+Colombia,Colombie,Colombia,كولومبيا,3-PMP,2.8894434,-73.783892,CO
+Comores,Comores,Comoros,جزر القمر,3-PMP,-12.2045176,44.2832964,KM
+République du Congo,Congo,Republic of the Congo,جمهورية الكونغو الديمقراطية,3-PMP,-0.7264327,15.6419155,CG
+Costa Rica,Costa Rica,Costa Rica,كوستاريكا,3-PMP,10.2735633,-84.0739102,CR
+Hrvatska,Croatie,Croatia,كرواتيا,3-PMP,45.5643442,17.0118954,HR
+Cuba,Cuba,Cuba,كوبا,3-PMP,23.0131338,-80.8328748,CU
+Danmark,Danemark,Denmark,الدانمرك,3-PMP,55.670249,10.3333283,DK
+Djibouti,Djibouti,Djibouti,جيبوتي,3-PMP,11.8553,42.2342,DJ
+Ecuador,Équateur,Ecuador,إكوادور,3-PMP,-1.3397668,-79.3666965,EC
+Eesti,Estonie,Estonia,إستونيا,3-PMP,58.7523778,25.3319078,EE
+Suomi,Finlande,Finland,فنلندا,3-PMP,63.2467777,25.9209164,FI
+Gabon,Gabon,Gabon,غابون,3-PMP,-0.8999695,11.6899699,GA
+საქართველო,Géorgie,Georgia,جورجيا,3-PMP,41.6809707,44.0287382,GE
+Ghana,Ghana,Ghana,غانا,3-PMP,8.0300284,-1.0800271,GH
+Ελλάδα,Grèce,Greece,اليونان,3-PMP,38.9953683,21.9877132,GR
+Guatemala,Guatémala,Guatemala,غواتيمالا,3-PMP,15.6356088,-89.8988087,GT
+Guinée,Guinée,Guinea,غينيا,3-PMP,10.7226226,-10.7083587,GN
+Guinea Ecuatorial,Guinée équatoriale,Equatorial Guinea,غينيا الاستوائية,3-PMP,1.613172,10.5170357,GQ
+Haiti,Haïti,Haiti,هايتي,3-PMP,19.1399952,-72.3570972,HT
+Magyarország,Hongrie,Hungary,المجر,3-PMP,47.1817585,19.5060937,HU
+العراق,Irak,Iraq,العراق,3-PMP,33.0955793,44.1749775,IQ
+ایران,Iran,Iran,إيران,3-PMP,32.9407495,52.9471344,IR
+Ireland,Irlande,Ireland,أيرلندا,3-PMP,52.865196,-7.9794599,IE
+Ísland,Islande,Iceland,آيسلندا,3-PMP,64.9841821,-18.1059013,IS
+الزرقاء,Jordanie,Jordan,الأردن,3-PMP,31.1667049,36.941628,JO
+Казахстан,Kazakhstan,Kazakhstan,كازاخستان,3-PMP,47.2286086,65.2093197,KZ
+Kosova,Kosovo,Kosovo,Kosova,3-PMP,42.5869578,20.9021231,XK
+الكويت,Koweït,Kuwait,الكويت,3-PMP,29.2733964,47.4979476,KW
+ປະເທດລາວ,Laos,Laos,لاوس,3-PMP,20.0171109,103.378253,LA
+Latvija,Lettonie,Latvia,لاتفيا,3-PMP,56.8406494,24.7537645,LV
+ليبيا,Libye,Libya,ليبيا,3-PMP,26.8234472,18.1236723,LY
+Lietuva,Lituanie,Lithuania,ليتوانيا,3-PMP,55.3500003,23.7499997,LT
+Luxembourg,Luxembourg,Luxembourg,لكسمبرغ,3-PMP,49.8158683,6.1296751,LU
+Македонија,Macédoine,Macedonia,مقدونيا,3-PMP,41.6171214,21.7168387,MK
+Malaysia,Malaisie,Malaysia,ماليزي,3-PMP,2.3923759,112.8471939,MY
+Mali,Mali,Mali,مالي,3-PMP,16.3700359,-2.2900239,ML
+Malta,Malte,Malta,Malta,3-PMP,35.8885993,14.4476911,MT
+Mauritius,Maurice,Mauritius,موريشيوس,3-PMP,-20.2759451,57.5703566,MU
+موريتانيا,Mauritanie,Mauritania,موريتانيا,3-PMP,20.2540382,-9.2399263,MR
+Monaco,Monaco,Monaco,موناكو,3-PMP,43.734,7.4227,MC
+Монгол Улс,Mongolie,Mongolia,منغوليا,3-PMP,46.8250388,103.8499736,MN
+Mozambique,Mozambique,Mozambique,موزمبيق,3-PMP,-19.302233,34.9144977,MZ
+Niger,Niger,Niger,النيجر,3-PMP,17.7356214,9.3238432,NE
+Norge,Norvège,Norway,النرويج,3-PMP,60.5000209,9.0999715,NO
+New Zealand,Nouvelle-Zélande,New Zealand,نيوزيلندا,3-PMP,-41.5000831,172.8344077,NZ
+عُمان,Oman,Oman,عمان,3-PMP,21.0000287,57.0036901,OM
+Uganda,Ouganda,Uganda,أوغندا,3-PMP,1.5333554,32.2166578,UG
+O’zbekiston,Ouzbékistan,Uzbekistan,أوزبكستان,3-PMP,41.32373,63.9528098,UZ
+Panama,Panama,Panama,بنما,3-PMP,8.3096067,-81.3066246,PA
+Nederland,Pays-Bas,The Netherlands,هولندا,3-PMP,52.5001698,5.7480821,NL
+Perú,Pérou,Peru,بيرو,3-PMP,-6.8699697,-75.0458515,PE
+Philippines,Philippines,Philippines,الفلبين,3-PMP,12.7503486,122.7312101,PH
+Portugal,Portugal,Portugal,Portugal,3-PMP,40.033265,-7.8896263,PT
+قطر,Qatar,Qatar,قطر,3-PMP,25.3336984,51.2295295,QA
+Centrafrique,République centrafricaine,Central African Republic,جمهورية أفريقيا الوسطى,3-PMP,7.0323598,19.9981227,CF
+République démocratique du Congo,République démocratique du Congo,Democratic Republic of the Congo,الكونغو,3-PMP,-2.9814344,23.8222636,CD
+República Dominicana,République Dominicaine,Dominican Republic,الجمهورية الدومينيكية,3-PMP,19.0974031,-70.3028026,DO
+Česko,République tchèque,Czechia,جمهورية التشيك,3-PMP,49.8167003,15.4749544,CZ
+România,Roumanie,Romania,رومانيا,3-PMP,45.9852129,24.6859225,RO
+Rwanda,Rwanda,Rwanda,رواندا,3-PMP,-1.9646631,30.0644358,RW
+Saint Lucia,Sainte-Lucie,Saint Lucia,سانت لوسيا,3-PMP,13.8250489,-60.975036,LC
+Србија,Serbie,Serbia,صربيا,3-PMP,44.1534121,20.55144,RS
+Singapore,Singapour,Singapore,سنغافورة,3-PMP,1.357107,103.8194992,SG
+Slovensko,Slovaquie,Slovakia,جمهورية سلوفاكيا,3-PMP,48.7411522,19.4528646,SK
+Slovenija,Slovénie,Slovenia,سلوفينيا,3-PMP,45.8133113,14.4808369,SI
+السودان,Soudan,Sudan,السودان,3-PMP,14.5844444,29.4917691,SD
+ශ්‍රී ලංකා,Sri Lanka,Sri Lanka,سريلانكا,3-PMP,7.237148,80.820923,LK
+Sverige,Suède,Sweden,السويد,3-PMP,59.6749712,14.5208584,SE
+Schweiz - Suisse - Svizzera - Svizra,Suisse,Switzerland,سويسرا,3-PMP,46.7985624,8.2319736,CH
+سورية,Syrie,Syria,سورية,3-PMP,34.6401861,39.0494106,SY
+Tanzania,Tanzanie,Tanzania,تنـزاني,3-PMP,-6.5247123,35.7878438,TZ
+Chad تشاد,Tchad,Chad,تشاد,3-PMP,15.6134137,19.0156172,TD
+Togo,Togo,Togo,توغو,3-PMP,8.7800265,1.0199765,TG
+Uruguay,Uruguay,Uruguay,أوروغواي,3-PMP,-32.8755548,-56.0201525,UY
+Vanuatu,Vanuatu,Vanuatu,فانواتو,3-PMP,-16.5255069,168.1069154,VU
+Vatican,Vatican,Vatican City,الفاتيكان,3-PMP,41.9038,12.4559,VA
+Venezuela,Venezuela,Venezuela,فنزويلا,3-PMP,8.0018709,-66.1109318,VE
+Việt Nam,Vietnam,Vietnam,فييت نام,3-PMP,13.2904027,108.4265113,VN
+اليَمَن,Yémen,Yemen,اليمن,3-PMP,16.3471243,47.8915271,YE
+Zimbabwe,Zimbabwe,Zimbabwe,زيمبابوي,3-PMP,-18.4554963,29.7468414,ZW
+Andorra,Andorre,Andorra,أندورا,4-PPD,42.5407167,1.5732033,AD
+Botswana,Botswana,Botswana,بوتسوانا,4-PPD,-23.1681782,24.5928742,BW
+Brunei Darussalam,Brunei,Brunei,بروناي,4-PPD,4.4137155,114.5653908,BN
+Cabo Verde,Cabo Verde,Cabo Verde,الرأس الأخضر,4-PPD,16.0000552,-24.0083947,KH
+ኤርትራ,Érythrée,Eritrea,إريتريا,4-PPD,15.9500319,37.9999668,ER
+Fiji,Fidji,Fiji,فيجي,4-PPD,-18.1239696,179.0122737,FJ
+Guiné-Bissau,Guinée-Bissau,Guinea-Bissau,غينيا-بيساو,4-PPD,12.100035,-14.9000214,GW
+Honduras,Honduras,Honduras,هندوراس,4-PPD,15.0610686,-84.5978534,HN
+Jamaica,Jamaïque,Jamaica,جامايكا,4-PPD,18.1850507,-77.3947693,JM
+Кыргызстан,Kirghizstan,Kyrgyzstan,قرغيزستان,4-PPD,41.5089324,74.724091,KG
+Liberia,Liberia,Liberia,ليبريا,4-PPD,5.7499721,-9.3658524,LR
+Moldova,Moldavie,Moldova,جمهورية مولدوفا,4-PPD,47.286747,28.5110236,MD
+Crna Gora / Црна Гора,Monténégro,Montenegro,الجبل الأسود,4-PPD,42.7728491,19.2408586,ME
+Namibia,Namibie,Namibia,ناميبيا,4-PPD,-23.2335499,17.3231107,NA
+Nepal,Népal,Nepal,نيبال,4-PPD,28.1083929,84.0917139,NP
+Nicaragua,Nicaragua,Nicaragua,نيكاراغوا,4-PPD,12.3724928,-84.8700308,NI
+Papua New Guinea,Papouasie-Nouvelle-Guinée,Papua New Guinea,بابوا نيوغينيا,4-PPD,-5.6816069,144.2489081,PG
+Paraguay,Paraguay,Paraguay,باراغواي,4-PPD,-23.3165935,-58.1693445,PY
+El Salvador,Salvador,El Salvador,السلفادور,4-PPD,13.8000382,-88.9140683,SV
+Seychelles,Seychelles,Seychelles,سيشيل,4-PPD,-4.6574977,55.4540146,SC
+South Sudan,Soudan du Sud,South Sudan,جنوب السودان,4-PPD,7.8699431,29.6667897,SS
+Suriname,Suriname,Suriname,سورينام,4-PPD,4.1413025,-56.0771187,SR
+Тоҷикистон,Tadjikistan,Tajikistan,طاجيكستان,4-PPD,38.6281733,70.8156541,TJ
+Trinidad and Tobago,Trinité-et-Tobago,Trinidad and Tobago,ترينيداد وتوباغو,4-PPD,10.8677845,-60.9821067,TT
+Türkmenistan,Turkménistan,Turkmenistan,تركمانستان,4-PPD,39.3763807,59.3924609,TM
+Zambia,Zambie,Zambia,زامبيا,4-PPD,-14.5186239,27.5599164,ZM
+조선민주주의인민공화국,Corée du Nord,North Korea,كوريا الشمالية,5-Bureau,40.3736611,127.0870417,KP
+臺灣,Taïwan,Taiwan,تايوان,5-Bureau,23.9739374,120.9820179,TW
+Liechtenstein,Liechtenstein,Liechtenstein,Liechtenstein,6-Résidence,47.1416307,9.5531527,LI
+الصومال,Somalie,Somalia,الصومال,6-Résidence,8.3676771,49.083416,SO
+Swaziland,Swaziland,Swaziland,سوازيلند,6-Résidence,-26.5624806,31.3991317,SZ
+Maldivoj,Maldives,Maldives,ملديف,6-Résidence,4.7064352,73.3287853,MV
+Sierra Leone,Sierra Leone,Sierra Leone,سيراليون,6-Résidence,8.6400349,-11.8400269,SL
+Guyana,Guyana,Guyana,غويانا,6-Résidence,5.385,-58.7054,GY
+Barbados,Barbade,Barbados,بربادوس,6-Résidence,13.1500331,-59.5250305,BB

@@ -31,6 +31,7 @@
 @rail_fill:         #ccc;
 @rail_case:         #777;
 
+@country_text:      #111;
 @city_text:         #222;
 @town_text:         #222;
 @village_text:      #222;

@@ -229,6 +229,13 @@ Layer:
             admin_level DESC
         ) AS data
 
+- id: country
+  geometry: point
+  <<: *extents84
+  Datasource:
+    type: csv
+    file: data/country.csv
+
 - id: place
   class: ""
   geometry: point

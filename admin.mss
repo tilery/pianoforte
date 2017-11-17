@@ -1,4 +1,16 @@
-#boundary[admin_level=2][zoom>=2][zoom<5],
+#itl_boundary_low[zoom>=3][zoom<7][maritime!='yes'],
+#itl_boundary[zoom>=7] {
+  line-width: 1;
+  line-color: @admin_2;
+  line-clip: true;
+  line-clip: true;
+  [zoom>=10] {
+    line-width: 2;
+  }
+  [maritime='yes'] {
+    line-dasharray: 5,5;
+  }
+}
 #boundary[admin_level=3][zoom>=4][zoom<5],
 #boundary[admin_level=4][zoom>=4][zoom<5],
 #boundary[admin_level<=4][zoom>=5][zoom<11],

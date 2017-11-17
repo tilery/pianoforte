@@ -14,8 +14,7 @@
 
 @halo:              @land;
 
-@admin:             #bea6a6;
-@admin_2:           #537076;
+@admin_2:           #8a6565;
 @admin_3:           #897d7c;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
@@ -46,10 +45,6 @@
 /* backgrounds */
 /* *********** */
 
-Map {
-  background-color: @water;
-  buffer-size: @buffer;
-}
 #land-low[zoom<10],
 #land[zoom>=10] {
   polygon-fill: @land;

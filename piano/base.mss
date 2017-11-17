@@ -4,7 +4,6 @@
 @land:              #ffffff;
 @residential:       #f8f7f7;
 @water:             #c5d2dd;
-@admin:             #bea6a6;
 @industrial:        #f7f4f5;
 @neutral:           #e2e2e6;
 @wetland:           #e3e9e2;
@@ -15,23 +14,23 @@
 
 @halo:              @land;
 
+@admin_2:           #c9b5b5;
+@admin_3:           lighten(@admin_2, 15);
+@admin_2_text:      @admin_2;
+@admin_3_text:      @admin_3;
+
 @road_fill:         #ffffff;
 @road_case:         #9d9d9d;
 
 @rail_fill:         #ddd;
 @rail_case:         #aaa;
 
-@city_text:         #222;
+@country_text:      #333;
+@city_text:         #333;
 @town_text:         #444;
 @village_text:      #444;
 
 @road_text:         #222;
-
-@regular:           'Fira Sans Regular';
-@bold:              'Fira Sans Bold';
-@medium:            'Fira Sans Medium';
-@book:              'Fira Sans Book';
-@xlight:            'Fira Sans ExtraLight';
 
 @buffer:            512;
 
@@ -39,10 +38,6 @@
 /* backgrounds */
 /* *********** */
 
-Map {
-  background-color: @water;
-  buffer-size: @buffer;
-}
 #land {
   polygon-fill: @land;
 }
@@ -123,42 +118,6 @@ Map {
   polygon-fill: @water;
 }
 
-/* ************************* */
-/* ADMINISTRATIVE BOUNDARIES */
-/* ************************* */
-#boundary[admin_level=4],
-#boundary[admin_level=6],
-#boundary[admin_level=8][zoom>=12],
-#boundary[admin_level=9][zoom>=12] {
-  eraser/line-color: @land;
-  eraser/line-width: 1;
-  eraser/comp-op: darken;
-  line-color: @admin;
-  line-width: 0.8;
-  line-dasharray: 8,4;
-  [zoom<12] {
-    line-smooth: 0.2;
-    line-simplify: 10;
-    line-color: lighten(@admin, 15%);
-  }
-  [admin_level=4] {
-      line-cap: butt;
-      line-width: 1.5;
-  }
-  [admin_level=6] {
-      line-cap: butt;
-      line-width: 1;
-      line-color: lighten(@admin, 15%);
-  }
-  [admin_level=8],
-  [admin_level=9] {
-    line-dasharray: 1,3;
-    line-cap: round;
-    [zoom>=13] {
-        line-width: 1;
-    }
-  }
-}
 /* ******** */
 /* RAILWAYS */
 /* ******** */

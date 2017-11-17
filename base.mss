@@ -70,3 +70,9 @@
             'Noto Sans Tamil Bold',
             'Noto Sans Thai Bold',
             'Unifont Medium';
+
+Map {
+  background-color: @water;
+  buffer-size: @buffer;
+  font-directory: url(./fonts);
+}

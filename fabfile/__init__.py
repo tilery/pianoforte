@@ -52,7 +52,7 @@ def system(ctx):
     ctx.run('sudo apt install -y postgresql-9.5 postgresql-9.5-postgis-2.2 '
             'software-properties-common wget nginx unzip autoconf libtool g++ '
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
-            'libprotobuf-dev')
+            'libprotobuf-dev unifont')
     # Prevent conflict with nginx.
     ctx.run('sudo apt install -y apache2 apache2-dev')
     ctx.run('sudo mkdir -p /srv/tilery/src')
@@ -182,6 +182,14 @@ def deploy(ctx):
     sudo_put(ctx, 'fabfile/index.html', '/srv/tilery/index.html')
 
 
+def download_shapefile(ctx, name, url, force):
+    datapath = '/srv/tilery/data/'
+    exists = ctx.run(f'if [ -f "{datapath}{name}" ]; then echo 1; fi')
+    if not exists.stdout or force:
+        ctx.run(f'wget {url} -O /tmp/data.zip --quiet')
+        ctx.run(f'unzip -n /tmp/data.zip -d {datapath}')
+
+
 @task
 def download(ctx, force=False):
     path = '/srv/tilery/tmp/lebanon-latest.osm.pbf'
@@ -189,26 +197,25 @@ def download(ctx, force=False):
     if not exists.stdout or force:
         ctx.run('wget http://download.geofabrik.de/asia/lebanon-latest.osm.pbf'
                 f' -O {path} --quiet')
-    path = '/srv/tilery/tmp/france-latest.osm.pbf'
+    path = '/srv/tilery/tmp/ile-de-france-latest.osm.pbf'
     exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
     if not exists.stdout or force:
         ctx.run('wget '
-                'http://download.geofabrik.de/europe/france-latest.osm.pbf'
+                'http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf'
                 f' -O {path} --quiet')
-    datapath = '/srv/tilery/data'
     domain = 'http://data.openstreetmapdata.com/'
-    exists = ctx.run(f'if [ -f "{datapath}/simplified_land_polygons.shp" ]; '
-                     'then echo 1; fi')
-    if not exists.stdout or force:
-        ctx.run(f'wget {domain}simplified-land-polygons-complete-3857.zip'
-                f' -O /tmp/land-low.zip --quiet')
-        ctx.run(f'unzip -n /tmp/land-low.zip -d {datapath}')
-    exists = ctx.run(f'if [ -f "{datapath}/land_polygons.shp" ]; '
-                     'then echo 1; fi')
-    if not exists.stdout or force:
-        ctx.run(f'wget {domain}land-polygons-split-3857.zip -O /tmp/land.zip '
-                '--quiet')
-        ctx.run(f'unzip -n /tmp/land.zip -d {datapath}')
+    download_shapefile(
+        ctx,
+        'simplified-land-polygons-complete-3857/simplified_land_polygons.shp',
+        f'{domain}simplified-land-polygons-complete-3857.zip', force)
+    download_shapefile(ctx,
+                       'land-polygons-split-3857/land_polygons.shp',
+                       f'{domain}land-polygons-split-3857.zip', force)
+    domain = 'http://nuage.yohanboniface.me/'
+    download_shapefile(ctx, 'boundary_lines/boundary_lines_simplified.shp',
+                       f'{domain}boundary_lines_simplified.zip', force)
+    download_shapefile(ctx, 'boundary_lines_simplified/boundary_lines.shp',
+                       f'{domain}boundary_lines.zip', force)
 
 
 @task
@@ -216,7 +223,7 @@ def import_data(ctx):
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
               '-mapping /srv/tilery/mapping.yml '
-              '-read /srv/tilery/tmp/france-latest.osm.pbf '
+              '-read /srv/tilery/tmp/ile-de-france-latest.osm.pbf '
               '-connection="postgis:///tilery" -overwritecache')
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '

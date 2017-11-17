@@ -38,7 +38,8 @@
 /* backgrounds */
 /* *********** */
 
-#land {
+#land-low[zoom<10],
+#land[zoom>=10] {
   polygon-fill: @land;
 }
 #landuse_gen[zoom<14],

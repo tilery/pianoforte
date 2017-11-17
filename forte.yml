@@ -325,6 +325,8 @@ Layer:
           osm_landusages
         WHERE
           name != ''
+        ORDER BY
+          area DESC
       ) AS data
 
 - id: landuse_label_gen

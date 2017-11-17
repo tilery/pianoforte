@@ -85,7 +85,6 @@
   [type='track'],
   [type='pitch'],
   [type='grass'],
-  [type='grassland'],
   [type='park'],
   [type='garden'],
   [type='village_green'],
@@ -101,6 +100,7 @@
   [type='scrub'],
   [type='meadow'],
   [type='heath'],
+  [type='grassland'],
   [type='allotments'] {
       polygon-fill: @grass;
   }
@@ -113,6 +113,7 @@
   [type='orchard'] {
       polygon-fill: @land;
   }
+  [type='sand'],
   [type='beach'],
   [type='desert'] {
       polygon-fill: @sand;

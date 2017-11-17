@@ -42,19 +42,13 @@ tables:
     - {key: 'name:ar', name: namear, type: string}
     - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
-    - {key: null, name: area, type: pseudoarea}
-    - args:
-        ranks: [park, forest, wood, grass, garden, residential, retail, commercial,
-          industrial, railway, cemetery, land]
-      key: z_order
-      name: z_order
-      type: zorder
+    - {key: null, name: area, type: area}
     mapping:
       landuse: [park, forest, residential, retail, commercial, industrial, railway,
         cemetery, grass, farmyard, farm, farmland, orchard, vineyard, wood, meadow,
         village_green, recreation_ground, allotments, quarry]
       leisure: [park, garden, golf_course, sports_centre, pitch, track]
-      natural: [wood, land]
+      natural: [wood, land, desert, grassland, sand, heath, beach]
       amenity: [college, school, university, parking, hospital, embassy]
       aeroway: [aerodrome]
     type: polygon

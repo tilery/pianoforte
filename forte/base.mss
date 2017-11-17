@@ -14,7 +14,7 @@
 
 @halo:              @land;
 
-@admin_2:           #8a6565;
+@admin_2:           #537076;
 @admin_3:           #897d7c;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
@@ -31,6 +31,7 @@
 @rail_case:         #777;
 
 @country_text:      #111;
+@state_text:        #666;
 @city_text:         #222;
 @town_text:         #222;
 @village_text:      #222;

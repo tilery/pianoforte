@@ -13,8 +13,36 @@
   text-label-position-tolerance: 20;
   text-character-spacing: 0.1;
 }
-
-#place[type='city'][zoom>=4],
+#place_low[type='state'][zoom>=5][zoom<=10] {
+  text-name: '[name]';
+  text-face-name: @medium;
+  text-placement: point;
+  text-fill: @state_text;
+  text-halo-fill: @halo;
+  text-halo-radius: 1;
+  text-size: 10;
+  text-wrap-width: 40;
+  [zoom>=7] {
+    text-size: 11;
+    text-wrap-width: 50;
+  }
+  [zoom>8] {
+    text-halo-radius: 2;
+    text-line-spacing: 1;
+  }
+  [zoom>=9] {
+    text-size: 12;
+    text-character-spacing: 1;
+    text-wrap-width: 80;
+    text-line-spacing: 2;
+  }
+  [zoom=10] {
+    text-size: 14;
+    text-character-spacing: 2;
+  }
+}
+#place_low[type='city'][zoom>=4][zoom<=7],
+#place[type='city'][zoom>=8],
 #place[type='town'][zoom>=8],
 #place[type='village'][zoom>=9],
 #place[type='minor'][zoom>=14] {

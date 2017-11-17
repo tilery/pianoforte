@@ -252,6 +252,23 @@ Layer:
     type: csv
     file: data/country.csv
 
+- id: place_low
+  class: ""
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, '{lang}' as lang, type,
+            CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
+            COALESCE(NULLIF(name{lang}, ''), name) as name
+          FROM
+            osm_places
+          ORDER BY
+            prio
+        ) AS data
+
 - id: place
   class: ""
   geometry: point

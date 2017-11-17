@@ -3,12 +3,11 @@
   line-width: 1;
   line-color: @admin_2;
   line-clip: true;
-  line-clip: true;
+  [maritime='yes'] {
+    line-dasharray: 10,5;
+  }
   [zoom>=10] {
     line-width: 2;
-  }
-  [maritime='yes'] {
-    line-dasharray: 5,5;
   }
 }
 #boundary[admin_level=3][zoom>=4][zoom<5],

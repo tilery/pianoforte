@@ -49,7 +49,7 @@ tables:
         cemetery, grass, farmyard, farm, farmland, orchard, vineyard, wood, meadow,
         village_green, recreation_ground, allotments, quarry]
       leisure: [park, garden, golf_course, sports_centre, pitch, track]
-      natural: [wood, land, desert, grassland, sand, heath, beach]
+      natural: [wood, land, desert, grassland, sand, heath, beach, wetland]
       amenity: [college, school, university, parking, hospital, embassy]
       aeroway: [aerodrome]
     type: polygon

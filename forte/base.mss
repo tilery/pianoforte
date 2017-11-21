@@ -6,7 +6,7 @@
 @water:             #95adc1;
 @industrial:        #e2dbde;
 @emphasis:          #d6d6d2;
-@wetland:           #e3e9e2;
+@wetland:           #e5e9e2;
 @wooded:            #9cc29c;
 @grass:             #c1d8c1;
 @sand:              #ede5bb;
@@ -121,14 +121,11 @@
   [type='desert'] {
     polygon-fill: @sand;
     polygon-opacity: 0.4;
-    [zoom>=9] {
+    [zoom>=14] {
       polygon-opacity: 0.5;
     }
-    [zoom>=14] {
-      polygon-opacity: 0.7;
-    }
     [zoom>=16] {
-      polygon-opacity: 0.8;
+      polygon-opacity: 0.7;
     }
   }
   [type='basin'] {

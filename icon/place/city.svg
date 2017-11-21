@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="6"
+   height="6"
+   id="svg3517"
+   version="1.1"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="city.svg"
+   inkscape:export-filename="/home/ybon/Code/maps/hdm/icons/place/_place.png"
+   inkscape:export-xdpi="89.996864"
+   inkscape:export-ydpi="89.996864">
+  <defs
+     id="defs3519" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="32"
+     inkscape:cx="-5.0025763"
+     inkscape:cy="7.1912958"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="3840"
+     inkscape:window-height="2031"
+     inkscape:window-x="0"
+     inkscape:window-y="55"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3525"
+       empspacing="3"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="0,10"
+       id="guide3766"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="6,10"
+       id="guide3768"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3522">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1046.3622)">
+    <g
+       id="city"
+       inkscape:label="city"
+       transform="translate(-0.5,0.5312575)">
+      <circle
+         style="opacity:0.3;fill:none;stroke:#ffffff;stroke-width:5.01256275;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2992"
+         transform="matrix(0.3989975,0,0,0.3989975,0.30300748,1045.6652)"
+         inkscape:label="city-5"
+         inkscape:export-xdpi="89.996864"
+         inkscape:export-ydpi="89.996864"
+         cx="8.0125628"
+         cy="8.0125628"
+         r="5.0125628" />
+      <circle
+         inkscape:export-ydpi="89.996864"
+         inkscape:export-xdpi="89.996864"
+         inkscape:label="city-5"
+         transform="matrix(0.3989975,0,0,0.3989975,0.30300748,1045.6652)"
+         id="city-5"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#525252;stroke-width:2.50628138;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         cx="8.0125628"
+         cy="8.0125628"
+         r="5.0125628" />
+    </g>
+  </g>
+</svg>

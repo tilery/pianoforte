@@ -1,5 +1,5 @@
-#itl_boundary_low[zoom>=3][zoom<7][maritime!='yes'],
-#itl_boundary[zoom>=7] {
+#itl_boundary_low[zoom>=3][zoom<6][maritime!='yes'],
+#itl_boundary[zoom>=6] {
   line-width: 1;
   line-color: @admin_2;
   line-clip: true;
@@ -15,31 +15,22 @@
 #boundary[admin_level<=4][zoom>=5][zoom<11],
 #boundary[admin_level<=8][zoom>=12][zoom<13],
 #boundary[admin_level<=10][zoom>=13] {
-  [admin_level=2] {
-    outline/line-color: lighten(@admin_2, 25%);
-    outline/line-width: 2;
-    outline/line-clip: true;
-    [zoom>=8] {
-      outline/line-width: 3;
-    }
-  }
   eraser/line-color: @land;
   eraser/line-width: 1;
   eraser/comp-op: darken;
   eraser/line-clip: true;
-  line-color: @admin_2;
   line-clip: true;
   line-width: 1;
-  [admin_level>2] {
+  line-color: lighten(@admin_3, 20);
+  [zoom>=7] {
     line-dasharray: 10,5,5,5;
-    line-color: @admin_3;
-    [zoom>=14] {
-      line-color: darken(@admin_3, 10);
-    }
-    [admin_level>=6] {
-      line-dasharray: 5,5,2,5;
-      line-width: 0.8;
-    }
+  }
+  [zoom>=14] {
+    line-color: darken(@admin_3, 10);
+  }
+  [admin_level>=6] {
+    line-dasharray: 5,5,2,5;
+    line-width: 0.8;
   }
 }
 

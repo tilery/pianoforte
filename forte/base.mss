@@ -3,18 +3,18 @@
 /* ******* */
 @land:              #eee;
 @residential:       #dfdfdf;
-@water:             #a9bfcc;
+@water:             #95adc1;
 @industrial:        #e2dbde;
 @emphasis:          #d6d6d2;
 @wetland:           #e3e9e2;
 @wooded:            #9cc29c;
 @grass:             #c1d8c1;
-@sand:              #eee5b2;
+@sand:              #ede5bb;
 @agriculture:       #92ab78;
 
 @halo:              @land;
 
-@admin_2:           #537076;
+@admin_2:           #5c7175;
 @admin_3:           #897d7c;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
@@ -30,12 +30,12 @@
 @rail_fill:         #ccc;
 @rail_case:         #777;
 
-@country_text:      #111;
-@state_text:        #666;
-@city_text:         #222;
-@town_text:         #222;
-@village_text:      #222;
-@landuse_text:      #333;
+@country_text:      @admin_2;
+@state_text:        #888;
+@city_text:         #333;
+@town_text:         #333;
+@village_text:      #333;
+@landuse_text:      #444;
 
 @road_text:         #222;
 @poi_text:          #222;
@@ -103,21 +103,33 @@
   [type='heath'],
   [type='grassland'],
   [type='allotments'] {
-      polygon-fill: @grass;
+    polygon-fill: @grass;
   }
   [type='forest'],
   [type='wood'] {
-      polygon-fill: @wooded;
+    polygon-fill: @wooded;
   }
   [type='farmland'],
   [type='farm'],
   [type='orchard'] {
-      polygon-fill: @land;
+    polygon-fill: @land;
+  }
+  [type='beach'] {
+    polygon-fill: @sand;
   }
   [type='sand'],
-  [type='beach'],
   [type='desert'] {
-      polygon-fill: @sand;
+    polygon-fill: @sand;
+    polygon-opacity: 0.4;
+    [zoom>=9] {
+      polygon-opacity: 0.5;
+    }
+    [zoom>=14] {
+      polygon-opacity: 0.7;
+    }
+    [zoom>=16] {
+      polygon-opacity: 0.8;
+    }
   }
   [type='basin'] {
       polygon-fill: @water;

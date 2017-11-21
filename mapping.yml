@@ -18,6 +18,7 @@ tables:
     - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
     - {key: admin_level, name: admin_level, type: integer}
+    - {key: maritime, name: maritime, type: string}
     mapping:
       boundary: [administrative]
     type: polygon
@@ -62,6 +63,7 @@ tables:
     - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
     - {key: population, name: population, type: integer}
+    - {key: capital, name: capital, type: string}
     mapping:
       place: [country, state, region, archipelago, island, islet, county, city, town, village, hamlet, suburb,
         isolated_dwelling, allotments, neighbourhood, city_block, square, farm]

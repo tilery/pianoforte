@@ -105,6 +105,8 @@
   text-label-position-tolerance: 20;
   text-character-spacing: 0.1;
   text-line-spacing: -2;
+  text-margin: 30;
+  text-min-padding: 1;
   [type='town'] {
     text-fill: @town_text;
     text-face-name: @regular;
@@ -116,11 +118,9 @@
   [type='minor'] {
     text-margin: 50;
   }
-  [zoom<12] {
-    text-min-distance: 30;
+  [zoom>=12] {
+    text-margin: 10;
     text-min-padding: 1;
-  }
-  [zoom=12] {
     text-size: 13;
     [type='city'] {
       text-size: 14;

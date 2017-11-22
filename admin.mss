@@ -25,7 +25,7 @@
   [zoom>=7] {
     line-dasharray: 10,5,5,5;
   }
-  [zoom>=14] {
+  [zoom>=13] {
     line-color: darken(@admin_3, 10);
   }
   [admin_level>=6] {

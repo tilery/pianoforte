@@ -29,6 +29,7 @@
 @city_text:         #333;
 @town_text:         #444;
 @village_text:      #444;
+@landuse_text:      #555;
 
 @road_text:         #222;
 

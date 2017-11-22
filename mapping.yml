@@ -47,7 +47,7 @@ tables:
     mapping:
       landuse: [park, forest, residential, retail, commercial, industrial, railway,
         cemetery, grass, farmyard, farm, farmland, orchard, vineyard, wood, meadow,
-        village_green, recreation_ground, allotments, quarry, landfill]
+        village_green, recreation_ground, allotments, quarry, landfill, nature_reserve]
       leisure: [park, garden, golf_course, sports_centre, pitch, track]
       natural: [wood, land, desert, grassland, sand, heath, beach, wetland, scrub]
       amenity: [college, school, university, parking, hospital, embassy]

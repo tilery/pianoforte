@@ -12,7 +12,7 @@
 }
 #boundary[admin_level=3][zoom>=4][zoom<5],
 #boundary[admin_level=4][zoom>=4][zoom<5],
-#boundary[admin_level<=4][zoom>=5][zoom<11],
+#boundary[admin_level<=4][zoom>=5][zoom<12],
 #boundary[admin_level<=8][zoom>=12][zoom<13],
 #boundary[admin_level<=10][zoom>=13] {
   eraser/line-color: @land;
@@ -21,7 +21,7 @@
   eraser/line-clip: true;
   line-clip: true;
   line-width: 1;
-  line-color: lighten(@admin_3, 20);
+  line-color: @admin_3;
   [zoom>=7] {
     line-dasharray: 10,5,5,5;
   }

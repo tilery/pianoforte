@@ -15,7 +15,7 @@
 @halo:              @land;
 
 @admin_2:           #c9b5b5;
-@admin_3:           lighten(@admin_2, 15);
+@admin_3:           lighten(@admin_2, 10);
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
 

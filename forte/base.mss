@@ -15,7 +15,7 @@
 @halo:              @land;
 
 @admin_2:           #5c7175;
-@admin_3:           #897d7c;
+@admin_3:           #bdb7b7;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
 

@@ -44,8 +44,8 @@
     text-face-name: @medium;
     text-transform: uppercase;
   }
-  [zoom<12] {
-    text-min-distance: 30;
+  [zoom<13] {
+    text-margin: 30;
     text-min-padding: 1;
   }
   [zoom>=13] {

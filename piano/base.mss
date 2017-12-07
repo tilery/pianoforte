@@ -271,11 +271,11 @@
   }
   [type='tertiary'][zoom<=12],
   [type='secondary'][zoom<=12],
-  [zoom<=10] {
-      line-color: lighten(@road_case, 20%);
+  [zoom<=11] {
+      line-color: lighten(@road_case, 20);
   }
   [zoom<=8] {
-      line-color: lighten(@road_case, 30%);
+      line-color: lighten(@road_case, 30);
   }
   [zoom>=16] {line-width: 2;}
 }

@@ -8,7 +8,7 @@
   text-fill: @country_text;
   text-size: 14;
   text-halo-fill: @halo;
-  text-halo-radius: 2;
+  text-halo-radius: 1;
   text-wrap-width: 40;
   text-label-position-tolerance: 20;
   text-character-spacing: 1;

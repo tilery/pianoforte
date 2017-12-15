@@ -52,7 +52,7 @@ def system(ctx):
     ctx.run('sudo apt install -y postgresql-9.5 postgresql-9.5-postgis-2.2 '
             'software-properties-common wget nginx unzip autoconf libtool g++ '
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
-            'libprotobuf-dev unifont')
+            'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2')
     # Prevent conflict with nginx.
     ctx.run('sudo apt install -y apache2 apache2-dev')
     ctx.run('sudo mkdir -p /srv/tilery/src')
@@ -65,6 +65,17 @@ def system(ctx):
     install_imposm3(ctx)
     install_mod_tile(ctx)
     configure_mod_tile(ctx)
+    install_netdata(ctx)
+
+
+def install_netdata(ctx, force=False):
+    exists = ctx.run('if [ -f "/etc/systemd/system/netdata.service" ]; '
+                     'then echo 1; fi')
+    if not exists.stdout or force:
+        ctx.run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) '
+                '--dont-wait')
+    sudo_put(ctx, 'fabfile/netdata.conf', '/etc/netdata/netdata.conf')
+    restart(ctx, services='netdata')
 
 
 def install_imposm3(ctx, force=False):
@@ -219,7 +230,12 @@ def download(ctx, force=False):
 
 
 @task
-def import_data(ctx):
+def import_data(ctx, remove_backup=False):
+    if remove_backup:
+        as_tilery(ctx,
+                  'env PGHOST=/var/run/postgresql/ imposm3 import '
+                  '-mapping /srv/tilery/mapping.yml '
+                  '-connection="postgis:///tilery" -removebackup')
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
               '-mapping /srv/tilery/mapping.yml '

@@ -41,6 +41,10 @@ def python(ctx, command):
     as_tilery(ctx, '/srv/tilery/venv/bin/python {}'.format(command))
 
 
+def exists(ctx, path):
+    return bool(ctx.run(f'if [ -f "{path}" ]; then echo 1; fi').stdout)
+
+
 @task
 def pip(ctx, command):
     as_tilery(ctx, '/srv/tilery/venv/bin/pip {}'.format(command))
@@ -69,9 +73,7 @@ def system(ctx):
 
 
 def install_netdata(ctx, force=False):
-    exists = ctx.run('if [ -f "/etc/systemd/system/netdata.service" ]; '
-                     'then echo 1; fi')
-    if not exists.stdout or force:
+    if not exists(ctx, '/etc/systemd/system/netdata.service') or force:
         ctx.run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) '
                 '--dont-wait')
     sudo_put(ctx, 'fabfile/netdata.conf', '/etc/netdata/netdata.conf')
@@ -79,18 +81,18 @@ def install_netdata(ctx, force=False):
 
 
 def install_imposm3(ctx, force=False):
-    exists = ctx.run('if [ -f "/usr/bin/imposm3" ]; then echo 1; fi')
-    if not exists.stdout or force:
+    if not exists(ctx, '/usr/bin/imposm3') or force:
         ctx.run('sudo wget https://imposm.org/static/rel/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64.tar.gz -O /tmp/imposm3.tar.gz')  # noqa
         ctx.run('sudo tar -xzf /tmp/imposm3.tar.gz --directory /tmp')
         ctx.run('sudo cp /tmp/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64/imposm3 /usr/bin/imposm3')  # noqa
     else:
         print('imposm3 already installed')
+    ctx.run('sudo mkdir -p /srv/tilery/tmp/imposm')
+    ctx.run('sudo chown tilery:users /srv/tilery/tmp/imposm')
 
 
 def install_mod_tile(ctx, force=False):
-    exists = ctx.run('if [ -f "/usr/local/bin/renderd" ]; then echo 1; fi')
-    if not exists.stdout or force:
+    if not exists(ctx, '/usr/local/bin/renderd') or force:
         ctx.run('wget https://github.com/SomeoneElseOSM/mod_tile/archive/master.zip -O /tmp/mod_tile.zip')  # noqa
         ctx.run('unzip -n /tmp/mod_tile.zip -d /tmp/')
         ctx.run('cd /tmp/mod_tile-master && ./autogen.sh')
@@ -106,8 +108,8 @@ def install_mod_tile(ctx, force=False):
 
 
 def configure_mod_tile(ctx):
-    ctx.run('sudo mkdir -p /srv/tilery/cache')
-    ctx.run('sudo chown tilery:users /srv/tilery/cache')
+    ctx.run('sudo mkdir -p /srv/tilery/tmp/tiles')
+    ctx.run('sudo chown tilery:users /srv/tilery/tmp/tiles')
     ctx.run('sudo mkdir -p /srv/tilery/renderd')
     ctx.run('sudo chown tilery:users /srv/tilery/renderd')
     sudo_put(ctx, 'fabfile/tile.load', '/etc/apache2/mods-available/tile.load')
@@ -131,9 +133,7 @@ def http(ctx):
     # sudo_put(ctx, 'fabfile/letsencrypt.conf',
     #          '/etc/nginx/snippets/letsencrypt.conf')
     # sudo_put(ctx, 'fabfile/ssl.conf', '/etc/nginx/snippets/ssl.conf')
-    certif = "/etc/letsencrypt/live/drone.api.gouv.fr/fullchain.pem"
-    exists = ctx.run('if [ -f "{}" ]; then echo 1; fi'.format(certif))
-    if exists.stdout:
+    if exists(ctx, '/etc/letsencrypt/live/drone.api.gouv.fr/fullchain.pem'):
         conf = 'fabfile/nginx-https.conf'
     else:
         # Before letsencrypt.
@@ -169,6 +169,7 @@ def letsencrypt(ctx):
 @task
 def services(ctx):
     service(ctx, 'renderd')
+    service(ctx, 'imposm')
 
 
 def service(ctx, name):
@@ -189,14 +190,14 @@ def ssh_keys(ctx):
 @task
 def deploy(ctx):
     sudo_put(ctx, 'mapping.yml', '/srv/tilery/mapping.yml')
+    sudo_put(ctx, 'fabfile/imposm.conf', '/srv/tilery/imposm.conf')
     sudo_put(ctx, 'fabfile/renderd.conf', '/srv/tilery/renderd.conf')
     sudo_put(ctx, 'fabfile/index.html', '/srv/tilery/index.html')
 
 
 def download_shapefile(ctx, name, url, force):
     datapath = '/srv/tilery/data/'
-    exists = ctx.run(f'if [ -f "{datapath}{name}" ]; then echo 1; fi')
-    if not exists.stdout or force:
+    if not exists(ctx, datapath + name) or force:
         ctx.run(f'wget {url} -O /tmp/data.zip --quiet')
         ctx.run(f'unzip -n /tmp/data.zip -d {datapath}')
 
@@ -204,15 +205,13 @@ def download_shapefile(ctx, name, url, force):
 @task
 def download(ctx, force=False):
     path = '/srv/tilery/tmp/lebanon-latest.osm.pbf'
-    exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
-    if not exists.stdout or force:
+    if not exists(ctx, path) or force:
         ctx.run('wget http://download.geofabrik.de/asia/lebanon-latest.osm.pbf'
                 f' -O {path} --quiet')
-    path = '/srv/tilery/tmp/ile-de-france-latest.osm.pbf'
-    exists = ctx.run(f'if [ -f "{path}" ]; then echo 1; fi')
-    if not exists.stdout or force:
+    path = '/srv/tilery/tmp/africa-latest.osm.pbf'
+    if not exists(ctx, path) or force:
         ctx.run('wget '
-                'http://download.geofabrik.de/europe/france/ile-de-france-latest.osm.pbf'
+                'http://download.geofabrik.de/africa-latest.osm.pbf'
                 f' -O {path} --quiet')
     domain = 'http://data.openstreetmapdata.com/'
     download_shapefile(
@@ -234,23 +233,18 @@ def import_data(ctx, remove_backup=False):
     if remove_backup:
         as_tilery(ctx,
                   'env PGHOST=/var/run/postgresql/ imposm3 import '
-                  '-mapping /srv/tilery/mapping.yml '
-                  '-connection="postgis:///tilery" -removebackup')
+                  '-config /srv/tilery/imposm.conf -removebackup')
+    as_tilery(ctx,
+              'env PGHOST=/var/run/postgresql/ imposm3 import -diff '
+              '-config /srv/tilery/imposm.conf '
+              '-read /srv/tilery/tmp/africa-latest.osm.pbf -overwritecache')
+    as_tilery(ctx,
+              'env PGHOST=/var/run/postgresql/ imposm3 import -diff '
+              '-config /srv/tilery/imposm.conf '
+              '-read /srv/tilery/tmp/lebanon-latest.osm.pbf -appendcache')
     as_tilery(ctx,
               'env PGHOST=/var/run/postgresql/ imposm3 import '
-              '-mapping /srv/tilery/mapping.yml '
-              '-read /srv/tilery/tmp/ile-de-france-latest.osm.pbf '
-              '-connection="postgis:///tilery" -overwritecache')
-    as_tilery(ctx,
-              'env PGHOST=/var/run/postgresql/ imposm3 import '
-              '-mapping /srv/tilery/mapping.yml '
-              '-read /srv/tilery/tmp/lebanon-latest.osm.pbf '
-              '-connection="postgis:///tilery" -appendcache')
-    as_tilery(ctx,
-              'env PGHOST=/var/run/postgresql/ imposm3 import '
-              '-mapping /srv/tilery/mapping.yml '
-              '-connection="postgis:///tilery" -write '
-              '-deployproduction')
+              '-config /srv/tilery/imposm.conf -diff -write -deployproduction')
 
 
 @task
@@ -259,9 +253,11 @@ def systemctl(ctx, cmd):
 
 
 @task
-def logs(ctx, lines=50):
-    ctx.run(f'journalctl --lines {lines} --unit renderd --unit apache2 '
-            '--unit nginx')
+def logs(ctx, lines=50, services=None):
+    if not services:
+        services = 'renderd apache2 nginx imposm'
+    services = ' --unit '.join(services.split())
+    ctx.run(f'journalctl --lines {lines} --unit {services}')
 
 
 @task
@@ -271,12 +267,12 @@ def psql(ctx, query, dbname='wolf'):
 
 @task
 def clear_cache(ctx):
-    ctx.run('rm -rf /srv/tilery/cache/*')
+    ctx.run('rm -rf /srv/tilery/tmp/tiles/*')
 
 
 @task
 def restart(ctx, services=None):
-    services = services or 'renderd apache2 nginx'
+    services = services or 'renderd apache2 nginx imposm'
     ctx.run('sudo systemctl restart {}'.format(services))
 
 
@@ -284,5 +280,5 @@ def restart(ctx, services=None):
 def render(ctx, map='default', min=1, max=10):
     as_tilery(ctx, f'render_list --map {map} --all --force --num-threads 8 '
                    f'--socket /var/run/renderd/renderd.sock '
-                   f'--tile-dir /srv/tilery/cache '
+                   f'--tile-dir /srv/tilery/tmp/tiles '
                    f' --min-zoom {min} --max-zoom {max}')

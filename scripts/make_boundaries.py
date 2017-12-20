@@ -324,6 +324,14 @@ async def process():
         if properties['name:en'] == 'South Sudan':
             sudan, _ = await load_country(conn, 'السودان')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
+        if properties['name:en'] == 'Nepal':
+            claim, _ = await get_relation(conn, type="boundary",
+                                          name="Extent of Nepal Claim")
+            polygon = await add_area(conn, polygon, claim)
+        if properties['name:en'] == 'India':
+            claim, _ = await get_relation(conn, type="boundary",
+                                          name="Extent of Nepal Claim")
+            polygon = await remove_area(conn, polygon, claim)
         if properties['name:en'] == 'Morocco':
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",

@@ -3,5 +3,4 @@ minicli
 overpy
 postgis
 requests
-shapefile
 ujson

@@ -288,10 +288,6 @@ async def compute_golan(conn):
         '$2::geometry)))', golan, majdal)
 
 
-async def compute_west_bank(conn):
-    return await get_relation(conn, place="region", name="الضفة الغربية")
-
-
 async def remove_area(conn, shape, other):
     return await conn.fetchval(
         'SELECT ST_Difference($1::geometry, $2::geometry)', shape, other)
@@ -315,17 +311,29 @@ async def process():
     golan = await compute_golan(conn)
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
+        if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
+            continue
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
         if properties['name:en'] == 'Israel':
             polygon = await remove_area(conn, polygon, golan)
-            west_bank, _ = await compute_west_bank(conn)
+            west_bank, _ = await get_relation(conn, place="region",
+                                              name="الضفة الغربية")
             polygon = await remove_area(conn, polygon, west_bank)
         if properties['name:en'] == 'Syria':
             polygon = await add_area(conn, polygon, golan)
         if properties['name:en'] == 'South Sudan':
-            print('Dealing with South Sudan / Sudan boundary')
             sudan, _ = await load_country(conn, 'السودان')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
+        if properties['name:en'] == 'Morocco':
+            # Western Sahara
+            esh, props = await get_relation(conn, boundary="disputed",
+                                            name="الصحراء الغربية")
+            polygon = await remove_area(conn, polygon, esh)
+            features.append({
+                'type': 'Feature',
+                'geometry': esh.geojson,
+                'properties': props
+            })
         features.append({
             'type': 'Feature',
             'geometry': polygon.geojson,

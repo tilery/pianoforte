@@ -3,22 +3,249 @@ from pathlib import Path
 import asyncpg
 import overpy
 import requests
-import shapefile
 import ujson as json
 from minicli import cli, run
-from postgis import GeometryCollection, Polygon, LineString, MultiPolygon
+from postgis import LineString, MultiLineString
 from postgis.asyncpg import register
 
 OVERPASS = 'http://overpass-api.de/api/interpreter'
 SRC = "/home/ybon/Code/maps/pianoforte/data/boundary234/boundary234"
 DEST = "tmp/boundary.json"
 
+COUNTRIES = [
+    "Andorra",  # Andorra
+    "Angola",  # Angola
+    "Anguilla",  # Anguilla
+    "Antigua and Barbuda",  # Antigua and Barbuda
+    "Argentina",  # Argentina
+    "Australia",  # Australia
+    "Ayiti",  # Haiti
+    "Azərbaycan",  # Azerbaijan
+    "Barbados",  # Barbados
+    "Belau",  # Palau
+    "België / Belgique / Belgien",  # Belgium
+    "Belize",  # Belize
+    "Bermuda",  # Bermuda
+    "Bolivia",  # Bolivia
+    "Bosna i Hercegovina / Босна и Херцеговина",  # Bosnia and Herzegovina
+    "Botswana",  # Botswana
+    "Brasil",  # Brazil
+    "British Indian Ocean Territory",  # British Indian Ocean Territory
+    "British Sovereign Base Areas",  # British Sovereign Base Areas
+    "British Virgin Islands",  # British Virgin Islands
+    "Brunei Darussalam",  # Brunei
+    "Burkina Faso",  # Burkina Faso
+    "Burundi",  # Burundi
+    "Bénin",  # Benin
+    "Cabo Verde",  # Cape Verde
+    "Cameroun",  # Cameroon
+    "Canada",  # Canada
+    "Cayman Islands",  # Cayman Islands
+    "Chile",  # Chile
+    "Città del Vaticano",  # Vatican City
+    "Colombia",  # Colombia
+    "Comores Komori جزر القمر",  # Comoros
+    "Congo",  # Congo-Brazzaville
+    "Kūki 'Āirani",  # Cook Islands
+    "Costa Rica",  # Costa Rica
+    "Crna Gora / Црна Гора",  # Montenegro
+    "Cuba",  # Cuba
+    "Côte d’Ivoire",  # Côte d'Ivoire
+    "Danmark",  # Denmark
+    "Deutschland",  # Germany
+    "Djibouti جيبوتي",  # Djibouti
+    "Dominica",  # Dominica
+    "Ecuador",  # Ecuador
+    "Eesti",  # Estonia
+    "El Salvador",  # El Salvador
+    "España",  # Spain
+    "eSwatini Swaziland",  # Swaziland
+    "Falkland Islands (Malvinas)",  # Falkland Islands
+    "France",  # France
+    "Føroyar",  # Faroe Islands
+    "Gabon",  # Gabon
+    "Gambia",  # Gambia
+    "Ghana",  # Ghana
+    "Gibraltar",  # Gibraltar
+    "Grenada",  # Grenada
+    "Guatemala",  # Guatemala
+    "Guernsey",  # Guernsey
+    "Guinea Ecuatorial",  # Equatorial Guinea
+    "Guiné-Bissau",  # Guinea-Bissau
+    "Guinée",  # Guinea
+    "Guyana",  # Guyana
+    "Honduras",  # Honduras
+    "Hrvatska",  # Croatia
+    "India",  # India
+    "Indonesia",  # Indonesia
+    "Ireland",  # Ireland
+    "Isle of Man",  # Isle of Man
+    "Italia",  # Italy
+    "Jamaica",  # Jamaica
+    "Jersey",  # Jersey
+    "Kalaallit Nunaat",  # Greenland
+    "Kenya",  # Kenya
+    "Kiribati",  # Kiribati
+    "Ködörösêse tî Bêafrîka - République Centrafricaine",  # Central African
+                                                           # Republic
+    "Latvija",  # Latvia
+    "Lesotho",  # Lesotho
+    "Liberia",  # Liberia
+    "Liechtenstein",  # Liechtenstein
+    "Lietuva",  # Lithuania
+    "Lëtzebuerg",  # Luxembourg
+    "Madagasikara",  # Madagascar
+    "Magyarország",  # Hungary
+    "Malawi",  # Malawi
+    "Malaysia",  # Malaysia
+    "Mali",  # Mali
+    "Malta",  # Malta
+    "Maroc ⵍⵎⵖⵔⵉⴱ المغرب",  # Morocco
+    "Mauritius",  # Mauritius
+    "Micronesia",  # Federated States of Micronesia
+    "Moldova",  # Moldova
+    "Monaco",  # Monaco
+    "Monaco",  # Monaco
+    "Montserrat",  # Montserrat
+    "Moçambique",  # Mozambique
+    "México",  # Mexico
+    "M̧ajeļ",  # Marshall Islands
+    "Namibia",  # Namibia
+    "Naoero",  # Nauru
+    "Nederland",  # The Netherlands
+    "New Zealand/Aotearoa",  # New Zealand
+    "Nicaragua",  # Nicaragua
+    "Niger",  # Niger
+    "Nigeria",  # Nigeria
+    "Niuē",  # Niue
+    "Norge",  # Norway
+    "Togo",  # Togo
+    "Oʻzbekiston",  # Uzbekistan
+    "Panamá",  # Panama
+    "Papua Niugini",  # Papua New Guinea
+    "Paraguay",  # Paraguay
+    "Perú",  # Peru
+    "Philippines",  # Philippines
+    "Pitcairn Islands",  # Pitcairn Islands
+    "Polska",  # Poland
+    "Portugal",  # Portugal
+    "Kosova",  # Kosovo
+    "República Dominicana",  # Dominican Republic
+    "România",  # Romania
+    "Rwanda",  # Rwanda
+    "République démocratique du Congo",  # Democratic Republic of the Congo
+    "Saint Helena, Ascension and Tristan da Cunha",  # Saint Helena, Ascension
+                                                     # and Tristan da Cunha
+    "Saint Kitts and Nevis",  # Saint Kitts and Nevis
+    "Saint Lucia",  # Saint Lucia
+    "Saint Vincent and the Grenadines",  # Saint Vincent and the Grenadines
+    "San Marino",  # San Marino
+    "Schweiz/Suisse/Svizzera/Svizra",  # Switzerland
+    "Sesel",  # Seychelles
+    "Shqipëria",  # Albania
+    "Sierra Leone",  # Sierra Leone
+    "Singapore",  # Singapore
+    "Slovenija",  # Slovenia
+    "Slovensko",  # Slovakia
+    "Solomon Islands",  # Solomon Islands
+    "Soomaaliya الصومال",  # Somalia
+    "South Africa",  # South Africa
+    "South Georgia and South Sandwich Islands",  # South Georgia and the South
+                                                 # Sandwich Islands
+    "South Sudan",  # South Sudan
+    "Suomi",  # Finland
+    "Suriname",  # Suriname
+    "Sverige",  # Sweden
+    "São Tomé e Príncipe",  # São Tomé and Príncipe
+    "Sénégal",  # Senegal
+    "Sāmoa",  # Samoa
+    "Tanzania",  # Tanzania
+    "Tchad تشاد",  # Chad
+    "The Bahamas",  # The Bahamas
+    "Timór Lorosa'e",  # East Timor
+    "Togo",  # Togo
+    "Tokelau",  # Tokelau
+    "Tonga",  # Tonga
+    "Trinidad and Tobago",  # Trinidad and Tobago
+    "Turks and Caicos Islands",  # Turks and Caicos Islands
+    "Tuvalu",  # Tuvalu
+    "Türkiye",  # Turkey
+    "Türkmenistan",  # Turkmenistan
+    "Uganda",  # Uganda
+    "United Kingdom",  # United Kingdom
+    "United States of America",  # United States of America
+    "Uruguay",  # Uruguay
+    "Vanuatu",  # Vanuatu
+    "Venezuela",  # Venezuela
+    "Viti",  # Fiji
+    "Việt Nam",  # Vietnam
+    "Zambia",  # Zambia
+    "Zimbabwe",  # Zimbabwe
+    "Ísland",  # Iceland
+    "Österreich",  # Austria
+    "Česko",  # Czechia
+    "Ελλάδα",  # Greece
+    "Κύπρος - Kıbrıs",  # Cyprus
+    "Беларусь",  # Belarus
+    "България",  # Bulgaria
+    "Кыргызстан",  # Kyrgyzstan
+    "Македонија",  # Macedonia
+    "Монгол улс",  # Mongolia
+    "Россия",  # Russia
+    "Србија",  # Serbia
+    "Тоҷикистон",  # Tajikistan
+    "Україна",  # Ukraine
+    "Қазақстан",  # Kazakhstan
+    "Հայաստան",  # Armenia
+    "מדינת ישראל",  # Israel
+    "افغانستان",  # Afghanistan
+    "الأراضي الفلسطينية",  # Palestine
+    "الأردن",  # Jordan
+    "الإمارات العربيّة المتّحدة",  # United Arab Emirates
+    "الجمهورية العربية الصحراوية الديمقراطية‎‎",   # Sahrawi Arab Democratic
+                                                 # Republic
+    "السعودية",  # Saudi Arabia
+    "السودان",  # Sudan
+    "العراق",  # Iraq
+    "اليمن",  # Yemen
+    "تونس",  # Tunisia
+    "سوريا",  # Syria
+    "عمان",  # Oman
+    "لبنان",  # Lebanon
+    "مصر",  # Egypt
+    "موريتانيا",  # Mauritania
+    "ދިވެހިރާއްޖެ",  # Maldives
+    "नेपाल",  # Nepal
+    "বাংলাদেশ",  # Bangladesh
+    "ශ්‍රී ලංකාව இலங்கை",  # Sri Lanka
+    "ประเทศไทย",  # Thailand
+    "ປະເທດລາວ",  # Laos
+    "འབྲུག་ཡུལ་",  # Bhutan
+    "မြန်မာ",  # Myanmar
+    "საქართველო",  # Georgia
+    "ኢትዮጵያ",  # Ethiopia
+    "ኤርትራ إرتريا",  # Eritrea
+    "ព្រះរាជាណាចក្រ​កម្ពុជា",  # Cambodia
+    "‏البحرين‎",  # Bahrain
+    "‏الكويت‎",  # Kuwait
+    "‏ایران‎",  # Iran
+    "‏قطر‎",  # Qatar
+    "‏پاکستان‎",  # Pakistan
+    "ⵍⵉⴱⵢⴰ ليبيا",  # Libya
+    "ⵍⵣⵣⴰⵢⴻⵔ الجزائر",  # Algeria
+    "中国",  # China
+    "日本",  # Japan
+    "臺灣",  # Taiwan
+    "대한민국",  # South Korea
+    "조선민주주의인민공화국",  # North Korea
+]
 
-async def get_relation(**tags):
+
+def get_relation(**tags):
     tags = "".join(f'["{k}"="{v}"]' for k, v in tags.items())
-    path = Path('tmp') / 'boundary' / tags
+    path = Path('tmp') / 'boundary' / tags.replace('/', '_')
     if not path.exists():
-        params = {'data': f'relation{tags};(._;>;);out body;'}
+        params = {'data': f'[out:json];relation{tags};(._;>;);out body;'}
         resp = requests.get(OVERPASS, params=params)
         data = resp.content
         with path.open('wb') as f:
@@ -27,33 +254,37 @@ async def get_relation(**tags):
     else:
         with path.open() as f:
             data = f.read()
-    relation = overpy.Result.from_xml(data).relations[0]
+    try:
+        relation = overpy.Result.from_json(json.loads(data)).relations[0]
+    except IndexError:
+        raise ValueError(f'Cannot find relation for {tags}')
     collection = []
     for member in relation.members:
         coords = []
-        if member.role != 'outer':
+        # Nepal disputed way without outer role:
+        # http://www.openstreetmap.org/way/202061325
+        if member.role != 'outer' and member.ref != 202061325:
             continue
         way = member.resolve()
         for node in way.nodes:
             coords.append((float(node.lon), float(node.lat)))
-        klass = Polygon if coords[0] == coords[-1] else LineString
-        collection.append(klass(coords))
-    geom = GeometryCollection(collection)
-    return geom
+        collection.append(LineString(coords))
+    geom = MultiLineString(collection)
+    return geom, relation.tags
 
 
 async def make_polygon(conn, geom):
     return await conn.fetchval(
-        'SELECT ST_MakePolygon(ST_LineMerge('
-        'ST_CollectionExtract($1::geometry, 2)))', geom)
+        'SELECT ST_Multi(ST_Collect(ST_MakePolygon((sub.dump).geom))) FROM '
+        '(SELECT ST_Dump(ST_LineMerge($1::geometry)) as dump) AS sub', geom)
 
 
 async def compute_golan(conn):
-    golan = await get_relation(boundary="administrative", admin_level="8",
-                               name="מועצה אזורית גולן")
+    golan, _ = get_relation(boundary="administrative", admin_level="8",
+                            name="מועצה אזורית גולן")
     golan = await make_polygon(conn, golan)
-    majdal = await get_relation(boundary="administrative", admin_level="8",
-                                name="مجدل شمس")
+    majdal, _ = get_relation(boundary="administrative", admin_level="8",
+                             name="مجدل شمس")
     majdal = await make_polygon(conn, majdal)
     return await conn.fetchval(
         'SELECT ST_MakePolygon(ST_ExteriorRing(ST_Union($1::geometry, '
@@ -61,7 +292,7 @@ async def compute_golan(conn):
 
 
 async def compute_west_bank(conn):
-    relation = await get_relation(place="region", name="الضفة الغربية")
+    relation, _ = get_relation(place="region", name="الضفة الغربية")
     return await make_polygon(conn, relation)
 
 
@@ -89,21 +320,16 @@ async def process():
     await register(conn)
     features = []
     golan = await compute_golan(conn)
-    reader = shapefile.Reader(SRC)
-    fields = [f[0] for f in reader.fields[1:]]
-    shapes = reader.shapes()
-    records = reader.records()
-    for shape, record in zip(shapes, records):
-        properties = dict(zip(fields, record))
-        if properties['admin_leve'] != '2':
-            continue
-        shapes = extract_shapes(shape)
-        polygon = MultiPolygon(shapes)
-        if properties['name_en'] == 'Israel':
+    for idx, name in enumerate(COUNTRIES):
+        shape, properties = get_relation(boundary='administrative',
+                                         admin_level=2, name=name)
+        print(f'''"{properties['name']}",  # {properties['name:en']}''')
+        polygon = await make_polygon(conn, shape)
+        if properties['name:en'] == 'Israel':
             polygon = await remove_area(conn, polygon, golan)
             west_bank = await compute_west_bank(conn)
             polygon = await remove_area(conn, polygon, west_bank)
-        if properties['name_en'] == 'Syria':
+        if properties['name:en'] == 'Syria':
             polygon = await add_area(conn, polygon, golan)
         features.append({
             'type': 'Feature',

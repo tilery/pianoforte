@@ -119,7 +119,6 @@ COUNTRIES = [
     "Nigeria",  # Nigeria
     "Niuē",  # Niue
     "Norge",  # Norway
-    "Togo",  # Togo
     "Oʻzbekiston",  # Uzbekistan
     "Panamá",  # Panama
     "Papua Niugini",  # Papua New Guinea
@@ -241,7 +240,7 @@ COUNTRIES = [
 ]
 
 
-def get_relation(**tags):
+async def get_relation(conn, **tags):
     tags = "".join(f'["{k}"="{v}"]' for k, v in tags.items())
     path = Path('tmp') / 'boundary' / tags.replace('/', '_')
     if not path.exists():
@@ -269,8 +268,8 @@ def get_relation(**tags):
         for node in way.nodes:
             coords.append((float(node.lon), float(node.lat)))
         collection.append(LineString(coords))
-    geom = MultiLineString(collection)
-    return geom, relation.tags
+    shape = await make_polygon(conn, MultiLineString(collection))
+    return shape, relation.tags
 
 
 async def make_polygon(conn, geom):
@@ -280,20 +279,17 @@ async def make_polygon(conn, geom):
 
 
 async def compute_golan(conn):
-    golan, _ = get_relation(boundary="administrative", admin_level="8",
-                            name="מועצה אזורית גולן")
-    golan = await make_polygon(conn, golan)
-    majdal, _ = get_relation(boundary="administrative", admin_level="8",
-                             name="مجدل شمس")
-    majdal = await make_polygon(conn, majdal)
+    golan, _ = await get_relation(conn, boundary="administrative",
+                                  admin_level="8", name="מועצה אזורית גולן")
+    majdal, _ = await get_relation(conn, boundary="administrative",
+                                   admin_level="8", name="مجدل شمس")
     return await conn.fetchval(
         'SELECT ST_MakePolygon(ST_ExteriorRing(ST_Union($1::geometry, '
         '$2::geometry)))', golan, majdal)
 
 
 async def compute_west_bank(conn):
-    relation, _ = get_relation(place="region", name="الضفة الغربية")
-    return await make_polygon(conn, relation)
+    return await get_relation(conn, place="region", name="الضفة الغربية")
 
 
 async def remove_area(conn, shape, other):
@@ -306,12 +302,9 @@ async def add_area(conn, shape, other):
         'SELECT ST_Union($1::geometry, $2::geometry)', shape, other)
 
 
-def extract_shapes(shape):
-    parts = list(shape.parts) + [len(shape.points)]
-    shapes = []
-    for idx in range(len(parts) - 1):
-        shapes.append([shape.points[parts[idx]:parts[idx+1]]])
-    return shapes
+async def load_country(conn, name):
+    return await get_relation(conn, boundary='administrative', admin_level=2,
+                              name=name)
 
 
 @cli
@@ -321,16 +314,18 @@ async def process():
     features = []
     golan = await compute_golan(conn)
     for idx, name in enumerate(COUNTRIES):
-        shape, properties = get_relation(boundary='administrative',
-                                         admin_level=2, name=name)
+        polygon, properties = await load_country(conn, name)
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
-        polygon = await make_polygon(conn, shape)
         if properties['name:en'] == 'Israel':
             polygon = await remove_area(conn, polygon, golan)
-            west_bank = await compute_west_bank(conn)
+            west_bank, _ = await compute_west_bank(conn)
             polygon = await remove_area(conn, polygon, west_bank)
         if properties['name:en'] == 'Syria':
             polygon = await add_area(conn, polygon, golan)
+        if properties['name:en'] == 'South Sudan':
+            print('Dealing with South Sudan / Sudan boundary')
+            sudan, _ = await load_country(conn, 'السودان')  # Sudan
+            polygon = await remove_area(conn, polygon, sudan)
         features.append({
             'type': 'Feature',
             'geometry': polygon.geojson,

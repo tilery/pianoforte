@@ -6,7 +6,7 @@ import requests
 import shapefile
 import ujson as json
 from minicli import cli, run
-from postgis import GeometryCollection, Polygon, LineString
+from postgis import GeometryCollection, Polygon, LineString, MultiPolygon
 from postgis.asyncpg import register
 
 OVERPASS = 'http://overpass-api.de/api/interpreter'
@@ -60,6 +60,11 @@ async def compute_golan(conn):
         '$2::geometry)))', golan, majdal)
 
 
+async def compute_west_bank(conn):
+    relation = await get_relation(place="region", name="الضفة الغربية")
+    return await make_polygon(conn, relation)
+
+
 async def remove_area(conn, shape, other):
     return await conn.fetchval(
         'SELECT ST_Difference($1::geometry, $2::geometry)', shape, other)
@@ -68,6 +73,14 @@ async def remove_area(conn, shape, other):
 async def add_area(conn, shape, other):
     return await conn.fetchval(
         'SELECT ST_Union($1::geometry, $2::geometry)', shape, other)
+
+
+def extract_shapes(shape):
+    parts = list(shape.parts) + [len(shape.points)]
+    shapes = []
+    for idx in range(len(parts) - 1):
+        shapes.append([shape.points[parts[idx]:parts[idx+1]]])
+    return shapes
 
 
 @cli
@@ -81,18 +94,21 @@ async def process():
     shapes = reader.shapes()
     records = reader.records()
     for shape, record in zip(shapes, records):
-        data = dict(zip(fields, record))
-        if data['admin_leve'] != '2':
+        properties = dict(zip(fields, record))
+        if properties['admin_leve'] != '2':
             continue
-        polygon = Polygon([shape.points])
-        if data['name_en'] == 'Israel':
+        shapes = extract_shapes(shape)
+        polygon = MultiPolygon(shapes)
+        if properties['name_en'] == 'Israel':
             polygon = await remove_area(conn, polygon, golan)
-        if data['name_en'] == 'Syria':
+            west_bank = await compute_west_bank(conn)
+            polygon = await remove_area(conn, polygon, west_bank)
+        if properties['name_en'] == 'Syria':
             polygon = await add_area(conn, polygon, golan)
-            print(polygon.geojson)
         features.append({
             'type': 'Feature',
-            'geometry': polygon.geojson
+            'geometry': polygon.geojson,
+            'properties': properties
         })
     await conn.close()
     with Path(DEST).open('w') as f:

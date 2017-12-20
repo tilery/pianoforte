@@ -288,6 +288,22 @@ async def compute_golan(conn):
         '$2::geometry)))', golan, majdal)
 
 
+async def compute_doklam(conn):
+    # https://en.wikipedia.org/wiki/en:Doklam?uselang=fr
+    shape, _ = await get_relation(conn, boundary="administrative",
+                                  admin_level="3", name="Doklam 洞郎地区")
+    other, _ = await get_relation(conn, boundary="administrative",
+                                  admin_level="3", name="鲁林地区")
+    shape = await add_area(conn, shape, other)
+    other, _ = await get_relation(conn, boundary="administrative",
+                                  admin_level="3", name="查马普地区")
+    shape = await add_area(conn, shape, other)
+    other, _ = await get_relation(conn, boundary="administrative",
+                                  admin_level="3", name="基伍地区")
+    shape = await add_area(conn, shape, other)
+    return shape
+
+
 async def remove_area(conn, shape, other):
     return await conn.fetchval(
         'SELECT ST_Difference($1::geometry, $2::geometry)', shape, other)
@@ -308,7 +324,9 @@ async def process():
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
     features = []
+    # Used more than once.
     golan = await compute_golan(conn)
+    doklam = await compute_doklam(conn)
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
@@ -332,6 +350,10 @@ async def process():
             claim, _ = await get_relation(conn, type="boundary",
                                           name="Extent of Nepal Claim")
             polygon = await remove_area(conn, polygon, claim)
+        if properties['name:en'] == 'China':
+            polygon = await remove_area(conn, polygon, doklam)
+        if properties['name:en'] == 'Bhutan':
+            polygon = await add_area(conn, polygon, doklam)
         if properties['name:en'] == 'Morocco':
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",

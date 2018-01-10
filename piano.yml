@@ -163,8 +163,13 @@ Layer:
   geometry: "polygon"
   <<: *extents84
   Datasource:
-    file: http://nuage.yohanboniface.me/boundary_lines.zip
-    type: "shape"
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, 'no' as maritime
+          FROM
+            itl_boundary
+        ) AS data
 
 - id: country
   geometry: point

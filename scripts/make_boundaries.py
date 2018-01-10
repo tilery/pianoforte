@@ -9,8 +9,6 @@ from postgis import LineString, MultiLineString
 from postgis.asyncpg import register
 
 OVERPASS = 'http://overpass-api.de/api/interpreter'
-SRC = "/home/ybon/Code/maps/pianoforte/data/boundary234/boundary234"
-DEST = "tmp/boundary.json"
 
 COUNTRIES = [
     "Andorra",  # Andorra
@@ -320,7 +318,7 @@ async def load_country(conn, name):
 
 
 @cli
-async def process():
+async def process(destination: Path):
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
     features = []
@@ -370,7 +368,7 @@ async def process():
             'properties': properties
         })
     await conn.close()
-    with Path(DEST).open('w') as f:
+    with destination.open('w') as f:
         json.dump({'type': 'FeatureCollection', 'features': features}, f)
 
 

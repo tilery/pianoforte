@@ -34,6 +34,7 @@
   }
 }
 
+#itl_boundary_label[zoom>=10],
 #boundary_label[admin_level<=4][zoom>=10],
 #boundary_label[zoom>=13] {
   text-name: "'      '+[name]+'      '";

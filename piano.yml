@@ -155,8 +155,8 @@ Layer:
   geometry: "polygon"
   <<: *extents84
   Datasource:
-    file: http://nuage.yohanboniface.me/boundary_lines_simplified.zip
-    type: "shape"
+    file: data/boundary.json
+    type: geojson
 
 - id: itl_boundary
   class: ""

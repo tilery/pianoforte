@@ -48,8 +48,7 @@ Layer:
   <<: *extents
   Datasource:
     file: "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
-    type: "shape"
-  advanced: {}
+    type: shape
 
 - id: land
   class: ""
@@ -57,8 +56,7 @@ Layer:
   <<: *extents
   Datasource:
     file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
-    type: "shape"
-  advanced: {}
+    type: shape
 
 - id: landuse
   class: ""
@@ -235,8 +233,8 @@ Layer:
   geometry: "polygon"
   <<: *extents84
   Datasource:
-    file: http://nuage.yohanboniface.me/boundary_lines_simplified.zip
-    type: "shape"
+    file: data/boundary.json
+    type: geojson
 
 - id: itl_boundary
   class: ""

@@ -7,3 +7,4 @@ tmp/*
 *.mbtiles
 *.xml
 node_modules/
+__pycache__/

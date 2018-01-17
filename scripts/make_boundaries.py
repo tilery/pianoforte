@@ -325,6 +325,8 @@ async def process(destination: Path):
     # Used more than once.
     golan = await compute_golan(conn)
     doklam = await compute_doklam(conn)
+    bir_tawil, _ = await get_relation(conn, type="boundary",
+                                      name="بيرطويل (Bir Tawil)")
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
@@ -340,6 +342,10 @@ async def process(destination: Path):
         if properties['name:en'] == 'South Sudan':
             sudan, _ = await load_country(conn, 'السودان')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
+        if properties['name:en'] == 'Sudan':
+            polygon = await remove_area(conn, polygon, bir_tawil)
+        if properties['name:en'] == 'Egypt':
+            polygon = await add_area(conn, polygon, bir_tawil)
         if properties['name:en'] == 'Nepal':
             claim, _ = await get_relation(conn, type="boundary",
                                           name="Extent of Nepal Claim")

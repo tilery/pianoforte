@@ -155,7 +155,7 @@ def services():
 
 
 def service(name):
-    put(f'scripts/{name}.service /etc/systemd/system/{name}.service')
+    put(f'scripts/{name}.service', f'/etc/systemd/system/{name}.service')
     run(f'systemctl enable {name}.service')
 
 
@@ -204,13 +204,14 @@ def download(force=False):
 
 @minicli.cli(name='import')
 def import_data(remove_backup=False):
-    with sudo(user='tilery'), env(PGHOST='/var/run/postgresql/'), screen():
+    with sudo(user='tilery'), env(PGHOST='/var/run/postgresql/'):
         if remove_backup:
             run('imposm3 import -config /srv/tilery/imposm.conf -removebackup')
-        run('imposm3 import -diff -config /srv/tilery/imposm.conf '
-            '-read /srv/tilery/tmp/planet-latest.osm.pbf -appendcache')
-        run('imposm3 import -config /srv/tilery/imposm.conf -diff -write '
-            '-deployproduction')
+        with screen():
+            run('imposm3 import -diff -config /srv/tilery/imposm.conf '
+                '-read /srv/tilery/tmp/planet-latest.osm.pbf -overwritecache '
+                '-write -deployproduction 2>&1 | tee /tmp/imposm.log')
+        run('tail -F /tmp/imposm.log')
 
 
 @minicli.cli

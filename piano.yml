@@ -166,7 +166,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, 'no' as maritime
+            geometry, 'no' as maritime, "name:fr"
           FROM
             itl_boundary
         ) AS data

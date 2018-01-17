@@ -9,6 +9,10 @@
   [zoom>=10] {
     line-width: 2;
   }
+  ['name:fr'='Sahara occidental'][zoom<8] {
+    polygon-pattern-file: url('icon/pattern/conflict.svg');
+    polygon-pattern-alignment: local;
+  }
 }
 #boundary[admin_level=3][zoom>=4][zoom<5],
 #boundary[admin_level=4][zoom>=4][zoom<5],

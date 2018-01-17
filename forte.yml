@@ -244,7 +244,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, 'no' AS maritime
+            geometry, 'no' AS maritime, "name:fr"
           FROM
             itl_boundary
         ) AS data
@@ -382,7 +382,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, '2' AS admin_level, name, '{lang}' as lang
+            geometry, '2' AS admin_level, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang
           FROM
             itl_boundary
         ) AS data

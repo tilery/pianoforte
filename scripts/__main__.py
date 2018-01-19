@@ -1,19 +1,20 @@
+import subprocess
 from pathlib import Path
 
 import minicli
 import requests
-from usine import (cd, chown, config, cp, enter, env, exists, exit, mkdir, put,
+from usine import (cd, chown, config, connect, cp, env, exists, mkdir, put,
                    run, screen, sudo)
 
 
 def put_dir(local, remote):
     local = Path(local)
     remote = Path(remote)
+    mkdir(remote)
     for path in local.rglob('*'):
         relative_path = path.relative_to(local)
         if path.is_dir():
-            with sudo(user='tilery'):
-                mkdir(remote / relative_path)
+            mkdir(remote / relative_path)
         else:
             put(str(path), str(remote / relative_path))
 
@@ -170,10 +171,25 @@ def ssh_keys():
 
 @minicli.cli
 def deploy():
-    put('mapping.yml', '/srv/tilery/mapping.yml')
-    put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
-    put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
-    put('scripts/index.html', '/srv/tilery/index.html')
+    with sudo(user='tilery'):
+        mkdir('/srv/tilery/pianoforte/data')
+        put('mapping.yml', '/srv/tilery/mapping.yml')
+        put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
+        put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
+        put('scripts/index.html', '/srv/tilery/index.html')
+        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
+                        'forte.yml', '--format', 'xml', '--output', 'forte.xml',
+                        '--localconfig', 'localconfig-remote.js'])
+        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
+                        'piano.yml', '--format', 'xml', '--output', 'piano.xml',
+                        '--localconfig', 'localconfig-remote.js'])
+        put('forte.xml', '/srv/tilery/pianoforte/forte.xml')
+        put('piano.xml', '/srv/tilery/pianoforte/piano.xml')
+        put('data/country.csv', '/srv/tilery/pianoforte/data/country.csv')
+        put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
+        put('data/boundary.json', '/srv/tilery/pianoforte/data/boundary.json')
+        put_dir('fonts/', '/srv/tilery/pianoforte/fonts')
+        put_dir('icon/', '/srv/tilery/pianoforte/icon')
 
 
 def download_shapefile(name, url, force):
@@ -261,14 +277,10 @@ def boundary(force=False):
         run('psql --single-transaction -d tilery --file /tmp/boundary.sql')
 
 
-@minicli.before
-def before(hostname):
-    enter(hostname=hostname)
-
-
-@minicli.after
-def after():
-    exit()
+@minicli.wrap
+def wrapper(hostname):
+    with connect(hostname=hostname):
+        yield
 
 
 if __name__ == '__main__':

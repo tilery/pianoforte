@@ -318,7 +318,7 @@ async def load_country(conn, name):
 
 
 @cli
-async def process(destination: Path):
+async def international(destination: Path):
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
     features = []
@@ -368,6 +368,28 @@ async def process(destination: Path):
                 'geometry': esh.geojson,
                 'properties': props
             })
+        features.append({
+            'type': 'Feature',
+            'geometry': polygon.geojson,
+            'properties': properties
+        })
+    await conn.close()
+    with destination.open('w') as f:
+        json.dump({'type': 'FeatureCollection', 'features': features}, f)
+
+
+@cli
+async def conflict(destination: Path):
+    areas = [
+        {'name': 'مثلث حلايب‎', 'type': 'boundary'},  # Hala'ib Triangle
+        {'name': 'بيرطويل (Bir Tawil)', 'type': 'boundary'},
+        {'name': 'الصحراء الغربية', 'type': 'boundary'},  # Western Sahara
+    ]
+    conn = await asyncpg.connect(database='pianoforte')
+    await register(conn)
+    features = []
+    for props in areas:
+        polygon, properties = await get_relation(conn, **props)
         features.append({
             'type': 'Feature',
             'geometry': polygon.geojson,

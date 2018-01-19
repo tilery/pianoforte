@@ -150,6 +150,14 @@ Layer:
             admin_level DESC
         ) AS data
 
+- id: disputed
+  class: ""
+  geometry: "polygon"
+  <<: *extents84
+  Datasource:
+    file: data/disputed.json
+    type: geojson
+
 - id: itl_boundary_low
   class: ""
   geometry: "polygon"

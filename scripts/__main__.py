@@ -177,17 +177,18 @@ def deploy():
         put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
         put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
         put('scripts/index.html', '/srv/tilery/index.html')
-        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
-                        'forte.yml', '--format', 'xml', '--output', 'forte.xml',
-                        '--localconfig', 'localconfig-remote.js'])
-        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
-                        'piano.yml', '--format', 'xml', '--output', 'piano.xml',
-                        '--localconfig', 'localconfig-remote.js'])
+        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js',
+                        'export', 'forte.yml', '--format', 'xml', '--output',
+                        'forte.xml', '--localconfig', 'localconfig-remote.js'])
+        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js',
+                        'export', 'piano.yml', '--format', 'xml', '--output',
+                        'piano.xml', '--localconfig', 'localconfig-remote.js'])
         put('forte.xml', '/srv/tilery/pianoforte/forte.xml')
         put('piano.xml', '/srv/tilery/pianoforte/piano.xml')
         put('data/country.csv', '/srv/tilery/pianoforte/data/country.csv')
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
         put('data/boundary.json', '/srv/tilery/pianoforte/data/boundary.json')
+        put('data/disputed.json', '/srv/tilery/pianoforte/data/disputed.json')
         put_dir('fonts/', '/srv/tilery/pianoforte/fonts')
         put_dir('icon/', '/srv/tilery/pianoforte/icon')
 

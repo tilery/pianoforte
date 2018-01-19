@@ -1,3 +1,10 @@
+#disputed[zoom>=3][zoom<10] {
+  line-width: 1;
+  line-color: @admin_3;
+  line-clip: true;
+  polygon-pattern-file: url('icon/pattern/disputed.svg');
+  polygon-pattern-alignment: local;
+}
 #itl_boundary_low[zoom>=3][zoom<6][maritime!='yes'],
 #itl_boundary[zoom>=6] {
   line-width: 1;
@@ -8,10 +15,6 @@
   }
   [zoom>=10] {
     line-width: 2;
-  }
-  ['name:fr'='Sahara occidental'][zoom<8] {
-    polygon-pattern-file: url('icon/pattern/conflict.svg');
-    polygon-pattern-alignment: local;
   }
 }
 #boundary[admin_level=3][zoom>=4][zoom<5],

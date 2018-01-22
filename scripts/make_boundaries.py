@@ -277,18 +277,18 @@ async def make_polygon(conn, geom):
 
 
 async def compute_golan(conn):
-    golan, _ = await get_relation(conn, boundary="administrative",
-                                  admin_level="8", name="מועצה אזורית גולן")
+    golan, props = await get_relation(conn, boundary="administrative",
+                                      admin_level="8", name="מועצה אזורית גולן")
     majdal, _ = await get_relation(conn, boundary="administrative",
                                    admin_level="8", name="مجدل شمس")
     return await conn.fetchval(
         'SELECT ST_MakePolygon(ST_ExteriorRing(ST_Union($1::geometry, '
-        '$2::geometry)))', golan, majdal)
+        '$2::geometry)))', golan, majdal), props
 
 
 async def compute_doklam(conn):
     # https://en.wikipedia.org/wiki/en:Doklam?uselang=fr
-    shape, _ = await get_relation(conn, boundary="administrative",
+    shape, props = await get_relation(conn, boundary="administrative",
                                   admin_level="3", name="Doklam 洞郎地区")
     other, _ = await get_relation(conn, boundary="administrative",
                                   admin_level="3", name="鲁林地区")
@@ -299,7 +299,7 @@ async def compute_doklam(conn):
     other, _ = await get_relation(conn, boundary="administrative",
                                   admin_level="3", name="基伍地区")
     shape = await add_area(conn, shape, other)
-    return shape
+    return shape, props
 
 
 async def remove_area(conn, shape, other):
@@ -318,15 +318,31 @@ async def load_country(conn, name):
 
 
 @cli
-async def international(destination: Path):
+async def process(itl_path: Path=Path('tmp/boundary.json'),
+                  disputed_path: Path=Path('data/disputed.json')):
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
     features = []
+    disputed = []
+
+    def add_disputed(polygon, properties):
+        disputed.append({
+            'type': 'Feature',
+            'geometry': polygon.geojson,
+            'properties': properties
+        })
+
     # Used more than once.
-    golan = await compute_golan(conn)
-    doklam = await compute_doklam(conn)
-    bir_tawil, _ = await get_relation(conn, type="boundary",
-                                      name="بيرطويل (Bir Tawil)")
+    golan, props = await compute_golan(conn)
+    add_disputed(golan, props)
+    doklam, props = await compute_doklam(conn)
+    add_disputed(doklam, props)
+    bir_tawil, props = await get_relation(conn, type='boundary',
+                                          name='بيرطويل (Bir Tawil)')
+    add_disputed(bir_tawil, props)
+    halaib_triangle, props = await get_relation(conn, type='boundary',
+                                                name='مثلث حلايب‎')
+    add_disputed(halaib_triangle, props)
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
@@ -347,8 +363,9 @@ async def international(destination: Path):
         if properties['name:en'] == 'Egypt':
             polygon = await add_area(conn, polygon, bir_tawil)
         if properties['name:en'] == 'Nepal':
-            claim, _ = await get_relation(conn, type="boundary",
-                                          name="Extent of Nepal Claim")
+            claim, props = await get_relation(conn, type="boundary",
+                                              name="Extent of Nepal Claim")
+            add_disputed(claim, props)
             polygon = await add_area(conn, polygon, claim)
         if properties['name:en'] == 'India':
             claim, _ = await get_relation(conn, type="boundary",
@@ -362,6 +379,7 @@ async def international(destination: Path):
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",
                                             name="الصحراء الغربية")
+            add_disputed(esh, props)
             polygon = await remove_area(conn, polygon, esh)
             features.append({
                 'type': 'Feature',
@@ -374,30 +392,10 @@ async def international(destination: Path):
             'properties': properties
         })
     await conn.close()
-    with destination.open('w') as f:
+    with itl_path.open('w') as f:
         json.dump({'type': 'FeatureCollection', 'features': features}, f)
-
-
-@cli
-async def conflict(destination: Path):
-    areas = [
-        {'name': 'مثلث حلايب‎', 'type': 'boundary'},  # Hala'ib Triangle
-        {'name': 'بيرطويل (Bir Tawil)', 'type': 'boundary'},
-        {'name': 'الصحراء الغربية', 'type': 'boundary'},  # Western Sahara
-    ]
-    conn = await asyncpg.connect(database='pianoforte')
-    await register(conn)
-    features = []
-    for props in areas:
-        polygon, properties = await get_relation(conn, **props)
-        features.append({
-            'type': 'Feature',
-            'geometry': polygon.geojson,
-            'properties': properties
-        })
-    await conn.close()
-    with destination.open('w') as f:
-        json.dump({'type': 'FeatureCollection', 'features': features}, f)
+    with disputed_path.open('w') as f:
+        json.dump({'type': 'FeatureCollection', 'features': disputed}, f)
 
 
 if __name__ == '__main__':

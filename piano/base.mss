@@ -25,11 +25,12 @@
 @rail_fill:         #ddd;
 @rail_case:         #aaa;
 
-@country_text:      #333;
-@city_text:         #333;
-@town_text:         #444;
-@village_text:      #444;
-@landuse_text:      #555;
+@country_text:      #777;
+@state_text:        #666;
+@city_text:         #444;
+@town_text:         #666;
+@village_text:      #666;
+@landuse_text:      #777;
 
 @road_text:         #222;
 

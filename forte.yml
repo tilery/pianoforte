@@ -37,6 +37,7 @@ Stylesheet:
 - forte/base.mss
 - admin.mss
 - forte/roads.mss
+- labels.mss
 - forte/labels.mss
 - forte/poi.mss
 

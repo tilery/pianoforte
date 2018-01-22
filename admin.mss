@@ -1,9 +1,17 @@
-#disputed[zoom>=3][zoom<10] {
+#disputed[zoom>=3][zoom<12] {
   line-width: 1;
   line-color: @admin_3;
   line-clip: true;
   polygon-pattern-file: url('icon/pattern/disputed.svg');
   polygon-pattern-alignment: local;
+  [zoom=9] {
+    polygon-pattern-opacity: 0.8;
+    line-opacity: 0.8;
+  }
+  [zoom>=10] {
+    polygon-pattern-opacity: 0.4;
+    line-opacity: 0.4;
+  }
 }
 #itl_boundary_low[zoom>=3][zoom<6][maritime!='yes'],
 #itl_boundary[zoom>=6] {

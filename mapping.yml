@@ -85,9 +85,9 @@ tables:
     - {key: access, name: access, type: string}
     - {key: service, name: service, type: string}
     - {key: null, name: class, type: mapping_key}
-    filters:
-      exclude_tags:
-      - [area, 'yes']
+    filter:
+      reject:
+        area: yes
     mappings:
       railway:
         mapping:
@@ -111,9 +111,9 @@ tables:
     - {key: access, name: access, type: string}
     - {key: service, name: service, type: string}
     - {key: null, name: class, type: mapping_key}
-    filters:
-      exclude_tags:
-      - [area, 'yes']
+    filte:
+      reject:
+        area: yes
     mappings:
       roads:
         mapping:
@@ -144,7 +144,7 @@ tables:
     - {key: 'name:ar', name: namear, type: string}
     - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
-    - {key: null, name: area, type: pseudoarea}
+    - {key: null, name: area, type: area}
     mapping:
       amenity: [swimming_pool]
       landuse: [basin, reservoir]

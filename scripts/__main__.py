@@ -1,22 +1,9 @@
 import subprocess
-from pathlib import Path
 
 import minicli
 import requests
 from usine import (cd, chown, config, connect, cp, env, exists, mkdir, put,
                    run, screen, sudo)
-
-
-def put_dir(local, remote):
-    local = Path(local)
-    remote = Path(remote)
-    mkdir(remote)
-    for path in local.rglob('*'):
-        relative_path = path.relative_to(local)
-        if path.is_dir():
-            mkdir(remote / relative_path)
-        else:
-            put(str(path), str(remote / relative_path))
 
 
 def python(cmd):
@@ -176,7 +163,7 @@ def deploy():
         put('mapping.yml', '/srv/tilery/mapping.yml')
         put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
         put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
-        put('scripts/index.html', '/srv/tilery/index.html')
+        put('scripts/www', '/srv/tilery/www')
         subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js',
                         'export', 'forte.yml', '--format', 'xml', '--output',
                         'forte.xml', '--localconfig', 'localconfig-remote.js'])
@@ -189,8 +176,8 @@ def deploy():
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
         put('data/boundary.json', '/srv/tilery/pianoforte/data/boundary.json')
         put('data/disputed.json', '/srv/tilery/pianoforte/data/disputed.json')
-        put_dir('fonts/', '/srv/tilery/pianoforte/fonts')
-        put_dir('icon/', '/srv/tilery/pianoforte/icon')
+        put('fonts/', '/srv/tilery/pianoforte/fonts')
+        put('icon/', '/srv/tilery/pianoforte/icon')
 
 
 def download_shapefile(name, url, force):

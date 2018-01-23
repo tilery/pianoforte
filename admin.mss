@@ -37,7 +37,7 @@
   line-clip: true;
   line-width: 0.8;
   line-color: @admin_3;
-  [zoom<7] {
+  [zoom<6] {
     line-color: lighten(@admin_3, 5);
   }
   [zoom>=7] {

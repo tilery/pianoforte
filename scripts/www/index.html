@@ -1,10 +1,10 @@
 <meta charset="utf-8">
 <title>Piano - Forte</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js"></script>
-<script src="https://unpkg.com/leaflet-basemaps@0.2.3/L.Control.Basemaps-min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet-basemaps@0.2.3/L.Control.Basemaps.css">
+<link rel="stylesheet" href="./leaflet/leaflet.css">
+<script src="./leaflet/leaflet.js"></script>
+<script src="./leaflet-hash.js"></script>
+<script src="./L.Control.Basemaps.js"></script>
+<link rel="stylesheet" href="./L.Control.Basemaps.css">
 <style type="text/css">
     html, body, #map {
         width: 100%;
@@ -19,10 +19,10 @@
     L.hash(map)
 
     const basemaps = [
-        L.tileLayer('/tile/forte/{z}/{x}/{y}.png', {
+        L.tileLayer('/tile/forte{r}/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }),
-        L.tileLayer('/tile/piano/{z}/{x}/{y}.png', {
+        L.tileLayer('/tile/piano{r}/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         })
     ]

@@ -9,6 +9,12 @@
   text-wrap-width: 40;
   text-label-position-tolerance: 20;
   text-character-spacing: 1;
+  text-placement-type: simple;
+  text-placements: 'N,S';
+  text-dx: 10;
+  text-dy: 10;
+  text-margin: 5;
+  text-line-spacing: 0.1;
 }
 #place_low[type='state'][zoom>=5][zoom<=10] {
   text-name: '[name]';

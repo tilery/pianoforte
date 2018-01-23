@@ -219,13 +219,6 @@ Layer:
             itl_boundary
         ) AS data
 
-- id: country
-  geometry: point
-  <<: *extents84
-  Datasource:
-    type: csv
-    file: data/country.csv
-
 - id: railway
   class: ""
   geometry: linestring
@@ -264,6 +257,13 @@ Layer:
   Datasource:
     type: csv
     file: data/city.csv
+
+- id: country
+  geometry: point
+  <<: *extents84
+  Datasource:
+    type: csv
+    file: data/country.csv
 
 - id: place_low
   class: ""

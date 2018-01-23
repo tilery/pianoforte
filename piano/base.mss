@@ -117,10 +117,6 @@
   }
 }
 
-#waterway {
-  polygon-fill: @water;
-}
-
 /* ******** */
 /* RAILWAYS */
 /* ******** */

@@ -91,7 +91,20 @@ Layer:
           type IN ('park', 'garden', 'forest', 'wood', 'cemetery', 'grass')
       ) AS data
 
-- id: waterway
+- id: waterareas_gen
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, area
+        FROM
+          osm_waterareas_gen
+      ) AS data
+
+- id: waterareas
   class: ""
   geometry: polygon
   <<: *extents
@@ -102,6 +115,32 @@ Layer:
           geometry, type, area
         FROM
           osm_waterareas
+      ) AS data
+
+- id: waterways
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name
+        FROM
+          osm_waterways
+      ) AS data
+
+- id: waterways_gen
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, name
+        FROM
+          osm_waterways_gen
       ) AS data
 
 - id: buildings

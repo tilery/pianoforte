@@ -136,22 +136,6 @@
   }
 }
 
-#waterareas_gen[zoom>=4],
-#waterareas[zoom>=13] {
-  polygon-fill: @water;
-}
-
-#waterways_gen[zoom>=10][zoom<13],
-#waterways[zoom>=13] {
-  line-color: @water;
-  line-cap: round;
-  line-join: round;
-  line-width: 1;
-  [zoom>=14] {
-    line-width: 3;
-  }
-}
-
 /* ******** */
 /* RAILWAYS */
 /* ******** */

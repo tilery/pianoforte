@@ -71,7 +71,7 @@ Layer:
         FROM
           osm_landusages
         WHERE
-          type IS NOT NULL
+          type IS NOT NULL AND geometry && !bbox!
         ORDER BY
           area DESC
       ) AS data
@@ -168,6 +168,7 @@ Layer:
           osm_roads_gen
         WHERE
           type IN ('motorway', 'trunk', 'primary', 'secondary', 'primary_link', 'motorway_link', 'trunk_link')
+          AND geometry && !bbox!
         ORDER BY
           rank DESC
       ) AS data
@@ -185,6 +186,7 @@ Layer:
           osm_railway
         WHERE
           service != 'spur' AND type NOT IN ('funicular', 'disused', 'tram', 'monorail')
+          AND geometry && !bbox!
         ORDER BY
           z_order
       ) AS data
@@ -225,6 +227,7 @@ Layer:
             admin_level > 2
             AND admin_level < 10
             AND "type" IS NOT NULL
+            AND geometry && !bbox!
           ORDER BY
             admin_level DESC
         ) AS data
@@ -286,7 +289,7 @@ Layer:
           FROM
             osm_places
           WHERE
-            type IN ('state', 'city', 'town')
+            type IN ('state', 'city', 'town') AND geometry && !bbox!
           ORDER BY
             prio
         ) AS data
@@ -321,6 +324,8 @@ Layer:
             ST_Centroid(ST_Union(geometry)) AS geometry, '{lang}' as lang, type, station, COALESCE(NULLIF(short_name, ''), name) AS name
           FROM
             osm_transport_points
+          WHERE
+            geometry && !bbox!
           GROUP BY
             type, station, name, short_name
         ) AS data
@@ -363,7 +368,7 @@ Layer:
         FROM
           osm_landusages
         WHERE
-          name != ''
+          name != '' AND geometry && !bbox!
         ORDER BY
           area DESC
       ) AS data
@@ -380,7 +385,7 @@ Layer:
         FROM
           osm_landusages_gen
         WHERE
-          name != ''
+          name != '' AND geometry && !bbox!
       ) AS data
 
 - id: itl_boundary_label
@@ -412,6 +417,7 @@ Layer:
             AND admin_level > 2
             AND admin_level < 10
             AND "type" IS NOT NULL
+            AND geometry && !bbox!
           ORDER BY
             admin_level DESC
         ) AS data

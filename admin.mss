@@ -35,17 +35,20 @@
   eraser/comp-op: darken;
   eraser/line-clip: true;
   line-clip: true;
-  line-width: 1;
+  line-width: 0.8;
   line-color: @admin_3;
+  [zoom<7] {
+    line-color: lighten(@admin_3, 5);
+  }
   [zoom>=7] {
     line-dasharray: 10,5,5,5;
+    line-width: 1;
+    [admin_level>=6] {
+      line-dasharray: 5,5,2,5;
+    }
   }
   [zoom>=13] {
     line-color: darken(@admin_3, 10);
-  }
-  [admin_level>=6] {
-    line-dasharray: 5,5,2,5;
-    line-width: 0.8;
   }
 }
 

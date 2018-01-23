@@ -44,7 +44,7 @@
 #land[zoom>=10] {
   polygon-fill: @land;
 }
-#landuse_gen[zoom<14],
+#landuse_gen[zoom>=4][zoom<14],
 #landuse[type="residential"][zoom>=12],
 #landuse[zoom>=14] {
   #landuse_gen {

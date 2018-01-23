@@ -409,7 +409,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, admin_level, name,'{lang}' as lang
+            geometry, admin_level, name, '{lang}' as lang
           FROM
             osm_admin
           WHERE

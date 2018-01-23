@@ -19,6 +19,7 @@
   text-halo-radius: 1;
   text-size: 10;
   text-wrap-width: 40;
+  text-margin: 30;
   [zoom>=7] {
     text-size: 11;
     text-wrap-width: 50;
@@ -38,9 +39,9 @@
     text-character-spacing: 2;
   }
 }
-#city[capital='yes'][zoom>=4][zoom<=10],
+#city[capital='yes'][zoom>=5][zoom<=10],
 #city[zoom>=7][zoom<=10],
-#place_low[capital='yes'][zoom>=4][zoom<=10],
+#place_low[capital='yes'][zoom>=5][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
   shield-file: url('icon/place/town.svg');

@@ -462,3 +462,33 @@ Layer:
         FROM
           osm_housenumbers_area
       ) AS data
+
+- id: waterway_label
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, COALESCE(NULLIF(name{lang}, ''), name) as name
+        FROM
+          osm_waterways
+        WHERE
+          name IS NOT NULL AND geometry && !bbox!
+      ) AS data
+
+- id: waterway_label_low
+  class: ""
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+      ( SELECT
+          geometry, type, COALESCE(NULLIF(name{lang}, ''), name) as name
+        FROM
+          osm_waterways_gen
+        WHERE
+          name IS NOT NULL AND geometry && !bbox!
+      ) AS data

@@ -143,3 +143,20 @@
     }
   }
 }
+
+
+#waterway_label_low[zoom>=12][zoom<17],
+#waterway_label[zoom>=17] {
+  text-name: '[name]';
+  text-face-name: @regular;
+  text-fill: darken(@water, 25);
+  text-halo-fill: @halo;
+  text-halo-radius: 1;
+  text-placement: line;
+  text-min-distance: 300;
+  text-size: 12;
+  text-label-position-tolerance: 50;
+  [zoom>=15] {
+    text-size: 13;
+  }
+}

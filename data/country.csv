@@ -1,4 +1,4 @@
-nameorig,name,nameen,namear,type,latitude,longitude,iso
+name,name:fr,name:en,name:ar,type,latitude,longitude,iso
 France,France,France,فرنسا,1-HC,46.603354,1.8883335,FR
 Deutschland,Allemagne,Germany,ألمانيا,1-PME/FE,51.0834196,10.4234469,DE
 España,Espagne,Spain,إسبانيا,1-PME/FE,40.0028028,-4.003104,ES

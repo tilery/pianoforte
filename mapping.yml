@@ -77,6 +77,9 @@ tables:
     - {key: null, name: geometry, type: geometry}
     - {key: null, name: type, type: mapping_value}
     - {key: name, name: name, type: string}
+    - {key: 'name:fr', name: namefr, type: string}
+    - {key: 'name:ar', name: namear, type: string}
+    - {key: 'name:en', name: nameen, type: string}
     - {key: tunnel, name: tunnel, type: boolint}
     - {key: bridge, name: bridge, type: boolint}
     - {key: oneway, name: oneway, type: direction}
@@ -128,6 +131,9 @@ tables:
     - {key: null, name: osm_id, type: id}
     - {key: null, name: geometry, type: geometry}
     - {key: name, name: name, type: string}
+    - {key: 'name:fr', name: namefr, type: string}
+    - {key: 'name:ar', name: namear, type: string}
+    - {key: 'name:en', name: nameen, type: string}
     - {key: short_name, name: short_name, type: string}
     - {key: station, name: station, type: string}
     - {key: null, name: type, type: mapping_value}
@@ -170,6 +176,9 @@ tables:
     - {key: null, name: osm_id, type: id}
     - {key: null, name: geometry, type: geometry}
     - {key: name, name: name, type: string}
+    - {key: 'name:fr', name: namefr, type: string}
+    - {key: 'name:ar', name: namear, type: string}
+    - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
     mapping:
       amenity: [university, school, library, hospital, fire_station, police, townhall,
@@ -183,6 +192,9 @@ tables:
     - {key: null, name: osm_id, type: id}
     - {key: null, name: geometry, type: geometry}
     - {key: name, name: name, type: string}
+    - {key: 'name:fr', name: namefr, type: string}
+    - {key: 'name:ar', name: namear, type: string}
+    - {key: 'name:en', name: nameen, type: string}
     - {key: null, name: type, type: mapping_value}
     mapping:
       amenity: [university, school, library, hospital, fire_station, police, townhall,

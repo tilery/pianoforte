@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 import minicli
@@ -156,22 +157,34 @@ def ssh_keys():
                 '| tee --append .ssh/authorized_keys'.format(key=key))
 
 
+def export(flavour='forte', filename='forte', lang='fr'):
+    env = os.environ.copy()
+    env['LANG'] = lang
+    subprocess.call(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
+                     f'{flavour}.yml', '--format', 'xml', '--output',
+                     f'{filename}.xml', '--localconfig',
+                     'localconfig-remote.js'], env=env)
+
+
 @minicli.cli
 def deploy():
+    flavours = [
+        ('forte', 'forte', 'fr'),
+        ('piano', 'piano', 'fr'),
+        ('forte', 'forteen', 'en'),
+        ('piano', 'pianoen', 'en'),
+        ('forte', 'fortear', 'ar'),
+        ('piano', 'pianoar', 'ar'),
+    ]
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
         put('mapping.yml', '/srv/tilery/mapping.yml')
         put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
         put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
         put('scripts/www', '/srv/tilery/www')
-        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js',
-                        'export', 'forte.yml', '--format', 'xml', '--output',
-                        'forte.xml', '--localconfig', 'localconfig-remote.js'])
-        subprocess.run(['node', '/home/ybon/Code/js/kosmtik/index.js',
-                        'export', 'piano.yml', '--format', 'xml', '--output',
-                        'piano.xml', '--localconfig', 'localconfig-remote.js'])
-        put('forte.xml', '/srv/tilery/pianoforte/forte.xml')
-        put('piano.xml', '/srv/tilery/pianoforte/piano.xml')
+        for flavour, name, lang in flavours:
+            export(flavour, name, lang)
+            put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
         put('data/country.csv', '/srv/tilery/pianoforte/data/country.csv')
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
         put('data/boundary.json', '/srv/tilery/pianoforte/data/boundary.json')
@@ -258,11 +271,13 @@ def render(map='default', min=1, max=10):
 
 
 @minicli.cli
-def boundary(force=False):
-    if not exists('/tmp/boundary.sql') or force:
-        put('tmp/boundary.sql', '/tmp/boundary.sql')
-    with sudo(user='tilery'):
-        run('psql --single-transaction -d tilery --file /tmp/boundary.sql')
+def import_sql():
+    names = ['boundary', 'city', 'country']
+    for name in names:
+        path = f'/srv/tilery/tmp/{name}.sql'
+        with sudo(user='tilery'):
+            put(f'tmp/{name}.sql', path)
+            run(f'psql --single-transaction -d tilery --file {path}')
 
 
 @minicli.wrap

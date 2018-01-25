@@ -319,6 +319,25 @@ Layer:
             prio, population DESC NULLS LAST
         ) AS data
 
+- id: boundary_label_low
+  class: ""
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *db
+    table: |-
+        ( SELECT
+            geometry, admin_level, '{lang}' as lang, COALESCE(NULLIF(name{lang}, ''), name) as name
+          FROM
+            osm_admin
+          WHERE
+            "type"='administrative'
+            AND admin_level = 3 OR admin_level = 4
+            AND geometry && !bbox!
+          ORDER BY
+            admin_level DESC
+        ) AS data
+
 - id: landuse_label
   class: ""
   geometry: "polygon"

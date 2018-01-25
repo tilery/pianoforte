@@ -16,7 +16,7 @@
   text-margin: 5;
   text-line-spacing: 0.1;
 }
-#place_low[type='state'][zoom>=5][zoom<=10] {
+#boundary_label_low[zoom>=5][zoom<=10] {
   text-name: '[name]';
   text-face-name: @medium;
   text-placement: point;

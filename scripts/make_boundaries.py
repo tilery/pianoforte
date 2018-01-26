@@ -165,6 +165,7 @@ COUNTRIES = [
     "TV",  # Tuvalu
     "TR",  # Turkey
     "TM",  # Turkmenistan
+    "UA",  # Ukraine
     "UG",  # Uganda
     "GB",  # United Kingdom
     "US",  # United States of America
@@ -187,7 +188,6 @@ COUNTRIES = [
     #"RU",  # Russia
     "RS",  # Serbia
     "TJ",  # Tajikistan
-    #"UA",  # Ukraine
     "KZ",  # Kazakhstan
     "AM",  # Armenia
     "IL",  # Israel

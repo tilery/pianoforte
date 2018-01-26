@@ -11,6 +11,7 @@ from postgis.asyncpg import register
 OVERPASS = 'http://overpass-api.de/api/interpreter'
 
 COUNTRIES = [
+    #"DE",  # Germany
     "AD",  # Andorra
     "AO",  # Angola
     "AI",  # Anguilla
@@ -22,6 +23,7 @@ COUNTRIES = [
     "BB",  # Barbados
     "PW",  # Palau
     "BE",  # Belgium
+    "BY",  # Belarus
     "BZ",  # Belize
     "BM",  # Bermuda
     "BO",  # Bolivia
@@ -50,7 +52,6 @@ COUNTRIES = [
     "CU",  # Cuba
     "CI",  # Côte d'Ivoire
     "DK",  # Denmark
-    #"DE",  # Germany
     "DJ",  # Djibouti
     "DM",  # Dominica
     "EC",  # Ecuador
@@ -179,7 +180,6 @@ COUNTRIES = [
     "CZ",  # Czechia
     "GR",  # Greece
     "CY",  # Cyprus
-    #"BY",  # Belarus
     "BG",  # Bulgaria
     "KG",  # Kyrgyzstan
     "MK",  # Macedonia

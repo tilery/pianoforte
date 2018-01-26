@@ -195,7 +195,7 @@ COUNTRIES = [
     "PS",  # Palestine
     "JO",  # Jordan
     "AE",  # United Arab Emirates
-    "ES",   # Sahrawi Arab Democratic Republic
+    "EH",  # Western Sahara
     "SA",  # Saudi Arabia
     "SD",  # Sudan
     "IQ",  # Iraq

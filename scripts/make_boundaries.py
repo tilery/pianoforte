@@ -195,7 +195,7 @@ COUNTRIES = [
     "PS",  # Palestine
     "JO",  # Jordan
     "AE",  # United Arab Emirates
-    "EH",  # Western Sahara
+    "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
     "SA",  # Saudi Arabia
     "SD",  # Sudan
     "IQ",  # Iraq
@@ -344,7 +344,7 @@ async def process(itl_path: Path=Path('data/boundary.json'),
     add_disputed(halaib_triangle, props)
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'EH':
+        if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
             continue
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
         if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IL':

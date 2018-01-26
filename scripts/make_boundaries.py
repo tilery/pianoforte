@@ -29,7 +29,7 @@ COUNTRIES = [
     "BW",  # Botswana
     "BR",  # Brazil
     "IO",  # British Indian Ocean Territory
-    #"British Sovereign Base Areas",  # British Sovereign Base Areas
+    "British Sovereign Base Areas",  # British Sovereign Base Areas
     "VG",  # British Virgin Islands
     "BN",  # Brunei
     "BF",  # Burkina Faso
@@ -234,7 +234,7 @@ COUNTRIES = [
 
 
 async def get_relation(conn, **tags):
-    tags = "".join(f'["{k.replace("iso","ISO3166-1:alpha2")}"="{v}"]' for k, v in tags.items())
+    tags = "".join(f'["{k.replace("iso","ISO3166-1:alpha2") if (k == "iso" and len(v) == 2) else k.replace("iso","name")}"="{v}"]' for k, v in tags.items())
     dir = Path('tmp/boundary');
     if not dir.is_dir():
         dir.mkdir(parents=True);
@@ -344,37 +344,37 @@ async def process(itl_path: Path=Path('data/boundary.json'),
     add_disputed(halaib_triangle, props)
     for idx, name in enumerate(COUNTRIES):
         polygon, properties = await load_country(conn, name)
-        if properties['ISO3166-1:alpha2'] == 'EH':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'EH':
             continue
-        print(f'''"{properties['name']}",  # {properties['name:en']} - {properties['ISO3166-1:alpha2']}''')
-        if properties['ISO3166-1:alpha2'] == 'IL':
+        print(f'''"{properties['name']}",  # {properties['name:en']}''')
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IL':
             polygon = await remove_area(conn, polygon, golan)
             west_bank, _ = await get_relation(conn, place="region",
                                               name="الضفة الغربية")
             polygon = await remove_area(conn, polygon, west_bank)
-        if properties['ISO3166-1:alpha2'] == 'SY':
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SY':
             polygon = await add_area(conn, polygon, golan)
-        if properties['ISO3166-1:alpha2'] == 'SD':
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SD':
             sudan, _ = await load_country(conn, 'SD')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
         if properties['name:en'] == 'Sudan':
             polygon = await remove_area(conn, polygon, bir_tawil)
-        if properties['ISO3166-1:alpha2'] == 'EG':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'EG':
             polygon = await add_area(conn, polygon, bir_tawil)
-        if properties['ISO3166-1:alpha2'] == 'NP':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'NP':
             claim, props = await get_relation(conn, type="boundary",
                                               name="Extent of Nepal Claim")
             add_disputed(claim, props)
             polygon = await add_area(conn, polygon, claim)
-        if properties['ISO3166-1:alpha2'] == 'IN':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IN':
             claim, _ = await get_relation(conn, type="boundary",
                                           name="Extent of Nepal Claim")
             polygon = await remove_area(conn, polygon, claim)
-        if properties['ISO3166-1:alpha2'] == 'CN':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'CN':
             polygon = await remove_area(conn, polygon, doklam)
-        if properties['ISO3166-1:alpha2'] == 'BH':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'BH':
             polygon = await add_area(conn, polygon, doklam)
-        if properties['ISO3166-1:alpha2'] == 'MA':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'MA':
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",
                                             name="الصحراء الغربية")

@@ -354,7 +354,7 @@ async def process(itl_path: Path=Path('data/boundary.json'),
             polygon = await remove_area(conn, polygon, west_bank)
         if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SY':
             polygon = await add_area(conn, polygon, golan)
-        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SD':
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SS':
             sudan, _ = await load_country(conn, 'SD')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
         if properties['name:en'] == 'Sudan':

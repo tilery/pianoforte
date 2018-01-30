@@ -1,0 +1,7 @@
+download_url: https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
+replication_url: http://planet.openstreetmap.org/replication/hour/
+replication_interval: 1h
+pianoforteqa:
+  download_url: http://download.geofabrik.de/africa-latest.osm.pbf
+  replication_url: http://download.geofabrik.de/africa-updates/
+  replication_interval: 24h

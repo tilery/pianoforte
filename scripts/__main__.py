@@ -4,7 +4,7 @@ import subprocess
 import minicli
 import requests
 from usine import (cd, chown, config, connect, cp, env, exists, mkdir, put,
-                   run, screen, sudo)
+                   run, screen, sudo, template)
 
 
 def python(cmd):
@@ -159,7 +159,7 @@ def ssh_keys():
 
 def export(flavour='forte', filename='forte', lang='fr'):
     env = os.environ.copy()
-    env['LANG'] = lang
+    env['PIANOFORTE_LANG'] = lang
     subprocess.call(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
                      f'{flavour}.yml', '--format', 'xml', '--output',
                      f'{filename}.xml', '--localconfig',
@@ -168,6 +168,7 @@ def export(flavour='forte', filename='forte', lang='fr'):
 
 @minicli.cli
 def deploy():
+    """Send config files."""
     flavours = [
         ('forte', 'forte', 'fr'),
         ('piano', 'piano', 'fr'),
@@ -179,7 +180,8 @@ def deploy():
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
         put('mapping.yml', '/srv/tilery/mapping.yml')
-        put('scripts/imposm.conf', '/srv/tilery/imposm.conf')
+        imposm_conf = template('scripts/imposm.conf', **config)
+        put(imposm_conf, '/srv/tilery/imposm.conf')
         put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
         put('scripts/www', '/srv/tilery/www')
         for flavour, name, lang in flavours:
@@ -202,10 +204,10 @@ def download_shapefile(name, url, force):
 
 @minicli.cli
 def download(force=False):
-    path = '/srv/tilery/tmp/planet-latest.osm.pbf'
+    path = '/srv/tilery/tmp/data.osm.pbf'
     if not exists(path) or force:
-        run('wget https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf'
-            f' -O {path} --quiet')
+        url = config.download_url
+        run(f'wget {url} -O {path} --quiet')
     domain = 'http://data.openstreetmapdata.com/'
     download_shapefile(
         'simplified-land-polygons-complete-3857/simplified_land_polygons.shp',
@@ -226,7 +228,7 @@ def import_data(remove_backup=False):
             run('imposm3 import -config /srv/tilery/imposm.conf -removebackup')
         with screen():
             run('imposm3 import -diff -config /srv/tilery/imposm.conf '
-                '-read /srv/tilery/tmp/planet-latest.osm.pbf -overwritecache '
+                '-read /srv/tilery/tmp/data.osm.pbf -overwritecache '
                 '-write -deployproduction 2>&1 | tee /tmp/imposm.log')
         run('tail -F /tmp/imposm.log')
 
@@ -281,10 +283,10 @@ def import_sql():
 
 
 @minicli.wrap
-def wrapper(hostname):
-    with connect(hostname=hostname):
+def wrapper(hostname, configpath):
+    with connect(hostname=hostname, configpath=configpath):
         yield
 
 
 if __name__ == '__main__':
-    minicli.run(hostname='pianoforte')
+    minicli.run(hostname='pianoforteqa', configpath='usine.yml')

@@ -237,7 +237,6 @@ async def get_relation(conn, **tags):
     if not dir.is_dir():
         dir.mkdir(parents=True);
     path = Path('tmp') / 'boundary' / tags.replace('/', '_')
-    print(tags)
     if not path.exists():
         params = {'data': f'[out:json];relation{tags};(._;>;);out body;'}
         resp = requests.get(OVERPASS, params=params)

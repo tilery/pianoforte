@@ -231,12 +231,14 @@ COUNTRIES = [
     "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
 ]
 
+
 async def get_relation(conn, **tags):
-    tags = "".join(f'["{k.replace("iso","ISO3166-1:alpha2") if (k == "iso" and len(v) == 2) else k.replace("iso","name")}"="{v}"]' for k, v in tags.items())
-    dir = Path('tmp/boundary');
-    if not dir.is_dir():
-        dir.mkdir(parents=True);
-    path = Path('tmp') / 'boundary' / tags.replace('/', '_')
+    if 'iso' in tags:
+        tags['ISO3166-1:alpha2'] = tags.pop('iso')
+    tags = "".join(f'["{k}"="{v}"]' for k, v in tags.items())
+    path = Path('tmp/boundary')
+    path.mkdir(parents=True, exist_ok=True)
+    path = path / tags.replace('/', '_')
     if not path.exists():
         params = {'data': f'[out:json];relation{tags};(._;>;);out body;'}
         resp = requests.get(OVERPASS, params=params)
@@ -285,7 +287,7 @@ async def compute_golan(conn):
 async def compute_doklam(conn):
     # https://en.wikipedia.org/wiki/en:Doklam?uselang=fr
     shape, props = await get_relation(conn, boundary="administrative",
-                                  admin_level="3", name="Doklam 洞郎地区")
+                                      admin_level="3", name="Doklam 洞郎地区")
     other, _ = await get_relation(conn, boundary="administrative",
                                   admin_level="3", name="鲁林地区")
     shape = await add_area(conn, shape, other)
@@ -308,9 +310,9 @@ async def add_area(conn, shape, other):
         'SELECT ST_Union($1::geometry, $2::geometry)', shape, other)
 
 
-async def load_country(conn, iso):
+async def load_country(conn, **tags):
     return await get_relation(conn, boundary='administrative', admin_level=2,
-                              iso=iso)
+                              **tags)
 
 
 @cli
@@ -339,39 +341,41 @@ async def process(itl_path: Path=Path('data/boundary.json'),
     halaib_triangle, props = await get_relation(conn, type='boundary',
                                                 name='مثلث حلايب‎')
     add_disputed(halaib_triangle, props)
-    for idx, name in enumerate(COUNTRIES):
-        polygon, properties = await load_country(conn, name)
+    for idx, value in enumerate(COUNTRIES):
+        tags = {'iso': value} if len(value) == 2 else {'name': value}
+        polygon, properties = await load_country(conn, **tags)
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
             continue
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
-        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IL':
+        iso = properties.get('ISO3166-1:alpha2')
+        if iso == 'IL':
             polygon = await remove_area(conn, polygon, golan)
             west_bank, _ = await get_relation(conn, place="region",
                                               name="الضفة الغربية")
             polygon = await remove_area(conn, polygon, west_bank)
-        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SY':
+        if iso == 'SY':
             polygon = await add_area(conn, polygon, golan)
-        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SS':
-            sudan, _ = await load_country(conn, 'SD')  # Sudan
+        if iso == 'SS':
+            sudan, _ = await load_country(conn, iso='SD')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
         if properties['name:en'] == 'Sudan':
             polygon = await remove_area(conn, polygon, bir_tawil)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'EG':
+        if iso == 'EG':
             polygon = await add_area(conn, polygon, bir_tawil)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'NP':
+        if iso == 'NP':
             claim, props = await get_relation(conn, type="boundary",
                                               name="Extent of Nepal Claim")
             add_disputed(claim, props)
             polygon = await add_area(conn, polygon, claim)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IN':
+        if iso == 'IN':
             claim, _ = await get_relation(conn, type="boundary",
                                           name="Extent of Nepal Claim")
             polygon = await remove_area(conn, polygon, claim)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'CN':
+        if iso == 'CN':
             polygon = await remove_area(conn, polygon, doklam)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'BH':
+        if iso == 'BH':
             polygon = await add_area(conn, polygon, doklam)
-        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'MA':
+        if iso == 'MA':
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",
                                             name="الصحراء الغربية")

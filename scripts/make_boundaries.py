@@ -11,235 +11,231 @@ from postgis.asyncpg import register
 OVERPASS = 'http://overpass-api.de/api/interpreter'
 
 COUNTRIES = [
-    "Andorra",  # Andorra
-    "Angola",  # Angola
-    "Anguilla",  # Anguilla
-    "Antigua and Barbuda",  # Antigua and Barbuda
-    "Argentina",  # Argentina
-    "Australia",  # Australia
-    "Ayiti",  # Haiti
-    "Azərbaycan",  # Azerbaijan
-    "Barbados",  # Barbados
-    "Belau",  # Palau
-    "België / Belgique / Belgien",  # Belgium
-    "Belize",  # Belize
-    "Bermuda",  # Bermuda
-    "Bolivia",  # Bolivia
-    "Bosna i Hercegovina / Босна и Херцеговина",  # Bosnia and Herzegovina
-    "Botswana",  # Botswana
-    "Brasil",  # Brazil
-    "British Indian Ocean Territory",  # British Indian Ocean Territory
+    "AD",  # Andorra
+    "AE",  # United Arab Emirates
+    "AF",  # Afghanistan
+    "AO",  # Angola
+    "AG",  # Antigua and Barbuda
+    "AI",  # Anguilla
+    "AL",  # Albania
+    "AM",  # Armenia
+    "AR",  # Argentina
+    "AT",  # Austria
+    "AU",  # Australia
+    "AZ",  # Azerbaijan
+    "BA",  # Bosnia and Herzegovina
+    "BB",  # Barbados
+    "BD",  # Bangladesh
+    "BE",  # Belgium
+    "BF",  # Burkina Faso
+    "BG",  # Bulgaria
+    "BH",  # Bahrain
+    "BI",  # Burundi
+    "BJ",  # Benin
+    "BM",  # Bermuda
+    "BN",  # Brunei
+    "BO",  # Bolivia
+    "BR",  # Brazil
     "British Sovereign Base Areas",  # British Sovereign Base Areas
-    "British Virgin Islands",  # British Virgin Islands
-    "Brunei Darussalam",  # Brunei
-    "Burkina Faso",  # Burkina Faso
-    "Burundi",  # Burundi
-    "Bénin",  # Benin
-    "Cabo Verde",  # Cape Verde
-    "Cameroun",  # Cameroon
-    "Canada",  # Canada
-    "Cayman Islands",  # Cayman Islands
-    "Chile",  # Chile
-    "Città del Vaticano",  # Vatican City
-    "Colombia",  # Colombia
-    "Comores Komori جزر القمر",  # Comoros
-    "Congo",  # Congo-Brazzaville
-    "Kūki 'Āirani",  # Cook Islands
-    "Costa Rica",  # Costa Rica
-    "Crna Gora / Црна Гора",  # Montenegro
-    "Cuba",  # Cuba
-    "Côte d’Ivoire",  # Côte d'Ivoire
-    "Danmark",  # Denmark
-    "Deutschland",  # Germany
-    "Djibouti جيبوتي",  # Djibouti
-    "Dominica",  # Dominica
-    "Ecuador",  # Ecuador
-    "Eesti",  # Estonia
-    "El Salvador",  # El Salvador
-    "España",  # Spain
-    "eSwatini Swaziland",  # Swaziland
-    "Falkland Islands (Malvinas)",  # Falkland Islands
-    "France",  # France
-    "Føroyar",  # Faroe Islands
-    "Gabon",  # Gabon
-    "Gambia",  # Gambia
-    "Ghana",  # Ghana
-    "Gibraltar",  # Gibraltar
-    "Grenada",  # Grenada
-    "Guatemala",  # Guatemala
-    "Guernsey",  # Guernsey
-    "Guinea Ecuatorial",  # Equatorial Guinea
-    "Guiné-Bissau",  # Guinea-Bissau
-    "Guinée",  # Guinea
-    "Guyana",  # Guyana
-    "Honduras",  # Honduras
-    "Hrvatska",  # Croatia
-    "India",  # India
-    "Indonesia",  # Indonesia
-    "Ireland",  # Ireland
-    "Isle of Man",  # Isle of Man
-    "Italia",  # Italy
-    "Jamaica",  # Jamaica
-    "Jersey",  # Jersey
-    "Kalaallit Nunaat",  # Greenland
-    "Kenya",  # Kenya
-    "Kiribati",  # Kiribati
-    "Ködörösêse tî Bêafrîka - République Centrafricaine",  # Central African
-                                                           # Republic
-    "Latvija",  # Latvia
-    "Lesotho",  # Lesotho
-    "Liberia",  # Liberia
-    "Liechtenstein",  # Liechtenstein
-    "Lietuva",  # Lithuania
-    "Lëtzebuerg",  # Luxembourg
-    "Madagasikara",  # Madagascar
-    "Magyarország",  # Hungary
-    "Malawi",  # Malawi
-    "Malaysia",  # Malaysia
-    "Mali",  # Mali
-    "Malta",  # Malta
-    "Maroc ⵍⵎⵖⵔⵉⴱ المغرب",  # Morocco
-    "Mauritius",  # Mauritius
-    "Micronesia",  # Federated States of Micronesia
-    "Moldova",  # Moldova
-    "Monaco",  # Monaco
-    "Monaco",  # Monaco
-    "Montserrat",  # Montserrat
-    "Moçambique",  # Mozambique
-    "México",  # Mexico
-    "M̧ajeļ",  # Marshall Islands
-    "Namibia",  # Namibia
-    "Naoero",  # Nauru
-    "Nederland",  # The Netherlands
-    "New Zealand/Aotearoa",  # New Zealand
-    "Nicaragua",  # Nicaragua
-    "Niger",  # Niger
-    "Nigeria",  # Nigeria
-    "Niuē",  # Niue
-    "Norge",  # Norway
-    "Oʻzbekiston",  # Uzbekistan
-    "Panamá",  # Panama
-    "Papua Niugini",  # Papua New Guinea
-    "Paraguay",  # Paraguay
-    "Perú",  # Peru
-    "Philippines",  # Philippines
-    "Pitcairn Islands",  # Pitcairn Islands
-    "Polska",  # Poland
-    "Portugal",  # Portugal
-    "Kosova",  # Kosovo
-    "República Dominicana",  # Dominican Republic
-    "România",  # Romania
-    "Rwanda",  # Rwanda
-    "République démocratique du Congo",  # Democratic Republic of the Congo
-    "Saint Helena, Ascension and Tristan da Cunha",  # Saint Helena, Ascension
-                                                     # and Tristan da Cunha
-    "Saint Kitts and Nevis",  # Saint Kitts and Nevis
-    "Saint Lucia",  # Saint Lucia
-    "Saint Vincent and the Grenadines",  # Saint Vincent and the Grenadines
-    "San Marino",  # San Marino
-    "Schweiz/Suisse/Svizzera/Svizra",  # Switzerland
-    "Sesel",  # Seychelles
-    "Shqipëria",  # Albania
-    "Sierra Leone",  # Sierra Leone
-    "Singapore",  # Singapore
-    "Slovenija",  # Slovenia
-    "Slovensko",  # Slovakia
-    "Solomon Islands",  # Solomon Islands
-    "Soomaaliya الصومال",  # Somalia
-    "South Africa",  # South Africa
-    "South Georgia and South Sandwich Islands",  # South Georgia and the South
-                                                 # Sandwich Islands
-    "South Sudan",  # South Sudan
-    "Suomi",  # Finland
-    "Suriname",  # Suriname
-    "Sverige",  # Sweden
-    "São Tomé e Príncipe",  # São Tomé and Príncipe
-    "Sénégal",  # Senegal
-    "Sāmoa",  # Samoa
-    "Tanzania",  # Tanzania
-    "Tchad تشاد",  # Chad
-    "The Bahamas",  # The Bahamas
-    "Timór Lorosa'e",  # East Timor
-    "Togo",  # Togo
-    "Tokelau",  # Tokelau
-    "Tonga",  # Tonga
-    "Trinidad and Tobago",  # Trinidad and Tobago
-    "Turks and Caicos Islands",  # Turks and Caicos Islands
-    "Tuvalu",  # Tuvalu
-    "Türkiye",  # Turkey
-    "Türkmenistan",  # Turkmenistan
-    "Uganda",  # Uganda
-    "United Kingdom",  # United Kingdom
-    "United States of America",  # United States of America
-    "Uruguay",  # Uruguay
-    "Vanuatu",  # Vanuatu
-    "Venezuela",  # Venezuela
-    "Viti",  # Fiji
-    "Việt Nam",  # Vietnam
-    "Zambia",  # Zambia
-    "Zimbabwe",  # Zimbabwe
-    "Ísland",  # Iceland
-    "Österreich",  # Austria
-    "Česko",  # Czechia
-    "Ελλάδα",  # Greece
-    "Κύπρος - Kıbrıs",  # Cyprus
-    "Беларусь",  # Belarus
-    "България",  # Bulgaria
-    "Кыргызстан",  # Kyrgyzstan
-    "Македонија",  # Macedonia
-    "Монгол улс",  # Mongolia
-    "Россия",  # Russia
-    "Србија",  # Serbia
-    "Тоҷикистон",  # Tajikistan
-    "Україна",  # Ukraine
-    "Қазақстан",  # Kazakhstan
-    "Հայաստան",  # Armenia
-    "מדינת ישראל",  # Israel
-    "افغانستان",  # Afghanistan
-    "الأراضي الفلسطينية",  # Palestine
-    "الأردن",  # Jordan
-    "الإمارات العربيّة المتّحدة",  # United Arab Emirates
-    "الجمهورية العربية الصحراوية الديمقراطية‎‎",   # Sahrawi Arab Democratic
-                                                 # Republic
-    "السعودية",  # Saudi Arabia
-    "السودان",  # Sudan
-    "العراق",  # Iraq
-    "اليمن",  # Yemen
-    "تونس",  # Tunisia
-    "سوريا",  # Syria
-    "عمان",  # Oman
-    "لبنان",  # Lebanon
-    "مصر",  # Egypt
-    "موريتانيا",  # Mauritania
-    "ދިވެހިރާއްޖެ",  # Maldives
-    "नेपाल",  # Nepal
-    "বাংলাদেশ",  # Bangladesh
-    "ශ්‍රී ලංකාව இலங்கை",  # Sri Lanka
-    "ประเทศไทย",  # Thailand
-    "ປະເທດລາວ",  # Laos
-    "འབྲུག་ཡུལ་",  # Bhutan
-    "မြန်မာ",  # Myanmar
-    "საქართველო",  # Georgia
-    "ኢትዮጵያ",  # Ethiopia
-    "ኤርትራ إرتريا",  # Eritrea
-    "ព្រះរាជាណាចក្រ​កម្ពុជា",  # Cambodia
-    "‏البحرين‎",  # Bahrain
-    "‏الكويت‎",  # Kuwait
-    "‏ایران‎",  # Iran
-    "‏قطر‎",  # Qatar
-    "‏پاکستان‎",  # Pakistan
-    "ⵍⵉⴱⵢⴰ ليبيا",  # Libya
-    "ⵍⵣⵣⴰⵢⴻⵔ الجزائر",  # Algeria
-    "中国",  # China
-    "日本",  # Japan
-    "臺灣",  # Taiwan
-    "대한민국",  # South Korea
-    "조선민주주의인민공화국",  # North Korea
+    "BS",  # The Bahamas
+    "BT",  # Bhutan
+    "BW",  # Botswana
+    "BY",  # Belarus
+    "BZ",  # Belize
+    "CA",  # Canada
+    "CD",  # Democratic Republic of the Congo
+    "CF",  # Central African Republic
+    "CG",  # Congo-Brazzaville
+    "CH",  # Switzerland
+    "CI",  # Côte d'Ivoire
+    "CK",  # Cook Islands
+    "CL",  # Chile
+    "CM",  # Cameroon
+    "CN",  # CHINA
+    "CO",  # Colombia
+    "CR",  # Costa Rica
+    "CU",  # Cuba
+    "CV",  # Cape Verde
+    "CY",  # Cyprus
+    "CZ",  # Czechia
+    "DE",  # Germany
+    "DK",  # Denmark
+    "DJ",  # Djibouti
+    "DM",  # Dominica
+    "DO",  # Dominican Republic
+    "DZ",  # Algeria
+    "EC",  # Ecuador
+    "EE",  # Estonia
+    "EG",  # Egypt
+    "ER",  # Eritrea
+    "ES",  # Spain
+    "ET",  # Ethiopia
+    "FI",  # Finland
+    "FJ",  # Fiji
+    "FK",  # Falkland Islands
+    "FM",  # Federated States of Micronesia
+    "FO",  # Faroe Islands
+    "FR",  # France
+    "GA",  # Gabon
+    "GB",  # United Kingdom
+    "GD",  # Grenada
+    "GE",  # Georgia
+    "GG",  # Guernsey
+    "GH",  # Ghana
+    "GI",  # Gibraltar
+    "GL",  # Greenland
+    "GM",  # Gambia
+    "GN",  # Guinea
+    "GQ",  # Equatorial Guinea
+    "GR",  # Greece
+    "GS",  # South Georgia and the South Sandwich Islands
+    "GT",  # Guatemala
+    "GW",  # Guinea-Bissau
+    "GY",  # Guyana
+    "HN",  # Honduras
+    "HR",  # Croatia
+    "HT",  # Haiti
+    "HU",  # Hungary
+    "ID",  # Indonesia
+    "IE",  # Ireland
+    "IL",  # Israel
+    "IM",  # Isle of Man
+    "IN",  # India
+    "IO",  # British Indian Ocean Territory
+    "IQ",  # Iraq
+    "IR",  # Iran
+    "IS",  # Iceland
+    "IT",  # Italy
+    "JE",  # Jersey
+    "JM",  # Jamaica
+    "JO",  # Jordan
+    "KE",  # Kenya
+    "KG",  # Kyrgyzstan
+    "KH",  # Cambodia
+    "KI",  # Kiribati
+    "KM",  # Comoros
+    "KN",  # Saint Kitts and Nevis
+    "KR",  # South Korea
+    "KP",  # North Korea
+    "KW",  # Kuwait
+    "KY",  # Cayman Islands
+    "KZ",  # Kazakhstan
+    "LA",  # Laos
+    "LB",  # Lebanon
+    "LC",  # Saint Lucia
+    "LI",  # Liechtenstein
+    "LK",  # Sri Lanka
+    "LS",  # Lesotho
+    "LR",  # Liberia
+    "LT",  # Lithuania
+    "LU",  # Luxembourg
+    "LV",  # Latvia
+    "LY",  # Libya
+    "MA",  # Morocco
+    "MC",  # Monacos
+    "MD",  # Moldova
+    "ME",  # Montenegro
+    "MG",  # Madagascar
+    "MH",  # Marshall Islands
+    "MK",  # Macedonia
+    "ML",  # Mali
+    "MM",  # Myanmar
+    "MN",  # Mongolia
+    "MR",  # Mauritania
+    "MS",  # Montserrat
+    "MT",  # Malta
+    "MU",  # Mauritius
+    "MV",  # Maldives
+    "MW",  # Malawi
+    "MX",  # Mexico
+    "MY",  # Malaysia
+    "MZ",  # Mozambique
+    "NA",  # Namibia
+    "NE",  # Niger
+    "NG",  # Nigeria
+    "NI",  # Nicaragua
+    "NL",  # The Netherlands
+    "NO",  # Norway
+    "NP",  # Nepal
+    "NR",  # Nauru
+    "NU",  # Niue
+    "NZ",  # New Zealand
+    "OM",  # Oman
+    "PA",  # Panama
+    "PE",  # Peru
+    "PG",  # Papua New Guinea
+    "PH",  # Philippines
+    "PK",  # Pakistan
+    "PL",  # Poland
+    "PN",  # Pitcairn Islands
+    "PS",  # Palestine
+    "PT",  # Portugal
+    "PW",  # Palau
+    "PY",  # Paraguay
+    "QA",  # Qatar
+    "RO",  # Romania
+    "RS",  # Serbia
+    "RU",  # Russia
+    "RW",  # Rwanda
+    "SA",  # Saudi Arabia
+    "SB",  # Solomon Islands
+    "SC",  # Seychelles
+    "SD",  # Sudan
+    "SE",  # Sweden
+    "SG",  # Singapore
+    "SH",  # Saint Helena, Ascension and Tristan da Cunha
+    "SI",  # Slovenia
+    "SK",  # Slovakia
+    "SL",  # Sierra Leone
+    "SM",  # San Marino
+    "SN",  # Senegal
+    "SO",  # Somalia
+    "SR",  # Suriname
+    "SS",  # South Sudan
+    "ST",  # São Tomé and Príncipe
+    "SV",  # El Salvador
+    "SY",  # Syria
+    "SZ",  # Swaziland
+    "TC",  # Turks and Caicos Islands
+    "TD",  # Chad
+    "TG",  # Togo
+    "TH",  # Thailand
+    "TJ",  # Tajikistan
+    "TK",  # Tokelau
+    "TL",  # East Timor
+    "TM",  # Turkmenistan
+    "TN",  # Tunisia
+    "TO",  # Tonga
+    "TR",  # Turkey
+    "TT",  # Trinidad and Tobago
+    "TV",  # Tuvalu
+    "TW",  # Taiwan
+    "TZ",  # Tanzania
+    "UA",  # Ukraine
+    "UG",  # Uganda
+    "US",  # United States of America
+    "UY",  # Uruguay
+    "UZ",  # Uzbekistan
+    "VA",  # Vatican City
+    "VC",  # Saint Vincent and the Grenadines
+    "VE",  # Venezuela
+    "VG",  # British Virgin Islands
+    "VN",  # Vietnam
+    "VU",  # Vanuatu
+    "WS",  # Samoa
+    "XK",  # Kosovo
+    "YE",  # Yemen
+    "ZA",  # South Africa
+    "ZM",  # Zambia
+    "ZW",  # Zimbabwe
+    "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
 ]
 
-
 async def get_relation(conn, **tags):
-    tags = "".join(f'["{k}"="{v}"]' for k, v in tags.items())
+    tags = "".join(f'["{k.replace("iso","ISO3166-1:alpha2") if (k == "iso" and len(v) == 2) else k.replace("iso","name")}"="{v}"]' for k, v in tags.items())
+    dir = Path('tmp/boundary');
+    if not dir.is_dir():
+        dir.mkdir(parents=True);
     path = Path('tmp') / 'boundary' / tags.replace('/', '_')
     if not path.exists():
         params = {'data': f'[out:json];relation{tags};(._;>;);out body;'}
@@ -312,13 +308,13 @@ async def add_area(conn, shape, other):
         'SELECT ST_Union($1::geometry, $2::geometry)', shape, other)
 
 
-async def load_country(conn, name):
+async def load_country(conn, iso):
     return await get_relation(conn, boundary='administrative', admin_level=2,
-                              name=name)
+                              iso=iso)
 
 
 @cli
-async def process(itl_path: Path=Path('tmp/boundary.json'),
+async def process(itl_path: Path=Path('data/boundary.json'),
                   disputed_path: Path=Path('data/disputed.json')):
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
@@ -348,34 +344,34 @@ async def process(itl_path: Path=Path('tmp/boundary.json'),
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
             continue
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
-        if properties['name:en'] == 'Israel':
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IL':
             polygon = await remove_area(conn, polygon, golan)
             west_bank, _ = await get_relation(conn, place="region",
                                               name="الضفة الغربية")
             polygon = await remove_area(conn, polygon, west_bank)
-        if properties['name:en'] == 'Syria':
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SY':
             polygon = await add_area(conn, polygon, golan)
-        if properties['name:en'] == 'South Sudan':
-            sudan, _ = await load_country(conn, 'السودان')  # Sudan
+        if  'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'SS':
+            sudan, _ = await load_country(conn, 'SD')  # Sudan
             polygon = await remove_area(conn, polygon, sudan)
         if properties['name:en'] == 'Sudan':
             polygon = await remove_area(conn, polygon, bir_tawil)
-        if properties['name:en'] == 'Egypt':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'EG':
             polygon = await add_area(conn, polygon, bir_tawil)
-        if properties['name:en'] == 'Nepal':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'NP':
             claim, props = await get_relation(conn, type="boundary",
                                               name="Extent of Nepal Claim")
             add_disputed(claim, props)
             polygon = await add_area(conn, polygon, claim)
-        if properties['name:en'] == 'India':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'IN':
             claim, _ = await get_relation(conn, type="boundary",
                                           name="Extent of Nepal Claim")
             polygon = await remove_area(conn, polygon, claim)
-        if properties['name:en'] == 'China':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'CN':
             polygon = await remove_area(conn, polygon, doklam)
-        if properties['name:en'] == 'Bhutan':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'BH':
             polygon = await add_area(conn, polygon, doklam)
-        if properties['name:en'] == 'Morocco':
+        if 'ISO3166-1:alpha2' in properties and properties['ISO3166-1:alpha2'] == 'MA':
             # Western Sahara
             esh, props = await get_relation(conn, boundary="disputed",
                                             name="الصحراء الغربية")

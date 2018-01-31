@@ -3,8 +3,14 @@ notes.txt
 localconfig*.js
 project.xml
 *~
-tmp/*
+tmp/
 *.mbtiles
 *.xml
+bin/
+include/
+lib/
 node_modules/
 __pycache__/
+.Python
+.pydevproject
+/pip-selfcheck.json

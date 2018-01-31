@@ -11,227 +11,225 @@ from postgis.asyncpg import register
 OVERPASS = 'http://overpass-api.de/api/interpreter'
 
 COUNTRIES = [
-    #"DE",  # Germany
     "AD",  # Andorra
+    "AE",  # United Arab Emirates
+    "AF",  # Afghanistan
     "AO",  # Angola
-    "AI",  # Anguilla
     "AG",  # Antigua and Barbuda
+    "AI",  # Anguilla
+    "AL",  # Albania
+    "AM",  # Armenia
     "AR",  # Argentina
+    "AT",  # Austria
     "AU",  # Australia
-    "HT",  # Haiti
     "AZ",  # Azerbaijan
-    "BB",  # Barbados
-    "PW",  # Palau
-    "BE",  # Belgium
-    "BY",  # Belarus
-    "BZ",  # Belize
-    "BM",  # Bermuda
-    "BO",  # Bolivia
     "BA",  # Bosnia and Herzegovina
-    "BW",  # Botswana
-    "BR",  # Brazil
-    "IO",  # British Indian Ocean Territory
-    "British Sovereign Base Areas",  # British Sovereign Base Areas
-    "VG",  # British Virgin Islands
-    "BN",  # Brunei
+    "BB",  # Barbados
+    "BD",  # Bangladesh
+    "BE",  # Belgium
     "BF",  # Burkina Faso
+    "BG",  # Bulgaria
+    "BH",  # Bahrain
     "BI",  # Burundi
     "BJ",  # Benin
-    "CV",  # Cape Verde
-    "CM",  # Cameroon
+    "BM",  # Bermuda
+    "BN",  # Brunei
+    "BO",  # Bolivia
+    "BR",  # Brazil
+    "British Sovereign Base Areas",  # British Sovereign Base Areas
+    "BS",  # The Bahamas
+    "BT",  # Bhutan
+    "BW",  # Botswana
+    "BY",  # Belarus
+    "BZ",  # Belize
     "CA",  # Canada
-    "KY",  # Cayman Islands
-    "CL",  # Chile
-    "CA",  # Vatican City
-    "CO",  # Colombia
-    "KM",  # Comoros
+    "CD",  # Democratic Republic of the Congo
+    "CF",  # Central African Republic
     "CG",  # Congo-Brazzaville
-    "CK",  # Cook Islands
-    "CR",  # Costa Rica
-    "ME",  # Montenegro
-    "CU",  # Cuba
+    "CH",  # Switzerland
     "CI",  # Côte d'Ivoire
+    "CK",  # Cook Islands
+    "CL",  # Chile
+    "CM",  # Cameroon
+    "CN",  # CHINA
+    "CO",  # Colombia
+    "CR",  # Costa Rica
+    "CU",  # Cuba
+    "CV",  # Cape Verde
+    "CY",  # Cyprus
+    "CZ",  # Czechia
+    "DE",  # Germany
     "DK",  # Denmark
     "DJ",  # Djibouti
     "DM",  # Dominica
+    "DO",  # Dominican Republic
+    "DZ",  # Algeria
     "EC",  # Ecuador
     "EE",  # Estonia
-    "SV",  # El Salvador
+    "EG",  # Egypt
+    "ER",  # Eritrea
     "ES",  # Spain
-    "SZ",  # Swaziland
+    "ET",  # Ethiopia
+    "FI",  # Finland
+    "FJ",  # Fiji
     "FK",  # Falkland Islands
-    "FR",  # France
+    "FM",  # Federated States of Micronesia
     "FO",  # Faroe Islands
+    "FR",  # France
     "GA",  # Gabon
-    "GM",  # Gambia
+    "GB",  # United Kingdom
+    "GD",  # Grenada
+    "GE",  # Georgia
+    "GG",  # Guernsey
     "GH",  # Ghana
     "GI",  # Gibraltar
-    "GD",  # Grenada
-    "GT",  # Guatemala
-    "GG",  # Guernsey
-    "GQ",  # Equatorial Guinea
-    "GW",  # Guinea-Bissau
+    "GL",  # Greenland
+    "GM",  # Gambia
     "GN",  # Guinea
+    "GQ",  # Equatorial Guinea
+    "GR",  # Greece
+    "GS",  # South Georgia and the South Sandwich Islands
+    "GT",  # Guatemala
+    "GW",  # Guinea-Bissau
     "GY",  # Guyana
     "HN",  # Honduras
     "HR",  # Croatia
-    "IN",  # India
+    "HT",  # Haiti
+    "HU",  # Hungary
     "ID",  # Indonesia
     "IE",  # Ireland
-    "IM",  # Isle of Man
-    "IT",  # Italy
-    "JM",  # Jamaica
-    "JE",  # Jersey
-    "GL",  # Greenland
-    "KE",  # Kenya
-    "KI",  # Kiribati
-    "CF",  # Central African Republic
-    "LV",  # Latvia
-    "LS",  # Lesotho
-    "LR",  # Liberia
-    "LY",  # Liechtenstein
-    "LT",  # Lithuania
-    "LU",  # Luxembourg
-    "MG",  # Madagascar
-    "HU",  # Hungary
-    "MW",  # Malawi
-    "MY",  # Malaysia
-    "ML",  # Mali
-    "MT",  # Malta
-    "MA",  # Morocco
-    "MU",  # Mauritius
-    "FM",  # Federated States of Micronesia
-    "MD",  # Moldova
-    "MC",  # Monaco
-    "MS",  # Montserrat
-    "MZ",  # Mozambique
-    "MX",  # Mexico
-    "MH",  # Marshall Islands
-    "NA",  # Namibia
-    "NR",  # Nauru
-    "NL",  # The Netherlands
-    "NZ",  # New Zealand
-    "NI",  # Nicaragua
-    "NE",  # Niger
-    "NG",  # Nigeria
-    "NU",  # Niue
-    "NO",  # Norway
-    "UZ",  # Uzbekistan
-    "PA",  # Panama
-    "PG",  # Papua New Guinea
-    "PY",  # Paraguay
-    "PE",  # Peru
-    "PH",  # Philippines
-    "PN",  # Pitcairn Islands
-    "PL",  # Poland
-    "PT",  # Portugal
-    "XK",  # Kosovo
-    "DO",  # Dominican Republic
-    "RO",  # Romania
-    "RW",  # Rwanda
-    "CD",  # Democratic Republic of the Congo
-    "SH",  # Saint Helena, Ascension and Tristan da Cunha
-    "KN",  # Saint Kitts and Nevis
-    "LC",  # Saint Lucia
-    "VC",  # Saint Vincent and the Grenadines
-    "SM",  # San Marino
-    "CH",  # Switzerland
-    "SC",  # Seychelles
-    "AL",  # Albania
-    "SL",  # Sierra Leone
-    "SG",  # Singapore
-    "SI",  # Slovenia
-    "SK",  # Slovakia
-    "SB",  # Solomon Islands
-    "SO",  # Somalia
-    "ZA",  # South Africa
-    "GS",  # South Georgia and the South Sandwich Islands
-    "SS",  # South Sudan
-    "FI",  # Finland
-    "SR",  # Suriname
-    "SE",  # Sweden
-    "ST",  # São Tomé and Príncipe
-    "SN",  # Senegal
-    "WS",  # Samoa
-    "TZ",  # Tanzania
-    "TD",  # Chad
-    "BS",  # The Bahamas
-    "TL",  # East Timor
-    "TG",  # Togo
-    "TK",  # Tokelau
-    "TO",  # Tonga
-    "TT",  # Trinidad and Tobago
-    "TC",  # Turks and Caicos Islands
-    "TV",  # Tuvalu
-    "TR",  # Turkey
-    "TM",  # Turkmenistan
-    "UA",  # Ukraine
-    "UG",  # Uganda
-    "GB",  # United Kingdom
-    "US",  # United States of America
-    "UY",  # Uruguay
-    "VU",  # Vanuatu
-    "VE",  # Venezuela
-    "FJ",  # Fiji
-    "VN",  # Vietnam
-    "ZM",  # Zambia
-    "ZW",  # Zimbabwe
-    "IS",  # Iceland
-    "AT",  # Austria
-    "CZ",  # Czechia
-    "GR",  # Greece
-    "CY",  # Cyprus
-    "BG",  # Bulgaria
-    "KG",  # Kyrgyzstan
-    "MK",  # Macedonia
-    "MN",  # Mongolia
-    #"RU",  # Russia
-    "RS",  # Serbia
-    "TJ",  # Tajikistan
-    "KZ",  # Kazakhstan
-    "AM",  # Armenia
     "IL",  # Israel
-    "AF",  # Afghanistan
-    "PS",  # Palestine
-    "JO",  # Jordan
-    "AE",  # United Arab Emirates
-    "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
-    "SA",  # Saudi Arabia
-    "SD",  # Sudan
+    "IM",  # Isle of Man
+    "IN",  # India
+    "IO",  # British Indian Ocean Territory
     "IQ",  # Iraq
-    "YE",  # Yemen
-    "TN",  # Tunisia
-    "SY",  # Syria
-    "OM",  # Oman
-    "LB",  # Lebanon
-    "EG",  # Egypt
-    "MR",  # Mauritania
-    "MV",  # Maldives
-    "NP",  # Nepal
-    "BD",  # Bangladesh
-    "LK",  # Sri Lanka
-    "TH",  # Thailand
-    "LA",  # Laos
-    "BT",  # Bhutan
-    "MM",  # Myanmar
-    "GE",  # Georgia
-    "ET",  # Ethiopia
-    "ER",  # Eritrea
-    "KH",  # Cambodia
-    "BH",  # Bahrain
-    "KW",  # Kuwait
     "IR",  # Iran
-    "QA",  # Qatar
-    "PK",  # Pakistan
-    "LY",  # Libya
-    "DZ",  # Algeria
-    "CN",  # China
-    "JP",  # Japan
-    "TW",  # Taiwan
+    "IS",  # Iceland
+    "IT",  # Italy
+    "JE",  # Jersey
+    "JM",  # Jamaica
+    "JO",  # Jordan
+    "KE",  # Kenya
+    "KG",  # Kyrgyzstan
+    "KH",  # Cambodia
+    "KI",  # Kiribati
+    "KM",  # Comoros
+    "KN",  # Saint Kitts and Nevis
     "KR",  # South Korea
     "KP",  # North Korea
+    "KW",  # Kuwait
+    "KY",  # Cayman Islands
+    "KZ",  # Kazakhstan
+    "LA",  # Laos
+    "LB",  # Lebanon
+    "LC",  # Saint Lucia
+    "LI",  # Liechtenstein
+    "LK",  # Sri Lanka
+    "LS",  # Lesotho
+    "LR",  # Liberia
+    "LT",  # Lithuania
+    "LU",  # Luxembourg
+    "LV",  # Latvia
+    "LY",  # Libya
+    "MA",  # Morocco
+    "MC",  # Monacos
+    "MD",  # Moldova
+    "ME",  # Montenegro
+    "MG",  # Madagascar
+    "MH",  # Marshall Islands
+    "MK",  # Macedonia
+    "ML",  # Mali
+    "MM",  # Myanmar
+    "MN",  # Mongolia
+    "MR",  # Mauritania
+    "MS",  # Montserrat
+    "MT",  # Malta
+    "MU",  # Mauritius
+    "MV",  # Maldives
+    "MW",  # Malawi
+    "MX",  # Mexico
+    "MY",  # Malaysia
+    "MZ",  # Mozambique
+    "NA",  # Namibia
+    "NE",  # Niger
+    "NG",  # Nigeria
+    "NI",  # Nicaragua
+    "NL",  # The Netherlands
+    "NO",  # Norway
+    "NP",  # Nepal
+    "NR",  # Nauru
+    "NU",  # Niue
+    "NZ",  # New Zealand
+    "OM",  # Oman
+    "PA",  # Panama
+    "PE",  # Peru
+    "PG",  # Papua New Guinea
+    "PH",  # Philippines
+    "PK",  # Pakistan
+    "PL",  # Poland
+    "PN",  # Pitcairn Islands
+    "PS",  # Palestine
+    "PT",  # Portugal
+    "PW",  # Palau
+    "PY",  # Paraguay
+    "QA",  # Qatar
+    "RO",  # Romania
+    "RS",  # Serbia
+    "RU",  # Russia
+    "RW",  # Rwanda
+    "SA",  # Saudi Arabia
+    "SB",  # Solomon Islands
+    "SC",  # Seychelles
+    "SD",  # Sudan
+    "SE",  # Sweden
+    "SG",  # Singapore
+    "SH",  # Saint Helena, Ascension and Tristan da Cunha
+    "SI",  # Slovenia
+    "SK",  # Slovakia
+    "SL",  # Sierra Leone
+    "SM",  # San Marino
+    "SN",  # Senegal
+    "SO",  # Somalia
+    "SR",  # Suriname
+    "SS",  # South Sudan
+    "ST",  # São Tomé and Príncipe
+    "SV",  # El Salvador
+    "SY",  # Syria
+    "SZ",  # Swaziland
+    "TC",  # Turks and Caicos Islands
+    "TD",  # Chad
+    "TG",  # Togo
+    "TH",  # Thailand
+    "TJ",  # Tajikistan
+    "TK",  # Tokelau
+    "TL",  # East Timor
+    "TM",  # Turkmenistan
+    "TN",  # Tunisia
+    "TO",  # Tonga
+    "TR",  # Turkey
+    "TT",  # Trinidad and Tobago
+    "TV",  # Tuvalu
+    "TW",  # Taiwan
+    "TZ",  # Tanzania
+    "UA",  # Ukraine
+    "UG",  # Uganda
+    "US",  # United States of America
+    "UY",  # Uruguay
+    "UZ",  # Uzbekistan
+    "VA",  # Vatican City
+    "VC",  # Saint Vincent and the Grenadines
+    "VE",  # Venezuela
+    "VG",  # British Virgin Islands
+    "VN",  # Vietnam
+    "VU",  # Vanuatu
+    "WS",  # Samoa
+    "XK",  # Kosovo
+    "YE",  # Yemen
+    "ZA",  # South Africa
+    "ZM",  # Zambia
+    "ZW",  # Zimbabwe
+    "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
 ]
-
 
 async def get_relation(conn, **tags):
     tags = "".join(f'["{k.replace("iso","ISO3166-1:alpha2") if (k == "iso" and len(v) == 2) else k.replace("iso","name")}"="{v}"]' for k, v in tags.items())

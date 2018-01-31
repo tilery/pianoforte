@@ -245,7 +245,7 @@ Layer:
   geometry: "polygon"
   <<: *extents84
   Datasource:
-    file: data/boundary.json
+    file: data/simplified_boundary.json
     type: geojson
 
 - id: itl_boundary

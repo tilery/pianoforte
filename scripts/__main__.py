@@ -184,12 +184,15 @@ def deploy():
         put(imposm_conf, '/srv/tilery/imposm.conf')
         put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
         put('scripts/www', '/srv/tilery/www')
+        index = template('scripts/www/index.html', **config)
+        put(index, '/srv/tilery/www/index.html')
         for flavour, name, lang in flavours:
             export(flavour, name, lang)
             put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
         put('data/country.csv', '/srv/tilery/pianoforte/data/country.csv')
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
-        put('data/boundary.json', '/srv/tilery/pianoforte/data/boundary.json')
+        put('data/simplified_boundary.json',
+            '/srv/tilery/pianoforte/data/simplified_boundary.json')
         put('data/disputed.json', '/srv/tilery/pianoforte/data/disputed.json')
         put('fonts/', '/srv/tilery/pianoforte/fonts')
         put('icon/', '/srv/tilery/pianoforte/icon')

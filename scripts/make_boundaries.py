@@ -1,3 +1,4 @@
+import csv
 from pathlib import Path
 
 import asyncpg
@@ -9,227 +10,6 @@ from postgis import LineString, MultiLineString
 from postgis.asyncpg import register
 
 OVERPASS = 'http://overpass-api.de/api/interpreter'
-
-COUNTRIES = [
-    "AD",  # Andorra
-    "AE",  # United Arab Emirates
-    "AF",  # Afghanistan
-    "AO",  # Angola
-    "AG",  # Antigua and Barbuda
-    "AI",  # Anguilla
-    "AL",  # Albania
-    "AM",  # Armenia
-    "AR",  # Argentina
-    "AT",  # Austria
-    "AU",  # Australia
-    "AZ",  # Azerbaijan
-    "BA",  # Bosnia and Herzegovina
-    "BB",  # Barbados
-    "BD",  # Bangladesh
-    "BE",  # Belgium
-    "BF",  # Burkina Faso
-    "BG",  # Bulgaria
-    "BH",  # Bahrain
-    "BI",  # Burundi
-    "BJ",  # Benin
-    "BM",  # Bermuda
-    "BN",  # Brunei
-    "BO",  # Bolivia
-    "BR",  # Brazil
-    "British Sovereign Base Areas",  # British Sovereign Base Areas
-    "BS",  # The Bahamas
-    "BT",  # Bhutan
-    "BW",  # Botswana
-    "BY",  # Belarus
-    "BZ",  # Belize
-    "CA",  # Canada
-    "CD",  # Democratic Republic of the Congo
-    "CF",  # Central African Republic
-    "CG",  # Congo-Brazzaville
-    "CH",  # Switzerland
-    "CI",  # Côte d'Ivoire
-    "CK",  # Cook Islands
-    "CL",  # Chile
-    "CM",  # Cameroon
-    "CN",  # CHINA
-    "CO",  # Colombia
-    "CR",  # Costa Rica
-    "CU",  # Cuba
-    "CV",  # Cape Verde
-    "CY",  # Cyprus
-    "CZ",  # Czechia
-    "DE",  # Germany
-    "DK",  # Denmark
-    "DJ",  # Djibouti
-    "DM",  # Dominica
-    "DO",  # Dominican Republic
-    "DZ",  # Algeria
-    "EC",  # Ecuador
-    "EE",  # Estonia
-    "EG",  # Egypt
-    "ER",  # Eritrea
-    "ES",  # Spain
-    "ET",  # Ethiopia
-    "FI",  # Finland
-    "FJ",  # Fiji
-    "FK",  # Falkland Islands
-    "FM",  # Federated States of Micronesia
-    "FO",  # Faroe Islands
-    "FR",  # France
-    "GA",  # Gabon
-    "GB",  # United Kingdom
-    "GD",  # Grenada
-    "GE",  # Georgia
-    "GG",  # Guernsey
-    "GH",  # Ghana
-    "GI",  # Gibraltar
-    "GL",  # Greenland
-    "GM",  # Gambia
-    "GN",  # Guinea
-    "GQ",  # Equatorial Guinea
-    "GR",  # Greece
-    "GS",  # South Georgia and the South Sandwich Islands
-    "GT",  # Guatemala
-    "GW",  # Guinea-Bissau
-    "GY",  # Guyana
-    "HN",  # Honduras
-    "HR",  # Croatia
-    "HT",  # Haiti
-    "HU",  # Hungary
-    "ID",  # Indonesia
-    "IE",  # Ireland
-    "IL",  # Israel
-    "IM",  # Isle of Man
-    "IN",  # India
-    "IO",  # British Indian Ocean Territory
-    "IQ",  # Iraq
-    "IR",  # Iran
-    "IS",  # Iceland
-    "IT",  # Italy
-    "JE",  # Jersey
-    "JM",  # Jamaica
-    "JO",  # Jordan
-    "KE",  # Kenya
-    "KG",  # Kyrgyzstan
-    "KH",  # Cambodia
-    "KI",  # Kiribati
-    "KM",  # Comoros
-    "KN",  # Saint Kitts and Nevis
-    "KR",  # South Korea
-    "KP",  # North Korea
-    "KW",  # Kuwait
-    "KY",  # Cayman Islands
-    "KZ",  # Kazakhstan
-    "LA",  # Laos
-    "LB",  # Lebanon
-    "LC",  # Saint Lucia
-    "LI",  # Liechtenstein
-    "LK",  # Sri Lanka
-    "LS",  # Lesotho
-    "LR",  # Liberia
-    "LT",  # Lithuania
-    "LU",  # Luxembourg
-    "LV",  # Latvia
-    "LY",  # Libya
-    "MA",  # Morocco
-    "MC",  # Monacos
-    "MD",  # Moldova
-    "ME",  # Montenegro
-    "MG",  # Madagascar
-    "MH",  # Marshall Islands
-    "MK",  # Macedonia
-    "ML",  # Mali
-    "MM",  # Myanmar
-    "MN",  # Mongolia
-    "MR",  # Mauritania
-    "MS",  # Montserrat
-    "MT",  # Malta
-    "MU",  # Mauritius
-    "MV",  # Maldives
-    "MW",  # Malawi
-    "MX",  # Mexico
-    "MY",  # Malaysia
-    "MZ",  # Mozambique
-    "NA",  # Namibia
-    "NE",  # Niger
-    "NG",  # Nigeria
-    "NI",  # Nicaragua
-    "NL",  # The Netherlands
-    "NO",  # Norway
-    "NP",  # Nepal
-    "NR",  # Nauru
-    "NU",  # Niue
-    "NZ",  # New Zealand
-    "OM",  # Oman
-    "PA",  # Panama
-    "PE",  # Peru
-    "PG",  # Papua New Guinea
-    "PH",  # Philippines
-    "PK",  # Pakistan
-    "PL",  # Poland
-    "PN",  # Pitcairn Islands
-    "PS",  # Palestine
-    "PT",  # Portugal
-    "PW",  # Palau
-    "PY",  # Paraguay
-    "QA",  # Qatar
-    "RO",  # Romania
-    "RS",  # Serbia
-    "RU",  # Russia
-    "RW",  # Rwanda
-    "SA",  # Saudi Arabia
-    "SB",  # Solomon Islands
-    "SC",  # Seychelles
-    "SD",  # Sudan
-    "SE",  # Sweden
-    "SG",  # Singapore
-    "SH",  # Saint Helena, Ascension and Tristan da Cunha
-    "SI",  # Slovenia
-    "SK",  # Slovakia
-    "SL",  # Sierra Leone
-    "SM",  # San Marino
-    "SN",  # Senegal
-    "SO",  # Somalia
-    "SR",  # Suriname
-    "SS",  # South Sudan
-    "ST",  # São Tomé and Príncipe
-    "SV",  # El Salvador
-    "SY",  # Syria
-    "SZ",  # Swaziland
-    "TC",  # Turks and Caicos Islands
-    "TD",  # Chad
-    "TG",  # Togo
-    "TH",  # Thailand
-    "TJ",  # Tajikistan
-    "TK",  # Tokelau
-    "TL",  # East Timor
-    "TM",  # Turkmenistan
-    "TN",  # Tunisia
-    "TO",  # Tonga
-    "TR",  # Turkey
-    "TT",  # Trinidad and Tobago
-    "TV",  # Tuvalu
-    "TW",  # Taiwan
-    "TZ",  # Tanzania
-    "UA",  # Ukraine
-    "UG",  # Uganda
-    "US",  # United States of America
-    "UY",  # Uruguay
-    "UZ",  # Uzbekistan
-    "VA",  # Vatican City
-    "VC",  # Saint Vincent and the Grenadines
-    "VE",  # Venezuela
-    "VG",  # British Virgin Islands
-    "VN",  # Vietnam
-    "VU",  # Vanuatu
-    "WS",  # Samoa
-    "XK",  # Kosovo
-    "YE",  # Yemen
-    "ZA",  # South Africa
-    "ZM",  # Zambia
-    "ZW",  # Zimbabwe
-    "الجمهورية العربية الصحراوية الديمقراطية‎‎",  # Western Sahara
-]
 
 
 async def get_relation(conn, **tags):
@@ -320,7 +100,7 @@ async def process(itl_path: Path=Path('data/boundary.json'),
                   disputed_path: Path=Path('data/disputed.json')):
     conn = await asyncpg.connect(database='pianoforte')
     await register(conn)
-    features = []
+    boundaries = []
     disputed = []
 
     def add_disputed(polygon, properties):
@@ -341,13 +121,16 @@ async def process(itl_path: Path=Path('data/boundary.json'),
     halaib_triangle, props = await get_relation(conn, type='boundary',
                                                 name='مثلث حلايب‎')
     add_disputed(halaib_triangle, props)
-    for idx, value in enumerate(COUNTRIES):
-        tags = {'iso': value} if len(value) == 2 else {'name': value}
-        polygon, properties = await load_country(conn, **tags)
+    path = Path(__file__).parent.parent / 'data/country.csv'
+    with path.open() as f:
+        countries = list(csv.DictReader(f))
+    for country in countries:
+        iso = country['iso']
+        polygon, properties = await load_country(conn, iso=iso)
+        properties.update(country)
         if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
             continue
         print(f'''"{properties['name']}",  # {properties['name:en']}''')
-        iso = properties.get('ISO3166-1:alpha2')
         if iso == 'IL':
             polygon = await remove_area(conn, polygon, golan)
             west_bank, _ = await get_relation(conn, place="region",
@@ -381,19 +164,26 @@ async def process(itl_path: Path=Path('data/boundary.json'),
                                             name="الصحراء الغربية")
             add_disputed(esh, props)
             polygon = await remove_area(conn, polygon, esh)
-            features.append({
+            boundaries.append({
                 'type': 'Feature',
                 'geometry': esh.geojson,
                 'properties': props
             })
-        features.append({
+        boundaries.append({
             'type': 'Feature',
             'geometry': polygon.geojson,
             'properties': properties
         })
+    sba, properties = await load_country(conn,
+                                         name='British Sovereign Base Areas')
+    boundaries.append({
+        'type': 'Feature',
+        'geometry': sba.geojson,
+        'properties': properties
+    })
     await conn.close()
     with itl_path.open('w') as f:
-        json.dump({'type': 'FeatureCollection', 'features': features}, f)
+        json.dump({'type': 'FeatureCollection', 'features': boundaries}, f)
     with disputed_path.open('w') as f:
         json.dump({'type': 'FeatureCollection', 'features': disputed}, f)
 

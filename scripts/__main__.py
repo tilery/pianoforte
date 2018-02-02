@@ -101,13 +101,20 @@ def db():
 @minicli.cli
 def http():
     # When we'll have a domain.
-    # put('scripts/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
-    # put('scripts/ssl.conf', '/etc/nginx/snippets/ssl.conf')
-    if exists('/etc/letsencrypt/live/drone.api.gouv.fr/fullchain.pem'):
-        conf = 'scripts/nginx-https.conf'
+    put('scripts/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
+    put('scripts/ssl.conf', '/etc/nginx/snippets/ssl.conf')
+    domains = ' '.join(config.domains)
+    domain = config.domains[0]
+    pempath = f'/etc/letsencrypt/live/{domain}/fullchain.pem'
+    if exists(pempath):
+        print(f'{pempath} found, using https configuration')
+        conf = template('scripts/nginx-https.conf', domains=domains,
+                        domain=domain)
     else:
+        print(f'{pempath} not found, using http configuration')
         # Before letsencrypt.
-        conf = 'scripts/nginx-http.conf'
+        conf = template('scripts/nginx-http.conf', domains=domains,
+                        domain=domain)
     put(conf, '/etc/nginx/sites-enabled/default')
     restart()
 
@@ -118,19 +125,21 @@ def bootstrap():
     db()
     services()
     http()
-    # letsencrypt()
+    letsencrypt()
     # Now put the https ready Nginx conf.
-    # http()
+    http()
     ssh_keys()
 
 
 @minicli.cli
 def letsencrypt():
     with sudo():
-        run('add-apt-repository ppa:certbot/certbot')
+        run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
         run('apt install -y certbot')
-    put('scripts/certbot.ini', '/srv/tilery/certbot.ini')
+    certbot_conf = template('scripts/certbot.ini',
+                            domains=','.join(config.domains))
+    put(certbot_conf, '/srv/tilery/certbot.ini')
     put('scripts/ssl-renew', '/etc/cron.weekly/ssl-renew')
     run('chmod +x /etc/cron.weekly/ssl-renew')
     run('certbot certonly -c /srv/tilery/certbot.ini --non-interactive '
@@ -267,7 +276,7 @@ def restart(services=None):
 
 
 @minicli.cli
-def render(map='default', min=1, max=10):
+def render(map='piano', min=1, max=10):
     with sudo(user='tilery'):
         run(f'render_list --map {map} --all --force --num-threads 8 '
             f'--socket /var/run/renderd/renderd.sock '

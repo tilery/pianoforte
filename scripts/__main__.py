@@ -37,13 +37,17 @@ def system():
     install_imposm3()
     install_mod_tile()
     configure_mod_tile()
-    install_netdata()
+    netdata()
 
 
-def install_netdata(force=False):
+@minicli.cli
+def netdata(force=False):
     if not exists('/etc/systemd/system/netdata.service') or force:
         run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait')
     put('scripts/netdata.conf', '/etc/netdata/netdata.conf')
+    put('scripts/tiles.chart.py',
+        '/usr/libexec/netdata/python.d/tiles.chart.py')
+    run('usermod -aG adm netdata')
     restart(services='netdata')
 
 

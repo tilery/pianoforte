@@ -1,3 +1,7 @@
+import sys
+if sys.version_info[0] < 3:
+    raise "Must be using Python 3"
+
 import csv
 from pathlib import Path
 
@@ -163,7 +167,7 @@ async def process(itl_path: Path=Path('data/boundary.json'),
             esh, props = await get_relation(conn, boundary="disputed",
                                             name="الصحراء الغربية")
             add_disputed(esh, props)
-            polygon = await remove_area(conn, polygon, esh)
+            polygon = await add_area(conn, polygon, esh)
             boundaries.append({
                 'type': 'Feature',
                 'geometry': esh.geojson,

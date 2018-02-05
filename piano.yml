@@ -215,7 +215,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, 'no' as maritime, COALESCE(NULLIF("name:{lang}", ''), name) as name
+            geometry, 'no' as maritime, iso, COALESCE(NULLIF("name:{lang}", ''), name) as name
           FROM
             itl_boundary
         ) AS data

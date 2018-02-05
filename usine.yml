@@ -1,9 +1,16 @@
 download_url: https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 replication_url: http://planet.openstreetmap.org/replication/hour/
 replication_interval: 1h
-tile_base_url: http://{s}.tiles.quaidorsay.fr/tile/
+tile_base_url: https://{s}.tiles.quaidorsay.fr/tile/
+domains:
+- tiles.quaidorsay.fr
+- a.tiles.quaidorsay.fr
+- b.tiles.quaidorsay.fr
+- c.tiles.quaidorsay.fr
 pianoforteqa:
   download_url: http://download.geofabrik.de/africa-latest.osm.pbf
   replication_url: http://download.geofabrik.de/africa-updates/
   replication_interval: 24h
-  tile_base_url: http://carte-mae.enix.org/tile/
+  tile_base_url: https://carte-mae.enix.org/tile/
+  domains:
+  - carte-mae.enix.org

@@ -2,6 +2,7 @@
   line-width: 1;
   line-color: @admin_3;
   line-clip: true;
+  line-dasharray: 4, 4;
   polygon-pattern-file: url('icon/pattern/disputed.svg');
   polygon-pattern-alignment: local;
   [zoom=9] {
@@ -15,17 +16,19 @@
 }
 #itl_boundary_low[zoom>=1][zoom<6][maritime!='yes'],
 #itl_boundary[zoom>=6] {
-  line-width: 0.5;
-  line-color: @admin_2;
-  line-clip: true;
-  [maritime='yes'] {
-    line-dasharray: 10,5;
-  }
-  [zoom>=4] {
-    line-width: 1;
-  }
-  [zoom>=10] {
-    line-width: 2;
+  #itl_boundary[iso!='EH'], #itl_boundary_low[ISO3166-1!='EH']{
+    line-width: 0.5;
+    line-color: @admin_2;
+    line-clip: true;
+    [maritime='yes'] {
+      line-dasharray: 10,5;
+    }
+    [zoom>=4] {
+      line-width: 1;
+    }
+    [zoom>=10] {
+      line-width: 2;
+    }
   }
 }
 #boundary[admin_level=3][zoom>=4][zoom<5],

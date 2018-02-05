@@ -19,8 +19,8 @@
     line-opacity: 0.4;
   }
 }
-#itl_boundary_low[ISO3166-1!='EH'][zoom>=1][zoom<6][maritime!='yes'],
-#itl_boundary[iso!='EH'][zoom>=6] {
+#itl_boundary_low[zoom>=1][zoom<6][maritime!='yes'],
+#itl_boundary[zoom>=6] {
   line-width: 0.5;
   line-color: @admin_2;
   line-clip: true;

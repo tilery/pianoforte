@@ -168,11 +168,6 @@ async def process(itl_path: Path=Path('data/boundary.json'),
                                             name="الصحراء الغربية")
             add_disputed(esh, props)
             polygon = await add_area(conn, polygon, esh)
-            boundaries.append({
-                'type': 'Feature',
-                'geometry': esh.geojson,
-                'properties': props
-            })
         boundaries.append({
             'type': 'Feature',
             'geometry': polygon.geojson,

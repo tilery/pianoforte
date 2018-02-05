@@ -7,6 +7,9 @@
     polygon-pattern-file: url('icon/pattern/disputed.svg');
     polygon-pattern-alignment: local;
   }
+  [zoom<4] {
+    polygon-pattern-file: url('icon/pattern/disputed_small.svg');
+  }
   [zoom=9] {
     polygon-pattern-opacity: 0.8;
     line-opacity: 0.8;

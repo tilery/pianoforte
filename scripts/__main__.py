@@ -263,6 +263,11 @@ def logs(lines=50, services=None):
 
 
 @minicli.cli
+def access():
+    run('tail -F /var/log/nginx/access.log')
+
+
+@minicli.cli
 def psql(query):
     with sudo(user='postgres'):
         run(f'psql tilery -c "{query}"')

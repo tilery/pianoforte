@@ -286,7 +286,7 @@ def restart(services=None):
 
 @minicli.cli
 def render(map='piano', min=1, max=10):
-    with sudo(user='tilery'):
+    with sudo(user='tilery'), screen():
         run(f'render_list --map {map} --all --force --num-threads 8 '
             f'--socket /var/run/renderd/renderd.sock '
             f'--tile-dir /srv/tilery/tmp/tiles '

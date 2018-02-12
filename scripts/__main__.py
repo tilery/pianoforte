@@ -263,8 +263,13 @@ def logs(lines=50, services=None):
 
 
 @minicli.cli
-def access():
+def access_logs():
     run('tail -F /var/log/nginx/access.log')
+
+
+@minicli.cli
+def render_logs():
+    run('tail -F /var/log/syslog | fgrep "DONE TILE"')
 
 
 @minicli.cli

@@ -14,11 +14,12 @@
   text-placement-type: simple;
   text-placements: 'N,S';
   text-line-spacing: 0.1;
+  text-margin: 7;
   [zoom>=5] {
     text-size: 14;
+    text-margin: 5;
     text-dx: 10;
     text-dy: 10;
-    text-margin: 5;
     text-wrap-width: 60;
   }
 }

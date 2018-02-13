@@ -132,7 +132,7 @@ Chad تشاد,Tchad,,Chad,تشاد,3,3-PMP,15.6134137,19.0156172,TD
 Togo,Togo,,Togo,توغو,4,3-PMP,8.7800265,1.0199765,TG
 Uruguay,Uruguay,,Uruguay,أوروغواي,3,3-PMP,-32.8755548,-56.0201525,UY
 Vanuatu,Vanuatu,,Vanuatu,فانواتو,3,3-PMP,-16.5255069,168.1069154,VU
-Vatican,Vatican,,Vatican City,الفاتيكان,3,3-PMP,41.9038,12.4559,VA
+Vatican,Vatican,,Vatican City,الفاتيكان,4,3-PMP,41.9038,12.4559,VA
 Venezuela,Venezuela,,Venezuela,فنزويلا,3,3-PMP,8.0018709,-66.1109318,VE
 Việt Nam,Vietnam,,Vietnam,فييت نام,3,3-PMP,13.2904027,108.4265113,VN
 اليَمَن,Yémen,,Yemen,اليمن,3,3-PMP,16.3471243,47.8915271,YE
@@ -166,7 +166,7 @@ Zambia,Zambie,,Zambia,زامبيا,4,4-PPD,-14.5186239,27.5599164,ZM
 조선민주주의인민공화국,Corée du Nord,,North Korea,كوريا الشمالية,5,5-Bureau,40.3736611,127.0870417,KP
 臺灣,Taïwan,,Taiwan,تايوان,5,5-Bureau,23.9739374,120.9820179,TW
 Liechtenstein,Liechtenstein,,Liechtenstein,Liechtenstein,6,6-Résidence,47.1416307,9.5531527,LI
-الصومال,Somalie,,Somalia,الصومال,6,6-Résidence,8.3676771,49.083416,SO
+الصومال,Somalie,,Somalia,الصومال,4,6-Résidence,8.3676771,49.083416,SO
 Swaziland,Swaziland,,Swaziland,سوازيلند,6,6-Résidence,-26.5624806,31.3991317,SZ
 Maldivoj,Maldives,,Maldives,ملديف,6,6-Résidence,4.7064352,73.3287853,MV
 Sierra Leone,Sierra Leone,,Sierra Leone,سيراليون,6,6-Résidence,8.6400349,-11.8400269,SL

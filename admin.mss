@@ -37,8 +37,7 @@
 #boundary[admin_level=3][zoom>=4][zoom<5],
 #boundary[admin_level=4][zoom>=4][zoom<5],
 #boundary[admin_level<=4][zoom>=5][zoom<12],
-#boundary[admin_level<=8][zoom>=12][zoom<13],
-#boundary[admin_level<=10][zoom>=13] {
+#boundary[admin_level<=8][zoom>=12] {
   eraser/line-color: @land;
   eraser/line-width: 1;
   eraser/comp-op: darken;
@@ -56,8 +55,8 @@
       line-dasharray: 5,5,2,5;
     }
   }
-  [zoom>=13] {
-    line-color: darken(@admin_3, 10);
+  [zoom>=12] {
+    line-color: darken(@admin_3, 20);
   }
 }
 

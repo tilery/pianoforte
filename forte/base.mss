@@ -15,7 +15,7 @@
 @halo:              @land;
 
 @admin_2:           #5c7175;
-@admin_3:           #bdb7b7;
+@admin_3:           #aaa3a3;
 @admin_2_text:      @admin_2;
 @admin_3_text:      @admin_3;
 
@@ -54,10 +54,10 @@
 #landuse[type="residential"][zoom>=11],
 #landuse[zoom>=13] {
   #landuse_gen {
-      polygon-opacity: 0.8;
+      polygon-opacity: 0.7;
   }
   #landuse_gen[zoom>=12] {
-      polygon-opacity: 0.9;
+      polygon-opacity: 0.8;
   }
   polygon-fill: @land;  // Default.
   [type='grave_yard'],

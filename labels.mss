@@ -1,6 +1,6 @@
 #country[importance<=3][zoom>=3][zoom<=10],
-#country[importance<=4][zoom>=5][zoom<=10],
-#country[zoom>=6][zoom<=10] {
+#country[importance<=4][zoom>=4][zoom<=10],
+#country[zoom>=5][zoom<=10] {
   text-name: '[name]';
   text-face-name: @bold;
   text-placement: point;
@@ -13,6 +13,7 @@
   text-character-spacing: 1;
   text-placement-type: simple;
   text-placements: 'N,S';
+  text-line-spacing: 0.1;
   [zoom>=5] {
     text-size: 14;
     text-dx: 10;
@@ -20,7 +21,6 @@
     text-margin: 5;
     text-wrap-width: 60;
   }
-  text-line-spacing: 0.1;
 }
 
 #boundary_label_low[zoom>=7][zoom<=10] {

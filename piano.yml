@@ -275,7 +275,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, CAST("importance" as INTEGER)
           FROM
             country
         ) AS data

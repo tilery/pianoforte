@@ -1,5 +1,5 @@
-#country[importance<=3][zoom>=3][zoom<=10],
-#country[importance<=4][zoom>=4][zoom<=10],
+#country[importance<=3][zoom=3],
+#country[importance<=4][zoom=4],
 #country[zoom>=5][zoom<=10] {
   text-name: '[name]';
   text-face-name: @bold;

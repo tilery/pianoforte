@@ -2,7 +2,7 @@ name,name:fr,name:en,name:ar,type,latitude,longitude,iso,capital
 کابل,Kaboul,Kabul,كابل,1-Ambassade,34.5260131,69.1776476,AF,yes
 Pretoria,Pretoria,Pretoria,بريتوريا,1-Ambassade,-25.7459374,28.1879444,ZA,yes
 Johannesburg,Johannesbourg,Johannesburg,جوهانسبرغ,4-Consulat général,-26.205,28.049722,ZA,no
-Cape Town,Le Cap,Cape Town,كيب تاون,5-Consulat,-33.928992,18.417396,ZA,yes
+Cape Town,Le Cap,Cape Town,كيب تاون,5-Consulat,-33.928992,18.417396,ZA,no
 Tiranë,Tirana,Tiranë,تيرانا,1-Ambassade,41.3279457,19.8185323,AL,yes
 Alger,Alger,Algiers,الجزائر,1-Ambassade,36.775348,3.060065,DZ,yes
 Annaba,Annaba,Annaba,عنابة‎,4-Consulat général,36.8970249,7.7460806,DZ,no
@@ -122,8 +122,8 @@ Jakarta,Jakarta,Jakarta,جاكرتا,1-Ambassade,-6.1753942,106.827183,ID,yes
 تهران,Téhéran,Tehran,طهران,1-Ambassade,35.7006177,51.401375,IR,yes
 Dublin,Dublin,Dublin,دبلن,1-Ambassade,53.3497645,-6.2602732,IE,yes
 Reykjavík,Reykjavík,Reykjavik,ريكيافيك,1-Ambassade,64.145981,-21.9422367,IS,yes
-תל אביב-יפו,Tel-Aviv,Tel Aviv-Yafo,تل أبيب-يافا,1-Ambassade,32.0804808,34.7805274,IL,no
-ירושלים,Jérusalem,Jerusalem,القدس,4-Consulat général,31.7791134,35.2266286,IL,yes
+תל אביב-יפו,Tel-Aviv,Tel Aviv-Yafo,تل أبيب-يافا,1-Ambassade,32.0804808,34.7805274,IL,yes
+ירושלים,Jérusalem,Jerusalem,القدس,4-Consulat général,31.7791134,35.2266286,IL,no
 חיפה,Haïfa,Haifa,حيفا,5-Consulat,32.8191218,34.9983856,IL,no
 Roma,Rome,Rome,روما,1-Ambassade,41.8933203,12.4829321,IT,yes
 Milano,Milan,Milan,ميلانو,4-Consulat général,45.4667971,9.1904984,IT,no
@@ -211,7 +211,7 @@ Bratislava,Bratislava,Bratislava,Bratislava,1-Ambassade,48.1516916,17.1093063,SK
 Ljubljana,Ljubljana,Ljubljana,ليوبليانا,1-Ambassade,46.049865,14.5068921,SI,yes
 Muqdisho مقديشو,Mogadiscio,Mogadishu,مقديشو,1-Ambassade,2.042778,45.338564,SO,yes
 الخرطوم,Khartoum,Khartoum,الخرطوم,1-Ambassade,15.593325,32.53565,SD,yes
-Djouba,Djouba,Djouba,Djouba,1-Ambassade,4.8457,31.5843,SS,no
+Djouba,Djouba,Djouba,Djouba,1-Ambassade,4.8457,31.5843,SS,yes
 Colombo,Colombo,Colombo,Colombo,1-Ambassade,-25.2925439,-49.2243472,BR,no
 Stockholm,Stockholm,Stockholm,ستوكهولم,1-Ambassade,59.3251172,18.0710935,SE,yes
 Bern,Berne,Bern,برن,1-Ambassade,46.9482713,7.4514512,CH,yes

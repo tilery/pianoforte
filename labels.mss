@@ -78,8 +78,11 @@
   shield-text-dx: 2;
   shield-unlock-image: true;
   shield-min-distance: 10;
-  [ldir!=''] {
+  #city[ldir!=''] {
     shield-placements: '[ldir]';
+    [ldir='N'],[ldir='S'] {
+      shield-text-dy: 6;
+    }
   }
   #city[capital='no'],
   [type='city'] {

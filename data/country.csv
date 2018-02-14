@@ -1,4 +1,4 @@
-name,name:fr,name:fr_short,name:en,name:ar,importance,type,latitude,longitude,iso
+name,name:fr,name:fr_short,name:en,name:ar,prio,type,latitude,longitude,iso
 France,France,,France,فرنسا,1,1-HC,46.603354,1.8883335,FR
 Deutschland,Allemagne,,Germany,ألمانيا,1,1-PME/FE,51.0834196,10.4234469,DE
 España,Espagne,,Spain,إسبانيا,1,1-PME/FE,40.0028028,-4.003104,ES
@@ -20,7 +20,7 @@ Canada,Canada,,Canada,كندا,2,2-PME,61.0666922,-107.9917071,CV
 대한민국,Corée du Sud,,South Korea,كوريا الجنوبية,2,2-PME,36.5581914,127.9408564,KR
 Côte d'Ivoire,Côte d'Ivoire,,Ivory Coast,كوت ديفوار,2,2-PME,7.9897371,-5.5679458,CI
 مصر,Égypte,,Egypt,مصر,2,2-PME,26.2540493,29.2675469,EG
-الإمارات العربية المتحدة,Émirats Arabes Unis,,United Arab Emirates,الإمارات العربية المتحدة,2,2-PME,24.0002488,53.9994829,AE
+الإمارات العربية المتحدة,Émirats Arabes Unis,E.A.U,United Arab Emirates,الإمارات العربية المتحدة,2,2-PME,24.0002488,53.9994829,AE
 ኢትዮጵያ / Ethiopia,Éthiopie,,Ethiopia,إثيوبيا,2,2-PME,10.2116702,38.6521203,ET
 India,Inde,,India,الهند,2,2-PME,22.3511148,78.6677428,IN
 Indonesia,Indonésie,,Indonesia,إندونيسيا,2,2-PME,-4.7993356,114.5632032,ID
@@ -70,7 +70,7 @@ Eesti,Estonie,,Estonia,إستونيا,3,3-PMP,58.7523778,25.3319078,EE
 Suomi,Finlande,,Finland,فنلندا,3,3-PMP,63.2467777,25.9209164,FI
 Gabon,Gabon,,Gabon,غابون,3,3-PMP,-0.8999695,11.6899699,GA
 საქართველო,Géorgie,,Georgia,جورجيا,3,3-PMP,41.6809707,44.0287382,GE
-Ghana,Ghana,,Ghana,غانا,4,3-PMP,8.0300284,-1.0800271,GH
+Ghana,Ghana,,Ghana,غانا,5,3-PMP,8.0300284,-1.0800271,GH
 Ελλάδα,Grèce,,Greece,اليونان,3,3-PMP,38.9953683,21.9877132,GR
 Guatemala,Guatémala,,Guatemala,غواتيمالا,3,3-PMP,15.6356088,-89.8988087,GT
 Guinée,Guinée,,Guinea,غينيا,3,3-PMP,10.7226226,-10.7083587,GN
@@ -112,12 +112,12 @@ Philippines,Philippines,,Philippines,الفلبين,3,3-PMP,12.7503486,122.73121
 Portugal,Portugal,,Portugal,Portugal,3,3-PMP,40.033265,-7.8896263,PT
 قطر,Qatar,,Qatar,قطر,3,3-PMP,25.3336984,51.2295295,QA
 Centrafrique,Centrafrique,,Central African Republic,جمهورية أفريقيا الوسطى,3,3-PMP,7.0323598,19.9981227,CF
-République démocratique du Congo,République démocratique du Congo,,Democratic Republic of the Congo,الكونغو,3,3-PMP,-2.9814344,23.8222636,CD
+République démocratique du Congo,République démocratique du Congo,Rép. Dém. Du Congo,Democratic Republic of the Congo,الكونغو,3,3-PMP,-2.9814344,23.8222636,CD
 República Dominicana,République Dominicaine,,Dominican Republic,الجمهورية الدومينيكية,3,3-PMP,19.0974031,-70.3028026,DO
 Česko,République tchèque,Rép. Tchèque,Czechia,جمهورية التشيك,3,3-PMP,49.8167003,15.4749544,CZ
 România,Roumanie,,Romania,رومانيا,3,3-PMP,45.9852129,24.6859225,RO
 Rwanda,Rwanda,,Rwanda,رواندا,3,3-PMP,-1.9646631,30.0644358,RW
-Saint Lucia,Sainte-Lucie,,Saint Lucia,سانت لوسيا,3,3-PMP,13.8250489,-60.975036,LC
+Saint Lucia,Sainte-Lucie,Ste-Lucie,Saint Lucia,سانت لوسيا,3,3-PMP,13.8250489,-60.975036,LC
 Србија,Serbie,,Serbia,صربيا,3,3-PMP,44.1534121,20.55144,RS
 Singapore,Singapour,,Singapore,سنغافورة,3,3-PMP,1.357107,103.8194992,SG
 Slovensko,Slovaquie,,Slovakia,جمهورية سلوفاكيا,3,3-PMP,48.7411522,19.4528646,SK
@@ -129,7 +129,7 @@ Schweiz - Suisse - Svizzera - Svizra,Suisse,,Switzerland,سويسرا,3,3-PMP,46
 سورية,Syrie,,Syria,سورية,3,3-PMP,34.6401861,39.0494106,SY
 Tanzania,Tanzanie,,Tanzania,تنـزاني,3,3-PMP,-6.5247123,35.7878438,TZ
 Chad تشاد,Tchad,,Chad,تشاد,3,3-PMP,15.6134137,19.0156172,TD
-Togo,Togo,,Togo,توغو,4,3-PMP,8.7800265,1.0199765,TG
+Togo,Togo,,Togo,توغو,5,3-PMP,8.7800265,1.0199765,TG
 Uruguay,Uruguay,,Uruguay,أوروغواي,3,3-PMP,-32.8755548,-56.0201525,UY
 Vanuatu,Vanuatu,,Vanuatu,فانواتو,3,3-PMP,-16.5255069,168.1069154,VU
 Vatican,Vatican,,Vatican City,الفاتيكان,4,3-PMP,41.9038,12.4559,VA
@@ -154,7 +154,7 @@ Namibia,Namibie,,Namibia,ناميبيا,4,4-PPD,-23.2335499,17.3231107,NA
 Nepal,Népal,,Nepal,نيبال,4,4-PPD,28.1083929,84.0917139,NP
 Nicaragua,Nicaragua,,Nicaragua,نيكاراغوا,4,4-PPD,12.3724928,-84.8700308,NI
 Papua New Guinea,Papouasie-Nouvelle-Guinée,,Papua New Guinea,بابوا نيوغينيا,4,4-PPD,-5.6816069,144.2489081,PG
-Paraguay,Paraguay,,Paraguay,باراغواي,4,4-PPD,-23.3165935,-58.1693445,PY
+Paraguay,Paraguay,,Paraguay,باراغواي,3,4-PPD,-23.3165935,-58.1693445,PY
 El Salvador,Salvador,,El Salvador,السلفادور,4,4-PPD,13.8000382,-88.9140683,SV
 Seychelles,Seychelles,,Seychelles,سيشيل,4,4-PPD,-4.6574977,55.4540146,SC
 South Sudan,Soudan du Sud,,South Sudan,جنوب السودان,4,4-PPD,7.8699431,29.6667897,SS
@@ -177,7 +177,7 @@ Dominica,Dominique,,Dominica,,99,99-Other,15.3973214,-61.359954,DM
 South Georgia and South Sandwich Islands,Géorgie du Sud-et-les Îles Sandwich du Sud,,South Georgia and the South Sandwich Islands,,99,99-Other,-56.5685843,-33.9908678,GS
 Montserrat,Montserrat,,Montserrat,مونتسرات,99,99-Other,16.7451489,-62.1930244,MS
 Føroyar,Îles Féroé,,Faroe Islands,جزر فارو,99,99-Other,61.8678577,-6.9698548,FO
-Malawi,Malawi,,Malawi,مالاوي,99,99-Other,-13.2489239,34.2944674,MW
+Malawi,Malawi,,Malawi,مالاوي,4,99-Other,-13.2489239,34.2944674,MW
 Lesotho,Lesotho,,Lesotho,ليسوتو,99,99-Other,-29.6239461,28.2335865,LS
 Turks and Caicos Islands,Îles Turques-et-Caïques,,Turks and Caicos Islands,,99,99-Other,21.5592203,-71.7721318,TC
 Bermuda,Bermudes,,Bermuda,,99,99-Other,32.3191672,-64.7671032,BM

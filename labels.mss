@@ -1,5 +1,5 @@
-#country[importance<=3][zoom=3],
-#country[importance<=4][zoom=4],
+#country[prio<=3][zoom=3],
+#country[prio<=4][zoom=4],
 #country[zoom>=5][zoom<=10] {
   text-name: '[name]';
   text-face-name: @bold;
@@ -55,7 +55,6 @@
 }
 #city[capital='yes'][zoom>=5][zoom<=10],
 #city[zoom>=5][zoom<=10],
-#place_low[capital='yes'][zoom>=7][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
   shield-file: url('icon/place/town.svg');

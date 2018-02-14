@@ -262,7 +262,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, ldir
           FROM
             city
         ) AS data

@@ -142,7 +142,7 @@ Prishtinë,Pristina,Pristina,بريشتينا,ambassade,1,42.6638771,21.1640849,
 Maseru,Maseru,Maseru,ماسيرو,ambassade,1,-29.310054,27.478222,LS,yes,,
 Rīga,Riga,Riga,ريغا,ambassade,1,56.9493977,24.1051846,LV,yes,,
 بيروت,Beyrouth,Beirut,بيروت,ambassade,1,33.8959203,35.47843,LB,yes,,
-Monrovia,Monrovia,Monrovia,مونروفيا,ambassade,1,34.1483499,-118.0014517,LR,yes,,
+Monrovia,Monrovia,Monrovia,مونروفيا,ambassade,1,6.31055665987,-10.8047516291,LR,yes,,Q3748
 طرابلس,Tripoli,Tripoli,طرابلس,ambassade,1,32.896672,13.1777923,LY,yes,,
 Vaduz,Vaduz,Vaduz,فادوتس,ambassade,1,47.1362,9.5358,LI,yes,,
 Vilnius,Vilnius,Vilnius,فيلنيوس,ambassade,1,54.6870458,25.2829111,LT,yes,NW,
@@ -246,3 +246,4 @@ Porto-Novo,Porto-Novo,Porto-Novo,بورتو_نوفو,capitale,3,6.48331097302,2.
 Naypyidaw,Naypyidaw,Naypyidaw,بورتو نوفو,capitale,3,19.7665570261,96.1186185292,MM,yes,,Q37400
 Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,-5.2755025649,CI,yes,N,Q3768
 Lilongwe,Lilongwe,Lilongwe,ليلونغوي,capitale,3,-13.9832950655,33.78330196,MW,yes,,Q3876
+Freetown,Freetown,Freetown,فريتاون,capitale,3,8.47001141249,-13.2342157404,SL,yes,,Q1044

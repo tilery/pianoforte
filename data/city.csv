@@ -128,7 +128,7 @@ Reykjavík,Reykjavík,Reykjavik,ريكيافيك,ambassade,1,64.145981,-21.94223
 Roma,Rome,Rome,روما,ambassade,1,41.8933203,12.4829321,IT,yes,,
 Milano,Milan,Milan,ميلانو,consulat_general,4,45.4667971,9.1904984,IT,no,,
 Napoli,Naples,Naples,نابولي,consulat_general,4,40.8359336,14.2487826,IT,no,,
-Kingston,Kingston,Kingston,كينغستون,ambassade,,17.97121,-76.79375,JM,yes,,
+Kingston,Kingston,Kingston,كينغستون,ambassade,1,17.97121,-76.79375,JM,yes,,
 東京,Tokyo,Tokyo,طوكيو,ambassade,1,35.6828378,139.7589667,JP,yes,,
 京都市,Kyoto,Kyoto,كيوتو,consulat_general,4,35.0185804,135.763835,JP,no,,
 عمان‎,Amman,Amman,عمان,ambassade,1,31.9515694,35.9239625,JO,yes,SE,
@@ -247,3 +247,4 @@ Naypyidaw,Naypyidaw,Naypyidaw,بورتو نوفو,capitale,3,19.7665570261,96.11
 Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,-5.2755025649,CI,yes,N,Q3768
 Lilongwe,Lilongwe,Lilongwe,ليلونغوي,capitale,3,-13.9832950655,33.78330196,MW,yes,,Q3876
 Freetown,Freetown,Freetown,فريتاون,capitale,3,8.47001141249,-13.2342157404,SL,yes,,Q1044
+St. John's,Saint John's,St. John's,سانت جونز، أنتيغوا وبربودا,capitale,3,17.1180365183,-61.8500338151,AG,yes,,Q36262

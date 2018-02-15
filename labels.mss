@@ -53,17 +53,32 @@
     text-character-spacing: 2;
   }
 }
-#city[capital='yes'][zoom>=5][zoom<=10],
+
 #city[zoom>=5][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
   shield-file: url('icon/place/town.svg');
-  #city[capital='no'],
   [type='city'] {
     shield-file: url('icon/place/city.svg');
+    shield-line-spacing: -2;
+    shield-text-dx: 6;
   }
-  [capital='yes'] {
+  [type='hc'],[type='ambassade'] {
+    shield-file: url('icon/place/ambassade.svg');
+    shield-face-name: @bold;
+    shield-halo-fill: @halo;
+  }
+  [type='capitale'] {
     shield-file: url('icon/place/capital.svg');
+  }
+  [type='hc'],[type='ambassade'],[type='capitale'] {
+    shield-fill: @city_text;
+    shield-size: 12;
+    shield-text-dx: 6;
+  }
+  [type='consulat'],[type='consulat_general'],[type='rp'],[type='bureau'] {
+    shield-file: url('icon/place/emprise.svg');
+    shield-text-dx: 6;
   }
   shield-name:'[name]';
   shield-size: 11;
@@ -81,7 +96,7 @@
   [ldir!=null] {
     shield-placements: '[ldir]';
     [ldir='N'],[ldir='S'] {
-      shield-text-dy: 6;
+      shield-text-dy: 8;
     }
   }
   #city[capital='no'],
@@ -90,14 +105,6 @@
     shield-fill: @city_text;
     shield-halo-fill: @halo;
     shield-text-dy: 4;
-    shield-text-dx: 4;
-  }
-  [capital='yes'] {
-    shield-face-name: @bold;
-    shield-fill: @city_text;
-    shield-halo-fill: @halo;
-    shield-size: 12;
-    shield-line-spacing: -2;
     shield-text-dx: 4;
   }
   [zoom>=9] {

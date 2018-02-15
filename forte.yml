@@ -269,9 +269,11 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, prio::int, NULLIF(ldir, '') as ldir
           FROM
             city
+          ORDER BY
+            prio
         ) AS data
 
 - id: country
@@ -282,9 +284,11 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, prio::int, NULL as ldir
           FROM
             country
+          ORDER BY
+            prio
         ) AS data
 
 - id: place_low
@@ -295,7 +299,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, '{lang}' as lang, type, capital,
+            geometry, '{lang}' as lang, type, capital, NULL as ldir,
             CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
             COALESCE(NULLIF(name{lang}, ''), name) as name
           FROM

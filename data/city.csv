@@ -1,243 +1,247 @@
-name,name:fr,name:en,name:ar,type,latitude,longitude,iso,capital
-کابل,Kaboul,Kabul,كابل,1-Ambassade,34.5260131,69.1776476,AF,yes
-Pretoria,Pretoria,Pretoria,بريتوريا,1-Ambassade,-25.7459374,28.1879444,ZA,yes
-Johannesburg,Johannesbourg,Johannesburg,جوهانسبرغ,4-Consulat général,-26.205,28.049722,ZA,no
-Cape Town,Le Cap,Cape Town,كيب تاون,5-Consulat,-33.928992,18.417396,ZA,yes
-Tiranë,Tirana,Tiranë,تيرانا,1-Ambassade,41.3279457,19.8185323,AL,yes
-Alger,Alger,Algiers,الجزائر,1-Ambassade,36.775348,3.060065,DZ,yes
-Annaba,Annaba,Annaba,عنابة‎,4-Consulat général,36.8970249,7.7460806,DZ,no
-Oran,Oran,Oran,وهران,4-Consulat général,35.7032751,-0.6492976,DZ,no
-Berlin,Berlin,Berlin,برلين,1-Ambassade,52.5170365,13.3888599,DE,yes
-Düsseldorf,Düsseldorf,Düsseldorf,دوسلدورف,4-Consulat général,51.2254018,6.7763137,DE,no
-Frankfurt am Main,Francfort-sur-le-Main,Frankfurt am Main,فرانكفورت,4-Consulat général,50.110653,8.682093,DE,no
-München,Munich,Munich,ميونخ,4-Consulat général,48.1371079,11.5753822,DE,no
-Hamburg,Hambourg,Hamburg,هامبورغ,4-Consulat général,53.550341,10.000654,DE,no
-Saarbrücken,Sarrebruck,Saarbrücken,Saarbrücken,4-Consulat général,49.234362,6.996379,DE,no
-Stuttgart,Stuttgart,Stuttgart,شتوتغارت,4-Consulat général,48.7784485,9.1800132,DE,no
-Andorra la Vella,Andorre-la-Vieille,Andorra la Vella,Andorra la Vella,1-Ambassade,42.5051,1.5222,AD,no
-Luanda,Luanda,Luanda,لواندا,1-Ambassade,-8.8271656,13.2436665,AO,yes
-الرياض,Riyad,Riyadh,الرياض,1-Ambassade,24.6319692,46.7150648,SA,yes
-جدّة,Djeddah,Jeddah,جدّة,4-Consulat général,21.5822247,39.1640396,SA,no
-Buenos Aires,Buenos Aires,Buenos Aires,بوينس آيرس,1-Ambassade,-34.6075616,-58.437076,AR,yes
-Buenos Aires,Buenos Aires,Buenos Aires,بوينس آيرس,4-Consulat général,-34.6075616,-58.437076,AR,yes
-Երևան (Yerevan),Erevan,Yerevan,يريفان,1-Ambassade,40.1776121,44.5125849,AM,yes
-Canberra,Canberra,Canberra,كانبرا,1-Ambassade,-35.2975906,149.1012676,AU,yes
-Sydney,Sydney,Sydney,Sydney,4-Consulat général,46.137977,-60.194092,CA,no
-Wien,Vienne,Vienna,فيينا,1-Ambassade,48.2083537,16.3725042,AT,yes
-Bakı,Bakou,Baku,باكو,1-Ambassade,40.3754434,49.8326748,AZ,yes
-المنامة,Manama,Manama,المنامة,1-Ambassade,26.2235041,50.5822436,BH,yes
-ঢাকা,Dacca,Dhaka,دكا,1-Ambassade,23.7593572,90.3788136,BD,yes
-Bruxelles - Brussel,Bruxelles,Brussels,بروكسل,1-Ambassade,50.8465573,4.351697,BE,yes
-Cotonou,Cotonou,Cotonou,كوتونو,1-Ambassade,6.367682,2.4252292,BJ,no
-Минск,Minsk,Minsk,مينسك,1-Ambassade,53.902334,27.5618791,BY,yes
-ရန်ကုန်,Rangoun,Yangon,ရန်ကုန်,1-Ambassade,16.7967129,96.1609916,MM,no
-La Paz,La Paz,La Paz,لاباز,1-Ambassade,-16.4956371,-68.1336346,BO,no
-Sarajevo,Sarajevo,Sarajevo,سراييفو,1-Ambassade,43.8519774,18.3866868,BA,yes
-Gaborone,Gaborone,Gaborone,جابورون,1-Ambassade,-24.655319,25.908728,BW,yes
-Brasília,Brasilia,Brasília,برازيليا,1-Ambassade,-15.7934036,-47.8823172,BR,yes
-Recife,Recife,Recife,ريسيفي,4-Consulat général,-8.0641931,-34.8781517,BR,no
-Rio de Janeiro,Rio de Janeiro,Rio de Janeiro,ريو دي جانيرو,4-Consulat général,-22.9110137,-43.2093727,BR,no
-São Paulo,São Paulo,São Paulo,ساو باولو,4-Consulat général,-23.5506507,-46.6333824,BR,no
-Bandar Seri Begawan,Bandar Seri Begawan,Bandar Seri Begawan,بندر سري بكاوان,1-Ambassade,4.8895453,114.9417574,BN,yes
-София,Sofia,Sofia,صوفيا,1-Ambassade,42.6978634,23.3221789,BG,yes
-Ouagadougou,Ouagadougou,Ouagadougou,واغادوغو,1-Ambassade,12.368148,-1.527085,BF,yes
-Bujumbura,Bujumbura,Bujumbura,بوجومبورا,1-Ambassade,-3.3638125,29.3675028,BI,yes
-Praia,Praia,Praia,برايا,1-Ambassade,14.9160169,-23.5096132,CV,yes
-រាជធានីភ្នំពេញ,Phnom Penh,Phnom Penh,بنوم بنه,1-Ambassade,11.568271,104.9224426,KH,yes
-Yaoundé,Yaoundé,Yaounde,ياوندي,1-Ambassade,3.8689867,11.5213344,CM,yes
-Douala,Douala,Douala,دوالا,4-Consulat général,4.0429674,9.7061981,CM,no
-Ottawa,Ottawa,Ottawa,أوتاوا,1-Ambassade,45.421106,-75.690308,CA,yes
-Moncton,Moncton,Moncton,Moncton,4-Consulat général,46.097995,-64.80011,CA,no
-Montréal,Montréal,Montreal,مونتريال,2-RP,45.4972159,-73.6103642,CA,no
-Ville de Québec,Québec,Quebec,كويبك سيتي,4-Consulat général,46.8259601,-71.2352226,CA,no
-Toronto,Toronto,Toronto,تورونتو,4-Consulat général,43.653963,-79.387207,CA,no
-Vancouver,Vancouver,Vancouver,فانكوفر,4-Consulat général,49.262428,-123.11554,CA,no
-Santiago,Santiago,Santiago,Santiago,1-Ambassade,16.685276,121.5408524,CL,no
-北京市,Pékin,Beijing,بكين,1-Ambassade,39.9059631,116.391248,CN,yes
-香港,Hong-Kong,Hong Kong,هونغ كونغ,4-Consulat général,22.2793278,114.1628131,CN,no
-广州市,Canton,Guangzhou,广州市,4-Consulat général,23.1301964,113.2592945,CN,no
-成都市,Chengdu,Chengdu,成都市,4-Consulat général,30.6765553,104.0612783,CN,no
-上海市,Shanghaï,Shanghai,شانغهاي,4-Consulat général,31.2253441,121.4888922,CN,no
-沈阳市,Shenyang,Shenyang,沈阳市,4-Consulat général,41.8045293,123.4277858,CN,no
-武汉市,Wuhan,Wuhan,武汉市,4-Consulat général,30.5960213,114.2992796,CN,no
-Nicosia,Nicosie,Nicosia,نيقوسيا,1-Ambassade,35.1739302,33.364726,CY,yes
-Bogotá,Bogota,Bogota,بوغوتا,1-Ambassade,4.5980772,-74.0761028,CO,yes
-Moroni موروني,Moroni,Moroni,موروني,1-Ambassade,-11.6931255,43.2543044,KM,yes
-Brazzaville,Brazzaville,Brazzaville,برازافيل,1-Ambassade,-4.2694407,15.2712256,CG,yes
-Pointe-Noire,Pointe-Noire,Pointe-Noire,بوانت نوار,4-Consulat général,-4.7975373,11.8503297,CG,no
-평양,PyongYang,Pyongyang,بيونغيانغ,3-Bureau,39.0194741,125.753388,KP,yes
-서울특별시,Séoul,Seoul,سول,1-Ambassade,37.5666791,126.9782914,KR,yes
-San José,San José,San José,San José,1-Ambassade,37.3361905,-121.8905833,CR,no
-Abidjan,Abidjan,Abidjan,أبيدجان,1-Ambassade,5.320357,-4.016107,CI,no
-Zagreb,Zagreb,Zagreb,زغرب,1-Ambassade,45.813177,15.977048,HR,yes
-La Habana,La Havane,Havana,هافانا,1-Ambassade,23.138028,-82.3658671,CU,yes
-København,Copenhague,Copenhagen,كوبنهاغن,1-Ambassade,55.6867243,12.5700724,DK,yes
-Djibouti جيبوتي,Djibouti,Djibouti,جيبوتي,1-Ambassade,11.593665,43.14724,DJ,yes
-القاهرة,Le Caire,Cairo,القاهرة,1-Ambassade,30.048819,31.243666,EG,yes
-Alessandria,Alexandrie,Alessandria,Alessandria,4-Consulat général,44.9129225,8.615321,EG,no
-أبو ظبي,Abou Dabi,Abu Dhabi,أبو ظبي,1-Ambassade,24.4747961,54.3705762,AE,yes
-دبي,Dubaï,Dubai,دبي,4-Consulat général,25.2683521,55.2961962,AE,no
-Quito,Quito,Quito,كيتو,1-Ambassade,-0.2201641,-78.5123274,EC,yes
-أسمرة አስመራ,Asmara,Asmara,أسمرا,1-Ambassade,15.338997,38.9326719,ER,yes
-Madrid,Madrid,Madrid,مدريد,1-Ambassade,40.4167047,-3.7035825,ES,yes
-Barcelona,Barcelone,Barcelona,برشلونة,4-Consulat général,41.3828939,2.1774322,ES,no
-Bilbao,Bilbao,Bilbao,بلباو,4-Consulat général,43.2629489,-2.9349459,ES,no
-Sevilla,Séville,Seville,اشبيلية,4-Consulat général,37.3886303,-5.9953171,ES,no
-Tallinn,Tallinn,Tallinn,تالين,1-Ambassade,59.4372155,24.7453688,EE,yes
-Washington,Washington,Washington D.C.,واشنطن,1-Ambassade,38.8949549,-77.0366456,US,yes
-New York,New York,New York,نيويورك,2-RP,40.7306458,-73.9866136,US,no
-Atlanta,Atlanta,Atlanta,أتلانتا، جورجيا,4-Consulat général,33.7490987,-84.3901849,US,no
-Boston,Boston,Boston,Boston,4-Consulat général,42.3602534,-71.0582912,US,no
-Chicago,Chicago,Chicago,شيكاغو,4-Consulat général,41.8755546,-87.6244212,US,no
-Houston,Houston,Houston,هيوستن، تكساس,4-Consulat général,29.7589382,-95.3676974,US,no
-Los Angeles,Los Angeles,Los Angeles,لوس أنجلوس,4-Consulat général,34.054935,-118.244476,US,no
-Miami,Miami,Miami,ميامي,4-Consulat général,25.7742658,-80.1936589,US,no
-New Orleans,La Nouvelle-Orléans,New Orleans,New Orleans,4-Consulat général,29.9499323,-90.0701156,US,no
-San Francisco,San Francisco,San Francisco,San Francisco,4-Consulat général,37.7792808,-122.4192363,US,no
-አዲስ አበባ,Addis-Abeba,Addis Ababa,أديس أبابا,1-Ambassade,9.0107934,38.7612525,ET,yes
-Suva,Suva,Suva,سوفا,1-Ambassade,-18.1415884,178.4421662,FJ,yes
-Helsinki,Helsinki,Helsinki,هلسنكي,1-Ambassade,60.1674086,24.9425683,FI,yes
-Paris,Paris,Paris,باريس,1-HC,48.8566101,2.3514992,FR,yes
-Strasbourg,Strasbourg,Strasbourg,ستراسبورغ,2-RP,48.584614,7.7507127,FR,no
-Libreville,Libreville,Libreville,ليبرفيل,1-Ambassade,0.390002,9.454001,GA,yes
-თბილისი,Tbilissi,Tbilisi,تبليسي,1-Ambassade,41.6935247,44.8015019,GE,yes
-Accra,Accra,Accra,أكرا,1-Ambassade,5.5600141,-0.2057437,GH,yes
-Αθήνα,Athènes,Athens,أثينا,1-Ambassade,37.9841493,23.7279843,GR,yes
-Θεσσαλονίκη,Thessalonique,Thessaloniki,سالونيك,4-Consulat général,40.6403167,22.9352716,GR,no
-Ciudad de Guatemala,Guatemala,Guatemala City,مدينة غواتيمالا,1-Ambassade,14.6417889,-90.5132239,GT,yes
-Conakry,Conakry,Conakry,كوناكري,1-Ambassade,9.5170602,-13.6998434,GN,yes
-Malabo,Malabo,Malabo,مالابو,1-Ambassade,3.752828,8.780061,GQ,yes
-Bissau,Bissau,Bissau,بيساو,1-Ambassade,11.861324,-15.583055,GW,yes
-Port-au-Prince,Port-au-Prince,Port-au-Prince,بورت أو برنس,1-Ambassade,18.547327,-72.3395928,HT,yes
-Tegucigalpa,Tegucigalpa,Tegucigalpa,تيجوسيجالبا,1-Ambassade,14.0931919,-87.2012631,HN,no
-Budapest,Budapest,Budapest,بودابست,1-Ambassade,47.4983815,19.0404707,HU,yes
-New Delhi,New delhi,New Delhi,دلهي الجديد,1-Ambassade,28.6141793,77.2022662,IN,yes
-Bengaluru,Bangalore,Bengaluru,Bengaluru,4-Consulat général,12.9791198,77.5912997,IN,no
-Mumbai,Bombay,Mumbai,مومباي,4-Consulat général,18.9321862,72.8308337,IN,no
-Kolkata,Calcutta,Kolkata,Kolkata,4-Consulat général,22.5677459,88.3476023,IN,no
-Pondichéry,Pondichéry,Puducherry,Pondichéry,4-Consulat général,11.9340568,79.8306447,IN,no
-Jakarta,Jakarta,Jakarta,جاكرتا,1-Ambassade,-6.1753942,106.827183,ID,yes
-بغداد,Bagdad,Baghdad,بغداد,1-Ambassade,33.3024309,44.3787992,IQ,yes
-هەولێر,Erbil,Erbil,أربيل,4-Consulat général,36.1911624,44.0094652,IQ,no
-تهران,Téhéran,Tehran,طهران,1-Ambassade,35.7006177,51.401375,IR,yes
-Dublin,Dublin,Dublin,دبلن,1-Ambassade,53.3497645,-6.2602732,IE,yes
-Reykjavík,Reykjavík,Reykjavik,ريكيافيك,1-Ambassade,64.145981,-21.9422367,IS,yes
-תל אביב-יפו,Tel-Aviv,Tel Aviv-Yafo,تل أبيب-يافا,1-Ambassade,32.0804808,34.7805274,IL,no
-ירושלים,Jérusalem,Jerusalem,القدس,4-Consulat général,31.7791134,35.2266286,IL,yes
-חיפה,Haïfa,Haifa,حيفا,5-Consulat,32.8191218,34.9983856,IL,no
-Roma,Rome,Rome,روما,1-Ambassade,41.8933203,12.4829321,IT,yes
-Milano,Milan,Milan,ميلانو,4-Consulat général,45.4667971,9.1904984,IT,no
-Napoli,Naples,Naples,نابولي,4-Consulat général,40.8359336,14.2487826,IT,no
-Kingston,Kingston,Kingston,Kingston,1-Ambassade,44.230687,-76.481323,CA,no
-東京,Tokyo,Tokyo,طوكيو,1-Ambassade,35.6828378,139.7589667,JP,yes
-京都市,Kyoto,Kyoto,京都市,4-Consulat général,35.0185804,135.763835,JP,no
-عمان‎,Amman,Amman,عمان,1-Ambassade,31.9515694,35.9239625,JO,yes
-Астана,Astana,Astana,أستانا,1-Ambassade,51.128258,71.43055,KZ,yes
-Алматы,Almaty,Almaty,ألماتي,4-Consulat général,43.2363924,76.9457275,KZ,no
-Nairobi,Nairobi,Nairobi,نيروبي,1-Ambassade,-1.2832533,36.8172449,KE,yes
-Бишкек,Bichkek,Bishkek,بيشكك,1-Ambassade,42.8767446,74.6069949,KG,yes
-Prishtinë,Pristina,Pristina,Prishtinë,1-Ambassade,42.6638771,21.1640849,XK,yes
-مدينة الكويت,Koweït,Kuwait City,مدينة الكويت,1-Ambassade,29.3797091,47.9735629,KW,yes
-ວຽງຈັນ,Vientiane,Vientiane,فيينتيان,1-Ambassade,17.9640988,102.6133707,LA,yes
-Maseru,Maseru,Maseru,ماسيرو,1-Ambassade,-29.310054,27.478222,LS,yes
-Rīga,Riga,Riga,ريغا,1-Ambassade,56.9493977,24.1051846,LV,yes
-بيروت,Beyrouth,Beirut,بيروت,1-Ambassade,33.8959203,35.47843,LB,yes
-بيروت,Beyrouth,Beirut,بيروت,4-Consulat général,33.8959203,35.47843,LB,yes
-Monrovia,Monrovia,Monrovia,Monrovia,1-Ambassade,34.1483499,-118.0014517,LR,no
-طرابلس,Tripoli,Tripoli,طرابلس,1-Ambassade,32.896672,13.1777923,LY,yes
-Vaduz,Vaduz,Vaduz,Vaduz,1-Ambassade,47.1362,9.5358,LI,no
-Vilnius,Vilnius,Vilnius,فيلنيوس,1-Ambassade,54.6870458,25.2829111,LT,yes
-Luxembourg,Luxembourg,Luxembourg,لوكسمبورغ,1-Ambassade,49.6112768,6.129799,LU,yes
-Скопје,Skopje,Skopje,سكوبيه,1-Ambassade,41.9960924,21.4316495,MK,yes
-Antananarivo,Tananarive,Antananarivo,أنتاناناريفو,1-Ambassade,-18.9100122,47.5255809,MG,yes
-Kuala Lumpur,Kuala lumpur,Kuala Lumpur,كوالالمبور,1-Ambassade,3.1546872,101.7136362,MY,yes
-Bamako,Bamako,Bamako,باماكو,1-Ambassade,12.649319,-8.000337,ML,yes
-Valletta,La Valette,Valletta,البلدة,1-Ambassade,35.8989818,14.5136759,MT,yes
-Rabat ⵔⴱⴰⵟ الرباط,Rabat,Rabat,الرباط,1-Ambassade,34.022405,-6.834543,MA,yes
-Agadir ⴰⴳⴰⴷⵉⵔ أگادیر,Agadir,Agadir,أكادير,4-Consulat général,30.4211144,-9.5830626,MA,no
-Casablanca ⵜⵉⴳⵎⵉ ⵜⵓⵎⵍⵉⵍⵜ الدار البيضاء,Casablanca,Casablanca,الدار البيضاء,4-Consulat général,33.5950627,-7.6187768,MA,no
-Fès ⴼⴰⵙ فاس,Fès,Fez,فاس,4-Consulat général,34.0346534,-5.0161926,MA,no
-Marrakech ⵎⵕⵕⴰⴽⵛ مراكش,Marrakech,Marrakesh,مراكش,4-Consulat général,31.6259901,-7.9886083,MA,no
-Tanger ⵟⴰⵏⵊⴰ طنجة,Tanger,Tangier,طنجة,4-Consulat général,35.777103,-5.803792,MA,no
-Port-Louis,Port-Louis,Port-Louis,بور لويس,1-Ambassade,-20.1637281,57.5045331,MU,yes
-نواكشوط,Nouakchott,Nouakchott,نواكشوط,1-Ambassade,18.0792379,-15.9780071,MR,yes
-Ciudad de México,Mexico,Mexico City,مدينة مكسيكو,1-Ambassade,19.4326009,-99.1333416,MX,yes
-Chișinău,Chisinau,Kishinev,كيشيناو,1-Ambassade,47.0122737,28.8605936,MD,yes
-Monaco,Monaco,Monaco,موناكو,1-Ambassade,43.7311424,7.4197576,MC,yes
-Улаанбаатар,Oulan-Bator,Ulaanbaatar,Улаанбаатар,1-Ambassade,47.9184676,106.9177016,MN,yes
-Podgorica,Podgorica,Podgorica,بودغوريتسا,1-Ambassade,42.4415238,19.2621081,ME,yes
-Maputo,Maputo,Maputo,مابوتو,1-Ambassade,-25.966213,32.56745,MZ,yes
-Windhoek,Windhoek,Windhoek,ويندهوك,1-Ambassade,-22.5744184,17.0791233,NA,yes
-Kathmandu,Katmandou,Kathmandu,كاثماندو,1-Ambassade,27.708796,85.320244,NP,yes
-Managua,Managua,Managua,ماناغوا,1-Ambassade,12.1461244,-86.273717,NI,yes
-Niamey,Niamey,Niamey,نيامي,1-Ambassade,13.524834,2.109823,NE,yes
-Abuja,Abuja,Abuja,أبوجا,1-Ambassade,9.0643305,7.4892974,NG,yes
-Oslo,Oslo,Oslo,أوسلو,1-Ambassade,59.9132694,10.7391112,NO,yes
-Wellington,Wellington,Wellington,ويلينغتون,1-Ambassade,-41.2887639,174.7772239,NZ,yes
-مسقط,Mascate,Muscat,مسقط,1-Ambassade,23.5997857,58.5451305,OM,yes
-Kampala,Kampala,Kampala,كامبالا,1-Ambassade,0.3177137,32.5813539,UG,yes
-Toshkent,Tachkent,Tashkent,طشقند,1-Ambassade,41.3123363,69.2787079,UZ,yes
-اسلام آباد,Islamabad,Islamabad,إسلام آباد,1-Ambassade,33.6945756,73.0643744,PK,yes
-کراچی,Karachi,Karachi,كراتشي,4-Consulat général,24.8667795,67.0311286,PK,no
-Ciudad de Panamá,Panama,Panama,مدينة بنما,1-Ambassade,8.9714493,-79.5341802,PA,yes
-Port Moresby,Port Moresby,Port Moresby,بورت مورسبي,1-Ambassade,-9.4743301,147.1599504,PG,yes
-Asunción,Assomption,Asuncion,أسونسيون,1-Ambassade,-25.2959916,-57.6311196,PY,yes
-Den Haag,La Haye,The Hague,Den Haag,1-Ambassade,52.0799838,4.3113461,NL,no
-Amsterdam,Amsterdam,Amsterdam,أمستردام,4-Consulat général,52.3727598,4.8936041,NL,yes
-Lima,Lima,Lima,ليما,1-Ambassade,-12.0621065,-77.0365256,PE,yes
-Manila,Manille,Manila,مانيلا,1-Ambassade,14.5906216,120.9799696,PH,yes
-Warszawa,Varsovie,Warsaw,وارسو,1-Ambassade,52.2319237,21.0067265,PL,yes
-Kraków,Cracovie,Krakow,Kraków,4-Consulat général,50.0619474,19.9368564,PL,no
-Lisboa,Lisbonne,Lisbon,أشبونة,1-Ambassade,38.7077926,-9.1365061,PT,yes
-الدوحة,Doha,Doha,الدوحة,1-Ambassade,25.2856329,51.5264162,QA,yes
-Bangui,Bangui,Bangui,Bangui,1-Ambassade,4.3907153,18.5509126,CF,yes
-Kinshasa,Kinshasa,Kinshasa,كينشاسا,1-Ambassade,-4.3217055,15.3125974,CD,yes
-Santo Domingo,Saint-Domingue,Santo Domingo,سانتو دومينجو,1-Ambassade,18.4801972,-69.942111,DO,yes
-Praha,Prague,Prague,براغ,1-Ambassade,50.0874654,14.4212535,CZ,yes
-București,Bucarest,Bucharest,بوخارست,1-Ambassade,44.4361414,26.1027202,RO,yes
-London,Londres,London,لندن,1-Ambassade,51.5073219,-0.1276474,GB,yes
-Edinburgh,Édimbourg,Edinburgh,إدنبرة,4-Consulat général,55.9495628,-3.1914972,GB,no
-Москва,Moscou,Moscow,موسكو,1-Ambassade,55.7507178,37.6176606,RU,yes
-Екатеринбург,Ekaterinbourg,Yekaterinburg,Екатеринбург,4-Consulat général,56.839104,60.60825,RU,no
-Санкт-Петербург,Saint-Pétersbourg,Saint Petersburg,Санкт-Петербург,4-Consulat général,59.938732,30.316229,RU,no
-Kigali,Kigali,Kigali,كيغالي,1-Ambassade,-1.950851,30.061507,RW,yes
-Castries,Castries,Castries,كاستريس,1-Ambassade,14.00977,-60.98998,LC,no
-San Salvador,San Salvador,San Salvador,سان سلفادور,1-Ambassade,13.6977587,-89.19301,SV,yes
-Dakar,Dakar,Dakar,دكار,1-Ambassade,14.693425,-17.447938,SN,yes
-Београд,Belgrade,Belgrade,بلغراد,1-Ambassade,44.8178131,20.4568974,RS,yes
-Victoria,Victoria,Victoria,Victoria,1-Ambassade,-4.6232085,55.452359,SC,yes
-Singapore,Singapour,Singapore,سنغافورة,1-Ambassade,1.2904753,103.8520359,SG,yes
-Bratislava,Bratislava,Bratislava,Bratislava,1-Ambassade,48.1516916,17.1093063,SK,yes
-Ljubljana,Ljubljana,Ljubljana,ليوبليانا,1-Ambassade,46.049865,14.5068921,SI,yes
-Muqdisho مقديشو,Mogadiscio,Mogadishu,مقديشو,1-Ambassade,2.042778,45.338564,SO,yes
-الخرطوم,Khartoum,Khartoum,الخرطوم,1-Ambassade,15.593325,32.53565,SD,yes
-Djouba,Djouba,Djouba,Djouba,1-Ambassade,4.8457,31.5843,SS,no
-Colombo,Colombo,Colombo,Colombo,1-Ambassade,-25.2925439,-49.2243472,BR,no
-Stockholm,Stockholm,Stockholm,ستوكهولم,1-Ambassade,59.3251172,18.0710935,SE,yes
-Bern,Berne,Bern,برن,1-Ambassade,46.9482713,7.4514512,CH,yes
-Genève,Genève,Geneva,جنيف,2-RP,46.2017559,6.1466014,CH,no
-Zürich,Zurich,Zurich,زيورخ,4-Consulat général,47.3723957,8.5423216,CH,no
-Paramaribo,Paramaribo,Paramaribo,باراماريبو,1-Ambassade,5.8216198,-55.1771974,SR,yes
-Mbabane,Mbabane,Mbabane,مبابان,1-Ambassade,-26.325745,31.144663,SZ,yes
-دمشق,Damas,Damascus,دمشق,1-Ambassade,33.5130695,36.3095814,SY,yes
-Душанбе,Douchanbé,Dushanbe,دوشنبه,1-Ambassade,38.5762709,68.7863573,TJ,yes
-臺北市,Taipei,Taipei,تايبيه,3-Bureau,25.0375167,121.5637,TW,yes
-Dar es Salaam,Dar es Salam,Dar es Salaam,Dar es Salaam,1-Ambassade,-6.8637028,39.34314,TZ,no
-N’Djamena انجمينا,Ndjamena,N'Djamena,انجمينا,1-Ambassade,12.1191543,15.0502758,TD,yes
-กรุงเทพมหานคร,Bangkok,Bangkok,بانكوك,1-Ambassade,13.7542529,100.493087,TH,yes
-Lomé,Lomé,Lomé,لومي,1-Ambassade,6.130419,1.215829,TG,yes
-Port of Spain,Port d'Espagne,Port of Spain,Port of Spain,1-Ambassade,10.6572678,-61.5180173,TT,yes
-تونس,Tunis,Tunis,تونس,1-Ambassade,36.800108,10.184794,TN,yes
-Aşgabat,Achgabat,Ashgabat,عشق آباد,1-Ambassade,37.9396678,58.3874263,TM,yes
-Ankara,Ankara,Ankara,أنقرة,1-Ambassade,39.9215219,32.8537929,TR,yes
-İstanbul,Istanbul,Istanbul,إسطنبول,4-Consulat général,41.0096334,28.9651646,TR,no
-Київ,Kiev,Kyiv,كييف,1-Ambassade,50.4501071,30.5240501,UA,yes
-Montevideo,Montevideo,Montevideo,مونتيفيديو,1-Ambassade,-34.9059039,-56.1913569,UY,yes
-Port Vila,Port-Vila,Port Vila,بورت فيلا,1-Ambassade,-17.7414972,168.3150163,VU,yes
-Vatican,Vatican,Vatican City,الفاتيكان,1-Ambassade,41.9038,12.4559,VA,no
-Caracas,Caracas,Caracas,كراكاس,1-Ambassade,10.506098,-66.9146017,VE,yes
-Hà Nội,Hanoï,Hanoi,هانوي,1-Ambassade,21.0292095,105.85247,VN,yes
-Thành phố Hồ Chí Minh,Hô-Chi-Minh-Ville,Ho Chi Minh City,Thành phố Hồ Chí Minh,4-Consulat général,10.7758439,106.7017555,VN,no
-صنعاء,Sanaa,Sana'a,صنعاء,1-Ambassade,15.342101,44.2005197,YE,yes
-Lusaka,Lusaka,Lusaka,لوساكا,1-Ambassade,-15.416697,28.281381,ZM,yes
-Harare,Harare,Harare,هراري,1-Ambassade,-17.831773,31.045686,ZW,yes
+name,name:fr,name:en,name:ar,type,prio,latitude,longitude,iso,capital,ldir,wikidata
+کابل,Kaboul,Kabul,كابل,ambassade,1,34.5260131,69.1776476,AF,yes,,
+Pretoria,Pretoria,Pretoria,بريتوريا,ambassade,1,-25.7459374,28.1879444,ZA,yes,,
+Johannesburg,Johannesbourg,Johannesburg,جوهانسبرغ,consulat_general,4,-26.205,28.049722,ZA,no,,
+Cape Town,Le Cap,Cape Town,كيب تاون,consulat,5,-33.928992,18.417396,ZA,no,,
+Tiranë,Tirana,Tiranë,تيرانا,ambassade,1,41.3279457,19.8185323,AL,yes,,
+Alger,Alger,Algiers,الجزائر,ambassade,1,36.775348,3.060065,DZ,yes,,
+Annaba,Annaba,Annaba,عنابة‎,consulat_general,4,36.8970249,7.7460806,DZ,no,S,
+Oran,Oran,Oran,وهران,consulat_general,4,35.7032751,-0.6492976,DZ,no,,
+Berlin,Berlin,Berlin,برلين,ambassade,1,52.5170365,13.3888599,DE,yes,SW,
+Düsseldorf,Düsseldorf,Düsseldorf,دوسلدورف,consulat_general,4,51.2254018,6.7763137,DE,no,,
+Frankfurt am Main,Francfort-sur-le-Main,Frankfurt am Main,فرانكفورت,consulat_general,4,50.110653,8.682093,DE,no,,
+München,Munich,Munich,ميونخ,consulat_general,4,48.1371079,11.5753822,DE,no,,
+Hamburg,Hambourg,Hamburg,هامبورغ,consulat_general,4,53.550341,10.000654,DE,no,,
+Saarbrücken,Sarrebruck,Saarbrücken,ساربروكن,consulat_general,4,49.234362,6.996379,DE,no,NE,
+Stuttgart,Stuttgart,Stuttgart,شتوتغارت,consulat_general,4,48.7784485,9.1800132,DE,no,S,
+Andorra la Vella,Andorre-la-Vieille,Andorra la Vella,أندورا لا فيلا,ambassade,1,42.5051,1.5222,AD,yes,,
+Luanda,Luanda,Luanda,لواندا,ambassade,1,-8.8271656,13.2436665,AO,yes,,
+الرياض,Riyad,Riyadh,الرياض,ambassade,1,24.6319692,46.7150648,SA,yes,S,
+جدّة,Djeddah,Jeddah,جدّة,consulat_general,4,21.5822247,39.1640396,SA,no,,
+Buenos Aires,Buenos Aires,Buenos Aires,بوينس آيرس,ambassade,1,-34.6075616,-58.437076,AR,yes,SW,
+Buenos Aires,Buenos Aires,Buenos Aires,بوينس آيرس,consulat_general,4,-34.6075616,-58.437076,AR,yes,,
+Երևան (Yerevan),Erevan,Yerevan,يريفان,ambassade,1,40.1776121,44.5125849,AM,yes,,
+Canberra,Canberra,Canberra,كانبرا,ambassade,1,-35.2975906,149.1012676,AU,yes,N,
+Sydney,Sydney,Sydney,سيدني,consulat_general,4,-33.87298,151.20607,AU,no,NW,
+Wien,Vienne,Vienna,فيينا,ambassade,1,48.2083537,16.3725042,AT,yes,W,
+Bakı,Bakou,Baku,باكو,ambassade,1,40.3754434,49.8326748,AZ,yes,,
+المنامة,Manama,Manama,المنامة,ambassade,1,26.2235041,50.5822436,BH,yes,,
+ঢাকা,Dacca,Dhaka,دكا,ambassade,1,23.7593572,90.3788136,BD,yes,,
+Bruxelles - Brussel,Bruxelles,Brussels,بروكسل,ambassade,1,50.8465573,4.351697,BE,yes,,
+Cotonou,Cotonou,Cotonou,كوتونو,ambassade,1,6.367682,2.4252292,BJ,no,,
+Минск,Minsk,Minsk,مينسك,ambassade,1,53.902334,27.5618791,BY,yes,,
+ရန်ကုန်,Rangoun,Yangon,يانغون,ambassade,1,16.7967129,96.1609916,MM,yes,,
+La Paz,La Paz,La Paz,لاباز,ambassade,1,-16.4956371,-68.1336346,BO,yes,,
+Sarajevo,Sarajevo,Sarajevo,سراييفو,ambassade,1,43.8519774,18.3866868,BA,yes,,
+Gaborone,Gaborone,Gaborone,جابورون,ambassade,1,-24.655319,25.908728,BW,yes,NW,
+Brasília,Brasilia,Brasília,برازيليا,ambassade,1,-15.7934036,-47.8823172,BR,yes,,
+Recife,Recife,Recife,ريسيفي,consulat_general,4,-8.0641931,-34.8781517,BR,no,NW,
+Rio de Janeiro,Rio de Janeiro,Rio de Janeiro,ريو دي جانيرو,consulat_general,4,-22.9110137,-43.2093727,BR,no,N,
+São Paulo,São Paulo,São Paulo,ساو باولو,consulat_general,4,-23.5506507,-46.6333824,BR,no,W,
+Bandar Seri Begawan,Bandar Seri Begawan,Bandar Seri Begawan,بندر سري بكاوان,ambassade,1,4.8895453,114.9417574,BN,yes,,
+София,Sofia,Sofia,صوفيا,ambassade,1,42.6978634,23.3221789,BG,yes,,
+Ouagadougou,Ouagadougou,Ouagadougou,واغادوغو,ambassade,1,12.368148,-1.527085,BF,yes,N,
+Bujumbura,Bujumbura,Bujumbura,بوجومبورا,ambassade,1,-3.3638125,29.3675028,BI,yes,,
+Praia,Praia,Praia,برايا,ambassade,1,14.9160169,-23.5096132,CV,yes,,
+រាជធានីភ្នំពេញ,Phnom Penh,Phnom Penh,بنوم بنه,ambassade,1,11.568271,104.9224426,KH,yes,,
+Yaoundé,Yaoundé,Yaounde,ياوندي,ambassade,1,3.8689867,11.5213344,CM,yes,,
+Douala,Douala,Douala,دوالا,consulat_general,4,4.0429674,9.7061981,CM,no,,
+Ottawa,Ottawa,Ottawa,أوتاوا,ambassade,1,45.421106,-75.690308,CA,yes,N,
+Moncton,Moncton,Moncton,مونكتون,consulat_general,4,46.097995,-64.80011,CA,no,,
+Montréal,Montréal,Montreal,مونتريال,rp,2,45.4972159,-73.6103642,CA,no,,
+Ville de Québec,Québec,Quebec,كويبك سيتي,consulat_general,4,46.8259601,-71.2352226,CA,no,,
+Toronto,Toronto,Toronto,تورونتو,consulat_general,4,43.653963,-79.387207,CA,no,,
+Vancouver,Vancouver,Vancouver,فانكوفر,consulat_general,4,49.262428,-123.11554,CA,no,,
+Santiago,Santiago,Santiago,سانتياغو,ambassade,1,-33.4377968,-70.6504451,CL,yes,S,
+北京市,Pékin,Beijing,بكين,ambassade,1,39.9059631,116.391248,CN,yes,N,
+香港,Hong-Kong,Hong Kong,هونغ كونغ,consulat_general,4,22.2793278,114.1628131,CN,no,,
+广州市,Canton,Guangzhou,غوانزو,consulat_general,4,23.1301964,113.2592945,CN,no,,
+成都市,Chengdu,Chengdu,تشنغدو,consulat_general,4,30.6765553,104.0612783,CN,no,,
+上海市,Shanghaï,Shanghai,شانغهاي,consulat_general,4,31.2253441,121.4888922,CN,no,,
+沈阳市,Shenyang,Shenyang,شنيانغ,consulat_general,4,41.8045293,123.4277858,CN,no,,
+武汉市,Wuhan,Wuhan,ووهان,consulat_general,4,30.5960213,114.2992796,CN,no,,
+Nicosia,Nicosie,Nicosia,نيقوسيا,ambassade,1,35.1739302,33.364726,CY,yes,,
+Bogotá,Bogota,Bogota,بوغوتا,ambassade,1,4.5980772,-74.0761028,CO,yes,,
+Moroni موروني,Moroni,Moroni,موروني,ambassade,1,-11.6931255,43.2543044,KM,yes,,
+Brazzaville,Brazzaville,Brazzaville,برازافيل,ambassade,1,-4.2694407,15.2712256,CG,yes,NW,
+Pointe-Noire,Pointe-Noire,Pointe-Noire,بوانت نوار,consulat_general,4,-4.7975373,11.8503297,CG,no,,
+평양,PyongYang,Pyongyang,بيونغيانغ,bureau,3,39.0194741,125.753388,KP,yes,,
+서울특별시,Séoul,Seoul,سول,ambassade,1,37.5666791,126.9782914,KR,yes,SE,
+San José,San José,San José,سان خوسيه,ambassade,1,9.93254,-84.08051,CR,yes,,
+Abidjan,Abidjan,Abidjan,أبيدجان,ambassade,1,5.320357,-4.016107,CI,yes,,
+Zagreb,Zagreb,Zagreb,زغرب,ambassade,1,45.813177,15.977048,HR,yes,,
+La Habana,La Havane,Havana,هافانا,ambassade,1,23.138028,-82.3658671,CU,yes,,
+København,Copenhague,Copenhagen,كوبنهاغن,ambassade,1,55.6867243,12.5700724,DK,yes,SW,
+Djibouti جيبوتي,Djibouti,Djibouti,جيبوتي,ambassade,1,11.593665,43.14724,DJ,yes,,
+القاهرة,Le Caire,Cairo,القاهرة,ambassade,1,30.048819,31.243666,EG,yes,S,
+Alessandria,Alexandrie,Alessandria,الإسكندرية,consulat_general,4,31.19900,29.89344,EG,no,,
+أبو ظبي,Abou Dabi,Abu Dhabi,أبو ظبي,ambassade,1,24.4747961,54.3705762,AE,yes,,
+دبي,Dubaï,Dubai,دبي,consulat_general,4,25.2683521,55.2961962,AE,no,,
+Quito,Quito,Quito,كيتو,ambassade,1,-0.2201641,-78.5123274,EC,yes,,
+أسمرة አስመራ,Asmara,Asmara,أسمرا,ambassade,1,15.338997,38.9326719,ER,yes,,
+Madrid,Madrid,Madrid,مدريد,ambassade,1,40.4167047,-3.7035825,ES,yes,,
+Barcelona,Barcelone,Barcelona,برشلونة,consulat_general,4,41.3828939,2.1774322,ES,no,,
+Bilbao,Bilbao,Bilbao,بلباو,consulat_general,4,43.2629489,-2.9349459,ES,no,,
+Sevilla,Séville,Seville,اشبيلية,consulat_general,4,37.3886303,-5.9953171,ES,no,,
+Tallinn,Tallinn,Tallinn,تالين,ambassade,1,59.4372155,24.7453688,EE,yes,,
+Washington,Washington,Washington D.C.,واشنطن,ambassade,1,38.8949549,-77.0366456,US,yes,NW,
+New York,New York,New York,نيويورك,rp,2,40.7306458,-73.9866136,US,no,NW,
+Atlanta,Atlanta,Atlanta,أتلانتا، جورجيا,consulat_general,4,33.7490987,-84.3901849,US,no,N,
+Boston,Boston,Boston,بوسطن,consulat_general,4,42.3602534,-71.0582912,US,no,NW,
+Chicago,Chicago,Chicago,شيكاغو,consulat_general,4,41.8755546,-87.6244212,US,no,N,
+Houston,Houston,Houston,هيوستن، تكساس,consulat_general,4,29.7589382,-95.3676974,US,no,N,
+Los Angeles,Los Angeles,Los Angeles,لوس أنجلوس,consulat_general,4,34.054935,-118.244476,US,no,,
+Miami,Miami,Miami,ميامي,consulat_general,4,25.7742658,-80.1936589,US,no,,
+New Orleans,La Nouvelle-Orléans,New Orleans,نيو أورلينز,consulat_general,4,29.9499323,-90.0701156,US,no,NW,
+San Francisco,San Francisco,San Francisco,سان فرانسيسكو,consulat_general,4,37.7792808,-122.4192363,US,no,,
+አዲስ አበባ,Addis-Abeba,Addis Ababa,أديس أبابا,ambassade,1,9.0107934,38.7612525,ET,yes,S,
+Suva,Suva,Suva,سوفا,ambassade,1,-18.1415884,178.4421662,FJ,yes,,
+Helsinki,Helsinki,Helsinki,هلسنكي,ambassade,1,60.1674086,24.9425683,FI,yes,,
+Paris,Paris,Paris,باريس,hc,1,48.8566101,2.3514992,FR,yes,,
+Strasbourg,Strasbourg,Strasbourg,ستراسبورغ,rp,2,48.584614,7.7507127,FR,no,SW,
+Libreville,Libreville,Libreville,ليبرفيل,ambassade,1,0.390002,9.454001,GA,yes,,
+თბილისი,Tbilissi,Tbilisi,تبليسي,ambassade,1,41.6935247,44.8015019,GE,yes,,
+Accra,Accra,Accra,أكرا,ambassade,1,5.5600141,-0.2057437,GH,yes,,
+Αθήνα,Athènes,Athens,أثينا,ambassade,1,37.9841493,23.7279843,GR,yes,,
+Θεσσαλονίκη,Thessalonique,Thessaloniki,سالونيك,consulat_general,4,40.6403167,22.9352716,GR,no,,
+Ciudad de Guatemala,Guatemala,Guatemala City,مدينة غواتيمالا,ambassade,1,14.6417889,-90.5132239,GT,yes,SW,
+Conakry,Conakry,Conakry,كوناكري,ambassade,1,9.5170602,-13.6998434,GN,yes,,
+Malabo,Malabo,Malabo,مالابو,ambassade,1,3.752828,8.780061,GQ,yes,,
+Bissau,Bissau,Bissau,بيساو,ambassade,1,11.861324,-15.583055,GW,yes,,
+Port-au-Prince,Port-au-Prince,Port-au-Prince,بورت أو برنس,ambassade,1,18.547327,-72.3395928,HT,yes,,
+Tegucigalpa,Tegucigalpa,Tegucigalpa,تيجوسيجالبا,ambassade,1,14.0931919,-87.2012631,HN,yes,E,
+Budapest,Budapest,Budapest,بودابست,ambassade,1,47.4983815,19.0404707,HU,yes,,
+New Delhi,New delhi,New Delhi,دلهي الجديد,ambassade,1,28.6141793,77.2022662,IN,yes,N,
+Bengaluru,Bangalore,Bengaluru,بنغالور,consulat_general,4,12.9791198,77.5912997,IN,no,,
+Mumbai,Bombay,Mumbai,مومباي,consulat_general,4,18.9321862,72.8308337,IN,no,,
+Kolkata,Calcutta,Kolkata,كلكتا,consulat_general,4,22.5677459,88.3476023,IN,no,NW,
+Pondichéry,Pondichéry,Puducherry,Pondichéry,consulat_general,4,11.9340568,79.8306447,IN,no,SW,
+Jakarta,Jakarta,Jakarta,جاكرتا,ambassade,1,-6.1753942,106.827183,ID,yes,,
+بغداد,Bagdad,Baghdad,بغداد,ambassade,1,33.3024309,44.3787992,IQ,yes,N,
+هەولێر,Erbil,Erbil,أربيل,consulat_general,4,36.1911624,44.0094652,IQ,no,SW,
+تهران,Téhéran,Tehran,طهران,ambassade,1,35.7006177,51.401375,IR,yes,,
+Dublin,Dublin,Dublin,دبلن,ambassade,1,53.3497645,-6.2602732,IE,yes,,
+Reykjavík,Reykjavík,Reykjavik,ريكيافيك,ambassade,1,64.145981,-21.9422367,IS,yes,,
+תל אביב-יפו,Tel-Aviv,Tel Aviv-Yafo,تل أبيب-يافا,ambassade,1,32.0804808,34.7805274,IL,yes,,
+ירושלים,Jérusalem,Jerusalem,القدس,consulat_general,4,31.7791134,35.2266286,IL,no,,
+חיפה,Haïfa,Haifa,حيفا,consulat,5,32.8191218,34.9983856,IL,no,,
+Roma,Rome,Rome,روما,ambassade,1,41.8933203,12.4829321,IT,yes,,
+Milano,Milan,Milan,ميلانو,consulat_general,4,45.4667971,9.1904984,IT,no,,
+Napoli,Naples,Naples,نابولي,consulat_general,4,40.8359336,14.2487826,IT,no,,
+Kingston,Kingston,Kingston,كينغستون,ambassade,,17.97121,-76.79375,JM,yes,,
+東京,Tokyo,Tokyo,طوكيو,ambassade,1,35.6828378,139.7589667,JP,yes,,
+京都市,Kyoto,Kyoto,كيوتو,consulat_general,4,35.0185804,135.763835,JP,no,,
+عمان‎,Amman,Amman,عمان,ambassade,1,31.9515694,35.9239625,JO,yes,,
+Астана,Astana,Astana,أستانا,ambassade,1,51.128258,71.43055,KZ,yes,,
+Алматы,Almaty,Almaty,ألماتي,consulat_general,4,43.2363924,76.9457275,KZ,no,,
+Nairobi,Nairobi,Nairobi,نيروبي,ambassade,1,-1.2832533,36.8172449,KE,yes,,
+Бишкек,Bichkek,Bishkek,بيشكك,ambassade,1,42.8767446,74.6069949,KG,yes,,
+Prishtinë,Pristina,Pristina,بريشتينا,ambassade,1,42.6638771,21.1640849,XK,yes,,
+مدينة الكويت,Koweït,Kuwait City,مدينة الكويت,ambassade,1,29.3797091,47.9735629,KW,yes,,
+ວຽງຈັນ,Vientiane,Vientiane,فيينتيان,ambassade,1,17.9640988,102.6133707,LA,yes,,
+Maseru,Maseru,Maseru,ماسيرو,ambassade,1,-29.310054,27.478222,LS,yes,,
+Rīga,Riga,Riga,ريغا,ambassade,1,56.9493977,24.1051846,LV,yes,,
+بيروت,Beyrouth,Beirut,بيروت,ambassade,1,33.8959203,35.47843,LB,yes,,
+Monrovia,Monrovia,Monrovia,مونروفيا,ambassade,1,34.1483499,-118.0014517,LR,yes,,
+طرابلس,Tripoli,Tripoli,طرابلس,ambassade,1,32.896672,13.1777923,LY,yes,,
+Vaduz,Vaduz,Vaduz,فادوتس,ambassade,1,47.1362,9.5358,LI,yes,,
+Vilnius,Vilnius,Vilnius,فيلنيوس,ambassade,1,54.6870458,25.2829111,LT,yes,NW,
+Luxembourg,Luxembourg,Luxembourg,لوكسمبورغ,ambassade,1,49.6112768,6.129799,LU,yes,,
+Скопје,Skopje,Skopje,سكوبيه,ambassade,1,41.9960924,21.4316495,MK,yes,,
+Antananarivo,Tananarive,Antananarivo,أنتاناناريفو,ambassade,1,-18.9100122,47.5255809,MG,yes,N,
+Kuala Lumpur,Kuala lumpur,Kuala Lumpur,كوالالمبور,ambassade,1,3.1546872,101.7136362,MY,yes,,
+Bamako,Bamako,Bamako,باماكو,ambassade,1,12.649319,-8.000337,ML,yes,,
+Valletta,La Valette,Valletta,البلدة,ambassade,1,35.8989818,14.5136759,MT,yes,,
+Rabat ⵔⴱⴰⵟ الرباط,Rabat,Rabat,الرباط,ambassade,1,34.022405,-6.834543,MA,yes,,
+Agadir ⴰⴳⴰⴷⵉⵔ أگادیر,Agadir,Agadir,أكادير,consulat_general,4,30.4211144,-9.5830626,MA,no,,
+Casablanca ⵜⵉⴳⵎⵉ ⵜⵓⵎⵍⵉⵍⵜ الدار البيضاء,Casablanca,Casablanca,الدار البيضاء,consulat_general,4,33.5950627,-7.6187768,MA,no,,
+Fès ⴼⴰⵙ فاس,Fès,Fez,فاس,consulat_general,4,34.0346534,-5.0161926,MA,no,,
+Marrakech ⵎⵕⵕⴰⴽⵛ مراكش,Marrakech,Marrakesh,مراكش,consulat_general,4,31.6259901,-7.9886083,MA,no,,
+Tanger ⵟⴰⵏⵊⴰ طنجة,Tanger,Tangier,طنجة,consulat_general,4,35.777103,-5.803792,MA,no,SE,
+Port-Louis,Port-Louis,Port-Louis,بور لويس,ambassade,1,-20.1637281,57.5045331,MU,yes,,
+نواكشوط,Nouakchott,Nouakchott,نواكشوط,ambassade,1,18.0792379,-15.9780071,MR,yes,,
+Ciudad de México,Mexico,Mexico City,مدينة مكسيكو,ambassade,1,19.4326009,-99.1333416,MX,yes,,
+Chișinău,Chisinau,Kishinev,كيشيناو,ambassade,1,47.0122737,28.8605936,MD,yes,,
+Monaco,Monaco,Monaco,موناكو,ambassade,1,43.7311424,7.4197576,MC,yes,,
+Улаанбаатар,Oulan-Bator,Ulaanbaatar,أولان باتور,ambassade,1,47.9184676,106.9177016,MN,yes,,
+Podgorica,Podgorica,Podgorica,بودغوريتسا,ambassade,1,42.4415238,19.2621081,ME,yes,,
+Maputo,Maputo,Maputo,مابوتو,ambassade,1,-25.966213,32.56745,MZ,yes,,
+Windhoek,Windhoek,Windhoek,ويندهوك,ambassade,1,-22.5744184,17.0791233,NA,yes,N,
+Kathmandu,Katmandou,Kathmandu,كاثماندو,ambassade,1,27.708796,85.320244,NP,yes,S,
+Managua,Managua,Managua,ماناغوا,ambassade,1,12.1461244,-86.273717,NI,yes,,
+Niamey,Niamey,Niamey,نيامي,ambassade,1,13.524834,2.109823,NE,yes,,
+Abuja,Abuja,Abuja,أبوجا,ambassade,1,9.0643305,7.4892974,NG,yes,SE,
+Oslo,Oslo,Oslo,أوسلو,ambassade,1,59.9132694,10.7391112,NO,yes,S,
+Wellington,Wellington,Wellington,ويلينغتون,ambassade,1,-41.2887639,174.7772239,NZ,yes,,
+مسقط,Mascate,Muscat,مسقط,ambassade,1,23.5997857,58.5451305,OM,yes,S,
+Kampala,Kampala,Kampala,كامبالا,ambassade,1,0.3177137,32.5813539,UG,yes,,
+Toshkent,Tachkent,Tashkent,طشقند,ambassade,1,41.3123363,69.2787079,UZ,yes,,
+اسلام آباد,Islamabad,Islamabad,إسلام آباد,ambassade,1,33.6945756,73.0643744,PK,yes,S,
+کراچی,Karachi,Karachi,كراتشي,consulat_general,4,24.8667795,67.0311286,PK,no,,
+Ciudad de Panamá,Panama,Panama,مدينة بنما,ambassade,1,8.9714493,-79.5341802,PA,yes,,
+Port Moresby,Port Moresby,Port Moresby,بورت مورسبي,ambassade,1,-9.4743301,147.1599504,PG,yes,,
+Asunción,Assomption,Asuncion,أسونسيون,ambassade,1,-25.2959916,-57.6311196,PY,yes,,
+Den Haag,La Haye,The Hague,لاهاي,ambassade,1,52.0799838,4.3113461,NL,yes,,
+Amsterdam,Amsterdam,Amsterdam,أمستردام,consulat_general,4,52.3727598,4.8936041,NL,yes,,
+Lima,Lima,Lima,ليما,ambassade,1,-12.0621065,-77.0365256,PE,yes,,
+Manila,Manille,Manila,مانيلا,ambassade,1,14.5906216,120.9799696,PH,yes,,
+Warszawa,Varsovie,Warsaw,وارسو,ambassade,1,52.2319237,21.0067265,PL,yes,,
+Kraków,Cracovie,Krakow,كراكوف,consulat_general,4,50.0619474,19.9368564,PL,no,,
+Lisboa,Lisbonne,Lisbon,أشبونة,ambassade,1,38.7077926,-9.1365061,PT,yes,,
+الدوحة,Doha,Doha,الدوحة,ambassade,1,25.2856329,51.5264162,QA,yes,,
+Bangui,Bangui,Bangui,بانغي,ambassade,1,4.3907153,18.5509126,CF,yes,NW,
+Kinshasa,Kinshasa,Kinshasa,كينشاسا,ambassade,1,-4.3217055,15.3125974,CD,yes,,
+Santo Domingo,Saint-Domingue,Santo Domingo,سانتو دومينجو,ambassade,1,18.4801972,-69.942111,DO,yes,,
+Praha,Prague,Prague,براغ,ambassade,1,50.0874654,14.4212535,CZ,yes,,
+București,Bucarest,Bucharest,بوخارست,ambassade,1,44.4361414,26.1027202,RO,yes,,
+London,Londres,London,لندن,ambassade,1,51.5073219,-0.1276474,GB,yes,N,
+Edinburgh,Édimbourg,Edinburgh,إدنبرة,consulat_general,4,55.9495628,-3.1914972,GB,no,,
+Москва,Moscou,Moscow,موسكو,ambassade,1,55.7507178,37.6176606,RU,yes,,
+Екатеринбург,Ekaterinbourg,Yekaterinburg,يكاترينبورغ,consulat_general,4,56.839104,60.60825,RU,no,,
+Санкт-Петербург,Saint-Pétersbourg,Saint Petersburg,سانت بطرسبرغ,consulat_general,4,59.938732,30.316229,RU,no,,
+Kigali,Kigali,Kigali,كيغالي,ambassade,1,-1.950851,30.061507,RW,yes,,
+Castries,Castries,Castries,كاستريس,ambassade,1,14.00977,-60.98998,LC,no,,
+San Salvador,San Salvador,San Salvador,سان سلفادور,ambassade,1,13.6977587,-89.19301,SV,yes,,
+Dakar,Dakar,Dakar,دكار,ambassade,1,14.693425,-17.447938,SN,yes,,
+Београд,Belgrade,Belgrade,بلغراد,ambassade,1,44.8178131,20.4568974,RS,yes,,
+Victoria,Victoria,Victoria,فيكتوريا,ambassade,1,-4.6232085,55.452359,SC,yes,,
+Singapore,Singapour,Singapore,سنغافورة,ambassade,1,1.2904753,103.8520359,SG,yes,,
+Bratislava,Bratislava,Bratislava,براتيسلافا,ambassade,1,48.1516916,17.1093063,SK,yes,,
+Ljubljana,Ljubljana,Ljubljana,ليوبليانا,ambassade,1,46.049865,14.5068921,SI,yes,,
+Muqdisho مقديشو,Mogadiscio,Mogadishu,مقديشو,ambassade,1,2.042778,45.338564,SO,yes,NE,
+الخرطوم,Khartoum,Khartoum,الخرطوم,ambassade,1,15.593325,32.53565,SD,yes,,
+Djouba,Djouba,Djouba,جوبا,ambassade,1,4.8457,31.5843,SS,yes,,
+Colombo,Colombo,Colombo,كولمبو,ambassade,1,6.9349969,79.8538463,LK,yes,,
+Stockholm,Stockholm,Stockholm,ستوكهولم,ambassade,1,59.3251172,18.0710935,SE,yes,SW,
+Bern,Berne,Bern,برن,ambassade,1,46.9482713,7.4514512,CH,yes,,
+Genève,Genève,Geneva,جنيف,rp,2,46.2017559,6.1466014,CH,no,S,
+Zürich,Zurich,Zurich,زيورخ,consulat_general,4,47.3723957,8.5423216,CH,no,N,
+Paramaribo,Paramaribo,Paramaribo,باراماريبو,ambassade,1,5.8216198,-55.1771974,SR,yes,,
+Mbabane,Mbabane,Mbabane,مبابان,ambassade,1,-26.325745,31.144663,SZ,yes,S,
+دمشق,Damas,Damascus,دمشق,ambassade,1,33.5130695,36.3095814,SY,yes,,
+Душанбе,Douchanbé,Dushanbe,دوشنبه,ambassade,1,38.5762709,68.7863573,TJ,yes,,
+臺北市,Taipei,Taipei,تايبيه,bureau,3,25.0375167,121.5637,TW,no,,
+Dar es Salaam,Dar es Salam,Dar es Salaam,دار_السلام,ambassade,1,-6.8637028,39.34314,TZ,yes,SW,
+N’Djamena انجمينا,Ndjamena,N'Djamena,انجمينا,ambassade,1,12.1191543,15.0502758,TD,yes,,
+กรุงเทพมหานคร,Bangkok,Bangkok,بانكوك,ambassade,1,13.7542529,100.493087,TH,yes,,
+Lomé,Lomé,Lomé,لومي,ambassade,1,6.130419,1.215829,TG,yes,,
+Port of Spain,Port d'Espagne,Port of Spain,بورت_أوف_سبين,ambassade,1,10.6572678,-61.5180173,TT,yes,,
+تونس,Tunis,Tunis,تونس,ambassade,1,36.800108,10.184794,TN,yes,,
+Aşgabat,Achgabat,Ashgabat,عشق آباد,ambassade,1,37.9396678,58.3874263,TM,yes,,
+Ankara,Ankara,Ankara,أنقرة,ambassade,1,39.9215219,32.8537929,TR,yes,,
+İstanbul,Istanbul,Istanbul,إسطنبول,consulat_general,4,41.0096334,28.9651646,TR,no,,
+Київ,Kiev,Kyiv,كييف,ambassade,1,50.4501071,30.5240501,UA,yes,,
+Montevideo,Montevideo,Montevideo,مونتيفيديو,ambassade,1,-34.9059039,-56.1913569,UY,yes,,
+Port Vila,Port-Vila,Port Vila,بورت فيلا,ambassade,1,-17.7414972,168.3150163,VU,yes,,
+Vatican,Vatican,Vatican City,الفاتيكان,ambassade,1,41.9038,12.4559,VA,no,,
+Caracas,Caracas,Caracas,كراكاس,ambassade,1,10.506098,-66.9146017,VE,yes,,
+Hà Nội,Hanoï,Hanoi,هانوي,ambassade,1,21.0292095,105.85247,VN,yes,,
+Thành phố Hồ Chí Minh,Hô-Chi-Minh-Ville,Ho Chi Minh City,مدينة هو تشي منه,consulat_general,4,10.7758439,106.7017555,VN,no,,
+صنعاء,Sanaa,Sana'a,صنعاء,ambassade,1,15.342101,44.2005197,YE,yes,,
+Lusaka,Lusaka,Lusaka,لوساكا,ambassade,1,-15.416697,28.281381,ZM,yes,SW,
+Harare,Harare,Harare,هراري,ambassade,1,-17.831773,31.045686,ZW,yes,N,
+ཐིམ་ཕུ,Thimphou,Thimphu,تيمفو,capitale,3,27.47276,89.62861,BT,yes,,Q9270
+Dodoma,Dodoma,Dodoma,دودوما,capitale,3,-6.18330605177,35.7500036201,TZ,yes,,Q3866
+Porto-Novo,Porto-Novo,Porto-Novo,بورتو_نوفو,capitale,3,6.48331097302,2.6166255276,BJ,yes,,Q3799
+Naypyidaw,Naypyidaw,Naypyidaw,بورتو نوفو,capitale,3,19.7665570261,96.1186185292,MM,yes,,Q37400
+Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,-5.2755025649,CI,yes,,Q3768

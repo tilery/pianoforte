@@ -68,7 +68,7 @@ Pointe-Noire,Pointe-Noire,Pointe-Noire,بوانت نوار,consulat_general,4,-4
 평양,PyongYang,Pyongyang,بيونغيانغ,bureau,3,39.0194741,125.753388,KP,yes,,
 서울특별시,Séoul,Seoul,سول,ambassade,1,37.5666791,126.9782914,KR,yes,SE,
 San José,San José,San José,سان خوسيه,ambassade,1,9.93254,-84.08051,CR,yes,,
-Abidjan,Abidjan,Abidjan,أبيدجان,ambassade,1,5.320357,-4.016107,CI,yes,,
+Abidjan,Abidjan,Abidjan,أبيدجان,ambassade,1,5.320357,-4.016107,CI,yes,N,
 Zagreb,Zagreb,Zagreb,زغرب,ambassade,1,45.813177,15.977048,HR,yes,,
 La Habana,La Havane,Havana,هافانا,ambassade,1,23.138028,-82.3658671,CU,yes,,
 København,Copenhague,Copenhagen,كوبنهاغن,ambassade,1,55.6867243,12.5700724,DK,yes,SW,
@@ -101,7 +101,7 @@ Paris,Paris,Paris,باريس,hc,1,48.8566101,2.3514992,FR,yes,,
 Strasbourg,Strasbourg,Strasbourg,ستراسبورغ,rp,2,48.584614,7.7507127,FR,no,SW,
 Libreville,Libreville,Libreville,ليبرفيل,ambassade,1,0.390002,9.454001,GA,yes,,
 თბილისი,Tbilissi,Tbilisi,تبليسي,ambassade,1,41.6935247,44.8015019,GE,yes,,
-Accra,Accra,Accra,أكرا,ambassade,1,5.5600141,-0.2057437,GH,yes,,
+Accra,Accra,Accra,أكرا,ambassade,1,5.5600141,-0.2057437,GH,yes,NW,
 Αθήνα,Athènes,Athens,أثينا,ambassade,1,37.9841493,23.7279843,GR,yes,,
 Θεσσαλονίκη,Thessalonique,Thessaloniki,سالونيك,consulat_general,4,40.6403167,22.9352716,GR,no,,
 Ciudad de Guatemala,Guatemala,Guatemala City,مدينة غواتيمالا,ambassade,1,14.6417889,-90.5132239,GT,yes,SW,
@@ -174,7 +174,7 @@ Abuja,Abuja,Abuja,أبوجا,ambassade,1,9.0643305,7.4892974,NG,yes,SE,
 Oslo,Oslo,Oslo,أوسلو,ambassade,1,59.9132694,10.7391112,NO,yes,S,
 Wellington,Wellington,Wellington,ويلينغتون,ambassade,1,-41.2887639,174.7772239,NZ,yes,,
 مسقط,Mascate,Muscat,مسقط,ambassade,1,23.5997857,58.5451305,OM,yes,S,
-Kampala,Kampala,Kampala,كامبالا,ambassade,1,0.3177137,32.5813539,UG,yes,,
+Kampala,Kampala,Kampala,كامبالا,ambassade,1,0.3177137,32.5813539,UG,yes,S,
 Toshkent,Tachkent,Tashkent,طشقند,ambassade,1,41.3123363,69.2787079,UZ,yes,,
 اسلام آباد,Islamabad,Islamabad,إسلام آباد,ambassade,1,33.6945756,73.0643744,PK,yes,S,
 کراچی,Karachi,Karachi,كراتشي,consulat_general,4,24.8667795,67.0311286,PK,no,,
@@ -224,7 +224,7 @@ Mbabane,Mbabane,Mbabane,مبابان,ambassade,1,-26.325745,31.144663,SZ,yes,S,
 Dar es Salaam,Dar es Salam,Dar es Salaam,دار_السلام,ambassade,1,-6.8637028,39.34314,TZ,yes,SW,
 N’Djamena انجمينا,Ndjamena,N'Djamena,انجمينا,ambassade,1,12.1191543,15.0502758,TD,yes,,
 กรุงเทพมหานคร,Bangkok,Bangkok,بانكوك,ambassade,1,13.7542529,100.493087,TH,yes,,
-Lomé,Lomé,Lomé,لومي,ambassade,1,6.130419,1.215829,TG,yes,,
+Lomé,Lomé,Lomé,لومي,ambassade,1,6.130419,1.215829,TG,yes,N,
 Port of Spain,Port d'Espagne,Port of Spain,بورت_أوف_سبين,ambassade,1,10.6572678,-61.5180173,TT,yes,,
 تونس,Tunis,Tunis,تونس,ambassade,1,36.800108,10.184794,TN,yes,,
 Aşgabat,Achgabat,Ashgabat,عشق آباد,ambassade,1,37.9396678,58.3874263,TM,yes,,
@@ -241,7 +241,8 @@ Thành phố Hồ Chí Minh,Hô-Chi-Minh-Ville,Ho Chi Minh City,مدينة هو 
 Lusaka,Lusaka,Lusaka,لوساكا,ambassade,1,-15.416697,28.281381,ZM,yes,SW,
 Harare,Harare,Harare,هراري,ambassade,1,-17.831773,31.045686,ZW,yes,N,
 ཐིམ་ཕུ,Thimphou,Thimphu,تيمفو,capitale,3,27.47276,89.62861,BT,yes,,Q9270
-Dodoma,Dodoma,Dodoma,دودوما,capitale,3,-6.18330605177,35.7500036201,TZ,yes,,Q3866
+Dodoma,Dodoma,Dodoma,دودوما,capitale,3,-6.18330605177,35.7500036201,TZ,yes,NW,Q3866
 Porto-Novo,Porto-Novo,Porto-Novo,بورتو_نوفو,capitale,3,6.48331097302,2.6166255276,BJ,yes,,Q3799
 Naypyidaw,Naypyidaw,Naypyidaw,بورتو نوفو,capitale,3,19.7665570261,96.1186185292,MM,yes,,Q37400
-Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,-5.2755025649,CI,yes,,Q3768
+Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,-5.2755025649,CI,yes,N,Q3768
+Lilongwe,Lilongwe,Lilongwe,ليلونغوي,capitale,3,-13.9832950655,33.78330196,MW,yes,,Q3876

@@ -78,7 +78,7 @@
   shield-text-dx: 2;
   shield-unlock-image: true;
   shield-min-distance: 10;
-  #city[ldir!=''] {
+  [ldir!=''] {
     shield-placements: '[ldir]';
     [ldir='N'],[ldir='S'] {
       shield-text-dy: 6;

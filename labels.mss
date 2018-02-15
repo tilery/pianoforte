@@ -100,7 +100,6 @@
       shield-text-dy: 8;
     }
   }
-  #city[capital='no'],
   [type='city'] {
     shield-face-name: @medium;
     shield-fill: @city_text;

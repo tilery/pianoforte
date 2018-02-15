@@ -262,9 +262,11 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, ldir
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, prio::int, ldir
           FROM
             city
+          ORDER BY
+            prio
         ) AS data
 
 - id: country
@@ -278,6 +280,8 @@ Layer:
             geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, prio::int
           FROM
             country
+          ORDER BY
+            prio
         ) AS data
 
 - id: place_low

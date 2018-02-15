@@ -67,6 +67,7 @@
     shield-file: url('icon/place/ambassade.svg');
     shield-face-name: @bold;
     shield-halo-fill: @halo;
+    shield-allow-overlap: true;
   }
   [type='capitale'] {
     shield-file: url('icon/place/capital.svg');

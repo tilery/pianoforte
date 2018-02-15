@@ -1,9 +1,11 @@
-#country[zoom>=3][zoom<=7] {
+#country[prio<=3][zoom=3],
+#country[prio<=4][zoom=4],
+#country[zoom>=5][zoom<=10] {
   text-name: '[name]';
   text-face-name: @bold;
   text-placement: point;
   text-fill: @country_text;
-  text-size: 14;
+  text-size: 12;
   text-halo-fill: @halo;
   text-halo-radius: 1;
   text-wrap-width: 40;
@@ -11,12 +13,18 @@
   text-character-spacing: 1;
   text-placement-type: simple;
   text-placements: 'N,S';
-  text-dx: 10;
-  text-dy: 10;
-  text-margin: 5;
   text-line-spacing: 0.1;
+  text-margin: 7;
+  [zoom>=5] {
+    text-size: 14;
+    text-margin: 5;
+    text-dx: 10;
+    text-dy: 10;
+    text-wrap-width: 60;
+  }
 }
-#boundary_label_low[zoom>=5][zoom<=10] {
+
+#boundary_label_low[zoom>=7][zoom<=10] {
   text-name: '[name]';
   text-face-name: @medium;
   text-placement: point;
@@ -46,8 +54,7 @@
   }
 }
 #city[capital='yes'][zoom>=5][zoom<=10],
-#city[zoom>=7][zoom<=10],
-#place_low[capital='yes'][zoom>=5][zoom<=10],
+#city[zoom>=5][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
   shield-file: url('icon/place/town.svg');
@@ -71,6 +78,12 @@
   shield-text-dx: 2;
   shield-unlock-image: true;
   shield-min-distance: 10;
+  [ldir!=null] {
+    shield-placements: '[ldir]';
+    [ldir='N'],[ldir='S'] {
+      shield-text-dy: 6;
+    }
+  }
   #city[capital='no'],
   [type='city'] {
     shield-face-name: @medium;

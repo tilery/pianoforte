@@ -108,7 +108,7 @@ Ciudad de Guatemala,Guatemala,Guatemala City,مدينة غواتيمالا,ambas
 Conakry,Conakry,Conakry,كوناكري,ambassade,1,9.5170602,-13.6998434,GN,yes,,
 Malabo,Malabo,Malabo,مالابو,ambassade,1,3.752828,8.780061,GQ,yes,N,
 Bissau,Bissau,Bissau,بيساو,ambassade,1,11.861324,-15.583055,GW,yes,,
-Port-au-Prince,Port-au-Prince,Port-au-Prince,بورت أو برنس,ambassade,1,18.547327,-72.3395928,HT,yes,,
+Port-au-Prince,Port-au-Prince,Port-au-Prince,بورت أو برنس,ambassade,1,18.547327,-72.3395928,HT,yes,S,
 Tegucigalpa,Tegucigalpa,Tegucigalpa,تيجوسيجالبا,ambassade,1,14.0931919,-87.2012631,HN,yes,E,
 Budapest,Budapest,Budapest,بودابست,ambassade,1,47.4983815,19.0404707,HU,yes,,
 New Delhi,New delhi,New Delhi,دلهي الجديد,ambassade,1,28.6141793,77.2022662,IN,yes,N,
@@ -128,7 +128,7 @@ Reykjavík,Reykjavík,Reykjavik,ريكيافيك,ambassade,1,64.145981,-21.94223
 Roma,Rome,Rome,روما,ambassade,1,41.8933203,12.4829321,IT,yes,,
 Milano,Milan,Milan,ميلانو,consulat_general,4,45.4667971,9.1904984,IT,no,,
 Napoli,Naples,Naples,نابولي,consulat_general,4,40.8359336,14.2487826,IT,no,,
-Kingston,Kingston,Kingston,كينغستون,ambassade,1,17.97121,-76.79375,JM,yes,,
+Kingston,Kingston,Kingston,كينغستون,ambassade,1,17.97121,-76.79375,JM,yes,S,
 東京,Tokyo,Tokyo,طوكيو,ambassade,1,35.6828378,139.7589667,JP,yes,,
 京都市,Kyoto,Kyoto,كيوتو,consulat_general,4,35.0185804,135.763835,JP,no,,
 عمان‎,Amman,Amman,عمان,ambassade,1,31.9515694,35.9239625,JO,yes,SE,
@@ -201,7 +201,7 @@ Edinburgh,Édimbourg,Edinburgh,إدنبرة,consulat_general,4,55.9495628,-3.191
 Санкт-Петербург,Saint-Pétersbourg,Saint Petersburg,سانت بطرسبرغ,consulat_general,4,59.938732,30.316229,RU,no,,
 Kigali,Kigali,Kigali,كيغالي,ambassade,1,-1.950851,30.061507,RW,yes,,
 Castries,Castries,Castries,كاستريس,ambassade,1,14.00977,-60.98998,LC,no,,
-San Salvador,San Salvador,San Salvador,سان سلفادور,ambassade,1,13.6977587,-89.19301,SV,yes,,
+San Salvador,San Salvador,San Salvador,سان سلفادور,ambassade,1,13.6977587,-89.19301,SV,yes,SW,
 Dakar,Dakar,Dakar,دكار,ambassade,1,14.693425,-17.447938,SN,yes,,
 Београд,Belgrade,Belgrade,بلغراد,ambassade,1,44.8178131,20.4568974,RS,yes,,
 Victoria,Victoria,Victoria,فيكتوريا,ambassade,1,-4.6232085,55.452359,SC,yes,,
@@ -248,3 +248,5 @@ Yamoussoukro,Yamoussoukro,Yamoussoukro,ياموسوكرو,capitale,3,6.81838096,
 Lilongwe,Lilongwe,Lilongwe,ليلونغوي,capitale,3,-13.9832950655,33.78330196,MW,yes,,Q3876
 Freetown,Freetown,Freetown,فريتاون,capitale,3,8.47001141249,-13.2342157404,SL,yes,,Q1044
 St. John's,Saint John's,St. John's,سانت جونز، أنتيغوا وبربودا,capitale,3,17.1180365183,-61.8500338151,AG,yes,,Q36262
+Georgetown,Georgetown,Georgetown,جورج تاون,capitale,3,6.80197369275,-58.1670286475,GY,yes,,Q10717
+Sucre,Sucre,Sucre,سوكري,capitale,3,-19.0409708467,-65.2595156267,BO,yes,,Q2907

@@ -14,7 +14,7 @@ Saint Kitts and Nevis,Saint-Christophe-et-Niévès,,Saint Kitts and Nevis,,99,99
 Cayman Islands,Îles Caïmans,,Cayman Islands,جزر الكايمان,99,99-Other,19.5097189,-80.5712351,KY
 Grenada,Grenade,,Grenada,,99,99-Other,12.1913266,-61.5899005,GD
 Belau,Palaos,,Palau,,99,99-Other,5.485,132.9200098,PW
-Saint Vincent and the Grenadines,Saint-Vincent-et-les Grenadines,,Saint Vincent and the Grenadines,,99,99-Other,13.0498274,-61.2875808,VC
+Saint Vincent and the Grenadines,Saint-Vincent-et-les-Grenadines,,Saint Vincent and the Grenadines,,99,99-Other,13.0498274,-61.2875808,VC
 Kūki 'Āirani,Îles Cook,,Cook Islands,جزر كوك,99,99-Other,-15.4374746,-161.5972899,CK
 Guernsey,Guernesey,,Guernsey,غيرنزي,99,99-Other,49.58122,-2.5356414,GG
 Tuvalu,Tuvalu,,Tuvalu,توفالو,99,99-Other,-8.21545,0.0,TV
@@ -54,7 +54,7 @@ Togo,Togo,,Togo,توغو,5,3-PMP,8.7800265,1.0199765,TG
 臺灣,Taïwan,,Taiwan,تايوان,5,5-Bureau,23.9739374,120.9820179,TW
 Luxembourg,Luxembourg,,Luxembourg,لكسمبرغ,4,3-PMP,49.8158683,6.1296751,LU
 Nederland,Pays-Bas,,The Netherlands,هولندا,4,3-PMP,52.5001698,5.7480821,NL
-Vatican,Vatican,,Vatican City,الفاتيكان,4,3-PMP,41.9038,12.4559,VA
+Vatican,Saint-Siège,,Vatican City,الفاتيكان,4,3-PMP,41.9038,12.4559,VA
 Andorra,Andorre,,Andorra,أندورا,4,4-PPD,42.5407167,1.5732033,AD
 Botswana,Botswana,,Botswana,بوتسوانا,4,4-PPD,-23.1681782,24.5928742,BW
 Brunei Darussalam,Brunei,,Brunei,بروناي,4,4-PPD,4.4137155,114.5653908,BN
@@ -176,7 +176,7 @@ Vanuatu,Vanuatu,,Vanuatu,فانواتو,3,3-PMP,-16.5255069,168.1069154,VU
 Venezuela,Venezuela,,Venezuela,فنزويلا,3,3-PMP,8.0018709,-66.1109318,VE
 Việt Nam,Vietnam,,Vietnam,فييت نام,3,3-PMP,13.2904027,108.4265113,VN
 اليَمَن,Yémen,,Yemen,اليمن,3,3-PMP,16.3471243,47.8915271,YE
-Zimbabwe,Zimbabwe,,Zimbabwe,زيمبابوي,3,3-PMP,-18.4554963,29.7468414,ZW
+Zimbabwe,Zimbabwé,,Zimbabwe,زيمبابوي,3,3-PMP,-18.4554963,29.7468414,ZW
 Paraguay,Paraguay,,Paraguay,باراغواي,3,4-PPD,-23.3165935,-58.1693445,PY
 South Africa,Afrique du Sud,Af. du Sud,South Africa,جنوب أفريقيا,2,2-PME,-28.8166236,24.991639,ZA
 Algeria,Algérie,,Algeria,الجزائر,2,2-PME,28.0000272,2.9999825,DZ

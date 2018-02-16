@@ -57,9 +57,8 @@
 #city[zoom>=5][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
-  shield-file: url('icon/place/town.svg');
+  shield-file: url('icon/place/[type].svg');
   [type='city'] {
-    shield-file: url('icon/place/city.svg');
     shield-line-spacing: -2;
     shield-text-dx: 6;
   }
@@ -71,14 +70,9 @@
     shield-text-dx: 6;
   }
   [type='embassy'] {
-    shield-file: url('icon/place/embassy.svg');
     shield-allow-overlap: true;
   }
-  [type='capital'] {
-    shield-file: url('icon/place/capital.svg');
-  }
   [type='intermediate'] {
-    shield-file: url('icon/place/intermediate.svg');
     shield-text-dx: 6;
   }
   shield-name:'[name]';

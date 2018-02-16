@@ -58,22 +58,23 @@
 #place_low[type='city'][zoom>=7][zoom<=10],
 #place_low[type='town'][zoom>=9][zoom<=10] {
   shield-file: url('icon/place/[type].svg');
+  [type='town'] {
+    shield-text-dx: 2;
+  }
   [type='city'] {
     shield-line-spacing: -2;
-    shield-text-dx: 6;
+    shield-face-name: @medium;
+    shield-fill: @city_text;
+    shield-halo-fill: @halo;
+    shield-text-dy: 4;
   }
   [type='embassy'],[type='capital'] {
     shield-fill: @city_text;
     shield-face-name: @bold;
-    shield-halo-fill: @halo;
     shield-size: 12;
-    shield-text-dx: 6;
   }
   [type='embassy'] {
     shield-allow-overlap: true;
-  }
-  [type='intermediate'] {
-    shield-text-dx: 6;
   }
   shield-name:'[name]';
   shield-size: 11;
@@ -85,7 +86,7 @@
   shield-placement-type: simple;
   shield-placements: 'NE,SW,NW,SE,E,W';
   shield-text-dy: 2;
-  shield-text-dx: 2;
+  shield-text-dx: 6;
   shield-unlock-image: true;
   shield-min-distance: 10;
   [ldir!=null] {
@@ -93,13 +94,6 @@
     [ldir='N'],[ldir='S'] {
       shield-text-dy: 8;
     }
-  }
-  [type='city'] {
-    shield-face-name: @medium;
-    shield-fill: @city_text;
-    shield-halo-fill: @halo;
-    shield-text-dy: 4;
-    shield-text-dx: 4;
   }
   [zoom>=9] {
     shield-size: 12;

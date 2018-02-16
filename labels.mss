@@ -71,14 +71,14 @@
     shield-text-dx: 6;
   }
   [type='embassy'] {
-    shield-file: url('icon/place/ambassade.svg');
+    shield-file: url('icon/place/embassy.svg');
     shield-allow-overlap: true;
   }
   [type='capital'] {
     shield-file: url('icon/place/capital.svg');
   }
   [type='intermediate'] {
-    shield-file: url('icon/place/emprise.svg');
+    shield-file: url('icon/place/intermediate.svg');
     shield-text-dx: 6;
   }
   shield-name:'[name]';

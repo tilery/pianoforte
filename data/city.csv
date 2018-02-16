@@ -1,17 +1,17 @@
 name,name:fr,name:en,name:ar,type,prio,latitude,longitude,iso,capital,ldir,wikidata
-کابل,Kaboul,Kabul,كابل,ambassade,1,34.5260131,69.1776476,AF,yes,,
-Pretoria,Pretoria,Pretoria,بريتوريا,ambassade,1,-25.7459374,28.1879444,ZA,yes,,
-Johannesburg,Johannesbourg,Johannesburg,جوهانسبرغ,consulat_general,4,-26.205,28.049722,ZA,no,,
-Cape Town,Le Cap,Cape Town,كيب تاون,consulat,5,-33.928992,18.417396,ZA,no,,
-Tiranë,Tirana,Tiranë,تيرانا,ambassade,1,41.3279457,19.8185323,AL,yes,,
-Alger,Alger,Algiers,الجزائر,ambassade,1,36.775348,3.060065,DZ,yes,,
-Annaba,Annaba,Annaba,عنابة‎,consulat_general,4,36.8970249,7.7460806,DZ,no,S,
-Oran,Oran,Oran,وهران,consulat_general,4,35.7032751,-0.6492976,DZ,no,,
-Berlin,Berlin,Berlin,برلين,ambassade,1,52.5170365,13.3888599,DE,yes,SW,
-Düsseldorf,Düsseldorf,Düsseldorf,دوسلدورف,consulat_general,4,51.2254018,6.7763137,DE,no,,
-Frankfurt am Main,Francfort-sur-le-Main,Frankfurt am Main,فرانكفورت,consulat_general,4,50.110653,8.682093,DE,no,,
-München,Munich,Munich,ميونخ,consulat_general,4,48.1371079,11.5753822,DE,no,,
-Hamburg,Hambourg,Hamburg,هامبورغ,consulat_general,4,53.550341,10.000654,DE,no,,
+کابل,Kaboul,Kabul,كابل,ambassade,1,34.5260131,69.1776476,AF,yes,,Q5838
+Pretoria,Pretoria,Pretoria,بريتوريا,ambassade,1,-25.7459374,28.1879444,ZA,yes,,Q3926
+Johannesburg,Johannesbourg,Johannesburg,جوهانسبرغ,consulat_general,4,-26.205,28.049722,ZA,no,,Q34647
+Cape Town,Le Cap,Cape Town,كيب تاون,consulat,5,-33.928992,18.417396,ZA,no,,Q5465
+Tiranë,Tirana,Tirana,تيرانا,ambassade,1,41.3279457,19.8185323,AL,yes,,Q19689
+Alger,Alger,Algiers,الجزائر,ambassade,1,36.775348,3.060065,DZ,yes,,Q3561
+Annaba,Annaba,Annaba,عنابة‎,consulat_general,4,36.8970249,7.7460806,DZ,no,S,Q45942
+Oran,Oran,Oran,وهران,consulat_general,4,35.7032751,-0.6492976,DZ,no,,Q131818
+Berlin,Berlin,Berlin,برلين,ambassade,1,52.5170365,13.3888599,DE,yes,SW,Q64
+Düsseldorf,Düsseldorf,Düsseldorf,دوسلدورف,consulat_general,4,51.2254018,6.7763137,DE,no,,Q1718
+Frankfurt am Main,Francfort-sur-le-Main,Frankfurt/Main,فرانكفورت,consulat_general,4,50.110653,8.682093,DE,no,,Q1794
+München,Munich,Munich,ميونخ,consulat_general,4,48.1371079,11.5753822,DE,no,,Q1726
+Hamburg,Hambourg,Hamburg,هامبورغ,consulat_general,4,53.550341,10.000654,DE,no,,Q1055
 Saarbrücken,Sarrebruck,Saarbrücken,ساربروكن,consulat_general,4,49.234362,6.996379,DE,no,NE,
 Stuttgart,Stuttgart,Stuttgart,شتوتغارت,consulat_general,4,48.7784485,9.1800132,DE,no,S,
 Andorra la Vella,Andorre-la-Vieille,Andorra la Vella,أندورا لا فيلا,ambassade,1,42.5051,1.5222,AD,yes,,

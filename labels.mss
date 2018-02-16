@@ -63,21 +63,21 @@
     shield-line-spacing: -2;
     shield-text-dx: 6;
   }
-  [type='hc'],[type='ambassade'],[type='capitale'] {
+  [type='embassy'],[type='capital'] {
     shield-fill: @city_text;
     shield-face-name: @bold;
     shield-halo-fill: @halo;
     shield-size: 12;
     shield-text-dx: 6;
   }
-  [type='hc'],[type='ambassade'] {
+  [type='embassy'] {
     shield-file: url('icon/place/ambassade.svg');
     shield-allow-overlap: true;
   }
-  [type='capitale'] {
+  [type='capital'] {
     shield-file: url('icon/place/capital.svg');
   }
-  [type='consulat'],[type='consulat_general'],[type='rp'],[type='bureau'] {
+  [type='intermediate'] {
     shield-file: url('icon/place/emprise.svg');
     shield-text-dx: 6;
   }

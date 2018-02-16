@@ -262,7 +262,9 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, prio::int, NULLIF(ldir, '') as ldir
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, capital, type, prio::int,
+            NULLIF(ldir, '') as ldir,
+            CASE WHEN type IN ('consulat', 'consulat_general', 'rp', 'bureau') THEN 'intermediate' WHEN type IN ('ambassade','hc') THEN 'embassy' WHEN type = 'capitale' THEN 'capital' ELSE type END AS type
           FROM
             city
           ORDER BY

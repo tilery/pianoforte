@@ -217,7 +217,7 @@ Bern,Berne,Bern,برن,ambassade,1,46.9482713,7.4514512,CH,yes,,
 Genève,Genève,Geneva,جنيف,rp,2,46.2017559,6.1466014,CH,no,S,
 Zürich,Zurich,Zurich,زيورخ,consulat_general,4,47.3723957,8.5423216,CH,no,N,
 Paramaribo,Paramaribo,Paramaribo,باراماريبو,ambassade,1,5.8216198,-55.1771974,SR,yes,,
-Mbabane,Mbabane,Mbabane,مبابان,ambassade,1,-26.325745,31.144663,SZ,yes,S,
+Mbabane,Mbabané,Mbabane,مبابان,ambassade,1,-26.325745,31.144663,SZ,yes,S,
 دمشق,Damas,Damascus,دمشق,ambassade,1,33.5130695,36.3095814,SY,yes,,
 Душанбе,Douchanbé,Dushanbe,دوشنبه,ambassade,1,38.5762709,68.7863573,TJ,yes,,
 臺北市,Taipei,Taipei,تايبيه,bureau,3,25.0375167,121.5637,TW,no,,
@@ -239,7 +239,7 @@ Hà Nội,Hanoï,Hanoi,هانوي,ambassade,1,21.0292095,105.85247,VN,yes,,
 Thành phố Hồ Chí Minh,Hô-Chi-Minh-Ville,Ho Chi Minh City,مدينة هو تشي منه,consulat_general,4,10.7758439,106.7017555,VN,no,,
 صنعاء,Sanaa,Sana'a,صنعاء,ambassade,1,15.342101,44.2005197,YE,yes,,
 Lusaka,Lusaka,Lusaka,لوساكا,ambassade,1,-15.416697,28.281381,ZM,yes,SW,
-Harare,Harare,Harare,هراري,ambassade,1,-17.831773,31.045686,ZW,yes,N,
+Harare,Hararé,Harare,هراري,ambassade,1,-17.831773,31.045686,ZW,yes,N,
 ཐིམ་ཕུ,Thimphou,Thimphu,تيمفو,capitale,3,27.47276,89.62861,BT,yes,,Q9270
 Dodoma,Dodoma,Dodoma,دودوما,capitale,3,-6.18330605177,35.7500036201,TZ,yes,NW,Q3866
 Porto-Novo,Porto-Novo,Porto-Novo,بورتو_نوفو,capitale,3,6.48331097302,2.6166255276,BJ,yes,,Q3799
@@ -250,3 +250,18 @@ Freetown,Freetown,Freetown,فريتاون,capitale,3,8.47001141249,-13.234215740
 St. John's,Saint John's,St. John's,سانت جونز، أنتيغوا وبربودا,capitale,3,17.1180365183,-61.8500338151,AG,yes,,Q36262
 Georgetown,Georgetown,Georgetown,جورج تاون,capitale,3,6.80197369275,-58.1670286475,GY,yes,,Q10717
 Sucre,Sucre,Sucre,سوكري,capitale,3,-19.0409708467,-65.2595156267,BO,yes,,Q2907
+Vaiaku,Vaiaku,Vaiaku,فاياكو,capitale,3,-8.51665199904,179.216647094,VU,yes,,Q248201
+Nukuʻalofa,Nuku’alofa,Nuku’alofa,نوكو ألوفا,capitale,3,-21.1385123567,-175.220564478,TO,yes,,Q38834
+Apia,Apia,Apia,أبيا,capitale,3,-13.8415450424,-171.738641609,WS,yes,,Q36260
+Dili,Dili,Dili,ديلي,capitale,3,-8.55938840855,125.579455932,TL,yes,,Q9310
+ශ්‍රී ජයවර්ධනපුර කෝට්ටේ,Sri Jayawardenepura Kotte,Sri Jayawardenepura Kotte,سري جاياواردنابورا كوتي,capitale,3,6.90000388481,79.9499930409,LK,yes,,Q41963
+Melekeok,Melekeok,Melekeok,ميلكيوك,capitale,3,7.48739617298,134.626548467,PW,yes,,Q154002
+Malé,Malé,Malé,ماليه,capitale,3,4.16670818981,73.499947468,MV,yes,,Q9347
+Yaren,Yaren,Yaren,ضاحية يارين,capitale,3,-0.5477,166.920867,NR,yes,,Q31026
+Palikir,Palikir,Palikir,باليكير,capitale,3,6.91664369601,158.149974324,FM,yes,,Q42751
+Basseterre,Basseterre,Basseterre,باستير,capitale,3,17.3020304555,-62.7170093197,KN,yes,,Q41295
+Honiara,Honiara,Honiara,هونيارا,capitale,3,-9.43799429509,159.949765734,SB,yes,,Q40921
+Dalap-Uliga-Darrit,Dalap-Uliga-Darrit,Dalap-Uliga-Darrit,Dalap-Uliga-Darrit,capitale,3,7.116667,171.366667,MH,yes,,Q648507
+São Tomé,Sao Tomé,Sao Tomé,ساو تومي,capitale,3,0.33340211883,6.7333251532,ST,yes,,Q3932
+San Marino,Saint-Marin,San Marino,مدينة سان مارينو,capitale,3,43.9171500845,12.4666702867,SM,yes,,Q1848
+Kingstown,Kingstown,Kingstown,كينغستاون,capitale,3,13.1482788279,-61.2120624203,VC,yes,,Q41474

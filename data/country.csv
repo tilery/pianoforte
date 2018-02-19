@@ -1,48 +1,48 @@
 name,name:fr,short_name:fr,name:en,name:ar,prio,type,latitude,longitude,iso
 The Bahamas,Les Bahamas,,The Bahamas,جزر باهاماس,99,99-Other,24.0897198,-76.5739731,BS
-Dominica,Dominique,,Dominica,,99,99-Other,15.3973214,-61.359954,DM
-South Georgia and South Sandwich Islands,Géorgie du Sud-et-les Îles Sandwich du Sud,,South Georgia and the South Sandwich Islands,,99,99-Other,-56.5685843,-33.9908678,GS
+Dominica,Dominique,,Dominica,دومينيكا,99,99-Other,15.3973214,-61.359954,DM
+South Georgia and South Sandwich Islands,Géorgie du Sud-et-les Îles Sandwich du Sud,,South Georgia and the South Sandwich Islands,جورجيا الجنوبية وجزر ساندويتش الجنوبية,99,99-Other,-56.5685843,-33.9908678,GS
 Montserrat,Montserrat,,Montserrat,مونتسرات,99,99-Other,16.7451489,-62.1930244,MS
 Føroyar,Îles Féroé,,Faroe Islands,جزر فارو,99,99-Other,61.8678577,-6.9698548,FO
 Lesotho,Lesotho,,Lesotho,ليسوتو,99,99-Other,-29.6239461,28.2335865,LS
-Turks and Caicos Islands,Îles Turques-et-Caïques,,Turks and Caicos Islands,,99,99-Other,21.5592203,-71.7721318,TC
-Bermuda,Bermudes,,Bermuda,,99,99-Other,32.3191672,-64.7671032,BM
+Turks and Caicos Islands,Îles Turques-et-Caïques,,Turks and Caicos Islands,جزر توركس وكايكوس,99,99-Other,21.5592203,-71.7721318,TC
+Bermuda,Bermudes,,Bermuda,جزر برمودا,99,99-Other,32.3191672,-64.7671032,BM
 الأراضي الفلسطينية,Territoires Palestiniens,,Palestinian Territories,الأراضي الفلسطينية,99,99-Other,31.8861384,34.8212339,PS
 Niuē,Niue,,Niue,نييوي,99,99-Other,-19.0541612,-169.8621129,NU
 Tonga,Tonga,,Tonga,تونجا,99,99-Other,-19.7345111,-176.4580757,TO
-Saint Kitts and Nevis,Saint-Christophe-et-Niévès,,Saint Kitts and Nevis,,99,99-Other,17.2554073,-62.6907404,KN
+Saint Kitts and Nevis,Saint-Christophe-et-Niévès,,Saint Kitts and Nevis,سانت كيتس ونيفس,99,99-Other,17.2554073,-62.6907404,KN
 Cayman Islands,Îles Caïmans,,Cayman Islands,جزر الكايمان,99,99-Other,19.5097189,-80.5712351,KY
-Grenada,Grenade,,Grenada,,99,99-Other,12.1913266,-61.5899005,GD
-Belau,Palaos,,Palau,,99,99-Other,5.485,132.9200098,PW
-Saint Vincent and the Grenadines,Saint-Vincent-et-les-Grenadines,,Saint Vincent and the Grenadines,,99,99-Other,13.0498274,-61.2875808,VC
+Grenada,Grenade,,Grenada,غرينادا,99,99-Other,12.1913266,-61.5899005,GD
+Belau,Palaos,,Palau,بالاو,99,99-Other,5.485,132.9200098,PW
+Saint Vincent and the Grenadines,Saint-Vincent-et-les-Grenadines,,Saint Vincent and the Grenadines,سانت فنسنت وجزر غرينادين,99,99-Other,13.0498274,-61.2875808,VC
 Kūki 'Āirani,Îles Cook,,Cook Islands,جزر كوك,99,99-Other,-15.4374746,-161.5972899,CK
 Guernsey,Guernesey,,Guernsey,غيرنزي,99,99-Other,49.58122,-2.5356414,GG
 Tuvalu,Tuvalu,,Tuvalu,توفالو,99,99-Other,-8.21545,0.0,TV
 Gambia,Gambie,,Gambia,غامبيا,99,99-Other,13.4431569,-15.4133017,GM
 Tokelau,Tokelau,,Tokelau,توكلو,99,99-Other,-8.9885565,-171.8505629,TK
 Naoero,Nauru,,Nauru,ناورو,99,99-Other,-0.528,166.9348582,NR
-Micronesia,États fédérés de Micronésie,,Federated States of Micronesia,,99,99-Other,5.559,150.2299283,FM
+Micronesia,États fédérés de Micronésie,,Micronesia,مايكرونيزيا,99,99-Other,5.559,150.2299283,FM
 Jersey,Jersey,,Jersey,جيرزي,99,99-Other,49.1663334,-2.19625,JE
 Anguilla,Anguilla,,Anguilla,أنجويلا,99,99-Other,18.4283324,-63.175872,AI
-Timór Lorosa'e,Timor oriental,,East Timor,,99,99-Other,-8.8269117,125.7875547,TL
-São Tomé e Príncipe,Sao Tomé-et-Principe,,São Tomé and Príncipe,,99,99-Other,0.8561232,6.9655601,ST
+Timór Lorosa'e,Timor oriental,,East Timor,تيمور الشرقية,99,99-Other,-8.8269117,125.7875547,TL
+São Tomé e Príncipe,Sao Tomé-et-Principe,,Sao Tome and Principe,ساو تومي وبرينسيبي,99,99-Other,0.8561232,6.9655601,ST
 Isle of Man,Île de Man,,Isle of Man,جزيرة مان,99,99-Other,54.1992144,-4.5680673,IM
 Belize,Belize,,Belize,بليز,99,99-Other,17.1908648,-88.2680289,BZ
 Antigua and Barbuda,Antigua-et-Barbuda,,Antigua and Barbuda,أنتيغوا وباربودا,99,99-Other,17.343195,-62.0007544,AG
 Gibraltar,Gibraltar,,Gibraltar,جبل طارق,99,99-Other,36.1068963,-5.3386582,GI
 འབྲུག་ཡུལ་,Bhoutan,,Bhutan,بوتان,99,99-Other,27.4745015,90.4358523,BT
 Sāmoa,Samoa,,Samoa,ساموا,99,99-Other,-13.7576404,-172.1010547,WS
-British Virgin Islands,Îles Vierges britanniques,,British Virgin Islands,,99,99-Other,18.5279556,-64.5078453,VG
+British Virgin Islands,Îles Vierges britanniques,,British Virgin Islands,الجزر العذراء البريطانية,99,99-Other,18.5279556,-64.5078453,VG
 Solomon Islands,Salomon,,Solomon Islands,جزر سليمان,99,99-Other,-9.0266399,162.8577611,SB
-Pitcairn Islands,Îles Pitcairn,,Pitcairn Islands,,99,99-Other,-24.4981252,-127.7612601,PN
-M̧ajeļ,Îles Marshall,,Marshall Islands,,99,99-Other,9.6235,166.4843173,MH
-Kiribati,Kiribati,,Kiribati,,99,99-Other,-3.373,1.1522793,KI
+Pitcairn Islands,Îles Pitcairn,,Pitcairn Islands,جزر بيتكيرن,99,99-Other,-24.4981252,-127.7612601,PN
+M̧ajeļ,Îles Marshall,,Marshall Islands,جزر مارشال,99,99-Other,9.6235,166.4843173,MH
+Kiribati,Kiribati,,Kiribati,كيريباتي,99,99-Other,0.44833,-171.66548,KI
 "Saint Helena, Ascension and Tristan da Cunha","Sainte-Hélène, Ascension et Tristan da Cunha",,"Saint Helena, Ascension and Tristan da Cunha",سانت هيلينا، أسينسيون وتريستان دا كونها,99,99-Other,-24.13,-10.0230549,SH
 Kalaallit Nunaat,Groenland,,Greenland,جرينلاند,99,99-Other,71.6952795,-42.0769588,GL
 British Indian Ocean Territory,Territoire britannique de l'Océan Indien,,British Indian Ocean Territory,إقليم المحيط الهندي البريطاني,99,99-Other,-6.3412369,71.8692598,IO
-Falkland Islands,Îles Malouines (Îles Falkland),,Falkland Islands,جزر الفولكلاند,99,99-Other,-51.9579887,-59.569457,FK
-San Marino,Saint-Marin,,San Marino,,99,99-Other,43.9428966,12.4596955,SM
-Liechtenstein,Liechtenstein,,Liechtenstein,Liechtenstein,6,6-Résidence,47.1416307,9.5531527,LI
+Falkland Islands,Îles Falkland,,Falkland Islands,جزر الفولكلاند,99,99-Other,-51.9579887,-59.569457,FK
+San Marino,Saint-Marin,,San Marino,سان مارينو,99,99-Other,43.9428966,12.4596955,SM
+Liechtenstein,Liechtenstein,,Liechtenstein,ليختنشتين,6,6-Résidence,47.1416307,9.5531527,LI
 Swaziland,Swaziland,,Swaziland,سوازيلند,6,6-Résidence,-26.5624806,31.3991317,SZ
 Maldivoj,Maldives,,Maldives,ملديف,6,6-Résidence,4.7064352,73.3287853,MV
 Sierra Leone,Sierra Leone,,Sierra Leone,سيراليون,6,6-Résidence,8.6400349,-11.8400269,SL
@@ -127,7 +127,7 @@ Ireland,Irlande,,Ireland,أيرلندا,3,3-PMP,52.865196,-7.9794599,IE
 Ísland,Islande,,Iceland,آيسلندا,3,3-PMP,64.9841821,-18.1059013,IS
 الزرقاء,Jordanie,,Jordan,الأردن,3,3-PMP,31.1667049,36.941628,JO
 Казахстан,Kazakhstan,,Kazakhstan,كازاخستان,3,3-PMP,47.2286086,65.2093197,KZ
-Kosova,Kosovo,,Kosovo,Kosova,3,3-PMP,42.5869578,20.9021231,XK
+Kosova,Kosovo,,Kosovo,كوسوفو,3,3-PMP,42.5869578,20.9021231,XK
 الكويت,Koweït,,Kuwait,الكويت,3,3-PMP,29.2733964,47.4979476,KW
 ປະເທດລາວ,Laos,,Laos,لاوس,3,3-PMP,20.0171109,103.378253,LA
 Latvija,Lettonie,,Latvia,لاتفيا,3,3-PMP,56.8406494,24.7537645,LV
@@ -136,7 +136,7 @@ Lietuva,Lituanie,,Lithuania,ليتوانيا,3,3-PMP,55.3500003,23.7499997,LT
 Македонија,Macédoine,ARYM,Macedonia,مقدونيا,3,3-PMP,41.6171214,21.7168387,MK
 Malaysia,Malaisie,,Malaysia,ماليزي,3,3-PMP,2.3923759,112.8471939,MY
 Mali,Mali,,Mali,مالي,3,3-PMP,16.3700359,-2.2900239,ML
-Malta,Malte,,Malta,Malta,3,3-PMP,35.8885993,14.4476911,MT
+Malta,Malte,,Malta,مالطا,3,3-PMP,35.8885993,14.4476911,MT
 Mauritius,Maurice,,Mauritius,موريشيوس,3,3-PMP,-20.2759451,57.5703566,MU
 موريتانيا,Mauritanie,,Mauritania,موريتانيا,3,3-PMP,20.2540382,-9.2399263,MR
 Monaco,Monaco,,Monaco,موناكو,3,3-PMP,43.734,7.4227,MC
@@ -151,7 +151,7 @@ O’zbekiston,Ouzbékistan,,Uzbekistan,أوزبكستان,3,3-PMP,41.32373,63.95
 Panama,Panama,,Panama,بنما,3,3-PMP,8.3096067,-81.3066246,PA
 Perú,Pérou,,Peru,بيرو,3,3-PMP,-6.8699697,-75.0458515,PE
 Philippines,Philippines,,Philippines,الفلبين,3,3-PMP,12.7503486,122.7312101,PH
-Portugal,Portugal,,Portugal,Portugal,3,3-PMP,40.033265,-7.8896263,PT
+Portugal,Portugal,,Portugal,البرتغال,3,3-PMP,40.033265,-7.8896263,PT
 قطر,Qatar,,Qatar,قطر,3,3-PMP,25.3336984,51.2295295,QA
 Centrafrique,Centrafrique,,Central African Republic,جمهورية أفريقيا الوسطى,3,3-PMP,7.0323598,19.9981227,CF
 République démocratique du Congo,République démocratique du Congo,Rép. Dém. Du Congo,Democratic Republic of the Congo,الكونغو,3,3-PMP,-2.9814344,23.8222636,CD
@@ -210,7 +210,7 @@ Türkiye,Turquie,,Turkey,تركيا,2,2-PME,38.9597594,34.9249653,TR
 France,France,,France,فرنسا,1,1-HC,46.603354,1.8883335,FR
 Deutschland,Allemagne,,Germany,ألمانيا,1,1-PME/FE,51.0834196,10.4234469,DE
 España,Espagne,,Spain,إسبانيا,1,1-PME/FE,40.0028028,-4.003104,ES
-United States of America,États-Unis d’Amérique,,United States of America,الولايات المتّحدة الأمريكيّة,1,1-PME/FE,39.7837304,-100.4458825,US
+United States of America,États-Unis,,United States of America,الولايات المتّحدة الأمريكيّة,1,1-PME/FE,39.7837304,-100.4458825,US
 Italia,Italie,,Italy,إيطاليا,1,1-PME/FE,42.6384261,12.674297,IT
 Madagascar,Madagascar,,Madagascar,مدغشقر,1,1-PME/FE,-18.9249604,46.4416422,MG
 Maroc ⴰⵎⵔⵔⵓⴽ المغرب,Maroc,,Morocco,المغرب,1,1-PME/FE,31.1728192,-7.3366043,MA

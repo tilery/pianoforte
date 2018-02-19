@@ -14,12 +14,14 @@ def python(cmd):
 
 @minicli.cli
 def pip(cmd):
+    """Run a pip command in the virtualenv."""
     with sudo(user='tilery'):
         run(f'/srv/tilery/venv/bin/pip {cmd}')
 
 
 @minicli.cli
 def system():
+    """Install the system deps."""
     with sudo():
         run('apt update')
         run('apt install -y postgresql-9.5 postgresql-9.5-postgis-2.2 '
@@ -42,6 +44,7 @@ def system():
 
 @minicli.cli
 def netdata(force=False):
+    """Install netdata and plugins."""
     if not exists('/etc/systemd/system/netdata.service') or force:
         run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait')
     put('scripts/netdata.conf', '/etc/netdata/netdata.conf')
@@ -96,6 +99,7 @@ def configure_mod_tile():
 
 @minicli.cli
 def db():
+    """Create the database and the needed extensions."""
     with sudo(user='postgres'):
         run('createuser tilery || exit 0')
         run('createdb tilery -O tilery || exit 0')
@@ -104,6 +108,7 @@ def db():
 
 @minicli.cli
 def http():
+    """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
     put('scripts/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
     put('scripts/ssl.conf', '/etc/nginx/snippets/ssl.conf')
@@ -125,6 +130,7 @@ def http():
 
 @minicli.cli
 def bootstrap():
+    """Bootstrap a new server."""
     system()
     db()
     services()
@@ -137,6 +143,7 @@ def bootstrap():
 
 @minicli.cli
 def letsencrypt():
+    """Configure letsencrypt."""
     with sudo():
         run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
@@ -152,6 +159,7 @@ def letsencrypt():
 
 @minicli.cli
 def services():
+    """Install services."""
     service('renderd')
     service('imposm')
 
@@ -163,6 +171,7 @@ def service(name):
 
 @minicli.cli
 def ssh_keys():
+    """Install ssh keys from remote urls."""
     with sudo():
         for name, url in config.get('ssh_key_urls', {}).items():
             key = requests.get(url).text.replace('\n', '')
@@ -220,6 +229,7 @@ def download_shapefile(name, url, force):
 
 @minicli.cli
 def download(force=False):
+    """Download OSM data and shapefiles."""
     path = '/srv/tilery/tmp/data.osm.pbf'
     if not exists(path) or force:
         url = config.download_url
@@ -239,6 +249,7 @@ def download(force=False):
 
 @minicli.cli(name='import')
 def import_data(remove_backup=False):
+    """Import OSM data."""
     with sudo(user='tilery'), env(PGHOST='/var/run/postgresql/'):
         if remove_backup:
             run('imposm3 import -config /srv/tilery/imposm.conf -removebackup')
@@ -251,11 +262,13 @@ def import_data(remove_backup=False):
 
 @minicli.cli
 def systemctl(cmd):
+    """Run a systemctl call."""
     run(f'systemctl {cmd}')
 
 
 @minicli.cli
 def logs(lines=50, services=None):
+    """See the system logs."""
     if not services:
         services = 'renderd apache2 nginx imposm'
     services = ' --unit '.join(services.split())
@@ -264,33 +277,39 @@ def logs(lines=50, services=None):
 
 @minicli.cli
 def access_logs():
+    """See the nginx access logs."""
     run('tail -F /var/log/nginx/access.log')
 
 
 @minicli.cli
 def render_logs():
+    """See the renderd tile creation logs."""
     run('tail -F /var/log/syslog | fgrep "DONE TILE"')
 
 
 @minicli.cli
 def psql(query):
+    """Run a psql command."""
     with sudo(user='postgres'):
         run(f'psql tilery -c "{query}"')
 
 
 @minicli.cli
 def clear_cache():
+    """Clear tile cache."""
     run('rm -rf /srv/tilery/tmp/tiles/*')
 
 
 @minicli.cli
 def restart(services=None):
+    """Restart services."""
     services = services or 'renderd apache2 nginx imposm'
     run('sudo systemctl restart {}'.format(services))
 
 
 @minicli.cli
 def render(map='piano', min=1, max=10):
+    """Run a render command."""
     with sudo(user='tilery'), screen():
         run(f'render_list --map {map} --all --force --num-threads 8 '
             f'--socket /var/run/renderd/renderd.sock '
@@ -300,6 +319,7 @@ def render(map='piano', min=1, max=10):
 
 @minicli.cli
 def import_sql():
+    """Send and import boundary and city SQL."""
     names = ['boundary', 'city', 'country']
     for name in names:
         path = f'/srv/tilery/tmp/{name}.sql'

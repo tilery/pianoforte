@@ -1,4 +1,4 @@
-PBF=africa/egypt-latest.osm.pbf
+PBF ?= "africa/egypt-latest.osm.pbf"
 all: boundary download import
 download:
 	wget --show-progress --directory-prefix=tmp/pbf/ --force-directories --no-host-directories http://download.geofabrik.de/$(PBF)

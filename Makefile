@@ -16,7 +16,7 @@ import_city:
 	rm tmp/city.sql.bak
 	psql --single-transaction --dbname pianoforte --file tmp/city.sql
 import_country:
-	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/country.sql data/country.csv -select name,'name:en','name:fr','name:ar',prio -nln country -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326
+	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/country.sql data/country.csv -select name,'name:en','name:fr','name:ar',prio,iso,sov -nln country -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326
 	# Remove transaction management, as it does not cover the DROP TABLE; we'll cover the transaction manually with "psql --single-transaction"
 	sed -i.bak '/BEGIN;/d' tmp/country.sql
 	sed -i.bak '/END;/d' tmp/country.sql

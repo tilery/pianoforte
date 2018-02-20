@@ -1,11 +1,12 @@
 #country[prio<=3][zoom=3],
 #country[prio<=4][zoom=4],
 #country[zoom>=5][zoom<=10] {
-  text-name: '[name]';
+  text-transform: uppercase;
+  text-name: [name];
+  text-size: 11;
   text-face-name: @bold;
   text-placement: point;
   text-fill: @country_text;
-  text-size: 12;
   text-halo-fill: @halo;
   text-halo-radius: 1;
   text-wrap-width: 40;
@@ -15,12 +16,20 @@
   text-placements: 'N,S';
   text-line-spacing: 0.1;
   text-margin: 7;
-  [zoom>=5] {
+  [zoom>=5][sov = null] {
     text-size: 14;
     text-margin: 5;
     text-dx: 10;
     text-dy: 10;
     text-wrap-width: 60;
+  }
+  [sov != null] {
+    text-name: [name] + ' ('+[sov]+')';
+    text-transform: none;
+    text-size: 12;
+  }
+  [iso = "PS"],[iso = "TW"] {
+    text-transform: none;
   }
 }
 

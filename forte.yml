@@ -310,7 +310,9 @@ Layer:
           FROM
             osm_places
           WHERE
-            type IN ('state', 'city', 'town') AND geometry && !bbox!
+            name != ''
+            AND type IN ('state', 'city', 'town') 
+            AND geometry && !bbox!
           ORDER BY
             prio
         ) AS data

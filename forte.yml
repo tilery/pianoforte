@@ -314,7 +314,7 @@ Layer:
             AND type IN ('state', 'city', 'town') 
             AND geometry && !bbox!
           ORDER BY
-            prio
+            prio, population DESC
         ) AS data
 
 - id: place

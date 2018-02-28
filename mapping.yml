@@ -58,6 +58,7 @@ tables:
     - {key: null, name: osm_id, type: id}
     - {key: null, name: geometry, type: geometry}
     - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
     - {key: 'name:fr', name: namefr, type: string}
     - {key: 'name:ar', name: namear, type: string}
     - {key: 'name:en', name: nameen, type: string}

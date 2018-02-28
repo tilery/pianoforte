@@ -299,14 +299,15 @@ Layer:
         ( SELECT
             geometry, '{lang}' as lang, type, capital, NULL as ldir,
             CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
-            COALESCE(NULLIF(name{lang}, ''), name) as name
+            COALESCE(NULLIF(name{lang}, ''), NULLIF(int_name, ''), name) as name
           FROM
             osm_places
           WHERE
-            type IN ('state', 'city', 'town')
+            name != ''
+            AND type IN ('state', 'city', 'town')
             AND geometry && !bbox!
           ORDER BY
-            prio
+            prio, capital ASC, population DESC
         ) AS data
 
 - id: place

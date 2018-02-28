@@ -72,6 +72,21 @@ tables:
     filter:
       require:
         name: [__any__]
+  natural:
+    columns:
+    - {key: null, name: osm_id, type: id}
+    - {key: null, name: geometry, type: geometry}
+    - {key: name, name: name, type: string}
+    - {key: 'name:fr', name: namefr, type: string}
+    - {key: 'name:ar', name: namear, type: string}
+    - {key: 'name:en', name: nameen, type: string}
+    - {key: null, name: type, type: mapping_value}
+    mapping:
+      natural: [peak, bay, cape, volcano]
+    type: point
+    filter:
+      require:
+        name: [__any__]
   railway:
     columns:
     - {key: null, name: osm_id, type: id}

@@ -1,7 +1,6 @@
 #country[prio<=3][zoom=3],
 #country[prio<=4][zoom=4],
 #country[zoom>=5][zoom<=10] {
-  text-transform: uppercase;
   text-name: [name];
   text-size: 11;
   text-face-name: @bold;
@@ -25,11 +24,7 @@
   }
   [sov != null] {
     text-name: [name] + ' ('+[sov]+')';
-    text-transform: none;
     text-size: 12;
-  }
-  [iso = "PS"],[iso = "TW"] {
-    text-transform: none;
   }
 }
 

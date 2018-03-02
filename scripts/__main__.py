@@ -289,6 +289,13 @@ def import_data(remove_backup=False, push_mapping=False):
 
 
 @minicli.cli
+def create_index():
+    """Create custom DB index."""
+    psql("CREATE INDEX IF NOT EXISTS idx_road_label ON osm_roads "
+         "USING GIST(geometry) WHERE name!=\\'\\' OR ref!=\\'\\'")
+
+
+@minicli.cli
 def systemctl(cmd):
     """Run a systemctl call."""
     run(f'systemctl {cmd}')
@@ -365,7 +372,8 @@ def import_sql():
 @minicli.cli
 def slow_query_stats():
     pattern = re.compile(
-        '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} CET) \[\d+-\d+\] '
+        '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} (?:CET|UTC)) '
+        '\[\d+-\d+\] '
         'tilery@tilery LOG:  duration: (?P<duration>\d+\.\d+) ms  execute '
         '<unnamed>: (?P<query>SELECT ST_AsBinary\("geometry"\) AS '
         'geom,[^\[]*AS data)', re.DOTALL)

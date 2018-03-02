@@ -477,7 +477,7 @@ Layer:
           FROM
             osm_roads
           WHERE
-            (name IS NOT NULL OR ref IS NOT NULL) AND geometry && !bbox!
+            (name != '' OR ref != '') AND geometry && !bbox!
           ORDER BY
             prio
         ) AS data
@@ -512,7 +512,7 @@ Layer:
         FROM
           osm_waterways
         WHERE
-          name IS NOT NULL AND geometry && !bbox!
+          name!='' AND geometry && !bbox!
       ) AS data
 
 - id: waterway_label_low
@@ -527,5 +527,5 @@ Layer:
         FROM
           osm_waterways_gen
         WHERE
-          name IS NOT NULL AND geometry && !bbox!
+          name!='' AND geometry && !bbox!
       ) AS data

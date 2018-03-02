@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 import subprocess
 
@@ -27,7 +28,8 @@ def system():
         run('apt install -y postgresql-9.5 postgresql-9.5-postgis-2.2 '
             'software-properties-common wget nginx unzip autoconf libtool g++ '
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
-            'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2')
+            'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '
+            'munin-node munin')
         # Prevent conflict with nginx.
         run('apt install -y apache2 apache2-dev')
         run('useradd -N tilery -d /srv/tilery/ || exit 0')
@@ -39,6 +41,7 @@ def system():
     install_imposm3()
     install_mod_tile()
     configure_mod_tile()
+    configure_munin()
     netdata()
 
 
@@ -95,6 +98,15 @@ def configure_mod_tile():
         put('scripts/apache.conf', 'sites-enabled/000-default.conf')
         put('scripts/ports.conf', 'ports.conf')
         run('a2enmod tile')
+
+
+def configure_munin():
+    with sudo(), cd('/etc/munin'):
+        put('scripts/munin.conf', 'munin.conf')
+        for plugin in Path('scripts/munin').glob('*'):
+            put(plugin, f'plugins/{plugin.name}')
+            run(f'chmod +x plugins/{plugin.name}')
+    restart(services='munin-node')
 
 
 @minicli.cli
@@ -164,6 +176,7 @@ def services():
     """Install services."""
     service('renderd')
     service('imposm')
+    service('munin-node')
 
 
 def service(name):
@@ -314,7 +327,7 @@ def clear_cache():
 @minicli.cli
 def restart(services=None):
     """Restart services."""
-    services = services or 'renderd apache2 nginx imposm'
+    services = services or 'renderd apache2 nginx imposm munin-node'
     run('sudo systemctl restart {}'.format(services))
 
 

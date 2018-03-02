@@ -248,9 +248,12 @@ def download(force=False):
 
 
 @minicli.cli(name='import')
-def import_data(remove_backup=False):
+def import_data(remove_backup=False, push_mapping=False):
     """Import OSM data."""
     with sudo(user='tilery'), env(PGHOST='/var/run/postgresql/'):
+        if push_mapping:
+            put('mapping.yml', '/srv/tilery/mapping.yml')
+        run('ls --full-time --time-style locale /srv/tilery/mapping.yml')
         if remove_backup:
             run('imposm3 import -config /srv/tilery/imposm.conf -removebackup')
         with screen():

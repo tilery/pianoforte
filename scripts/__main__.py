@@ -104,6 +104,8 @@ def db():
         run('createuser tilery || exit 0')
         run('createdb tilery -O tilery || exit 0')
         run('psql tilery -c "CREATE EXTENSION IF NOT EXISTS postgis"')
+        put('scripts/postgresql.conf',
+            '/etc/postgresql/9.5/main/postgresql.conf')
 
 
 @minicli.cli
@@ -288,6 +290,12 @@ def access_logs():
 def render_logs():
     """See the renderd tile creation logs."""
     run('tail -F /var/log/syslog | fgrep "DONE TILE"')
+
+
+@minicli.cli
+def db_logs():
+    """See the renderd tile creation logs."""
+    run('tail -F /var/log/postgresql/postgresql-9.5-main.log')
 
 
 @minicli.cli

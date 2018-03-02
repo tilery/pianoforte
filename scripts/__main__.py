@@ -29,7 +29,7 @@ def system():
             'software-properties-common wget nginx unzip autoconf libtool g++ '
             'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
             'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '
-            'munin-node munin')
+            'munin-node munin libdbd-pg-perl')
         # Prevent conflict with nginx.
         run('apt install -y apache2 apache2-dev')
         run('useradd -N tilery -d /srv/tilery/ || exit 0')
@@ -101,11 +101,19 @@ def configure_mod_tile():
 
 
 def configure_munin():
+    psql_plugins = [
+        'postgres_autovacuum', 'postgres_bgwriter', 'postgres_checkpoints',
+        'postgres_connections_db', 'postgres_users', 'postgres_xlog']
     with sudo(), cd('/etc/munin'):
         put('scripts/munin.conf', 'munin.conf')
         for plugin in Path('scripts/munin').glob('*'):
             put(plugin, f'plugins/{plugin.name}')
             run(f'chmod +x plugins/{plugin.name}')
+        for name in psql_plugins:
+            run(f'ln --symbolic --force /usr/share/munin/plugins/{name} '
+                f'plugins/{name}')
+        run('ln --symbolic --force /usr/share/munin/plugins/postgres_size_ '
+            'plugins/postgres_size_tilery')
     restart(services='munin-node')
 
 

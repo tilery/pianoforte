@@ -107,11 +107,9 @@ tables:
     filter:
       reject:
         area: yes
-    mappings:
-      railway:
-        mapping:
-          railway: [rail, tram, light_rail, subway, narrow_gauge, preserved, funicular,
-            monorail, disused]
+    mapping:
+      railway: [rail, tram, light_rail, subway, narrow_gauge, preserved, funicular,
+        monorail, disused]
     type: linestring
   roads:
     columns:
@@ -133,14 +131,12 @@ tables:
     filte:
       reject:
         area: yes
-    mappings:
-      roads:
-        mapping:
-          highway: [motorway, motorway_link, trunk, trunk_link, primary, primary_link,
-            secondary, secondary_link, tertiary, tertiary_link, road, path, track,
-            service, footway, bridleway, cycleway, steps, pedestrian, living_street,
-            unclassified, residential, raceway]
-          man_made: [pier, groyne]
+    mapping:
+      highway: [motorway, motorway_link, trunk, trunk_link, primary, primary_link,
+        secondary, secondary_link, tertiary, tertiary_link, road, path, track,
+        service, footway, bridleway, cycleway, steps, pedestrian, living_street,
+        unclassified, residential, raceway]
+      man_made: [pier, groyne]
     type: linestring
   transport_points:
     columns:

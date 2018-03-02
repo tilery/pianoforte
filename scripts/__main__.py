@@ -1,11 +1,13 @@
-from pathlib import Path
 import os
+import re
 import subprocess
+from io import BytesIO
+from pathlib import Path
 
 import minicli
 import requests
-from usine import (cd, chown, config, connect, cp, env, exists, mkdir, put,
-                   run, screen, sudo, template)
+from usine import (cd, chown, config, connect, cp, env, exists, get, mkdir,
+                   put, run, screen, sudo, template)
 
 
 def python(cmd):
@@ -358,6 +360,37 @@ def import_sql():
         with sudo(user='tilery'):
             put(f'tmp/{name}.sql', path)
             run(f'psql --single-transaction -d tilery --file {path}')
+
+
+@minicli.cli
+def slow_query_stats():
+    pattern = re.compile(
+        '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} CET) \[\d+-\d+\] '
+        'tilery@tilery LOG:  duration: (?P<duration>\d+\.\d+) ms  execute '
+        '<unnamed>: (?P<query>SELECT ST_AsBinary\("geometry"\) AS '
+        'geom,[^\[]*AS data)', re.DOTALL)
+    clean_bbox = re.compile('BOX3D\([^)]+\)')  # Allow to join same queries.
+    queries = {}
+    data = BytesIO()
+    get('/var/log/postgresql/postgresql-9.5-main.log', data)
+    matches = pattern.findall(data.read().decode())
+    for date, duration, query in matches:
+        id_ = clean_bbox.sub('BBOX', query)
+        if id_ not in queries:
+            queries[id_] = [date, float(duration), 1, query]
+        else:
+            stats = queries[id_]
+            if date > stats[0]:
+                stats[0] = date
+            stats[1] += float(duration)
+            stats[2] += 1
+    queries = sorted(queries.values(), key=lambda d: d[2])  # Sort by total.
+    for date, duration, total, query in queries:
+        print('-'*80)
+        print(query)
+        print('total:', total,
+              ', average duration:', int(duration/total),
+              ', last seen', date)
 
 
 @minicli.wrap

@@ -311,7 +311,7 @@ Layer:
             osm_places
           WHERE
             name != ''
-            AND type IN ('state', 'city', 'town') 
+            AND type IN ('state', 'city', 'town')
             AND geometry && !bbox!
           ORDER BY
             prio, capital ASC, population DESC
@@ -435,8 +435,7 @@ Layer:
           FROM
             osm_admin
           WHERE
-            "type"='administrative'
-            AND admin_level = 3 OR admin_level = 4
+            admin_level = 3 OR admin_level = 4
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC

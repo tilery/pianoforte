@@ -70,8 +70,6 @@ Layer:
           geometry, type
         FROM
           osm_landusages
-        WHERE
-          type IS NOT NULL AND geometry && !bbox!
         ORDER BY
           area DESC
       ) AS data
@@ -226,7 +224,6 @@ Layer:
           WHERE
             admin_level > 2
             AND admin_level < 10
-            AND "type" IS NOT NULL
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC
@@ -456,7 +453,6 @@ Layer:
             "type"='administrative'
             AND admin_level > 2
             AND admin_level < 10
-            AND "type" IS NOT NULL
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC
@@ -481,7 +477,7 @@ Layer:
           FROM
             osm_roads
           WHERE
-            type IS NOT NULL AND (name IS NOT NULL OR ref IS NOT NULL) AND geometry && !bbox!
+            (name IS NOT NULL OR ref IS NOT NULL) AND geometry && !bbox!
           ORDER BY
             prio
         ) AS data

@@ -292,6 +292,8 @@ def create_index():
     """Create custom DB index."""
     psql("CREATE INDEX IF NOT EXISTS idx_road_label ON osm_roads "
          "USING GIST(geometry) WHERE name!=\\'\\' OR ref!=\\'\\'")
+    psql("CREATE INDEX IF NOT EXISTS idx_boundary_low ON osm_admin "
+         "USING GIST(geometry) WHERE admin_level IN (3, 4)")
 
 
 @minicli.cli

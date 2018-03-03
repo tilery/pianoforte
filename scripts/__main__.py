@@ -285,7 +285,6 @@ def import_data(remove_backup=False, push_mapping=False):
             run('imposm3 import -diff -config /srv/tilery/imposm.conf '
                 '-read /srv/tilery/tmp/data.osm.pbf -overwritecache '
                 '-write -deployproduction 2>&1 | tee /tmp/imposm.log')
-        run('tail -F /tmp/imposm.log')
 
 
 @minicli.cli
@@ -370,7 +369,11 @@ def import_sql():
 
 
 @minicli.cli
-def slow_query_stats():
+def slow_query_stats(sort='date'):
+    """Compile slow queries
+
+    sort: one of "duration", "total", "date" (default: date)
+    """
     pattern = re.compile(
         '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} (?:CET|UTC)) '
         '\[\d+-\d+\] '
@@ -385,20 +388,27 @@ def slow_query_stats():
     for date, duration, query in matches:
         id_ = clean_bbox.sub('BBOX', query)
         if id_ not in queries:
-            queries[id_] = [date, float(duration), 1, query]
+            queries[id_] = {'date': date, 'duration': float(duration),
+                            'total': 1, 'example': query}
         else:
             stats = queries[id_]
-            if date > stats[0]:
-                stats[0] = date
-            stats[1] += float(duration)
-            stats[2] += 1
-    queries = sorted(queries.values(), key=lambda d: d[2])  # Sort by total.
-    for date, duration, total, query in queries:
+            if date > stats['date']:
+                stats['date'] = date
+            stats['duration'] += float(duration)
+            stats['total'] += 1
+    # Compute duration so we can sort by.
+    for query in queries.values():
+        query['duration'] = query['duration'] / query['total']
+    queries = sorted(queries.values(), key=lambda d: d[sort])
+    for query in queries:
         print('-'*80)
-        print(query)
-        print('total:', total,
-              ', average duration:', int(duration/total),
-              ', last seen', date)
+        print(query['example'])
+        print('Total:', query['total'],
+              '● Average duration:', int(query['duration']),
+              '● Last seen', query['date'])
+
+    print('—'*80)
+    print('Total requests:', len(queries), f'(sorted by {sort})')
 
 
 @minicli.wrap

@@ -68,8 +68,6 @@ Layer:
           geometry, type
         FROM
           osm_landusages
-        WHERE
-          type IS NOT NULL AND geometry && !bbox!
         ORDER BY
           area DESC
       ) AS data
@@ -185,7 +183,6 @@ Layer:
           WHERE
             admin_level > 2
             AND admin_level < 10
-            AND "type" IS NOT NULL
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC
@@ -299,14 +296,15 @@ Layer:
         ( SELECT
             geometry, '{lang}' as lang, type, capital, NULL as ldir,
             CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
-            COALESCE(NULLIF(name{lang}, ''), name) as name
+            COALESCE(NULLIF(name{lang}, ''), NULLIF(int_name, ''), name) as name
           FROM
             osm_places
           WHERE
-            type IN ('state', 'city', 'town')
+            name != ''
+            AND type IN ('state', 'city', 'town')
             AND geometry && !bbox!
           ORDER BY
-            prio
+            prio, capital ASC, population DESC
         ) AS data
 
 - id: place
@@ -340,8 +338,7 @@ Layer:
           FROM
             osm_admin
           WHERE
-            "type"='administrative'
-            AND admin_level = 3 OR admin_level = 4
+            admin_level = 3 OR admin_level = 4
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC
@@ -391,7 +388,7 @@ Layer:
           FROM
             osm_roads
           WHERE
-            type IS NOT NULL AND name IS NOT NULL AND geometry && !bbox!
+            name!='' AND geometry && !bbox!
         ) AS data
 
 - id: waterway_label
@@ -406,7 +403,7 @@ Layer:
         FROM
           osm_waterways
         WHERE
-          name IS NOT NULL AND geometry && !bbox!
+          name!='' AND geometry && !bbox!
       ) AS data
 
 - id: waterway_label_low
@@ -421,5 +418,5 @@ Layer:
         FROM
           osm_waterways_gen
         WHERE
-          name IS NOT NULL AND geometry && !bbox!
+          name!='' AND geometry && !bbox!
       ) AS data

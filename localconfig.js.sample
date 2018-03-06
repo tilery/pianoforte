@@ -1,0 +1,22 @@
+var template = function (str, data) {
+    return str.replace(/\{ *([\w_]+) *\}/g, function (str, key) {
+        var value = data[key];
+        if (value === undefined) value = key
+        else if (typeof value === 'function') value = value(data);
+        return value;
+    });
+};
+
+exports.LocalConfig = function (localizer, project) {
+    localizer.where('Layer').if({'Datasource.type': 'postgis'}).then({
+        'Datasource.dbname': 'pianoforte',
+        'Datasource.password': null,
+        'Datasource.user': 'youruser',
+        'Datasource.host': '',
+    });
+    project.mml.center = [31.1449, 29.7071, 9];
+    localizer.where('Layer').if({'Datasource.type': 'postgis'}).then(function (obj) {
+        obj.Datasource.table = template(obj.Datasource.table, {lang: 'fr'});
+        return obj;
+    });
+};

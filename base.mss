@@ -88,7 +88,7 @@ Map {
   line-cap: round;
   line-join: round;
   line-width: 1;
-  [zoom>=14] {
+  [zoom>=15] {
     line-width: 3;
   }
 }

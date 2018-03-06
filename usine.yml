@@ -1,5 +1,5 @@
 download_url: https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
-replication_url: http://planet.openstreetmap.org/replication/hour/
+replication_url: https://planet.openstreetmap.org/replication/hour/
 replication_interval: 1h
 tile_base_url: https://{s}.tiles.quaidorsay.fr/tile/
 domains:

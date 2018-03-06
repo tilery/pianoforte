@@ -19,5 +19,43 @@ A world map in two flavours:
 
 ## Dependencies
 
-* Python >= 3.x.x
+* Python >= 3.6.x
 * Gdal >= 2.2.x
+
+
+## Local installation
+
+Create a `pianoforte` PSQL database:
+
+    sudo -u postgres createdb pianoforte -O youruser
+
+Clone this repository:
+
+    git clone https://github.com/tilery/pianoforte
+
+Compile the world boundaries:
+
+    make boundary
+
+Download the PBF from Geofabrik:
+
+    make download
+
+Note: you can use another area by setting the `PBF` env var to the Geofabrik
+relative path (default is: africa/egypt-latest.osm.pbf).
+
+Import the PBF and the boundaries into the database:
+
+    make import
+
+Copy the localconfig sample, and change the db configuration inside:
+
+    cp localconfig.js.sample localconfig.js
+
+Run kosmtik with forte:
+
+    kosmtik serve forte.yml
+
+Or with piano:
+
+    kosmtik serve piano.yml

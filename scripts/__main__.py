@@ -44,6 +44,7 @@ def system():
     install_mod_tile()
     configure_mod_tile()
     configure_munin()
+    install_goaccess()
     netdata()
 
 
@@ -118,6 +119,18 @@ def configure_munin():
         run('ln --symbolic --force /usr/share/munin/plugins/postgres_size_ '
             'plugins/postgres_size_tilery')
     restart(services='munin-node')
+
+
+def install_goaccess():
+    if not exists('/etc/apt/sources.list.d/goaccess.list'):
+        with sudo():
+            run('echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | '
+                'tee -a /etc/apt/sources.list.d/goaccess.list')
+            run('wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -')
+            run('apt-get update')
+            run('apt-get install goaccess')
+    put('scripts/run-goaccess', '/etc/cron.hourly/run-goaccess')
+    run('chmod +x /etc/cron.hourly/run-goaccess')
 
 
 @minicli.cli

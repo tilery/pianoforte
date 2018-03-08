@@ -95,7 +95,7 @@ async def add_area(conn, shape, other):
 
 
 async def load_country(conn, **tags):
-    return await get_relation(conn, boundary='administrative', admin_level=2,
+    return await get_relation(conn, boundary='administrative',
                               **tags)
 
 
@@ -130,49 +130,54 @@ async def process(itl_path: Path=Path('data/boundary.json'),
         countries = list(csv.DictReader(f))
     for country in countries:
         iso = country['iso']
-        polygon, properties = await load_country(conn, iso=iso)
-        properties.update(country)
-        if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
-            continue
-        print(f'''"{properties['name']}",  # {properties['name:en']}''')
-        if iso == 'IL':
-            polygon = await remove_area(conn, polygon, golan)
-            west_bank, _ = await get_relation(conn, place="region",
-                                              name="الضفة الغربية")
-            polygon = await remove_area(conn, polygon, west_bank)
-        if iso == 'SY':
-            polygon = await add_area(conn, polygon, golan)
-        if iso == 'SS':
-            sudan, _ = await load_country(conn, iso='SD')  # Sudan
-            polygon = await remove_area(conn, polygon, sudan)
-        if properties['name:en'] == 'Sudan':
-            polygon = await remove_area(conn, polygon, bir_tawil)
-        if iso == 'EG':
-            polygon = await add_area(conn, polygon, bir_tawil)
-        if iso == 'NP':
-            claim, props = await get_relation(conn, type="boundary",
+        if country['admin_level']:
+            admin_level = country['admin_level']
+        else:
+            admin_level = 2
+        if admin_level == 2:
+            polygon, properties = await load_country(conn, iso=iso, admin_level=admin_level)
+            properties.update(country)
+            if properties['name:en'] == 'Sahrawi Arab Democratic Republic':
+                continue
+            print(f'''"{properties['name']}",  # {properties['name:en']}''')
+            if iso == 'IL':
+                polygon = await remove_area(conn, polygon, golan)
+                west_bank, _ = await get_relation(conn, place="region",
+                                                  name="الضفة الغربية")
+                polygon = await remove_area(conn, polygon, west_bank)
+            if iso == 'SY':
+                polygon = await add_area(conn, polygon, golan)
+            if iso == 'SS':
+                sudan, _ = await load_country(conn, iso='SD')  # Sudan
+                polygon = await remove_area(conn, polygon, sudan)
+            if properties['name:en'] == 'Sudan':
+                polygon = await remove_area(conn, polygon, bir_tawil)
+            if iso == 'EG':
+                polygon = await add_area(conn, polygon, bir_tawil)
+            if iso == 'NP':
+                claim, props = await get_relation(conn, type="boundary",
+                                                  name="Extent of Nepal Claim")
+                add_disputed(claim, props)
+                polygon = await add_area(conn, polygon, claim)
+            if iso == 'IN':
+                claim, _ = await get_relation(conn, type="boundary",
                                               name="Extent of Nepal Claim")
-            add_disputed(claim, props)
-            polygon = await add_area(conn, polygon, claim)
-        if iso == 'IN':
-            claim, _ = await get_relation(conn, type="boundary",
-                                          name="Extent of Nepal Claim")
-            polygon = await remove_area(conn, polygon, claim)
-        if iso == 'CN':
-            polygon = await remove_area(conn, polygon, doklam)
-        if iso == 'BH':
-            polygon = await add_area(conn, polygon, doklam)
-        if iso == 'MA':
-            # Western Sahara
-            esh, props = await get_relation(conn, boundary="disputed",
-                                            name="الصحراء الغربية")
-            add_disputed(esh, props)
-            polygon = await add_area(conn, polygon, esh)
-        boundaries.append({
-            'type': 'Feature',
-            'geometry': polygon.geojson,
-            'properties': properties
-        })
+                polygon = await remove_area(conn, polygon, claim)
+            if iso == 'CN':
+                polygon = await remove_area(conn, polygon, doklam)
+            if iso == 'BH':
+                polygon = await add_area(conn, polygon, doklam)
+            if iso == 'MA':
+                # Western Sahara
+                esh, props = await get_relation(conn, boundary="disputed",
+                                                name="الصحراء الغربية")
+                add_disputed(esh, props)
+                polygon = await add_area(conn, polygon, esh)
+            boundaries.append({
+                'type': 'Feature',
+                'geometry': polygon.geojson,
+                'properties': properties
+            })
     sba, properties = await load_country(conn,
                                          name='British Sovereign Base Areas')
     boundaries.append({

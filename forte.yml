@@ -450,8 +450,7 @@ Layer:
           FROM
             osm_admin
           WHERE
-            "type"='administrative'
-            AND admin_level > 2
+            admin_level > 2
             AND admin_level < 10
             AND geometry && !bbox!
           ORDER BY

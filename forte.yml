@@ -286,7 +286,7 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, iso, prio::int, NULL as ldir, NULLIF(sov, '') as sov,
+            geometry, COALESCE("name:{lang}", name) AS name, '{lang}' AS lang, iso, prio::int, NULL as ldir, NULLIF(sov, '') as sov
           FROM
             country
           ORDER BY

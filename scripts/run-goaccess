@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat /var/log/nginx/access.log | grep -Ev '/munin|/access' | goaccess --exclude-ip 127.0.0.1 - --log-format=COMBINED -o /srv/tilery/www/access.html

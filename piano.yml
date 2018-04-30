@@ -294,8 +294,9 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, '{lang}' as lang, type, capital, NULL as ldir,
+            geometry, '{lang}' as lang, type, NULL as ldir,
             CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
+            CASE WHEN capital='yes' THEN 1 WHEN capital IN ('4','5','6','7','8','9','10') THEN capital::INT ELSE 100 END AS capital,
             COALESCE(NULLIF(name{lang}, ''), NULLIF(int_name, ''), name) as name
           FROM
             osm_places
@@ -304,7 +305,7 @@ Layer:
             AND type IN ('state', 'city', 'town')
             AND geometry && !bbox!
           ORDER BY
-            prio, capital ASC, population DESC
+            prio, capital ASC, population DESC NULLS LAST
         ) AS data
 
 - id: place
@@ -315,15 +316,16 @@ Layer:
     <<: *db
     table: |-
         ( SELECT
-            geometry, '{lang}' as lang, capital,
+            geometry, '{lang}' as lang,
             CASE WHEN type='city' THEN 1 WHEN type='town' THEN 2 ELSE 100 END AS prio,
             CASE WHEN type IN ('hamlet', 'suburb', 'isolated_dwelling', 'neighbourhood', 'allotments', 'city_block') THEN 'minor' ELSE type END AS type,
+            CASE WHEN capital='yes' THEN 1 WHEN capital IN ('4','5','6','7','8','9','10') THEN capital::INT ELSE 100 END AS capital,
             population,
-            COALESCE(NULLIF(name{lang}, ''), name) as name
+            COALESCE(NULLIF(name{lang}, ''), NULLIF(int_name, ''), name) as name
           FROM
             osm_places
           ORDER BY
-            prio, population DESC NULLS LAST
+            prio, capital ASC, population DESC NULLS LAST
         ) AS data
 
 - id: boundary_label_low

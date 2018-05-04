@@ -249,7 +249,7 @@
     }
   }
 }
-#roads_gen[type='primary'][zoom>=10][zoom<12],
+#roads_gen[type='primary'][zoom>=9][zoom<12],
 #roads_gen[type='trunk'][zoom>=9][zoom<12],
 #roads_gen[type='motorway'][zoom>=7][zoom<12],
 #roads_gen[type='secondary'][zoom=12],

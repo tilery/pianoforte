@@ -30,7 +30,7 @@
   [zoom>=4] {
     line-width: 1;
   }
-  [zoom>=10] {
+  [zoom>=9] {
     line-width: 2;
   }
 }
@@ -55,7 +55,7 @@
       line-dasharray: 5,5,2,5;
     }
   }
-  [zoom>=12] {
+  [zoom>=9] {
     line-color: darken(@admin_3, 20);
   }
 }

@@ -391,12 +391,12 @@ def slow_query_stats(sort='date'):
     sort: one of "duration", "total", "date" (default: date)
     """
     pattern = re.compile(
-        '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} (?:CET|UTC)) '
-        '\[\d+-\d+\] '
-        'tilery@tilery LOG:  duration: (?P<duration>\d+\.\d+) ms  execute '
-        '<unnamed>: (?P<query>SELECT ST_AsBinary\("geometry"\) AS '
-        'geom,[^\[]*AS data)', re.DOTALL)
-    clean_bbox = re.compile('BOX3D\([^)]+\)')  # Allow to join same queries.
+        r'(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} (?:CES?T|UTC)) '
+        r'\[\d+-\d+\] '
+        r'tilery@tilery LOG:  duration: (?P<duration>\d+\.\d+) ms  execute '
+        r'<unnamed>: (?P<query>SELECT ST_AsBinary\("geometry"\) AS '
+        r'geom,[^\[]*AS data)', re.DOTALL)
+    clean_bbox = re.compile(r'BOX3D\([^)]+\)')  # Allow to join same queries.
     queries = {}
     data = BytesIO()
     get('/var/log/postgresql/postgresql-9.5-main.log', data)

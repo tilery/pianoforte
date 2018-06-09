@@ -7,10 +7,17 @@ domains:
 - a.tiles.quaidorsay.fr
 - b.tiles.quaidorsay.fr
 - c.tiles.quaidorsay.fr
+ssl: true
+psql_version: 10
 pianoforteqa:
-  download_url: http://download.geofabrik.de/africa-latest.osm.pbf
-  replication_url: http://download.geofabrik.de/africa-updates/
+  download_url: https://download.geofabrik.de/africa/burundi-latest.osm.pbf
+  replication_url: https://download.geofabrik.de/africa/burundi-updates/
+  # download_url: http://download.geofabrik.de/africa-latest.osm.pbf
+  # replication_url: http://download.geofabrik.de/africa-updates/
   replication_interval: 24h
   tile_base_url: https://carte-mae.enix.org/tile/
+  ssl: false
   domains:
   - carte-mae.enix.org
+tiles.quaidorsay.fr:
+  psql_version: 9.5

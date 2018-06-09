@@ -25,11 +25,12 @@ def pip(cmd):
 @minicli.cli
 def system():
     """Install the system deps."""
+    run('apt install sudo -y')  # Not installed in minimized 18.04.
     with sudo():
         run('apt update')
-        run('apt install -y postgresql-9.5 postgresql-9.5-postgis-2.2 '
+        run('apt install -y postgresql postgis '
             'software-properties-common wget nginx unzip autoconf libtool g++ '
-            'apache2 apache2-dev libmapnik-dev libleveldb1v5 libgeos-dev '
+            'libmapnik-dev libleveldb1v5 libgeos-dev goaccess '
             'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '
             'munin-node munin libdbd-pg-perl libwww-perl')
         # Prevent conflict with nginx.
@@ -40,12 +41,11 @@ def system():
         mkdir('/srv/tilery/letsencrypt/.well-known/acme-challenge')
         chown('tilery:users', '/srv/tilery/')
         run('chsh -s /bin/bash tilery')
-    install_imposm3()
+    install_imposm()
     install_mod_tile()
     configure_mod_tile()
     configure_munin()
     install_goaccess()
-    netdata()
 
 
 @minicli.cli
@@ -60,19 +60,28 @@ def netdata(force=False):
     restart(services='netdata')
 
 
-def install_imposm3(force=False):
-    if exists('/usr/bin/imposm3') and not force:
-        print('imposm3 already installed')
+@minicli.cli
+def install_imposm(force=False, release='0.6.0-alpha.4'):
+    """Install imposm from binary.
+
+    :force: install even if the binary already exists.
+    :release: optionnal release to install
+    """
+    if exists('/usr/bin/imposm') and not force:
+        print('imposm already installed')
         return
-    run('wget https://imposm.org/static/rel/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64.tar.gz -O /tmp/imposm3.tar.gz')  # noqa
-    run('tar -xzf /tmp/imposm3.tar.gz --directory /tmp')
+    run('wget https://imposm.org/static/rel/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
+    # See https://github.com/omniscale/imposm3/issues/165#issuecomment-395993259
+    # run(f'wget https://github.com/omniscale/imposm3/releases/download/v{release}/imposm-{release}-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
+    run('tar -xzf /tmp/imposm.tar.gz --directory /tmp')
     with sudo():
-        cp('/tmp/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64/imposm3',
-           '/usr/bin/imposm3')
+        cp('/tmp/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64/imposm3', '/usr/bin/imposm')
+        # cp(f'/tmp/imposm-{release}-linux-x86-64/imposm', '/usr/bin/imposm')
     with sudo(user='tilery'):
         mkdir('/srv/tilery/tmp/imposm')
 
 
+@minicli.cli
 def install_mod_tile(force=False):
     if exists('/usr/local/bin/renderd') and not force:
         print('mod_tile already installed')
@@ -87,8 +96,9 @@ def install_mod_tile(force=False):
             run('make install')
             run('make install-mod_tile')
             run('ldconfig')
-    with sudo(user='tilery'):
+    with sudo():
         mkdir('/var/run/renderd')
+        chown('tilery:users', '/var/run/renderd')
 
 
 def configure_mod_tile():
@@ -101,6 +111,7 @@ def configure_mod_tile():
         put('scripts/apache.conf', 'sites-enabled/000-default.conf')
         put('scripts/ports.conf', 'ports.conf')
         run('a2enmod tile')
+    restart('apache2')
 
 
 def configure_munin():
@@ -122,13 +133,6 @@ def configure_munin():
 
 
 def install_goaccess():
-    if not exists('/etc/apt/sources.list.d/goaccess.list'):
-        with sudo():
-            run('echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | '
-                'tee -a /etc/apt/sources.list.d/goaccess.list')
-            run('wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -')
-            run('apt-get update')
-            run('apt-get install goaccess')
     put('scripts/run-goaccess', '/etc/cron.hourly/run-goaccess')
     run('chmod +x /etc/cron.hourly/run-goaccess')
 
@@ -141,13 +145,14 @@ def db():
         run('createdb tilery -O tilery || exit 0')
         run('psql tilery -c "CREATE EXTENSION IF NOT EXISTS postgis"')
         put('scripts/postgresql.conf',
-            '/etc/postgresql/9.5/main/postgresql.conf')
+            f'/etc/postgresql/{config.psql_version}/main/postgresql.conf')
 
 
 @minicli.cli
 def http():
     """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
+    put('scripts/nginx.conf', '/srv/tilery/nginx.conf')
     put('scripts/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
     put('scripts/ssl.conf', '/etc/nginx/snippets/ssl.conf')
     domains = ' '.join(config.domains)
@@ -163,7 +168,7 @@ def http():
         conf = template('scripts/nginx-http.conf', domains=domains,
                         domain=domain)
     put(conf, '/etc/nginx/sites-enabled/default')
-    restart()
+    restart(services='nginx')
 
 
 @minicli.cli
@@ -173,9 +178,10 @@ def bootstrap():
     db()
     services()
     http()
-    letsencrypt()
-    # Now put the https ready Nginx conf.
-    http()
+    if config.ssl:
+        letsencrypt()
+        # Now put the https ready Nginx conf.
+        http()
     ssh_keys()
 
 
@@ -200,12 +206,11 @@ def services():
     """Install services."""
     service('renderd')
     service('imposm')
-    service('munin-node')
 
 
 def service(name):
     put(f'scripts/{name}.service', f'/etc/systemd/system/{name}.service')
-    run(f'systemctl enable {name}.service')
+    systemctl(f'enable {name}.service')
 
 
 @minicli.cli
@@ -287,18 +292,34 @@ def download(force=False):
 
 
 @minicli.cli(name='import')
-def import_data(remove_backup=False, push_mapping=False):
+def import_data(remove_backup=False, push_mapping=False, no_screen=False):
     """Import OSM data."""
     with sudo(user='tilery'), env(PGHOST='/var/run/postgresql/'):
         if push_mapping:
             put('mapping.yml', '/srv/tilery/mapping.yml')
         run('ls --full-time --time-style locale /srv/tilery/mapping.yml')
         if remove_backup:
-            run('imposm3 import -config /srv/tilery/imposm.conf -removebackup')
-        with screen():
-            run('imposm3 import -diff -config /srv/tilery/imposm.conf '
-                '-read /srv/tilery/tmp/data.osm.pbf -overwritecache '
-                '-write -deployproduction 2>&1 | tee /tmp/imposm.log')
+            run('imposm import -config /srv/tilery/imposm.conf -removebackup')
+        cmd = ('imposm import -diff -config /srv/tilery/imposm.conf '
+               '-read /srv/tilery/tmp/data.osm.pbf -overwritecache '
+               '-write -deployproduction 2>&1 | tee /tmp/imposm.log')
+        if no_screen:
+            run(cmd)
+        else:
+            with screen(name='import'):
+                run(cmd)
+            run('tail /tmp/imposm.log')
+
+
+@minicli.cli
+def import_custom_data():
+    """Send and import boundary and city SQL."""
+    names = ['boundary', 'city', 'country']
+    for name in names:
+        path = f'/srv/tilery/tmp/{name}.sql'
+        with sudo(user='tilery'):
+            put(f'tmp/{name}.sql', path)
+            run(f'psql --single-transaction -d tilery --file {path}')
 
 
 @minicli.cli
@@ -311,9 +332,9 @@ def create_index():
 
 
 @minicli.cli
-def systemctl(cmd):
+def systemctl(*cmd):
     """Run a systemctl call."""
-    run(f'systemctl {cmd}')
+    run(f"systemctl {' '.join(cmd)}")
 
 
 @minicli.cli
@@ -332,15 +353,23 @@ def access_logs():
 
 
 @minicli.cli
-def render_logs():
+def error_logs():
+    """See the nginx access logs."""
+    run('tail -F /var/log/nginx/error.log')
+
+
+@minicli.cli
+def render_logs(lines=50):
     """See the renderd tile creation logs."""
-    run('tail -F /var/log/syslog | fgrep "DONE TILE"')
+    run(f'journalctl --lines {lines} --unit renderd --follow '
+        '| fgrep "DONE TILE"')
 
 
 @minicli.cli
 def db_logs():
     """See the renderd tile creation logs."""
-    run('tail -F /var/log/postgresql/postgresql-9.5-main.log')
+    run('tail -F '
+        f'/var/log/postgresql/postgresql-{config.psql_version}-main.log')
 
 
 @minicli.cli
@@ -360,28 +389,17 @@ def clear_cache():
 def restart(services=None):
     """Restart services."""
     services = services or 'renderd apache2 nginx imposm munin-node'
-    run('sudo systemctl restart {}'.format(services))
+    systemctl(f'restart {services}')
 
 
 @minicli.cli
-def render(map='piano', min=1, max=10):
+def render(map='piano', min=1, max=10, threads=8):
     """Run a render command."""
-    with sudo(user='tilery'), screen():
-        run(f'render_list --map {map} --all --force --num-threads 8 '
+    with sudo(user='tilery'), screen(name='render'):
+        run(f'render_list --map {map} --all --force --num-threads {threads} '
             f'--socket /var/run/renderd/renderd.sock '
             f'--tile-dir /srv/tilery/tmp/tiles '
             f' --min-zoom {min} --max-zoom {max}')
-
-
-@minicli.cli
-def import_sql():
-    """Send and import boundary and city SQL."""
-    names = ['boundary', 'city', 'country']
-    for name in names:
-        path = f'/srv/tilery/tmp/{name}.sql'
-        with sudo(user='tilery'):
-            put(f'tmp/{name}.sql', path)
-            run(f'psql --single-transaction -d tilery --file {path}')
 
 
 @minicli.cli
@@ -399,7 +417,7 @@ def slow_query_stats(sort='date'):
     clean_bbox = re.compile(r'BOX3D\([^)]+\)')  # Allow to join same queries.
     queries = {}
     data = BytesIO()
-    get('/var/log/postgresql/postgresql-9.5-main.log', data)
+    get(f'/var/log/postgresql/postgresql-{config.psql_version}-main.log', data)
     matches = pattern.findall(data.read().decode())
     for date, duration, query in matches:
         id_ = clean_bbox.sub('BBOX', query)

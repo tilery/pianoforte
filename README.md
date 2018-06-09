@@ -59,3 +59,41 @@ Run kosmtik with forte:
 Or with piano:
 
     kosmtik serve piano.yml
+
+
+## Remote deployment
+
+Note: the scripts are tested on Ubuntu 16.04 and 18.04 only.
+
+By default, the scripts try to deploy on a host named `pianoforteqa`. You can
+override the host by using the `--hostname` in any command.
+
+The tile stack is run under the Unix user `tilery`.
+
+### Bootstraping the server
+
+    python scripts bootstrap
+
+
+### Send config files
+
+    python scripts deploy
+
+### Download OSM data and shapefiles
+
+    python scripts download
+
+### Import OSM data
+
+This will run the import command in a screen.
+
+    python scripts import
+
+### Add geo indices
+
+    python scripts create-index
+
+
+### Upload and import custom data
+
+    python scripts import-custom-data

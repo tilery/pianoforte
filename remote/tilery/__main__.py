@@ -54,18 +54,6 @@ def system():
 
 
 @minicli.cli
-def netdata(force=False):
-    """Install netdata and plugins."""
-    if not exists('/etc/systemd/system/netdata.service') or force:
-        run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait')
-    put('remote/netdata.conf', '/etc/netdata/netdata.conf')
-    put('remote/tiles.chart.py',
-        '/usr/libexec/netdata/python.d/tiles.chart.py')
-    run('usermod -aG adm netdata')
-    restart(services='netdata')
-
-
-@minicli.cli
 def install_imposm(force=False, release='0.6.0-alpha.4'):
     """Install imposm from binary.
 

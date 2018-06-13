@@ -177,11 +177,9 @@ def deploy():
         for flavour, name, lang in flavours:
             export(flavour, name, lang)
             put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
-        put('data/country.csv', '/srv/tilery/pianoforte/data/country.csv')
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
         put('data/simplified_boundary.json',
             '/srv/tilery/pianoforte/data/simplified_boundary.json')
-        put('data/disputed.json', '/srv/tilery/pianoforte/data/disputed.json')
         put('fonts/', '/srv/tilery/pianoforte/fonts')
         put('icon/', '/srv/tilery/pianoforte/icon')
 
@@ -262,6 +260,9 @@ def import_custom_data():
         -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
         -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")
     import_sql_file('/tmp/country.sql')
+    with sudo(user='tilery'):
+        wget('http://nuage.yohanboniface.me/disputed.json',
+             '/srv/tilery/pianoforte/data/disputed.json')
 
 
 @minicli.cli

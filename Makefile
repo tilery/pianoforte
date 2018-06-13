@@ -6,6 +6,7 @@ import: import_imposm import_boundary import_city import_country
 import_imposm:
 	env PGHOST=/var/run/postgresql/ imposm3 import -config imposm.conf -diff -read tmp/pbf/$(PBF) -write -overwritecache -deployproduction
 import_boundary:
+	wget --show-progress http://nuage.yohanboniface.me/disputed.json -O data/disputed.json
 	wget --show-progress http://nuage.yohanboniface.me/boundary.json -O tmp/boundary.json
 	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/boundary.sql tmp/boundary.json -sql 'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru","ISO3166-1:alpha2" AS iso FROM boundary' -nln itl_boundary
 	psql --dbname pianoforte --file tmp/boundary.sql

@@ -391,7 +391,8 @@ def clear_cache():
 def restart(services=None):
     """Restart services."""
     services = services or 'renderd apache2 nginx imposm munin-node'
-    systemctl(f'restart {services}')
+    with sudo():
+        systemctl(f'restart {services}')
 
 
 @minicli.cli

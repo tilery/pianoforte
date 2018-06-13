@@ -70,30 +70,36 @@ override the host by using the `--hostname` in any command.
 
 The tile stack is run under the Unix user `tilery`.
 
+### Bootstraping the host
+
+
+    python -m remote.host bootstrap
+
+
 ### Bootstraping the server
 
-    python scripts bootstrap
+    python -m remote.tilery bootstrap
 
 
 ### Send config files
 
-    python scripts deploy
+    python -m remote.tilery deploy
 
 ### Download OSM data and shapefiles
 
-    python scripts download
+    python -m remote.tilery download
 
 ### Import OSM data
 
 This will run the import command in a screen.
 
-    python scripts import
+    python -m remote.tilery import
 
 ### Add geo indices
 
-    python scripts create-index
+    python -m remote.tilery create-index
 
 
 ### Upload and import custom data
 
-    python scripts import-custom-data
+    python -m remote.tilery import-custom-data

@@ -5,9 +5,10 @@ from io import BytesIO
 from pathlib import Path
 
 import minicli
-import requests
-from usine import (cd, chown, config, connect, env, exists, get, mkdir,
-                   put, run, screen, sudo, template)
+from usine import (cd, chown, config, env, exists, get, mkdir, put, run,
+                   screen, sudo, template)
+
+from ..commons import main, restart, service, ssh_keys
 
 
 def python(cmd):
@@ -34,12 +35,10 @@ def system():
     with sudo():
         run('apt update')
         run('apt install -y postgresql postgis '
-            'software-properties-common wget nginx unzip autoconf libtool g++ '
+            'software-properties-common wget unzip autoconf libtool g++ '
             'libmapnik-dev libleveldb1v5 libgeos-dev goaccess '
             'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '
-            'munin-node munin libdbd-pg-perl libwww-perl')
-        # Prevent conflict with nginx.
-        run('apt install -y apache2 apache2-dev')
+            'munin-node munin libdbd-pg-perl libwww-perl apache2 apache2-dev')
         run('useradd -N tilery -d /srv/tilery/ || exit 0')
         mkdir('/srv/tilery/src')
         mkdir('/srv/tilery/tmp')
@@ -143,56 +142,12 @@ def db():
 
 
 @minicli.cli
-def http():
-    """Configure Nginx and letsencrypt."""
-    # When we'll have a domain.
-    put('remote/nginx.conf', '/srv/tilery/nginx.conf')
-    put('remote/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
-    put('remote/ssl.conf', '/etc/nginx/snippets/ssl.conf')
-    domains = ' '.join(config.domains)
-    domain = config.domains[0]
-    pempath = f'/etc/letsencrypt/live/{domain}/fullchain.pem'
-    if exists(pempath):
-        print(f'{pempath} found, using https configuration')
-        conf = template('remote/nginx-https.conf', domains=domains,
-                        domain=domain)
-    else:
-        print(f'{pempath} not found, using http configuration')
-        # Before letsencrypt.
-        conf = template('remote/nginx-http.conf', domains=domains,
-                        domain=domain)
-    put(conf, '/etc/nginx/sites-enabled/default')
-    restart(services='nginx')
-
-
-@minicli.cli
 def bootstrap():
     """Bootstrap a new server."""
     system()
     db()
     services()
-    http()
-    if config.ssl:
-        letsencrypt()
-        # Now put the https ready Nginx conf.
-        http()
     ssh_keys()
-
-
-@minicli.cli
-def letsencrypt():
-    """Configure letsencrypt."""
-    with sudo():
-        run('add-apt-repository --yes ppa:certbot/certbot')
-        run('apt update')
-        run('apt install -y certbot')
-    certbot_conf = template('remote/certbot.ini',
-                            domains=','.join(config.domains))
-    put(certbot_conf, '/srv/tilery/certbot.ini')
-    put('remote/ssl-renew', '/etc/cron.weekly/ssl-renew')
-    run('chmod +x /etc/cron.weekly/ssl-renew')
-    run('certbot certonly -c /srv/tilery/certbot.ini --non-interactive '
-        '--agree-tos')
 
 
 @minicli.cli
@@ -200,21 +155,6 @@ def services():
     """Install services."""
     service('renderd')
     service('imposm')
-
-
-def service(name):
-    put(f'remote/{name}.service', f'/etc/systemd/system/{name}.service')
-    systemctl(f'enable {name}.service')
-
-
-@minicli.cli
-def ssh_keys():
-    """Install ssh keys from remote urls."""
-    with sudo():
-        for name, url in config.get('ssh_key_urls', {}).items():
-            key = requests.get(url).text.replace('\n', '')
-            run('grep -q -r "{key}" .ssh/authorized_keys || echo "{key}" '
-                '| tee --append .ssh/authorized_keys'.format(key=key))
 
 
 def export(flavour='forte', filename='forte', lang='fr'):
@@ -302,7 +242,7 @@ def import_data(remove_backup=False, push_mapping=False, no_screen=False):
             run('tail /tmp/imposm.log')
 
 
-def import_file_sql(path):
+def import_sql_file(path):
     # Remove transaction management, as it does not cover the DROP TABLE;
     # we'll cover the transaction manually with "psql --single-transaction"
     run(f'sed -i.bak "/BEGIN;/d" {path}')
@@ -319,13 +259,13 @@ def import_custom_data():
     run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
         -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/boundary.sql /tmp/boundary.json -sql \
         \\'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru","ISO3166-1:alpha2" AS iso FROM boundary\\' -nln itl_boundary""")
-    import_file_sql('/tmp/boundary.sql')
+    import_sql_file('/tmp/boundary.sql')
     run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
         -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/city.sql /srv/tilery/pianoforte/data/city.csv \
         -select name,'name:en','name:fr','name:ar',capital,type,prio,ldir \
         -nln city -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
         -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")
-    import_file_sql('/tmp/city.sql')
+    import_sql_file('/tmp/city.sql')
     wget('https://raw.githubusercontent.com/tilery/mae-boundaries/master/country.csv',
          '/tmp/country.csv')
     run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
@@ -333,7 +273,7 @@ def import_custom_data():
         -select name,'name:en','name:fr','name:ar',prio,iso,sov -nln country \
         -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
         -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")
-    import_file_sql('/tmp/country.sql')
+    import_sql_file('/tmp/country.sql')
 
 
 @minicli.cli
@@ -346,30 +286,12 @@ def create_index():
 
 
 @minicli.cli
-def systemctl(*cmd):
-    """Run a systemctl call."""
-    run(f"systemctl {' '.join(cmd)}")
-
-
-@minicli.cli
 def logs(lines=50, services=None):
     """See the system logs."""
     if not services:
-        services = 'renderd apache2 nginx imposm'
+        services = 'renderd apache2 imposm'
     services = ' --unit '.join(services.split())
     run(f'journalctl --lines {lines} --unit {services}')
-
-
-@minicli.cli
-def access_logs():
-    """See the nginx access logs."""
-    run('tail -F /var/log/nginx/access.log')
-
-
-@minicli.cli
-def error_logs():
-    """See the nginx access logs."""
-    run('tail -F /var/log/nginx/error.log')
 
 
 @minicli.cli
@@ -397,14 +319,6 @@ def psql(query):
 def clear_cache():
     """Clear tile cache."""
     run('rm -rf /srv/tilery/tmp/tiles/*')
-
-
-@minicli.cli
-def restart(services=None):
-    """Restart services."""
-    services = services or 'renderd apache2 nginx imposm munin-node'
-    with sudo():
-        systemctl(f'restart {services}')
 
 
 @minicli.cli
@@ -460,11 +374,5 @@ def slow_query_stats(sort='date'):
     print('Total requests:', len(queries), f'(sorted by {sort})')
 
 
-@minicli.wrap
-def wrapper(hostname, configpath):
-    with connect(hostname=hostname, configpath=configpath):
-        yield
-
-
 if __name__ == '__main__':
-    minicli.run(hostname='pianoforteqa', configpath='usine.yml')
+    main(hostname='tilery')

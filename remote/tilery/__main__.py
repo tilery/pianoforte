@@ -254,7 +254,7 @@ def import_custom_data():
     wget('https://raw.githubusercontent.com/tilery/mae-boundaries/master/country.csv',
          '/tmp/country.csv')
     run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
-        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/country.sql /srv/tilery/pianoforte/data/country.csv \
+        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/country.sql /tmp/country.csv \
         -select name,'name:en','name:fr','name:ar',prio,iso,sov -nln country \
         -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
         -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")

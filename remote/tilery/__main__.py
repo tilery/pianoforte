@@ -22,11 +22,11 @@ def system():
     run('sudo --version || apt install sudo')
     with sudo():
         run('apt update')
-        run('apt install -y postgresql postgis '
+        run('apt install -y postgresql postgis gdal-bin '
             'software-properties-common wget unzip autoconf libtool g++ '
             'libmapnik-dev libleveldb1v5 libgeos-dev goaccess '
             'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '
-            'munin-node munin libdbd-pg-perl libwww-perl apache2 apache2-dev')
+            'munin-node libdbd-pg-perl libwww-perl apache2 apache2-dev')
         run('useradd -N tilery -d /srv/tilery/ || exit 0')
         mkdir('/srv/tilery/src')
         mkdir('/srv/tilery/tmp')

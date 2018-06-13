@@ -92,7 +92,6 @@ def configure_mod_tile():
         put('remote/apache.conf', 'sites-enabled/000-default.conf')
         put('remote/ports.conf', 'ports.conf')
         run('a2enmod tile')
-    restart('apache2')
 
 
 def configure_munin():

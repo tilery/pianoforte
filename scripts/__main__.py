@@ -71,13 +71,12 @@ def install_imposm(force=False, release='0.6.0-alpha.4'):
     if exists('/usr/bin/imposm') and not force:
         print('imposm already installed')
         return
-    run('wget https://imposm.org/static/rel/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
-    # See https://github.com/omniscale/imposm3/issues/165#issuecomment-395993259
-    # run(f'wget https://github.com/omniscale/imposm3/releases/download/v{release}/imposm-{release}-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
+    # Cf https://github.com/omniscale/imposm3/issues/165#issuecomment-395993259
+    run(f'wget https://github.com/omniscale/imposm3/releases/download/v{release}/imposm-{release}-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
     run('tar -xzf /tmp/imposm.tar.gz --directory /tmp')
     with sudo():
-        cp('/tmp/imposm3-0.4.0dev-20170519-3f00374-linux-x86-64/imposm3', '/usr/bin/imposm')
-        # cp(f'/tmp/imposm-{release}-linux-x86-64/imposm', '/usr/bin/imposm')
+        run(f'ln --symbolic --force /tmp/imposm-{release}-linux-x86-64/imposm '
+            '/usr/bin/imposm')
     with sudo(user='tilery'):
         mkdir('/srv/tilery/tmp/imposm')
 

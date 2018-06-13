@@ -6,13 +6,17 @@ from pathlib import Path
 
 import minicli
 import requests
-from usine import (cd, chown, config, connect, cp, env, exists, get, mkdir,
+from usine import (cd, chown, config, connect, env, exists, get, mkdir,
                    put, run, screen, sudo, template)
 
 
 def python(cmd):
     with sudo(user='tilery'):
         run(f'/srv/tilery/venv/bin/python {cmd}')
+
+
+def wget(url, dest):
+    run(f'wget {url} -O {dest}')
 
 
 @minicli.cli
@@ -54,8 +58,8 @@ def netdata(force=False):
     """Install netdata and plugins."""
     if not exists('/etc/systemd/system/netdata.service') or force:
         run('bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait')
-    put('scripts/netdata.conf', '/etc/netdata/netdata.conf')
-    put('scripts/tiles.chart.py',
+    put('remote/netdata.conf', '/etc/netdata/netdata.conf')
+    put('remote/tiles.chart.py',
         '/usr/libexec/netdata/python.d/tiles.chart.py')
     run('usermod -aG adm netdata')
     restart(services='netdata')
@@ -72,7 +76,8 @@ def install_imposm(force=False, release='0.6.0-alpha.4'):
         print('imposm already installed')
         return
     # Cf https://github.com/omniscale/imposm3/issues/165#issuecomment-395993259
-    run(f'wget https://github.com/omniscale/imposm3/releases/download/v{release}/imposm-{release}-linux-x86-64.tar.gz -O /tmp/imposm.tar.gz')  # noqa
+    wget(f'https://github.com/omniscale/imposm3/releases/download/v{release}/imposm-{release}-linux-x86-64.tar.gz',   # noqa
+         '/tmp/imposm.tar.gz')
     run('tar -xzf /tmp/imposm.tar.gz --directory /tmp')
     with sudo():
         run(f'ln --symbolic --force /tmp/imposm-{release}-linux-x86-64/imposm '
@@ -86,7 +91,8 @@ def install_mod_tile(force=False):
     if exists('/usr/local/bin/renderd') and not force:
         print('mod_tile already installed')
         return
-    run('wget https://github.com/SomeoneElseOSM/mod_tile/archive/master.zip -O /tmp/mod_tile.zip')  # noqa
+    wget('https://github.com/SomeoneElseOSM/mod_tile/archive/master.zip',  # noqa
+        '/tmp/mod_tile.zip')
     run('unzip -n /tmp/mod_tile.zip -d /tmp/')
     with cd('/tmp/mod_tile-master'):
         run('./autogen.sh')
@@ -106,10 +112,10 @@ def configure_mod_tile():
         mkdir('/srv/tilery/tmp/tiles')
         mkdir('/srv/tilery/renderd')
     with sudo(), cd('/etc/apache2/'):
-        put('scripts/tile.load', 'mods-available/tile.load')
-        put('scripts/tile.conf', 'mods-available/tile.conf')
-        put('scripts/apache.conf', 'sites-enabled/000-default.conf')
-        put('scripts/ports.conf', 'ports.conf')
+        put('remote/tile.load', 'mods-available/tile.load')
+        put('remote/tile.conf', 'mods-available/tile.conf')
+        put('remote/apache.conf', 'sites-enabled/000-default.conf')
+        put('remote/ports.conf', 'ports.conf')
         run('a2enmod tile')
     restart('apache2')
 
@@ -120,8 +126,8 @@ def configure_munin():
         'postgres_connections_db', 'postgres_users', 'postgres_xlog',
         'nginx_status', 'nginx_request']
     with sudo(), cd('/etc/munin'):
-        put('scripts/munin.conf', 'munin.conf')
-        for plugin in Path('scripts/munin').glob('*'):
+        put('remote/munin.conf', 'munin.conf')
+        for plugin in Path('remote/munin').glob('*'):
             put(plugin, f'plugins/{plugin.name}')
             run(f'chmod +x plugins/{plugin.name}')
         for name in psql_plugins:
@@ -133,7 +139,7 @@ def configure_munin():
 
 
 def install_goaccess():
-    put('scripts/run-goaccess', '/etc/cron.hourly/run-goaccess')
+    put('remote/run-goaccess', '/etc/cron.hourly/run-goaccess')
     run('chmod +x /etc/cron.hourly/run-goaccess')
 
 
@@ -144,7 +150,7 @@ def db():
         run('createuser tilery || exit 0')
         run('createdb tilery -O tilery || exit 0')
         run('psql tilery -c "CREATE EXTENSION IF NOT EXISTS postgis"')
-        put('scripts/postgresql.conf',
+        put('remote/postgresql.conf',
             f'/etc/postgresql/{config.psql_version}/main/postgresql.conf')
 
 
@@ -152,20 +158,20 @@ def db():
 def http():
     """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
-    put('scripts/nginx.conf', '/srv/tilery/nginx.conf')
-    put('scripts/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
-    put('scripts/ssl.conf', '/etc/nginx/snippets/ssl.conf')
+    put('remote/nginx.conf', '/srv/tilery/nginx.conf')
+    put('remote/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
+    put('remote/ssl.conf', '/etc/nginx/snippets/ssl.conf')
     domains = ' '.join(config.domains)
     domain = config.domains[0]
     pempath = f'/etc/letsencrypt/live/{domain}/fullchain.pem'
     if exists(pempath):
         print(f'{pempath} found, using https configuration')
-        conf = template('scripts/nginx-https.conf', domains=domains,
+        conf = template('remote/nginx-https.conf', domains=domains,
                         domain=domain)
     else:
         print(f'{pempath} not found, using http configuration')
         # Before letsencrypt.
-        conf = template('scripts/nginx-http.conf', domains=domains,
+        conf = template('remote/nginx-http.conf', domains=domains,
                         domain=domain)
     put(conf, '/etc/nginx/sites-enabled/default')
     restart(services='nginx')
@@ -192,10 +198,10 @@ def letsencrypt():
         run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
         run('apt install -y certbot')
-    certbot_conf = template('scripts/certbot.ini',
+    certbot_conf = template('remote/certbot.ini',
                             domains=','.join(config.domains))
     put(certbot_conf, '/srv/tilery/certbot.ini')
-    put('scripts/ssl-renew', '/etc/cron.weekly/ssl-renew')
+    put('remote/ssl-renew', '/etc/cron.weekly/ssl-renew')
     run('chmod +x /etc/cron.weekly/ssl-renew')
     run('certbot certonly -c /srv/tilery/certbot.ini --non-interactive '
         '--agree-tos')
@@ -209,7 +215,7 @@ def services():
 
 
 def service(name):
-    put(f'scripts/{name}.service', f'/etc/systemd/system/{name}.service')
+    put(f'remote/{name}.service', f'/etc/systemd/system/{name}.service')
     systemctl(f'enable {name}.service')
 
 
@@ -246,11 +252,11 @@ def deploy():
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
         put('mapping.yml', '/srv/tilery/mapping.yml')
-        imposm_conf = template('scripts/imposm.conf', **config)
+        imposm_conf = template('remote/imposm.conf', **config)
         put(imposm_conf, '/srv/tilery/imposm.conf')
-        put('scripts/renderd.conf', '/srv/tilery/renderd.conf')
-        put('scripts/www', '/srv/tilery/www')
-        index = template('scripts/www/index.html', **config)
+        put('remote/renderd.conf', '/srv/tilery/renderd.conf')
+        put('remote/www', '/srv/tilery/www')
+        index = template('remote/www/index.html', **config)
         put(index, '/srv/tilery/www/index.html')
         for flavour, name, lang in flavours:
             export(flavour, name, lang)
@@ -268,7 +274,7 @@ def download_shapefile(name, url, force):
     datapath = '/srv/tilery/data/'
     if not exists(datapath + name) or force:
         with sudo(user='tilery'):
-            run(f'wget {url} -O /tmp/data.zip --quiet')
+            wget(url, '/tmp/data.zip')
             run(f'unzip -n /tmp/data.zip -d {datapath}')
 
 
@@ -279,18 +285,13 @@ def download(force=False):
     if not exists(path) or force:
         url = config.download_url
         with sudo(user='tilery'):
-            run(f'wget {url} -O {path} --quiet')
+            wget(url, path)
     domain = 'http://data.openstreetmapdata.com/'
     download_shapefile(
         'simplified-land-polygons-complete-3857/simplified_land_polygons.shp',
         f'{domain}simplified-land-polygons-complete-3857.zip', force)
     download_shapefile('land-polygons-split-3857/land_polygons.shp',
                        f'{domain}land-polygons-split-3857.zip', force)
-    domain = 'http://nuage.yohanboniface.me/'
-    download_shapefile('boundary_lines/boundary_lines_simplified.shp',
-                       f'{domain}boundary_lines_simplified.zip', force)
-    download_shapefile('boundary_lines_simplified/boundary_lines.shp',
-                       f'{domain}boundary_lines.zip', force)
 
 
 @minicli.cli(name='import')
@@ -313,15 +314,38 @@ def import_data(remove_backup=False, push_mapping=False, no_screen=False):
             run('tail /tmp/imposm.log')
 
 
+def import_file_sql(path):
+    # Remove transaction management, as it does not cover the DROP TABLE;
+    # we'll cover the transaction manually with "psql --single-transaction"
+    run(f'sed -i.bak "/BEGIN;/d" {path}')
+    run(f'sed -i.bak "/END;/d" {path}')
+    run(f'sed -i.bak "/COMMIT;/d" {path}')
+    with sudo(user='tilery'):
+        run(f'psql --single-transaction -d tilery --file {path}')
+
+
 @minicli.cli
 def import_custom_data():
     """Send and import boundary and city SQL."""
-    names = ['boundary', 'city', 'country']
-    for name in names:
-        path = f'/srv/tilery/tmp/{name}.sql'
-        with sudo(user='tilery'):
-            put(f'tmp/{name}.sql', path)
-            run(f'psql --single-transaction -d tilery --file {path}')
+    wget('http://nuage.yohanboniface.me/boundary.json', '/tmp/boundary.json')
+    run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
+        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/boundary.sql /tmp/boundary.json -sql \
+        \\'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru","ISO3166-1:alpha2" AS iso FROM boundary\\' -nln itl_boundary""")
+    import_file_sql('/tmp/boundary.sql')
+    run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
+        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/city.sql /srv/tilery/pianoforte/data/city.csv \
+        -select name,'name:en','name:fr','name:ar',capital,type,prio,ldir \
+        -nln city -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
+        -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")
+    import_file_sql('/tmp/city.sql')
+    wget('https://raw.githubusercontent.com/tilery/mae-boundaries/master/country.csv',
+         '/tmp/country.csv')
+    run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
+        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/country.sql /srv/tilery/pianoforte/data/country.csv \
+        -select name,'name:en','name:fr','name:ar',prio,iso,sov -nln country \
+        -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
+        -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")
+    import_file_sql('/tmp/country.sql')
 
 
 @minicli.cli

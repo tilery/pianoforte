@@ -25,7 +25,8 @@ def pip(cmd):
 @minicli.cli
 def system():
     """Install the system deps."""
-    run('apt install sudo -y')  # Not installed in minimized 18.04.
+    # Not installed in minimized 18.04.
+    run('sudo --version || apt install sudo')
     with sudo():
         run('apt update')
         run('apt install -y postgresql postgis '

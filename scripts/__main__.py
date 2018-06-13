@@ -267,8 +267,9 @@ def deploy():
 def download_shapefile(name, url, force):
     datapath = '/srv/tilery/data/'
     if not exists(datapath + name) or force:
-        run(f'wget {url} -O /tmp/data.zip --quiet')
-        run(f'unzip -n /tmp/data.zip -d {datapath}')
+        with sudo(user='tilery'):
+            run(f'wget {url} -O /tmp/data.zip --quiet')
+            run(f'unzip -n /tmp/data.zip -d {datapath}')
 
 
 @minicli.cli
@@ -277,7 +278,8 @@ def download(force=False):
     path = '/srv/tilery/tmp/data.osm.pbf'
     if not exists(path) or force:
         url = config.download_url
-        run(f'wget {url} -O {path} --quiet')
+        with sudo(user='tilery'):
+            run(f'wget {url} -O {path} --quiet')
     domain = 'http://data.openstreetmapdata.com/'
     download_shapefile(
         'simplified-land-polygons-complete-3857/simplified_land_polygons.shp',

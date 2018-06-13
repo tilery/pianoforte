@@ -11,20 +11,8 @@ from usine import (cd, chown, config, env, exists, get, mkdir, put, run,
 from ..commons import main, restart, service, ssh_keys
 
 
-def python(cmd):
-    with sudo(user='tilery'):
-        run(f'/srv/tilery/venv/bin/python {cmd}')
-
-
 def wget(url, dest):
     run(f'wget {url} -O {dest}')
-
-
-@minicli.cli
-def pip(cmd):
-    """Run a pip command in the virtualenv."""
-    with sudo(user='tilery'):
-        run(f'/srv/tilery/venv/bin/pip {cmd}')
 
 
 @minicli.cli

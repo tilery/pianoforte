@@ -59,7 +59,7 @@ def http():
         # Before letsencrypt.
         conf = template('remote/nginx-http.conf', domains=domains,
                         domain=domain)
-    put(conf, '/etc/nginx/sites-enabled/default')
+    put(conf, '/etc/nginx/sites-enabled/pianoforte.conf')
     restart(services='nginx')
 
 

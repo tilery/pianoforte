@@ -42,5 +42,5 @@ def wrapper(hostname, configpath):
         yield
 
 
-def main(hostname='tilery', configpath='remote/config.yml'):
+def main(hostname='tilery', configpath='remote/config/prod.yml'):
     minicli.run(hostname=hostname, configpath=configpath)

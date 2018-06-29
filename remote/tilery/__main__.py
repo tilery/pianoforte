@@ -368,4 +368,4 @@ def slow_query_stats(sort='date'):
 
 
 if __name__ == '__main__':
-    main(hostname='tilery')
+    main(hostname='pfetalab-tilery')

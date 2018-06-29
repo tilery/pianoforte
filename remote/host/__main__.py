@@ -11,14 +11,31 @@ def system():
     run('sudo --version || apt install sudo')
     with sudo():
         run('apt update')
-        run('apt install -y nginx')
+        run('apt install -y nginx lxd lxd-client')
+
+
+def lxd():
+    put('remote/host/lxd.yml', '/tmp/lxd.yml')
+    run('cat /tmp/lxd.yml | lxd init --preseed')
+
+
+@minicli.cli
+def lxc_launch(name, ip):
+    """Install and configure an LXC container."""
+    if name not in run(f'lxc list --format csv --columns n'):
+        network = template('remote/host/network.yml', ip=ip)
+        put(network, '/tmp/network.yml')
+        run(f'lxc launch ubuntu:18.04 {name} '
+            '--config=user.network-config="$(cat /tmp/network.yml)" '
+            '--config=raw.lxc="lxc.apparmor.allow_incomplete=1"')
+    run(f'lxc file push /root/.ssh/authorized_keys {name}/home/ubuntu/.ssh/')
 
 
 @minicli.cli
 def http():
     """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
-    put('remote/nginx.conf', '/srv/tilery/nginx.conf')
+    put('remote/nginx.conf', '/etc/nginx/snippets/pianoforte.conf')
     put('remote/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
     put('remote/ssl.conf', '/etc/nginx/snippets/ssl.conf')
     domains = ' '.join(config.domains)
@@ -42,11 +59,13 @@ def bootstrap():
     """Bootstrap a new server."""
     system()
     http()
-    if config.ssl:
-        letsencrypt()
-        # Now put the https ready Nginx conf.
-        http()
+    # if config.ssl:
+    #     letsencrypt()
+    #     # Now put the https ready Nginx conf.
+    #     http()
     ssh_keys()
+    lxd()
+    lxc_launch(name='pianoforte', ip='10.10.10.10')
 
 
 @minicli.cli
@@ -78,4 +97,4 @@ def letsencrypt():
 
 
 if __name__ == '__main__':
-    main('pianoforteqa')
+    main('root@51.15.239.29')

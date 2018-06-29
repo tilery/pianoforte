@@ -12,9 +12,9 @@ psql_version: 10
 tilery:
   download_url: https://download.geofabrik.de/africa/burundi-latest.osm.pbf
   replication_url: https://download.geofabrik.de/africa/burundi-updates/
-  proxy_command: ssh -q root@51.15.239.29 -W 10.10.10.10:22
-  hostname: 10.10.10.10
-  username: ubuntu
+  proxy_command: ssh -q root@51.15.197.154 -W 10.0.3.3:22
+  hostname: 10.0.3.3
+  username: root
 pianoforteqa:
   download_url: https://download.geofabrik.de/africa/burundi-latest.osm.pbf
   replication_url: https://download.geofabrik.de/africa/burundi-updates/

@@ -1,5 +1,5 @@
 import minicli
-from usine import config, exists, put, run, sudo, template
+from usine import config, exists, put, run, sudo, template, mkdir
 
 from ..commons import main, ssh_keys, restart
 
@@ -8,27 +8,36 @@ from ..commons import main, ssh_keys, restart
 def system():
     """Install the host system deps."""
     # Not installed in minimized 18.04.
-    run('sudo --version || apt install sudo')
+    run('which sudo || apt install sudo')
     with sudo():
         run('apt update')
-        run('apt install -y nginx lxd lxd-client')
+        run('apt install -y nginx lxc')
+        mkdir('/data')  # Should be already done by the partionning.
 
 
-def lxd():
-    put('remote/host/lxd.yml', '/tmp/lxd.yml')
-    run('cat /tmp/lxd.yml | lxd init --preseed')
+def lxc_bootstrap():
+    put('remote/host/lxc-net', '/etc/default/lxc-net')
+    put('remote/host/dnsmasq-hosts.conf', '/etc/lxc/dnsmasq-hosts.conf')
+    put('remote/host/dnsmasq.conf', '/etc/lxc/dnsmasq.conf')
+    restart('lxc-net')
 
 
 @minicli.cli
-def lxc_launch(name, ip):
+def lxc_create(name, ip):
     """Install and configure an LXC container."""
-    if name not in run(f'lxc list --format csv --columns n'):
-        network = template('remote/host/network.yml', ip=ip)
-        put(network, '/tmp/network.yml')
-        run(f'lxc launch ubuntu:18.04 {name} '
-            '--config=user.network-config="$(cat /tmp/network.yml)" '
-            '--config=raw.lxc="lxc.apparmor.allow_incomplete=1"')
-    run(f'lxc file push /root/.ssh/authorized_keys {name}/home/ubuntu/.ssh/')
+    if name not in run('lxc-ls'):
+        mkdir(f'/data/lxc/{name}')
+        run(f'lxc-create --name {name} --dir /data/lxc/{name} '
+            f'--template download -- -d ubuntu -r bionic -a amd64')
+        path = f'/var/lib/lxc/{name}/config'
+        line = f'lxc.apparmor.allow_incomplete = 1'
+        run(f'grep -q -r "{line}" {path} '
+            f'|| echo "{line}" | tee --append {path}')
+        run(f'lxc-start -n {name}')
+    run(f'lxc-attach -n {name} -- apt install -y openssh-server')
+    mkdir(f'/data/lxc/{name}/root/.ssh/')
+    run(f'cp /root/.ssh/authorized_keys '
+        f'/data/lxc/{name}/root/.ssh/')
 
 
 @minicli.cli
@@ -64,8 +73,8 @@ def bootstrap():
     #     # Now put the https ready Nginx conf.
     #     http()
     ssh_keys()
-    lxd()
-    lxc_launch(name='pianoforte', ip='10.10.10.10')
+    lxc_bootstrap()
+    lxc_create(name='pianoforte', ip='10.10.10.10')
 
 
 @minicli.cli
@@ -97,4 +106,4 @@ def letsencrypt():
 
 
 if __name__ == '__main__':
-    main('root@51.15.239.29')
+    main('root@51.15.197.154')

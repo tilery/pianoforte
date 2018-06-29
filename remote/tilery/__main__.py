@@ -16,10 +16,15 @@ def wget(url, dest):
 
 
 @minicli.cli
+def whoami():
+    run('whoami')
+
+
+@minicli.cli
 def system():
     """Install the system deps."""
     # Not installed in minimized 18.04.
-    run('sudo --version || apt install sudo')
+    run('which sudo || apt install sudo')
     with sudo():
         run('apt update')
         run('apt install -y postgresql postgis gdal-bin '

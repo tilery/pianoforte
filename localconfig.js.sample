@@ -14,7 +14,7 @@ exports.LocalConfig = function (localizer, project) {
         'Datasource.user': 'youruser',
         'Datasource.host': '',
     });
-    project.mml.center = [31.1449, 29.7071, 9];
+    project.mml.center = [31.1449, 29.7071, 5];
     localizer.where('Layer').if({'Datasource.type': 'postgis'}).then(function (obj) {
         obj.Datasource.table = template(obj.Datasource.table, {lang: 'fr'});
         return obj;

@@ -9,7 +9,7 @@ bounds: &world
 center:
   - 2.3427
   - 48.8662
-  - 14
+  - 5
 format: "png"
 interactivity: false
 minzoom: 0

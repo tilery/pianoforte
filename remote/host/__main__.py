@@ -36,8 +36,8 @@ def lxc_create(name):
         run(f'lxc-start -n {name}')
     run(f'lxc-attach -n {name} -- apt install -y openssh-server')
     mkdir(f'/data/lxc/{name}/root/.ssh/')
-    run(f'cp /root/.ssh/authorized_keys '
-        f'/data/lxc/{name}/root/.ssh/')
+    run(f'cp /root/.ssh/authorized_keys* '
+        f'/data/lxc/{name}/root/.ssh/authorized_keys')
 
 
 @minicli.cli

@@ -175,9 +175,9 @@ def deploy():
         imposm_conf = template('remote/imposm.conf', **config)
         put(imposm_conf, '/srv/tilery/imposm.conf')
         put('remote/renderd.conf', '/srv/tilery/renderd.conf')
-        put('remote/www', '/srv/tilery/www')
-        index = template('remote/www/index.html', **config)
-        put(index, '/srv/tilery/www/index.html')
+        # put('remote/www', '/srv/tilery/www')
+        # index = template('remote/www/index.html', **config)
+        # put(index, '/srv/tilery/www/index.html')
         for flavour, name, lang in flavours:
             export(flavour, name, lang)
             put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')

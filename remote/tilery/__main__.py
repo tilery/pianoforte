@@ -27,7 +27,7 @@ def system():
     run('which sudo || apt install sudo')
     with sudo():
         run('apt update')
-        run('apt install -y postgresql postgis gdal-bin '
+        run('apt install -y postgresql postgis gdal-bin screen '
             'software-properties-common wget unzip autoconf libtool g++ '
             'libmapnik-dev libleveldb1v5 libgeos-dev goaccess '
             'libprotobuf-dev unifont curl zlib1g-dev uuid-dev python-psycopg2 '

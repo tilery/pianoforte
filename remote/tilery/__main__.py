@@ -92,10 +92,10 @@ def configure_mod_tile():
         mkdir('/srv/tilery/tmp/tiles')
         mkdir('/srv/tilery/renderd')
     with sudo(), cd('/etc/apache2/'):
-        put('remote/tile.load', 'mods-available/tile.load')
-        put('remote/tile.conf', 'mods-available/tile.conf')
-        put('remote/apache.conf', 'sites-enabled/000-default.conf')
-        put('remote/ports.conf', 'ports.conf')
+        put('remote/tilery/tile.load', 'mods-available/tile.load')
+        put('remote/tilery/tile.conf', 'mods-available/tile.conf')
+        put('remote/tilery/apache.conf', 'sites-enabled/000-default.conf')
+        put('remote/tilery/ports.conf', 'ports.conf')
         run('a2enmod tile')
 
 
@@ -105,8 +105,8 @@ def configure_munin():
         'postgres_connections_db', 'postgres_users', 'postgres_xlog',
         'nginx_status', 'nginx_request']
     with sudo(), cd('/etc/munin'):
-        put('remote/munin.conf', 'munin.conf')
-        for plugin in Path('remote/munin').glob('*'):
+        put('remote/tilery/munin.conf', 'munin.conf')
+        for plugin in Path('remote/tilery/munin').glob('*'):
             put(plugin, f'plugins/{plugin.name}')
             run(f'chmod +x plugins/{plugin.name}')
         for name in psql_plugins:
@@ -118,7 +118,7 @@ def configure_munin():
 
 
 def install_goaccess():
-    put('remote/run-goaccess', '/etc/cron.hourly/run-goaccess')
+    put('remote/tilery/run-goaccess', '/etc/cron.hourly/run-goaccess')
     run('chmod +x /etc/cron.hourly/run-goaccess')
 
 
@@ -129,7 +129,7 @@ def db():
         run('createuser tilery || exit 0')
         run('createdb tilery -O tilery || exit 0')
         run('psql tilery -c "CREATE EXTENSION IF NOT EXISTS postgis"')
-        put('remote/postgresql.conf',
+        put('remote/tilery/postgresql.conf',
             f'/etc/postgresql/{config.psql_version}/main/postgresql.conf')
 
 
@@ -172,9 +172,9 @@ def deploy():
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
         put('mapping.yml', '/srv/tilery/mapping.yml')
-        imposm_conf = template('remote/imposm.conf', **config)
+        imposm_conf = template('remote/tilery/imposm.conf', **config)
         put(imposm_conf, '/srv/tilery/imposm.conf')
-        put('remote/renderd.conf', '/srv/tilery/renderd.conf')
+        put('remote/tilery/renderd.conf', '/srv/tilery/renderd.conf')
         # put('remote/www', '/srv/tilery/www')
         # index = template('remote/www/index.html', **config)
         # put(index, '/srv/tilery/www/index.html')

@@ -44,20 +44,20 @@ def lxc_create(name):
 def http():
     """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
-    put('remote/nginx.conf', '/etc/nginx/snippets/pianoforte.conf')
-    put('remote/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
-    put('remote/ssl.conf', '/etc/nginx/snippets/ssl.conf')
+    put('remote/host/nginx.conf', '/etc/nginx/snippets/pianoforte.conf')
+    put('remote/host/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
+    put('remote/host/ssl.conf', '/etc/nginx/snippets/ssl.conf')
     domains = ' '.join(config.domains)
     domain = config.domains[0]
     pempath = f'/etc/letsencrypt/live/{domain}/fullchain.pem'
     if exists(pempath):
         print(f'{pempath} found, using https configuration')
-        conf = template('remote/nginx-https.conf', domains=domains,
+        conf = template('remote/host/nginx-https.conf', domains=domains,
                         domain=domain)
     else:
         print(f'{pempath} not found, using http configuration')
         # Before letsencrypt.
-        conf = template('remote/nginx-http.conf', domains=domains,
+        conf = template('remote/host/nginx-http.conf', domains=domains,
                         domain=domain)
     put(conf, '/etc/nginx/sites-enabled/pianoforte.conf')
     restart(services='nginx')
@@ -96,10 +96,10 @@ def letsencrypt():
         run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
         run('apt install -y certbot')
-    certbot_conf = template('remote/certbot.ini',
+    certbot_conf = template('remote/host/certbot.ini',
                             domains=','.join(config.domains))
     put(certbot_conf, '/srv/tilery/certbot.ini')
-    put('remote/ssl-renew', '/etc/cron.weekly/ssl-renew')
+    put('remote/host/ssl-renew', '/etc/cron.weekly/ssl-renew')
     run('chmod +x /etc/cron.weekly/ssl-renew')
     run('certbot certonly -c /srv/tilery/certbot.ini --non-interactive '
         '--agree-tos')

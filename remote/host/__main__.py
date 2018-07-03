@@ -23,7 +23,7 @@ def lxc_bootstrap():
 
 
 @minicli.cli
-def lxc_create(name, ip):
+def lxc_create(name):
     """Install and configure an LXC container."""
     if name not in run('lxc-ls'):
         mkdir(f'/data/lxc/{name}')
@@ -74,7 +74,7 @@ def bootstrap():
     #     http()
     ssh_keys()
     lxc_bootstrap()
-    lxc_create(name='pianoforte', ip='10.10.10.10')
+    lxc_create(name='pianoforte')
 
 
 @minicli.cli

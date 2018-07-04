@@ -5,7 +5,7 @@ from io import BytesIO
 from pathlib import Path
 
 import minicli
-from usine import (cd, chown, config, env, exists, get, mkdir, put, run,
+from usine import (cd, chown, config, env, exists, get, mkdir, mv, put, run,
                    screen, sudo, template)
 
 from ..commons import main, restart, service, ssh_keys
@@ -125,6 +125,12 @@ def install_goaccess():
 @minicli.cli
 def db():
     """Create the database and the needed extensions."""
+    dest = '/ssd/postgresql'
+    if not exists(dest):
+        src = '/var/lib/postgresql'
+        mv(src, dest)
+        run(f'ln --symbolic --force {dest} {src}')
+        chown('postgres:postgres', src)
     with sudo(user='postgres'):
         conf = template('remote/tilery/postgresql.conf', **config)
         put(conf,

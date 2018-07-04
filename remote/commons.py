@@ -3,6 +3,10 @@ import requests
 from usine import config, connect, put, run, sudo
 
 
+def append_line(path, line):
+    run(f'grep -q -r "{line}" {path} || echo "{line}" | tee --append {path}')
+
+
 def service(name):
     with sudo():
         put(f'remote/{name}.service', f'/etc/systemd/system/{name}.service')

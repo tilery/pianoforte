@@ -1,7 +1,7 @@
 import minicli
-from usine import config, exists, put, run, sudo, template, mkdir
+from usine import config, exists, mkdir, put, run, sudo, template
 
-from ..commons import main, ssh_keys, restart
+from ..commons import append_line, main, restart, ssh_keys
 
 
 @minicli.cli
@@ -12,7 +12,7 @@ def system():
     with sudo():
         run('apt update')
         run('apt install -y nginx lxc')
-        mkdir('/data')  # Should be already done by the partionning.
+        mkdir('/data')  # LXC rootfs. Should be created by the partionning.
 
 
 def lxc_bootstrap():
@@ -27,12 +27,14 @@ def lxc_create(name):
     """Install and configure an LXC container."""
     if name not in run('lxc-ls'):
         mkdir(f'/data/lxc/{name}')
+        mkdir(f'/data/lxc/{name}/ssd/')
+        mkdir(f'/ssd/{name}')
         run(f'lxc-create --name {name} --dir /data/lxc/{name} '
             f'--template download -- -d ubuntu -r bionic -a amd64')
-        path = f'/var/lib/lxc/{name}/config'
-        line = f'lxc.apparmor.allow_incomplete = 1'
-        run(f'grep -q -r "{line}" {path} '
-            f'|| echo "{line}" | tee --append {path}')
+        append_line(f'/var/lib/lxc/{name}/config',
+                    f'lxc.apparmor.allow_incomplete = 1')
+        append_line(f'/var/lib/lxc/{name}/config',
+                    f'lxc.mount.entry = /ssd/{name} ssd none bind 0 0')
         run(f'lxc-start -n {name}')
     run(f'lxc-attach -n {name} -- apt install -y openssh-server')
     mkdir(f'/data/lxc/{name}/root/.ssh/')

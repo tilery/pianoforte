@@ -2,3 +2,7 @@ download_url: https://download.geofabrik.de/africa/burundi-latest.osm.pbf
 replication_url: https://download.geofabrik.de/africa/burundi-updates/
 ssl: false
 psql_version: 10
+piano_domains:
+- piano.dev
+forte_domains:
+- forte.dev

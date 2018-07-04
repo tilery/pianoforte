@@ -169,12 +169,12 @@ def export(flavour='forte', filename='forte', lang='fr'):
 def deploy():
     """Send config files."""
     flavours = [
-        ('forte', 'forte', 'fr'),
-        ('piano', 'piano', 'fr'),
-        ('forte', 'forteen', 'en'),
-        ('piano', 'pianoen', 'en'),
-        ('forte', 'fortear', 'ar'),
-        ('piano', 'pianoar', 'ar'),
+        ('forte', 'fr'),
+        ('piano', 'fr'),
+        ('forte', 'en'),
+        ('piano', 'en'),
+        ('forte', 'ar'),
+        ('piano', 'ar'),
     ]
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
@@ -185,7 +185,8 @@ def deploy():
         # put('remote/www', '/srv/tilery/www')
         # index = template('remote/www/index.html', **config)
         # put(index, '/srv/tilery/www/index.html')
-        for flavour, name, lang in flavours:
+        for flavour, lang in flavours:
+            name = flavour + lang
             export(flavour, name, lang)
             put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
         put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')

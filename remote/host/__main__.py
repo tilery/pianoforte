@@ -48,20 +48,24 @@ def lxc_create(name):
 def http():
     """Configure Nginx and letsencrypt."""
     # When we'll have a domain.
-    put('remote/host/nginx.conf', '/etc/nginx/snippets/pianoforte.conf')
+    put('remote/host/piano.conf', '/etc/nginx/snippets/piano.conf')
+    put('remote/host/forte.conf', '/etc/nginx/snippets/forte.conf')
     put('remote/host/letsencrypt.conf', '/etc/nginx/snippets/letsencrypt.conf')
     put('remote/host/ssl.conf', '/etc/nginx/snippets/ssl.conf')
-    domains = ' '.join(config.domains)
-    domain = config.domains[0]
+    domain = config.piano_domains[0]
     pempath = f'/etc/letsencrypt/live/{domain}/fullchain.pem'
     if exists(pempath):
         print(f'{pempath} found, using https configuration')
-        conf = template('remote/host/nginx-https.conf', domains=domains,
+        conf = template('remote/host/nginx-https.conf',
+                        piano_domains=' '.join(config.piano_domains),
+                        forte_domains=' '.join(config.forte_domains),
                         domain=domain)
     else:
         print(f'{pempath} not found, using http configuration')
         # Before letsencrypt.
-        conf = template('remote/host/nginx-http.conf', domains=domains,
+        conf = template('remote/host/nginx-http.conf',
+                        piano_domains=' '.join(config.piano_domains),
+                        forte_domains=' '.join(config.forte_domains),
                         domain=domain)
     put(conf, '/etc/nginx/sites-enabled/pianoforte.conf')
     restart(services='nginx')
@@ -100,8 +104,9 @@ def letsencrypt():
         run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
         run('apt install -y certbot')
+    domains = ','.join(list(config.piano_domains) + list(config.forte_domains))
     certbot_conf = template('remote/host/certbot.ini',
-                            domains=','.join(config.domains))
+                            domains=domains)
     put(certbot_conf, '/srv/tilery/certbot.ini')
     put('remote/host/ssl-renew', '/etc/cron.weekly/ssl-renew')
     run('chmod +x /etc/cron.weekly/ssl-renew')

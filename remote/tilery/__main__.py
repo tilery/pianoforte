@@ -189,7 +189,6 @@ def deploy():
             name = flavour + lang
             export(flavour, name, lang)
             put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
-        put('data/city.csv', '/srv/tilery/pianoforte/data/city.csv')
         put('data/simplified_boundary.json',
             '/srv/tilery/pianoforte/data/simplified_boundary.json')
         put('fonts/', '/srv/tilery/pianoforte/fonts')
@@ -258,8 +257,10 @@ def import_custom_data():
         -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/boundary.sql /tmp/boundary.json -sql \
         \\'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru","ISO3166-1:alpha2" AS iso FROM boundary\\' -nln itl_boundary""")
     import_sql_file('/tmp/boundary.sql')
+    wget('https://raw.githubusercontent.com/tilery/mae-boundaries/master/city.csv',
+         '/tmp/city.csv')
     run("""ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry \
-        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/city.sql /srv/tilery/pianoforte/data/city.csv \
+        -lco DROP_TABLE=IF_EXISTS -f PGDump /tmp/city.sql /tmp/city.csv \
         -select name,'name:en','name:fr','name:ar',capital,type,prio,ldir \
         -nln city -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* \
         -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326""")

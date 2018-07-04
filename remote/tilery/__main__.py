@@ -156,39 +156,16 @@ def services():
     service('imposm')
 
 
-def export(flavour='forte', filename='forte', lang='fr'):
-    env = os.environ.copy()
-    env['PIANOFORTE_LANG'] = lang
-    subprocess.call(['node', '/home/ybon/Code/js/kosmtik/index.js', 'export',
-                     f'{flavour}.yml', '--format', 'xml', '--output',
-                     f'{filename}.xml', '--localconfig',
-                     'localconfig-remote.js'], env=env)
-
-
 @minicli.cli
 def deploy():
     """Send config files."""
-    flavours = [
-        ('forte', 'fr'),
-        ('piano', 'fr'),
-        ('forte', 'en'),
-        ('piano', 'en'),
-        ('forte', 'ar'),
-        ('piano', 'ar'),
-    ]
     with sudo(user='tilery'):
         mkdir('/srv/tilery/pianoforte/data')
         put('mapping.yml', '/srv/tilery/mapping.yml')
         imposm_conf = template('remote/tilery/imposm.conf', **config)
         put(imposm_conf, '/srv/tilery/imposm.conf')
         put('remote/tilery/renderd.conf', '/srv/tilery/renderd.conf')
-        # put('remote/www', '/srv/tilery/www')
-        # index = template('remote/www/index.html', **config)
-        # put(index, '/srv/tilery/www/index.html')
-        for flavour, lang in flavours:
-            name = flavour + lang
-            export(flavour, name, lang)
-            put(f'{name}.xml', f'/srv/tilery/pianoforte/{name}.xml')
+        put('dist/', '/srv/tilery/pianoforte/')
         put('data/simplified_boundary.json',
             '/srv/tilery/pianoforte/data/simplified_boundary.json')
         put('fonts/', '/srv/tilery/pianoforte/fonts')

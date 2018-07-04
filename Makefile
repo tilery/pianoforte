@@ -19,3 +19,11 @@ import_country:
 	psql --dbname pianoforte --file tmp/country.sql
 update:
 	env PGHOST=/var/run/postgresql/ imposm3 run -config imposm.conf
+dist:
+	env PIANOFORTE_LANG=fr node /home/ybon/Code/js/kosmtik/index.js export piano.yml --format xml --output dist/pianofr.xml --localconfig localconfig-dist.js
+	env PIANOFORTE_LANG=en node /home/ybon/Code/js/kosmtik/index.js export piano.yml --format xml --output dist/pianoen.xml --localconfig localconfig-dist.js
+	env PIANOFORTE_LANG=ar node /home/ybon/Code/js/kosmtik/index.js export piano.yml --format xml --output dist/pianoar.xml --localconfig localconfig-dist.js
+	env PIANOFORTE_LANG=fr node /home/ybon/Code/js/kosmtik/index.js export forte.yml --format xml --output dist/fortefr.xml --localconfig localconfig-dist.js
+	env PIANOFORTE_LANG=en node /home/ybon/Code/js/kosmtik/index.js export forte.yml --format xml --output dist/forteen.xml --localconfig localconfig-dist.js
+	env PIANOFORTE_LANG=ar node /home/ybon/Code/js/kosmtik/index.js export forte.yml --format xml --output dist/fortear.xml --localconfig localconfig-dist.js
+.PHONY: dist

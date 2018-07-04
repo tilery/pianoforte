@@ -38,6 +38,8 @@ def lxc_create(name):
     mkdir(f'/data/lxc/{name}/root/.ssh/')
     run(f'cp /root/.ssh/authorized_keys* '
         f'/data/lxc/{name}/root/.ssh/authorized_keys')
+    put('remote/host/lxc-resolv.conf',
+        f'/data/lxc/{name}/etc/resolv.conf')
 
 
 @minicli.cli

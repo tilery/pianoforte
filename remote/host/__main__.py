@@ -1,7 +1,7 @@
 import minicli
 from usine import config, exists, mkdir, put, run, sudo, template
 
-from ..commons import append_line, main, restart, ssh_keys
+from ..commons import append_line, main, restart, ssh_keys, systemctl
 
 
 @minicli.cli
@@ -76,10 +76,10 @@ def bootstrap():
     """Bootstrap a new server."""
     system()
     http()
-    # if config.ssl:
-    #     letsencrypt()
-    #     # Now put the https ready Nginx conf.
-    #     http()
+    if config.ssl:
+        letsencrypt()
+        # Now put the https ready Nginx conf.
+        http()
     ssh_keys()
     lxc_bootstrap()
     lxc_create(name='pianoforte')
@@ -104,13 +104,11 @@ def letsencrypt():
         run('add-apt-repository --yes ppa:certbot/certbot')
         run('apt update')
         run('apt install -y certbot')
+    mkdir('/var/www/letsencrypt/.well-known/acme-challenge')
     domains = ','.join(list(config.piano_domains) + list(config.forte_domains))
-    certbot_conf = template('remote/host/certbot.ini',
-                            domains=domains)
-    put(certbot_conf, '/srv/tilery/certbot.ini')
-    put('remote/host/ssl-renew', '/etc/cron.weekly/ssl-renew')
-    run('chmod +x /etc/cron.weekly/ssl-renew')
-    run('certbot certonly -c /srv/tilery/certbot.ini --non-interactive '
+    certbot_conf = template('remote/host/certbot.ini', domains=domains)
+    put(certbot_conf, '/var/www/certbot.ini')
+    run('certbot certonly -c /var/www/certbot.ini --non-interactive '
         '--agree-tos')
 
 

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-certbot -c /srv/tilery/certbot.ini renew
-
-systemctl reload nginx

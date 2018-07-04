@@ -1,6 +1,0 @@
-asyncpg
-minicli
-overpy
-postgis
-requests
-ujson

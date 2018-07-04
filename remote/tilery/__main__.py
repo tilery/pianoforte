@@ -126,11 +126,12 @@ def install_goaccess():
 def db():
     """Create the database and the needed extensions."""
     with sudo(user='postgres'):
+        conf = template('remote/tilery/postgresql.conf', **config)
+        put(conf,
+            f'/etc/postgresql/{config.psql_version}/main/postgresql.conf')
         run('createuser tilery || exit 0')
         run('createdb tilery -O tilery || exit 0')
         run('psql tilery -c "CREATE EXTENSION IF NOT EXISTS postgis"')
-        put('remote/tilery/postgresql.conf',
-            f'/etc/postgresql/{config.psql_version}/main/postgresql.conf')
 
 
 @minicli.cli

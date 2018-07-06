@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6"><circle class="st0" cx="3" fill="none" stroke="#525252" cy="3" r="2.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
+<circle cx="2.5" cy="2.5" r="3" fill="#fff" stroke="#525252"/>
+</svg>

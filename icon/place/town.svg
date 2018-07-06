@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><g transform="matrix(.8 0 0 .8 -4.224 5.402)"><circle cx="9" cy="-3" r="2" opacity=".3" fill="none" stroke="#fff" stroke-width="1.25"/><circle cx="9" cy="-3" r="2" fill="#525252"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
+<circle cx="3" fill="#fff" stroke="#525252" cy="3" r="2.5"/>
+</svg>

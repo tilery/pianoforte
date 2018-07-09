@@ -332,7 +332,8 @@ Layer:
           FROM
             osm_admin
           WHERE
-            admin_level = 3 OR admin_level = 4
+            (admin_level = 3 OR admin_level = 4)
+            AND osm_id < 0
             AND geometry && !bbox!
           ORDER BY
             admin_level DESC

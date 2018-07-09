@@ -70,6 +70,7 @@
   shield-halo-fill: @halo;
   shield-placement-type: simple;
   shield-placements: 'NE,SW,NW,SE,E,W,N,S';
+  shield-min-padding:1;
   shield-text-dy: 2;
   shield-text-dx: 6;
   shield-unlock-image: true;
@@ -129,10 +130,10 @@
   text-halo-fill: @halo;
   text-halo-radius: 2;
   text-wrap-width: 45;
-  text-label-position-tolerance: 20;
+  text-label-position-tolerance: 10;
   text-character-spacing: 0.1;
   text-line-spacing: -2;
-  text-margin: 30;
+  text-margin: 15;
   text-min-padding: 1;
   [type='town'] {
     text-fill: @town_text;

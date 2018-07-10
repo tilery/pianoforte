@@ -4,7 +4,7 @@ download:
 	wget --show-progress --directory-prefix=tmp/pbf/ --force-directories --no-host-directories http://download.geofabrik.de/$(PBF)
 import: import_imposm import_boundary import_city import_country
 import_imposm:
-	env PGHOST=/var/run/postgresql/ imposm3 import -config imposm.conf -diff -read tmp/pbf/$(PBF) -write -overwritecache -deployproduction
+	imposm3 import -config imposm.conf -diff -read tmp/pbf/$(PBF) -write -overwritecache -deployproduction
 import_boundary:
 	wget --show-progress http://nuage.yohanboniface.me/disputed.json -O data/disputed.json
 	wget --show-progress http://nuage.yohanboniface.me/boundary.json -O tmp/boundary.json
@@ -18,7 +18,7 @@ import_country:
 	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/country.sql tmp/country.csv -select name,'name:en','name:fr','name:ar',prio,iso,sov -nln country -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326
 	psql --dbname pianoforte --file tmp/country.sql
 update:
-	env PGHOST=/var/run/postgresql/ imposm3 run -config imposm.conf
+	imposm3 run -config imposm.conf
 dist:
 	env PIANOFORTE_LANG=fr node /home/ybon/Code/js/kosmtik/index.js export piano.yml --format xml --output dist/pianofr.xml --localconfig localconfig-dist.js
 	env PIANOFORTE_LANG=en node /home/ybon/Code/js/kosmtik/index.js export piano.yml --format xml --output dist/pianoen.xml --localconfig localconfig-dist.js

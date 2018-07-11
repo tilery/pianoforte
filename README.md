@@ -63,43 +63,5 @@ Or with piano:
 
 ## Remote deployment
 
-Note: the scripts are tested on Ubuntu 16.04 and 18.04 only.
 
-By default, the scripts try to deploy on a host named `pianoforteqa`. You can
-override the host by using the `--hostname` in any command.
-
-The tile stack is run under the Unix user `tilery`.
-
-### Bootstraping the host
-
-
-    python -m remote.host bootstrap
-
-
-### Bootstraping the server
-
-    python -m remote.tilery bootstrap
-
-
-### Send config files
-
-    python -m remote.tilery deploy
-
-### Download OSM data and shapefiles
-
-    python -m remote.tilery download
-
-### Import OSM data
-
-This will run the import command in a screen.
-
-    python -m remote.tilery import
-
-### Add geo indices
-
-    python -m remote.tilery create-index
-
-
-### Upload and import custom data
-
-    python -m remote.tilery import-custom-data
+See [pianoforte-deploy](https://github.com/tilery/pianoforte-deploy).

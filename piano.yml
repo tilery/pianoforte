@@ -295,7 +295,7 @@ Layer:
     table: |-
         ( SELECT
             geometry, '{lang}' as lang, type, NULL as ldir,
-            CASE WHEN type='city' THEN 1 WHEN type='state' THEN 2 ELSE 100 END AS prio,
+            CASE WHEN capital='yes' THEN 1 WHEN capital IN ('2','3','4') THEN 2 WHEN type='state' THEN 3 ELSE 100 END AS prio,
             CASE WHEN capital='yes' THEN 1 WHEN capital IN ('2','3','4','5','6','7','8','9','10') THEN capital::INT ELSE 100 END AS capital,
             COALESCE(NULLIF(name{lang}, ''), NULLIF(int_name, ''), name) as name
           FROM
@@ -305,7 +305,7 @@ Layer:
             AND type IN ('state', 'city', 'town')
             AND geometry && !bbox!
           ORDER BY
-            capital ASC, prio ASC, population DESC NULLS LAST
+            prio ASC, capital ASC, population DESC NULLS LAST
         ) AS data
 
 - id: place

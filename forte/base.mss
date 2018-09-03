@@ -10,7 +10,7 @@
 @wooded:            #9cc29c;
 @grass:             #c1d8c1;
 @sand:              #ede5bb;
-@agriculture:       #92ab78;
+@agriculture:       #e5e8e2;
 
 @halo:              @land;
 
@@ -112,7 +112,10 @@
   [type='farmland'],
   [type='farm'],
   [type='orchard'] {
-    polygon-fill: @land;
+    polygon-fill: @agriculture;
+    [zoom<=11] {
+      polygon-opacity: 0.5;
+    }
   }
   [type='beach'] {
     polygon-fill: @sand;

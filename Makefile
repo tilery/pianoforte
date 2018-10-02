@@ -8,7 +8,7 @@ import_imposm:
 import_boundary:
 	wget --show-progress http://nuage.yohanboniface.me/disputed.json -O data/disputed.json
 	wget --show-progress http://nuage.yohanboniface.me/boundary.json -O tmp/boundary.json
-	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/boundary.sql tmp/boundary.json -sql 'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru","ISO3166-1:alpha2" AS iso FROM boundary' -nln itl_boundary
+	ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump tmp/boundary.sql tmp/boundary.json -sql 'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru",iso FROM boundary' -nln itl_boundary
 	psql --dbname pianoforte --file tmp/boundary.sql
 import_city:
 	wget --show-progress https://raw.githubusercontent.com/tilery/mae-boundaries/master/city.csv -O tmp/city.csv

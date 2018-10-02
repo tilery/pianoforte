@@ -19,16 +19,22 @@
     line-opacity: 0.4;
   }
 }
-#itl_boundary_low[zoom>=1][zoom<6][maritime!='yes'],
+#itl_boundary[zoom>=1][zoom<6][maritime!='yes'],
 #itl_boundary[zoom>=6] {
   line-width: 0.5;
   line-color: @admin_2;
-  line-clip: true;
+  [zoom<6] {
+    line-simplify: 5;
+    line-simplify-algorithm: visvalingam-whyatt;
+  }
   [maritime='yes'] {
     line-dasharray: 10,5;
   }
   [zoom>=4] {
     line-width: 1;
+  }
+  [zoom>=6] {
+    line-clip: true;
   }
   [zoom>=10] {
     line-width: 2;

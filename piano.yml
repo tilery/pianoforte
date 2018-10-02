@@ -196,14 +196,6 @@ Layer:
     file: data/disputed.json
     type: geojson
 
-- id: itl_boundary_low
-  class: ""
-  geometry: "polygon"
-  <<: *extents84
-  Datasource:
-    file: data/simplified_boundary.json
-    type: geojson
-
 - id: itl_boundary
   class: ""
   geometry: "polygon"

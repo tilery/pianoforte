@@ -75,7 +75,7 @@
   shield-text-dx: 6;
   shield-unlock-image: true;
   [type='town'] {
-    shield-min-distance: 20;
+    shield-margin: 20;
     shield-text-dx: 4;
     shield-text-dy: 4;
   }
@@ -103,7 +103,7 @@
     }
   }
   [zoom>=9] {
-    shield-min-distance: 10;
+    shield-margin: 10;
     shield-size: 12;
     [type='embassy'], [type='capital'], [type='intermediate'] {
       shield-size: 17;
@@ -193,7 +193,7 @@
   text-halo-fill: @halo;
   text-halo-radius: 1;
   text-placement: line;
-  text-min-distance: 300;
+  text-margin: 300;
   text-size: 12;
   text-label-position-tolerance: 50;
   [zoom>=15] {

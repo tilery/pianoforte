@@ -41,13 +41,13 @@
   shield-face-name: @xlight;
   shield-fill: #333;
   shield-spacing: 200;
-  shield-min-distance: 20;
+  shield-margin: 20;
   shield-min-padding: 1;
   [zoom>=12] {
-    shield-min-distance: 50;
+    shield-margin: 50;
   }
   [zoom>=14] {
-    shield-min-distance: 100;
+    shield-margin: 100;
     shield-transform: scale(1.25,1.25);
     shield-size: 11;
   }
@@ -69,7 +69,7 @@
   text-fill: @road_text;
   text-halo-fill: @halo;
   text-halo-radius: 2;
-  text-min-distance: 60;
+  text-margin: 60;
   text-size: 11;
   text-avoid-edges: true;
   text-character-spacing: 0;

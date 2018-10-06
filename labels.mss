@@ -59,7 +59,7 @@
 }
 #city[zoom>=5][zoom<=10],
 #place_low[type='city'][zoom>=7][zoom<=10],
-#place_low[type='town'][zoom>=9][zoom<=10] {
+#place_low[type='town'][zoom>=8][zoom<=10] {
   shield-file: url('icon/place/[type].svg');
   shield-name:[name];
   shield-size: 11;
@@ -74,8 +74,8 @@
   shield-text-dy: 2;
   shield-text-dx: 6;
   shield-unlock-image: true;
-  shield-min-distance: 10;
   [type='town'] {
+    shield-min-distance: 20;
     shield-text-dx: 4;
     shield-text-dy: 4;
   }
@@ -103,6 +103,7 @@
     }
   }
   [zoom>=9] {
+    shield-min-distance: 10;
     shield-size: 12;
     [type='embassy'], [type='capital'], [type='intermediate'] {
       shield-size: 17;

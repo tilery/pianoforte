@@ -19,8 +19,7 @@
     line-opacity: 0.4;
   }
 }
-#itl_boundary[zoom>=1][zoom<6][maritime!='yes'],
-#itl_boundary[zoom>=6] {
+#itl_boundary[zoom>=1] {
   line-width: 0.5;
   line-color: @admin_2;
   [zoom<6] {

@@ -31,7 +31,7 @@
 @rail_case:         #777;
 
 @country_text:      @admin_2;
-@state_text:        #888;
+@state_text:        #666;
 @city_text:         #333;
 @town_text:         #333;
 @village_text:      #333;

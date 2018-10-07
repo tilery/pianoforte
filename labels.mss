@@ -69,7 +69,7 @@
   shield-fill: @town_text;
   shield-halo-fill: @halo;
   shield-placement-type: simple;
-  shield-placements: 'NE,SW,NW,SE,E,W,N,S';
+  shield-placements: 'NE,NW,SW,SE,E,W';
   shield-min-padding: 1;
   shield-text-dy: 3;
   shield-text-dx: 3;

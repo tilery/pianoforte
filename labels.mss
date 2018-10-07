@@ -70,31 +70,30 @@
   shield-halo-fill: @halo;
   shield-placement-type: simple;
   shield-placements: 'NE,SW,NW,SE,E,W,N,S';
-  shield-min-padding:1;
-  shield-text-dy: 2;
-  shield-text-dx: 6;
+  shield-min-padding: 1;
+  shield-text-dy: 3;
+  shield-text-dx: 3;
   shield-unlock-image: true;
   [type='town'] {
     shield-margin: 20;
-    shield-text-dx: 4;
-    shield-text-dy: 4;
   }
   [type='city'] {
     shield-line-spacing: -2;
     shield-face-name: @medium;
     shield-fill: @city_text;
-    shield-text-dy: 4;
   }
   [type='embassy'], [type='capital'] {
     shield-fill: @city_text;
     shield-face-name: @bold;
     shield-size: 12;
+    shield-text-dx: 6;
     shield-allow-overlap: true;
   }
   [type='intermediate'] {
     shield-face-name: @medium;
     shield-fill: @city_text;
     shield-size: 11;
+    shield-text-dx: 6;
   }
   [ldir!=null] {
     shield-placements: '[ldir]';

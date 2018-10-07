@@ -3029,7 +3029,7 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -3046,7 +3046,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3058,7 +3058,7 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -3075,7 +3075,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3278,7 +3278,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'embassy') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3307,7 +3307,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'embassy')]]></Filter>
-      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3510,7 +3510,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'capital') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3539,7 +3539,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'capital')]]></Filter>
-      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer allow-overlap="true" dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-1" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3742,7 +3742,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'intermediate') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -3771,7 +3771,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'intermediate')]]></Filter>
-      <ShieldSymbolizer dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="6" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -4200,13 +4200,13 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -4229,13 +4229,13 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -4310,7 +4310,7 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'minor') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>200000</MaxScaleDenominator>
@@ -4328,7 +4328,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'minor') and ([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -4339,7 +4339,7 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'minor')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>200000</MaxScaleDenominator>
@@ -4357,7 +4357,7 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'minor')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
@@ -4421,7 +4421,7 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -4444,12 +4444,12 @@
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([lang] = 'fr')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -4463,7 +4463,7 @@
     <Rule>
       <MaxScaleDenominator>25000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -4664,13 +4664,13 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="14" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>6500000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'city')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-0" halo-fill="#eeeeee" halo-radius="1" line-spacing="-2" margin="5" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
@@ -4712,13 +4712,13 @@
       <MaxScaleDenominator>1500000</MaxScaleDenominator>
       <MinScaleDenominator>400000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="10" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="12" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>3000000</MaxScaleDenominator>
       <MinScaleDenominator>1500000</MinScaleDenominator>
       <Filter><![CDATA[([type] = 'town')]]></Filter>
-      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,SW,NW,SE,E,W,N,S" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
+      <ShieldSymbolizer dx="3" dy="3" file="icon/place/[type].svg" fill="#333333" fontset-name="fontset-2" halo-fill="#eeeeee" halo-radius="1" margin="20" minimum-padding="1" placement-type="simple" placements="NE,NW,SW,SE,E,W" size="11" unlock-image="true" wrap-width="50"><![CDATA[[name]]]></ShieldSymbolizer>
     </Rule>
   </Style>
   <Layer name="place_low" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">

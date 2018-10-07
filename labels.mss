@@ -74,6 +74,7 @@
   shield-text-dy: 3;
   shield-text-dx: 3;
   shield-unlock-image: true;
+  shield-margin: 5;
   [type='town'] {
     shield-margin: 20;
   }

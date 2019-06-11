@@ -89,83 +89,83 @@ of the project, see below.
 
 - grab Mapnik XML, fonts, icons, Imposm mapping…:
 
-    git clone https://github.com/tilery/pianoforte /path/to/pianoforte --depth 1
+        git clone https://github.com/tilery/pianoforte /path/to/pianoforte --depth 1
 
 - download OSM data
 
-    wget https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
+        wget https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 
 - download coastline data
 
-    wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
-    unzip simplified-land-polygons-complete-3857.zip
-    wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
-    unzip land-polygons-split-3857.zip
+        wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
+        unzip simplified-land-polygons-complete-3857.zip
+        wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
+        unzip land-polygons-split-3857.zip
 
 - import OSM data
 
-    imposm import -diff -config /path/to/imposm.conf -read /path/to/planet-latest.osm.pbf -overwritecache -write -deployproduction
+        imposm import -diff -config /path/to/imposm.conf -read /path/to/planet-latest.osm.pbf -overwritecache -write -deployproduction
 
 - download and import boundary data
 
-    wget http://nuage.yohanboniface.me/boundary.json
-    ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump boundary.sql /path/to/boundary.json -sql 'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru",iso FROM boundary' -nln itl_boundary
-    psql -d tilery --file /path/to/boundary.sql
+        wget http://nuage.yohanboniface.me/boundary.json
+        ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump boundary.sql /path/to/boundary.json -sql 'SELECT name,"name:en","name:fr","name:ar","name:es","name:de","name:ru",iso FROM boundary' -nln itl_boundary
+        psql -d tilery --file /path/to/boundary.sql
 
 - download and import city names
 
-    wget https://raw.githubusercontent.com/tilery/mae-boundaries/master/city.csv
-    ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump city.sql /path/to/city.csv -select name,'name:en','name:fr','name:ar',capital,type,prio,ldir -nln city -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326
-    psql -d tilery --file /path/to/city.sql
+        wget https://raw.githubusercontent.com/tilery/mae-boundaries/master/city.csv
+        ogr2ogr --config PG_USE_COPY YES -lco GEOMETRY_NAME=geometry -lco DROP_TABLE=IF_EXISTS -f PGDump city.sql /path/to/city.csv -select name,'name:en','name:fr','name:ar',capital,type,prio,ldir -nln city -oo X_POSSIBLE_NAMES=Lon* -oo Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO -a_srs EPSG:4326
+        psql -d tilery --file /path/to/city.sql
 
 - download disputed areas
 
-    wget http://nuage.yohanboniface.me/disputed.json -O data/disputed.json
+        wget http://nuage.yohanboniface.me/disputed.json -O data/disputed.json
 
 - create custom DB indexes
 
-    psql -d tilery -c "CREATE INDEX IF NOT EXISTS idx_road_label ON osm_roads USING GIST(geometry) WHERE name!='' OR ref!=''"
-    psql -d tilery -c "CREATE INDEX IF NOT EXISTS idx_boundary_low ON osm_admin USING GIST(geometry) WHERE admin_level IN (3, 4)"
+        psql -d tilery -c "CREATE INDEX IF NOT EXISTS idx_road_label ON osm_roads USING GIST(geometry) WHERE name!='' OR ref!=''"
+        psql -d tilery -c "CREATE INDEX IF NOT EXISTS idx_boundary_low ON osm_admin USING GIST(geometry) WHERE admin_level IN (3, 4)"
 
 - in renderd configuration file (/etc/renderd.conf) add one section for any
   flavour/language you want to support:
 
-    [fortefr]
-    URI=/fortefr/
-    TILEDIR=/srv/tilery/tmp/tiles
-    XML=/srv/tilery/pianoforte/fortefr.xml
-    HOST=localhost
-    TILESIZE=256
-    MAXZOOM=20
-    CORS=*
+        [fortefr]
+        URI=/fortefr/
+        TILEDIR=/srv/tilery/tmp/tiles
+        XML=/srv/tilery/pianoforte/fortefr.xml
+        HOST=localhost
+        TILESIZE=256
+        MAXZOOM=20
+        CORS=*
 
 - if you want retina support, add dedicated sections, example:
 
-    [fortefr2x]
-    URI=/fortefr@2x/
-    TILEDIR=/srv/tilery/tmp/tiles
-    XML=/srv/tilery/pianoforte/fortefr.xml
-    HOST=localhost
-    TILESIZE=512
-    SCALE=2
-    MAXZOOM=20
-    CORS=*
+        [fortefr2x]
+        URI=/fortefr@2x/
+        TILEDIR=/srv/tilery/tmp/tiles
+        XML=/srv/tilery/pianoforte/fortefr.xml
+        HOST=localhost
+        TILESIZE=512
+        SCALE=2
+        MAXZOOM=20
+        CORS=*
 
 - configure `mod_tile`; create `/etc/apache2/mods-available/tile.load` with this content:
 
-    LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so
+        LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so
 
 - create `/etc/apache2/mods-available/tile.load` with this content:
 
-    <IfModule tile_module>
-        LoadTileConfigFile /etc/renderd.conf
-        ModTileRenderdSocketName /var/run/renderd/renderd.sock
-        # Timeout before giving up for a tile to be rendered
-        ModTileRequestTimeout 0
-        # Timeout before giving up for a tile to be rendered that is otherwise missing
-        ModTileMissingRequestTimeout 30
-    </IfModule>
+        <IfModule tile_module>
+            LoadTileConfigFile /etc/renderd.conf
+            ModTileRenderdSocketName /var/run/renderd/renderd.sock
+            # Timeout before giving up for a tile to be rendered
+            ModTileRequestTimeout 0
+            # Timeout before giving up for a tile to be rendered that is otherwise missing
+            ModTileMissingRequestTimeout 30
+        </IfModule>
 
 - run renderd
 
-    /usr/bin/renderd -f -c /etc/renderd.conf
+        /usr/bin/renderd -f -c /etc/renderd.conf

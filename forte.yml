@@ -48,7 +48,7 @@ Layer:
   geometry: "polygon"
   <<: *extents
   Datasource:
-    file: "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
+    file: "https://osmdata.openstreetmap.de/download/simplified-land-polygons-complete-3857.zip"
     type: shape
 
 - id: land
@@ -56,7 +56,7 @@ Layer:
   geometry: "polygon"
   <<: *extents
   Datasource:
-    file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
+    file: https://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip
     type: shape
 
 - id: landuse
